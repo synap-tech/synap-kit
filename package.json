@@ -1,21 +1,35 @@
 {
   "name": "synap-kit",
-  "description": "A UI component library",
+  "description": "A comprehensive UI library for Synap-Tech's ERP products, containing common components, layouts, utils, and core features like forms and tables to streamline development and maintenance.",
+  "keywords": [
+    "react",
+    "erp",
+    "ui-kit",
+    "component-library",
+    "synap-tech",
+    "shadcn",
+    "tailwindcss",
+    "react-hook-form",
+    "tanstack-table",
+    "tanstack-query"
+  ],
+  "author": "Synap-Tech",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alifbinhossain/ui-kit.git"
+    "url": "https://github.com/synap-tech/synap-kit"
   },
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.1",
   "type": "module",
-  "main": "./dist/es/index.js",
-  "module": "./dist/es/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
   "style": "./dist/style.css",
   "files": [
     "dist"
   ],
-  "license": "MIT",
+
   "sideEffects": [
     "**/*.css"
   ],
