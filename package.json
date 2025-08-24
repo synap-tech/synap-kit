@@ -1,5 +1,5 @@
 {
-  "name": "synap-kit",
+  "name": "synap-test-kit",
   "description": "A comprehensive UI library for Synap-Tech's ERP products, containing common components, layouts, utils, and core features like forms and tables to streamline development and maintenance.",
   "keywords": [
     "react",
@@ -20,7 +20,7 @@
     "url": "https://github.com/synap-tech/synap-kit"
   },
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.4",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -29,7 +29,6 @@
   "files": [
     "dist"
   ],
-
   "sideEffects": [
     "**/*.css"
   ],
@@ -128,7 +127,7 @@
     "react-hotkeys-hook": "^5.1.0",
     "react-paginate": "^8.3.0",
     "react-quill-new": "^3.4.6",
-    "react-router-dom": "^7.8.1",
+    "react-router-dom": "^6.26.2",
     "react-select": "^5.10.2",
     "sonner": "^2.0.7",
     "zod": "^3.23.8"
@@ -187,7 +186,6 @@
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "react-dropzone": "^14.3.8",
-    "react-router-dom": "^7.8.1",
     "rollup-plugin-visualizer": "^6.0.3",
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.11",
