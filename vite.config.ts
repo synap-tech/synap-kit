@@ -77,6 +77,10 @@ export default defineConfig({
           __dirname,
           'src/components/core/data-table/index.tsx'
         ),
+        'data-table-entry': path.resolve(
+          __dirname,
+          'src/components/core/data-table/entry.tsx'
+        ),
         'data-table-ssr': path.resolve(
           __dirname,
           'src/components/core/data-table-ssr/index.tsx'

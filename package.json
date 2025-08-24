@@ -61,6 +61,10 @@
       "types": "./dist/types/components/core/data-table/index.d.ts",
       "import": "./dist/data-table"
     },
+    "./data-table-entry": {
+      "types": "./dist/types/components/core/data-table/entry.d.ts",
+      "import": "./dist/data-table-entry"
+    },
     "./data-table-ssr": {
       "types": "./dist/types/components/core/data-table-ssr/index.d.ts",
       "import": "./dist/data-table-ssr"
