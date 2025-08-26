@@ -20,7 +20,7 @@
     "url": "https://github.com/synap-tech/synap-kit"
   },
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
