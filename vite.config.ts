@@ -90,7 +90,8 @@ export default defineConfig({
         // This ensures deep imports are possible (e.g., `import { Button } from 'my-lib/components/ui/button'`).
         ...Object.fromEntries(
           glob
-            .sync('src/components/ui/**/*.tsx')
+            // ✅ Change the extension part to include both ts and tsx
+            .sync('src/components/ui/**/*.{ts,tsx}')
             .map((file) => [
               path.relative(
                 'src',
