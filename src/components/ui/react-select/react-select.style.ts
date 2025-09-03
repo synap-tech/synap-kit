@@ -7,7 +7,7 @@ export const classNames = (
 ): ClassNamesConfig => ({
   control: ({ isFocused, isDisabled }) =>
     cn(
-      'bg-gradient min-h-10 rounded-md border border-input px-3 py-2 text-sm text-foreground',
+      'bg-background min-h-10 rounded-md border border-border px-3 py-2 text-sm text-foreground',
       isFocused && 'outline outline-2 outline-offset-2 outline-secondary',
       isDisabled &&
         'cursor-not-allowed border-destructive/50 !from-destructive/5 !to-destructive/5 text-destructive',
@@ -19,7 +19,7 @@ export const classNames = (
   multiValue: () => 'border border-input px-2 rounded bg-base-200',
   valueContainer: () => 'flex flex-wrap gap-2',
   menu: () =>
-    'bg-base overflow-hidden  rounded shadow-2xl text-sm border border-input p-1',
+    'bg-base overflow-hidden  rounded shadow-2xl text-sm border border-input p-1 ',
   option: ({ isFocused, isSelected }) =>
     cn(
       'rounded px-3 py-1.5 text-sm text-foreground',

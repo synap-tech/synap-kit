@@ -45,7 +45,7 @@ const GlobalBreadcrumbs = () => {
 
     if (e.match?.pathname === '/') {
       return {
-        label: <House className='size-4' />,
+        label: <House className='size-5' />,
         href: '/',
       };
     }
@@ -58,7 +58,7 @@ const GlobalBreadcrumbs = () => {
 
   return (
     <Breadcrumb>
-      <BreadcrumbList>
+      <BreadcrumbList className='text-sm font-medium'>
         {items?.length > 0 &&
           items.slice(0, -1).map((item, index) =>
             item.href ? (
@@ -100,7 +100,7 @@ const GlobalBreadcrumbs = () => {
           <motion.span variants={variants} initial='initial' animate='animate'>
             <BreadcrumbItem
               key={items.length - 1}
-              className='font-medium text-primary'
+              className='font-medium text-primary '
             >
               <BreadcrumbPage>{items[items.length - 1].label}</BreadcrumbPage>
             </BreadcrumbItem>

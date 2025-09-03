@@ -23,11 +23,11 @@ function DataTable() {
   const { table, isLoading, isEntry } = useTable();
 
   return (
-    <div className='flex h-full flex-col'>
+    <div className='flex h-fit flex-col px-5 py-4 bg-white rounded-md'>
       <TableToolbar />
       <div
         className={cn(
-          'relative max-h-fit flex-1 overflow-auto border border-secondary/10',
+          'relative max-h-fit flex-1 overflow-auto border ',
           isEntry ? 'rounded-b-md' : 'rounded-md'
         )}
       >
@@ -47,6 +47,7 @@ function DataTable() {
                           isHeader: true,
                         }),
                       }}
+                      className='py-2 px-4 first:pl-6'
                     >
                       {header.isPlaceholder
                         ? null
@@ -64,7 +65,7 @@ function DataTable() {
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody className='divide-y-[1px] divide-secondary/10'>
+          <TableBody className='divide-y-[1px] divide-border'>
             {isLoading ? (
               <TableSkeleton colSpan={table.getAllColumns().length} />
             ) : table.getRowModel().rows?.length ? (
@@ -72,6 +73,7 @@ function DataTable() {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && 'selected'}
+                  className=''
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
@@ -81,6 +83,7 @@ function DataTable() {
                           column: cell.column,
                         }),
                       }}
+                      className='first:pl-6'
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -102,9 +105,9 @@ function DataTable() {
             )}
           </TableBody>
         </TableComponent>
-
-        <TablePagination />
       </div>
+
+      <TablePagination />
     </div>
   );
 }

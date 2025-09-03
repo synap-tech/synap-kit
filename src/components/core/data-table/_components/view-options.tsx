@@ -43,7 +43,7 @@ export function TableViewOptions<TData>({
         <Button
           onClick={handleOpenModal}
           aria-label='Column Options'
-          variant='gradient'
+          variant='outline'
           size='sm'
           className={cn(className)}
         >

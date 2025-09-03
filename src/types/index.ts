@@ -1,5 +1,6 @@
 import type { UseMutationResult } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
+import type { LucideIcon } from 'lucide-react';
 //Dynamic Field Types
 import type { FieldArrayWithId, UseFormReturn } from 'react-hook-form';
 import type { RouteObject } from 'react-router-dom';
@@ -143,6 +144,7 @@ export type IRoute = RouteObject & {
     type: 'library' | 'entry' | 'update' | 'normal' | 'custom';
     name: string;
   };
+  Icon?: LucideIcon;
 };
 
 export type IParams = {

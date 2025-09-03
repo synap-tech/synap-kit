@@ -46,7 +46,7 @@ const TableRefresh: React.FC<TableRefreshProps> = ({
       <Button
         aria-label='Refresh Data'
         disabled={isFetching}
-        variant={'gradient'}
+        variant={'outline'}
         size={isSmallScreen ? 'icon' : 'sm'}
         onClick={handleClick}
       >

@@ -1,10 +1,13 @@
+import { Expand } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 import useApp from '@/hooks/useApp';
 import useLayout from '@/hooks/useLayout';
 
 import BrandLogo from '@/components/ui/brand-logo';
+import { Button } from '@/components/ui/button';
 import GlobalBreadcrumbs from '@/components/ui/global-breadcrumbs';
+import ProfileAvatar from '@/components/ui/profile-avatar';
 
 import { cn } from '@/lib/utils';
 
@@ -17,12 +20,12 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const homePage = pathname === '/';
   return (
-    <div className='w-full border-b'>
+    <div className='w-full '>
       <div className='flex flex-col'>
         {/* Mobile View */}
         <div
           className={cn(
-            'flex items-center justify-between gap-4 border-b bg-background px-4 py-1 md:hidden',
+            'flex items-center justify-between gap-4 border-b  px-4 py-1 md:hidden',
             homePage && 'border-none'
           )}
         >
@@ -31,19 +34,31 @@ const Navbar = () => {
         </div>
 
         {/* Desktop View */}
+
         <div
           className={cn(
-            'flex items-center gap-6 px-4 py-1 md:px-0 md:py-0',
+            'md:py-0 min-h-14 py-3 flex items-center justify-between px-4 ',
             pathname === '/' && 'hidden md:block'
           )}
         >
-          <div
-            className='hidden w-fit cursor-pointer items-center border-r border-secondary/10 p-2 hover:bg-gray-300 md:flex'
-            onClick={() => setIsCollapsed((prev) => !prev)}
-          >
-            <SidebarCollapse isCollapsed={isCollapsed} />
+          <div className={cn('flex items-center gap-4 ')}>
+            <div
+              className='hidden w-fit cursor-pointer items-center md:flex border-r pr-4'
+              onClick={() => setIsCollapsed((prev) => !prev)}
+            >
+              <SidebarCollapse isCollapsed={isCollapsed} />
+            </div>
+            {!homePage && <GlobalBreadcrumbs />}
           </div>
-          {!homePage && <GlobalBreadcrumbs />}
+
+          <div className='flex items-center gap-4'>
+            <Button size={'icon'} variant='ghost'>
+              <Expand className='size-6' />
+            </Button>
+
+            <span className='block h-4 w-[1px] bg-border' />
+            <ProfileAvatar />
+          </div>
         </div>
       </div>
     </div>

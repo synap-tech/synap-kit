@@ -1,17 +1,16 @@
 import { cn } from '@/lib/utils';
 
 import SidebarHeader from './header';
-import SidebarLogout from './logout';
 import SidebarMenu from './menu';
 
 const SidebarContent = () => {
   return (
-    <aside className={cn('flex h-full flex-col bg-primary')}>
+    <aside className={cn('flex h-full flex-col')}>
       <SidebarHeader />
       <SidebarMenu />
-      <div className='p-4'>
+      {/* <div className='p-4'>
         <SidebarLogout />
-      </div>
+      </div> */}
     </aside>
   );
 };

@@ -21,17 +21,16 @@ function PaginateButtons({
     <ReactPaginate
       forcePage={currentPage}
       pageLinkClassName={buttonVariants({
-        variant: 'gradient',
-        size: 'icon',
+        variant: 'ghost',
+        size: 'icon-lg',
       })}
       activeLinkClassName={buttonVariants({
-        variant: 'gradient-accent',
-        size: 'icon',
-        className: '!from-accent !to-accent',
+        variant: 'outline',
+        size: 'icon-lg',
       })}
       previousClassName='hidden'
       nextClassName='hidden'
-      containerClassName='flex gap-1.5 items-stretch'
+      containerClassName='flex gap-x-1 items-stretch'
       breakLabel='...'
       onPageChange={handlePageClick}
       pageCount={totalPages}

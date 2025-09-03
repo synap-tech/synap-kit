@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -5,19 +7,27 @@
 
 @theme {
   --font-inter: Inter, sans-serif;
+  --font-geist: Geist, sans-serif;
 
   --radius-lg: 8px;
   --radius-md: 6px;
   --radius-sm: 4px;
 
-  --color-background: #fbfcfd;
-  --color-foreground: #222831;
+  --color-background: #ffffff;
+  /* --color-background: #f3f3f3; */
+  --color-foreground: #0a0a0a;
 
   --color-card: #ffffff;
-  --color-card-foreground: #0a0a0a;
+  --color-card-foreground: #030303;
 
-  --color-popover: #fbfcfd;
-  --color-popover-foreground: #0a0a0a;
+  --color-layout-background: #f3f3f3;
+  --color-sidebar-background: #f3f3f3;
+  --color-sidebar-foreground: #0a0a0a;
+  --color-sidebar-active-background: #373737;
+  --color-sidebar-active-foreground: #ffffff;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #09090b;
 
   --color-primary: #222831;
   --color-primary-foreground: #f2f5f8;
@@ -44,10 +54,12 @@
   --color-base-150: #f4f7fa;
   --color-base-200: #f1f5f9;
   --color-base-300: #e2ebf3;
-  --color-base: #fbfcfd;
+  --color-base-400: #8b909a;
+  --color-base: #ffffff;
   --color-base-content: #222831;
 
   --color-border: #e5e5e5;
+  --color-border-2: #e4e4e7;
   --color-input: #e5e5e5;
   --color-ring: 0a0a0a;
 
@@ -118,6 +130,7 @@
 @layer base {
   :root {
     font-family: Inter, sans-serif;
+    scroll-behavior: smooth;
   }
 
   .handsontable td,

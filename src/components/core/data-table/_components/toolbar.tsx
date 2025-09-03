@@ -398,23 +398,26 @@ export function TableToolbar() {
     <div className={cn('mb-4 flex w-full flex-col overflow-hidden')}>
       <div
         className={cn(
-          'mb-4 flex w-full flex-col justify-between gap-2 border-b pb-4 lg:flex-row lg:items-end'
+          'mb-4 flex w-full flex-col justify-between gap-2  lg:flex-row lg:items-end'
         )}
       >
         <TableTitle title={title} subtitle={subtitle} />
-        <DebouncedInput
-          icon={<SearchIcon className={cn('size-5 text-secondary/50')} />}
-          value={globalFilterValue ?? ''}
-          onChange={setGlobalFilter}
-          className={cn('h-10 w-full lg:max-w-[300px]')}
-          placeholder='Search...'
-          autoFocus={false}
-        />
       </div>
       {toolbarOptions === 'none' ? null : (
         <div className={cn('flex items-center justify-between')}>
-          {renderLeftSection()}
-          {renderRightSection()}
+          <div className='flex items-center gap-2'>
+            {renderLeftSection()}
+            {renderRightSection()}
+          </div>
+
+          <DebouncedInput
+            icon={<SearchIcon className={cn('size-5 text-secondary/50')} />}
+            value={globalFilterValue ?? ''}
+            onChange={setGlobalFilter}
+            className={cn('h-10 w-full lg:max-w-[300px] rounded-[10px]')}
+            placeholder='Search here...'
+            autoFocus={false}
+          />
         </div>
       )}
     </div>

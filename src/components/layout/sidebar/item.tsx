@@ -9,9 +9,15 @@ const SidebarItem: React.FC<IRoute> = ({
   children,
   disableCollapse,
   page_type,
+  Icon,
 }) => {
   return children ? (
-    <SidebarFolder path={path} name={name} disableCollapse={disableCollapse}>
+    <SidebarFolder
+      path={path}
+      name={name}
+      disableCollapse={disableCollapse}
+      Icon={Icon}
+    >
       {children}
     </SidebarFolder>
   ) : (

@@ -51,10 +51,10 @@ const ReactSelect = forwardRef<Ref, Props & { extraControlClassName?: string }>(
         components={{
           ClearIndicator: (props) => (
             <components.ClearIndicator
-              className='mr-1 border-r border-r-input pr-1'
+              className='mx-1 border-r border-r-input pr-1'
               {...props}
             >
-              <X className='size-5 font-medium text-destructive' />
+              <X className='size-4 font-medium text-destructive' />
             </components.ClearIndicator>
           ),
 

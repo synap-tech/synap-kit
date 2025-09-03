@@ -380,7 +380,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
         <Button
           aria-label='Open date range picker'
           size={isMobile ? 'icon' : 'sm'}
-          variant='gradient'
+          variant='outline'
           className={cn(className)}
         >
           <CalendarIcon className='size-4' />

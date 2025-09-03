@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CopyMinus, X } from 'lucide-react';
+import { ListCollapse, X } from 'lucide-react';
 
 import useApp from '@/hooks/useApp';
 import useLayout from '@/hooks/useLayout';
@@ -18,10 +18,10 @@ const SidebarHeader = () => {
 
   return (
     <div>
-      <div className='relative border-b border-border/10 px-4 py-6'>
-        <BrandLogo title={companyTitle} />
-
-        {/* <span className='absolute right-4 top-4 hidden text-xs italic text-secondary-light md:block'>V2.0</span> */}
+      <div className='relative border-b border-border/10 px-2 '>
+        <div className='min-h-14 flex items-center justify-center px-4 border-b pt-3 pb-1'>
+          <BrandLogo title={companyTitle} />
+        </div>
 
         <button
           className='btn btn-square btn-ghost btn-sm absolute right-4 top-4 text-white md:hidden'
@@ -31,7 +31,7 @@ const SidebarHeader = () => {
         </button>
       </div>
 
-      <div className='flex justify-between px-2 py-2'>
+      <div className='flex justify-between px-4 py-4 gap-4'>
         <Search />
         <TooltipWrapper message='Collapse Folders'>
           <motion.button
@@ -39,11 +39,12 @@ const SidebarHeader = () => {
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsCloseAll((prev) => !prev)}
             className={buttonVariants({
-              variant: 'default',
+              variant: 'ghost',
               size: 'icon',
+              className: 'opacity-70',
             })}
           >
-            <CopyMinus className='size-4' />
+            <ListCollapse className='size-4' />
           </motion.button>
         </TooltipWrapper>
       </div>

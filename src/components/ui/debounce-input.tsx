@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { cn } from '@/lib/utils';
+
 import { Input, type InputProps } from './input';
 
 interface DebouncedInputProps extends InputProps {
@@ -10,6 +12,8 @@ function DebouncedInput({
   value: initialValue,
   onChange,
   debounce = 500,
+  icon,
+  className,
   ...props
 }: {
   value: string | number;
@@ -35,6 +39,9 @@ function DebouncedInput({
       {...props}
       value={value}
       onChange={(e) => setValue(e.target.value)}
+      className={cn(className)}
+      icon={icon}
+      iconPosition='left'
     />
   );
 }
