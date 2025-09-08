@@ -138,6 +138,8 @@ export function userColumns({
           isDisabled={!ratingChangeAccess}
         />
       ),
+
+      size: 200,
     },
     {
       accessorKey: 'price',

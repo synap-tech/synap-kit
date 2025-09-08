@@ -47,7 +47,7 @@ function DataTable() {
                           isHeader: true,
                         }),
                       }}
-                      className='py-2 px-4 first:pl-6'
+                      className='py-2  first:pl-6 text-left '
                     >
                       {header.isPlaceholder
                         ? null
@@ -83,7 +83,7 @@ function DataTable() {
                           column: cell.column,
                         }),
                       }}
-                      className='first:pl-6'
+                      className='first:pl-6  truncate'
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

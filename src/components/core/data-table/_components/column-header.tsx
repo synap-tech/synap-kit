@@ -31,7 +31,7 @@ export function TableColumnHeader<TData, TValue>({
 
   if (!column.getCanSort()) {
     return (
-      <div className={cn(className, 'flex flex-col items-start')}>
+      <div className={cn(className, 'flex flex-col items-start ')}>
         {title.map((e, index) => (
           <div key={index}>{e}</div>
         ))}
@@ -40,7 +40,7 @@ export function TableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn('flex items-center gap-x-2', className)}>
+    <div className={cn('flex items-center gap-x-2 ', className)}>
       <span className='flex flex-col items-start'>
         {title.map((e, index) => (
           <div key={index}>{e}</div>
