@@ -43,8 +43,8 @@ export function TableViewOptions<TData>({
         <Button
           onClick={handleOpenModal}
           aria-label='Column Options'
-          variant='outline'
-          size='sm'
+          variant='ghost'
+          size='toolbar-sm'
           className={cn(className)}
         >
           <Columns2 className='size-4' />

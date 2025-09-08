@@ -49,6 +49,7 @@ const TableRefresh: React.FC<TableRefreshProps> = ({
         variant={'outline'}
         size={isSmallScreen ? 'icon' : 'sm'}
         onClick={handleClick}
+        className='rounded-[10px]'
       >
         <RefreshCw className={cn('size-4', isFetching && 'animate-spin')} />
 

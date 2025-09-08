@@ -28,7 +28,11 @@ const TableAllFilter = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <Button aria-label='Filters All Columns' variant='outline' size='sm'>
+        <Button
+          aria-label='Filters All Columns'
+          variant='ghost'
+          size='toolbar-sm'
+        >
           <SlidersHorizontal className='size-4' />
           Filters
         </Button>

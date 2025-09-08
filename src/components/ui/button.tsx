@@ -30,6 +30,9 @@ const buttonVariants = cva(
         gradient: 'bg-gradient text-foreground border',
         'gradient-accent':
           '!bg-gradient-to-r !from-accent/80 !to-accent/70 !text-accent-foreground',
+
+        toolbar:
+          'bg-transparent hover:bg-base-200 text-base-content border-0 shadow-none hover:shadow-md',
       },
       size: {
         default: 'h-10 px-4 py-2',
@@ -39,6 +42,7 @@ const buttonVariants = cva(
         icon: 'size-8',
         'icon-sm': 'size-6',
         'icon-lg': 'size-9',
+        'toolbar-sm': 'h-8 rounded-[10px] px-3',
       },
     },
     defaultVariants: {

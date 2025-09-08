@@ -379,8 +379,8 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
       <PopoverTrigger asChild>
         <Button
           aria-label='Open date range picker'
-          size={isMobile ? 'icon' : 'sm'}
-          variant='outline'
+          size={isMobile ? 'icon' : 'toolbar-sm'}
+          variant='ghost'
           className={cn(className)}
         >
           <CalendarIcon className='size-4' />

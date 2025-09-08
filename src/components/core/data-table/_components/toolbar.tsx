@@ -21,6 +21,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
+import { ButtonGroup } from '@/components/ui/button-group';
 import DebouncedInput from '@/components/ui/debounce-input';
 import {
   Popover,
@@ -218,32 +219,53 @@ export function TableToolbar() {
         </div>
       ) : (
         <div className='flex flex-1 items-center gap-2'>
-          <ToolbarComponent
-            option='all-filter'
-            render={() =>
-              table.getAllColumns().filter((column) => column.getCanFilter())
-                .length > 0 && <TableAllFilter />
-            }
-          />
-          <ToolbarComponent
-            option='view'
-            render={() => <TableViewOptions table={table} />}
-          />
-          <ToolbarComponent
-            option='date-range'
-            render={() =>
-              validDateRange && (
-                <TableDateRange
-                  table={table}
-                  start_date={startDate}
-                  end_date={endDate}
-                  onUpdate={onUpdate}
-                  onClear={onClear}
-                  isClear={isClear}
-                />
-              )
-            }
-          />
+          {handleCreate && (
+            <ToolbarComponent
+              option='new-entry'
+              render={() =>
+                createAccess && (
+                  <Button
+                    aria-label='Create new entry'
+                    onClick={handleCreate}
+                    variant='outline'
+                    size='toolbar-sm'
+                  >
+                    <CirclePlus className='size-4' />
+                    New
+                  </Button>
+                )
+              }
+            />
+          )}
+          <ButtonGroup>
+            <ToolbarComponent
+              option='all-filter'
+              render={() =>
+                table.getAllColumns().filter((column) => column.getCanFilter())
+                  .length > 0 && <TableAllFilter />
+              }
+            />
+
+            <ToolbarComponent
+              option='date-range'
+              render={() =>
+                validDateRange && (
+                  <TableDateRange
+                    table={table}
+                    start_date={startDate}
+                    end_date={endDate}
+                    onUpdate={onUpdate}
+                    onClear={onClear}
+                    isClear={isClear}
+                  />
+                )
+              }
+            />
+            <ToolbarComponent
+              option='view'
+              render={() => <TableViewOptions table={table} />}
+            />
+          </ButtonGroup>
           {otherToolBarComponents}
           <ToolbarComponent
             option='faceted-filter'
@@ -284,20 +306,22 @@ export function TableToolbar() {
             <Separator orientation='vertical' className='h-6' />
           )}
 
-          <ToolbarComponent
-            option='export-csv'
-            render={() =>
-              validDateRange && (
-                <TableExportCSV
-                  table={table}
-                  title={title}
-                  isEntry={isEntry}
-                  start_date={startDate}
-                  end_date={endDate}
-                />
-              )
-            }
-          />
+          <ButtonGroup>
+            <ToolbarComponent
+              option='export-csv'
+              render={() =>
+                validDateRange && (
+                  <TableExportCSV
+                    table={table}
+                    title={title}
+                    isEntry={isEntry}
+                    start_date={startDate}
+                    end_date={endDate}
+                  />
+                )
+              }
+            />
+          </ButtonGroup>
         </div>
       ),
 
@@ -317,6 +341,8 @@ export function TableToolbar() {
       otherToolBarComponents,
       isSmallDevice,
       validDateRange,
+      createAccess,
+      handleCreate,
     ]
   );
 
@@ -333,27 +359,9 @@ export function TableToolbar() {
             handleRefetch && <TableRefresh handleRefetch={handleRefetch} />
           }
         />
-        {handleCreate && (
-          <ToolbarComponent
-            option='new-entry'
-            render={() =>
-              createAccess && (
-                <Button
-                  aria-label='Create new entry'
-                  onClick={handleCreate}
-                  variant='accent'
-                  size='sm'
-                >
-                  <CirclePlus className='size-4' />
-                  New
-                </Button>
-              )
-            }
-          />
-        )}
       </div>
     ),
-    [handleRefetch, createAccess, handleCreate]
+    [handleRefetch]
   );
 
   if (isEntry) {

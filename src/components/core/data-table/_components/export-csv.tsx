@@ -60,9 +60,9 @@ const TableExportCSV = ({
       role='button'
       type='button'
       className={buttonVariants({
-        variant: isEntry ? 'gradient-accent' : 'secondary',
-        size: 'sm',
-        className: cn('h-7', className),
+        variant: isEntry ? 'gradient-accent' : 'ghost',
+        size: 'toolbar-sm',
+        className: cn(className),
       })}
       data={csvData}
       filename={filename}
