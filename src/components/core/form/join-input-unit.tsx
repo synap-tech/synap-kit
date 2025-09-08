@@ -36,7 +36,7 @@ const FormJoinInputUnit: React.FC<FormJoinInputUnitProps> = ({
           {subLabel && <span className='text-xs'>{subLabel}</span>}
         </FormLabel>
       )}
-      <div className='bg-gradient flex h-10 items-center overflow-hidden rounded-md border border-input p-0.5'>
+      <div className='bg-base flex h-10 items-center overflow-hidden rounded-md border border-input p-0.5'>
         <FormControl className='h-8 flex-1'>
           {type === 'password' ? (
             <PasswordInput

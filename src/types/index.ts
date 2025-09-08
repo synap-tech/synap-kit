@@ -1,4 +1,5 @@
 import type { UseMutationResult } from '@tanstack/react-query';
+import type { Row } from '@tanstack/react-table';
 import type { AxiosError } from 'axios';
 import type { LucideIcon } from 'lucide-react';
 //Dynamic Field Types
@@ -318,3 +319,18 @@ export interface DynamicFieldsProps {
   children?: React.ReactNode;
   startIndex?: number;
 }
+
+export interface ITableActionRegular {
+  actionType: 'edit' | 'delete';
+}
+
+export interface ITableActionCustom {
+  actionType: 'custom';
+  access: boolean;
+}
+
+export type ITableAction<TData> = {
+  label: string;
+  Icon: LucideIcon;
+  action: (rows: Row<TData>) => void;
+} & (ITableActionRegular | ITableActionCustom);

@@ -5,6 +5,7 @@ import getDateTime from '@/utils/getDateTime';
 import PageInfo from '@/utils/pageInfo';
 import renderSuspenseModals from '@/utils/renderSuspenseModals';
 import { type Row } from '@tanstack/react-table';
+import { Lock, SquarePen, Trash2, UserRoundCog } from 'lucide-react';
 
 import useAccess from '@/hooks/useAccess';
 
@@ -174,10 +175,6 @@ const User = () => {
     statusAccess,
     handleStatus,
     ratingChangeAccess,
-    resetPasswordAccess,
-    handleResetPassword,
-    pageAssignAccess,
-    handlePageAssign,
     handlePriceRating,
     handleRating,
   });
@@ -193,10 +190,7 @@ const User = () => {
         data={data ?? []}
         isLoading={isLoading}
         handleCreate={handleCreate}
-        handleUpdate={handleUpdate}
-        handleDelete={handleDelete}
         handleRefetch={refetch}
-        handleDeleteAll={handleDeleteAll}
         otherToolBarComponents={
           <ReactSelect
             options={typeOptions || []}
@@ -213,8 +207,8 @@ const User = () => {
 
               control: (base) => ({
                 ...base,
-
                 minWidth: 140,
+                borderRadius: '10px',
               }),
             }}
             onChange={(e: any) => {
@@ -222,6 +216,34 @@ const User = () => {
             }}
           />
         }
+        actions={[
+          {
+            label: 'Edit',
+            Icon: SquarePen,
+            action: handleUpdate,
+            actionType: 'edit',
+          },
+          {
+            label: 'Delete',
+            Icon: Trash2,
+            action: handleDelete,
+            actionType: 'delete',
+          },
+          {
+            label: 'Reset Password',
+            Icon: Lock,
+            action: handleResetPassword,
+            actionType: 'custom',
+            access: resetPasswordAccess,
+          },
+          {
+            label: 'Page Assign',
+            Icon: UserRoundCog,
+            action: handlePageAssign,
+            actionType: 'custom',
+            access: pageAssignAccess,
+          },
+        ]}
       >
         {renderSuspenseModals([
           <AddOrUpdate

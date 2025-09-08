@@ -30,14 +30,14 @@ const CustomRenderer = (props: ICustomRendererProps) => {
     return <Skeleton className='h-6 w-full' />;
   }
   return (
-    <div className='bg-gradient'>
+    <div className='bg-base'>
       {props.field.type === 'custom' && (
         <div className='flex h-full min-h-6 items-center bg-transparent px-2'>
           {props.field.component(props.row || 0)}
         </div>
       )}
       {props.field.type === 'select' && (
-        <div className='bg-gradient flex h-full min-h-6 justify-between bg-transparent px-3 py-2 text-sm'>
+        <div className='bg-base flex h-full min-h-6 justify-between  px-3 py-2 text-sm'>
           {
             props.field.options.find((option) => option.value === props.value)
               ?.label
@@ -49,7 +49,7 @@ const CustomRenderer = (props: ICustomRendererProps) => {
       {(props.field.type === 'text' || props.field.type === 'number') && (
         <div
           className={cn(
-            'bg-gradient block h-full min-h-6 w-full px-3 py-2 text-sm font-normal text-foreground'
+            'bg-base block h-full min-h-6 w-full px-3 py-2 text-sm font-normal text-foreground'
           )}
         >
           {watch(`${props.fieldName}.${props.row}.${props.field.accessorKey}`)}

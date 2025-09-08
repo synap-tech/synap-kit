@@ -5,7 +5,7 @@ import useTable from '@/hooks/useTable';
 import { Button } from '@/components/ui/button';
 
 export function TableRowDelete() {
-  const { table, handleDeleteAll } = useTable();
+  const { table } = useTable();
 
   const selectedRows = table.getSelectedRowModel().rows;
 
@@ -14,9 +14,9 @@ export function TableRowDelete() {
   return (
     <Button
       aria-label='Delete Selected Rows'
-      onClick={() => {
-        handleDeleteAll!(selectedRows);
-      }}
+      // onClick={() => {
+      //   handleDeleteAll!(selectedRows);
+      // }}
       size={'sm'}
       variant={'outline-destructive'}
     >

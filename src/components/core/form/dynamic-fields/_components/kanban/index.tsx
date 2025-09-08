@@ -44,7 +44,7 @@ const KanbanDynamicFields: React.FC<
 
                       {fieldDef.type === 'custom' &&
                         fieldDef.accessorKey === 'actions' && (
-                          <div className='bg-gradient rounded-y absolute left-0 right-0 top-0 flex items-center justify-between border-b px-4 py-1.5'>
+                          <div className='bg-base rounded-y absolute left-0 right-0 top-0 flex items-center justify-between border-b px-4 py-1.5'>
                             {fieldDef.component(fieldIndex)}
                           </div>
                         )}

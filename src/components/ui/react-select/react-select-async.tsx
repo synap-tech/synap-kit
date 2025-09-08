@@ -27,7 +27,7 @@ const selectStyles: StylesConfig = {
 const classNames = (extraControlClassName?: string): ClassNamesConfig => ({
   control: ({ isFocused, isDisabled }) =>
     cn(
-      'bg-gradient min-h-10 rounded-md border border-input px-3 py-2 text-sm text-foreground',
+      'bg-base min-h-10 rounded-md border border-input px-3 py-2 text-sm text-foreground',
       isFocused && 'outline outline-2 outline-offset-2 outline-secondary',
       isDisabled &&
         'from-destructive/5! to-destructive/5! cursor-not-allowed border-destructive/50 text-destructive',

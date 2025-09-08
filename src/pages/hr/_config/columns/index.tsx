@@ -51,23 +51,15 @@ export const designationColumns = (): ColumnDef<IDesignationTableData>[] => [
 
 // User Columns
 export function userColumns({
-  pageAssignAccess,
-  resetPasswordAccess,
   statusAccess,
   ratingChangeAccess,
   handleStatus,
-  handleResetPassword,
-  handlePageAssign,
   handlePriceRating,
   handleRating,
 }: {
   statusAccess: boolean;
-  resetPasswordAccess: boolean;
-  pageAssignAccess: boolean;
   ratingChangeAccess: boolean;
   handleStatus: (row: Row<any>) => void;
-  handleResetPassword: (row: Row<any>) => void;
-  handlePageAssign: (row: Row<any>) => void;
   handlePriceRating: (row: Row<any>, value: number) => void;
   handleRating: (row: Row<any>, value: number) => void;
 }): ColumnDef<IUserTableData>[] {
@@ -213,35 +205,35 @@ export function userColumns({
       },
     },
 
-    {
-      accessorKey: 'reset_pass_actions',
-      id: 'reset_pass_actions',
-      header: 'Reset \nPassword',
-      enableColumnFilter: false,
-      enableSorting: false,
-      cell: (info) => (
-        <ResetPassword onClick={() => handleResetPassword(info.row)} />
-      ),
-      size: 40,
-      meta: {
-        hidden: !resetPasswordAccess,
-        disableFullFilter: true,
-      },
-    },
+    // {
+    //   accessorKey: 'reset_pass_actions',
+    //   id: 'reset_pass_actions',
+    //   header: 'Reset \nPassword',
+    //   enableColumnFilter: false,
+    //   enableSorting: false,
+    //   cell: (info) => (
+    //     <ResetPassword onClick={() => handleResetPassword(info.row)} />
+    //   ),
+    //   size: 40,
+    //   meta: {
+    //     hidden: !resetPasswordAccess,
+    //     disableFullFilter: true,
+    //   },
+    // },
 
-    {
-      accessorKey: 'page_assign_actions',
-      id: 'page_assign_actions',
-      header: 'Page \nAssign',
-      enableColumnFilter: false,
-      enableSorting: false,
-      cell: (info) => <PageAssign onClick={() => handlePageAssign(info.row)} />,
-      size: 40,
-      meta: {
-        hidden: !pageAssignAccess,
-        disableFullFilter: true,
-      },
-    },
+    // {
+    //   accessorKey: 'page_assign_actions',
+    //   id: 'page_assign_actions',
+    //   header: 'Page \nAssign',
+    //   enableColumnFilter: false,
+    //   enableSorting: false,
+    //   cell: (info) => <PageAssign onClick={() => handlePageAssign(info.row)} />,
+    //   size: 40,
+    //   meta: {
+    //     hidden: !pageAssignAccess,
+    //     disableFullFilter: true,
+    //   },
+    // },
   ];
 }
 export function employeeColumns({

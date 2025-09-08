@@ -266,7 +266,7 @@ export function TableToolbar() {
               render={() => <TableViewOptions table={table} />}
             />
           </ButtonGroup>
-          {otherToolBarComponents}
+
           <ToolbarComponent
             option='faceted-filter'
             render={() =>
@@ -416,6 +416,8 @@ export function TableToolbar() {
           <div className='flex items-center gap-2'>
             {renderLeftSection()}
             {renderRightSection()}
+            <Separator orientation='vertical' className='h-6' />
+            {otherToolBarComponents}
           </div>
 
           <DebouncedInput

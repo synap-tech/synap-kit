@@ -12,7 +12,7 @@ function ReactSelectCreatable<T, IsMulti extends boolean>({
       classNames={{
         control: ({ isFocused, isDisabled }) =>
           cn(
-            '!bg-gradient !min-h-10 !rounded-md border !border-input !text-sm !text-foreground',
+            '!bg-base !min-h-10 !rounded-md border !border-input !text-sm !text-foreground',
             isFocused &&
               '!outline !outline-2 !outline-offset-2 !outline-secondary',
             isDisabled &&

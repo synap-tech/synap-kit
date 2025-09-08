@@ -17,7 +17,7 @@ const DataTableEntry = <TData, TValue>(
 ) => {
   const { children, ...rest } = props;
   return (
-    <TableProvider isEntry enableRowSelection={false} {...rest}>
+    <TableProvider isEntry enableRowSelection={false} actions={[]} {...rest}>
       {children}
     </TableProvider>
   );

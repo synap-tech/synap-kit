@@ -1,9 +1,8 @@
 import type { CellContext } from '@tanstack/react-table';
-import { EllipsisVertical, SquarePen, Trash2 } from 'lucide-react';
+import { EllipsisVertical } from 'lucide-react';
 
 import usePage from '@/hooks/usePage';
 import useTable from '@/hooks/useTable';
-import useTableSSR from '@/hooks/useTableSSR';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -20,88 +19,77 @@ interface ITableCellActionProps<TData, TValue> {
 
 function TableCellAction<TData, TValue>({
   info,
-  isSSR,
 }: ITableCellActionProps<TData, TValue>) {
   const row = info.row;
   const { updateAccess, deleteAccess } = usePage();
-  const { handleUpdate, handleDelete } = useTable();
-  const { handleUpdate: handleUpdateSSR, handleDelete: handleDeleteSSR } =
-    useTableSSR();
+  const { actions } = useTable();
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant={'ghost'}
-          size={'icon'}
-          className=' mx-auto flex items-center'
-        >
-          <EllipsisVertical className='size-5' />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        {updateAccess && (isSSR ? handleUpdateSSR : handleUpdate) && (
-          <DropdownMenuItem asChild>
+  if (actions && actions.length > 0) {
+    if (actions.length > 2) {
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
             <Button
-              aria-label='Edit Row'
-              onClick={() =>
-                isSSR ? handleUpdateSSR?.(row) : handleUpdate?.(row)
-              }
               variant={'ghost'}
-              className='w-full flex justify-between items-center h-fit'
-            >
-              Edit
-              <SquarePen className='size-4' />
-            </Button>
-          </DropdownMenuItem>
-        )}
-
-        {deleteAccess && (isSSR ? handleDeleteSSR : handleDelete) && (
-          <DropdownMenuItem asChild>
-            <Button
-              aria-label='Delete Row'
-              onClick={() =>
-                isSSR ? handleDeleteSSR?.(row) : handleDelete?.(row)
-              }
               size={'icon'}
-              variant={'ghost'}
-              className='w-full flex justify-between items-center h-fit'
+              className=' mx-auto flex items-center'
             >
-              Delete
-              <Trash2 className='size-4' />
+              <EllipsisVertical className='size-5' />
             </Button>
-          </DropdownMenuItem>
-        )}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className='w-48' align='end'>
+            {actions.map((action, index) => (
+              <DropdownMenuItem
+                key={index}
+                asChild
+                disabled={
+                  (action.actionType === 'edit' && !updateAccess) ||
+                  (action.actionType === 'delete' && !deleteAccess) ||
+                  (action.actionType === 'custom' && !action.access)
+                }
+              >
+                <Button
+                  aria-label={action.label}
+                  onClick={() => action.action(row)}
+                  variant={'ghost'}
+                  className='w-full flex justify-between items-center h-fit font-normal'
+                >
+                  {action.label}
+                  <action.Icon className='size-4' />
+                </Button>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    } else {
+      return (
+        <div className='flex w-full items-center justify-center gap-1'>
+          {actions.map((action, index) => (
+            <Button
+              key={index}
+              aria-label={`${action.actionType.charAt(0).toUpperCase() + action.actionType.slice(1)} Row`}
+              onClick={() => action.action(row)}
+              size={'icon'}
+              variant={
+                action.actionType === 'delete' ? 'ghost-destructive' : 'ghost'
+              }
+              disabled={
+                (action.actionType === 'edit' && !updateAccess) ||
+                (action.actionType === 'delete' && !deleteAccess) ||
+                (action.actionType === 'custom' && !action.access)
+              }
+              className='rounded-full'
+            >
+              <action.Icon className='size-4' />
+            </Button>
+          ))}
+        </div>
+      );
+    }
+  }
 
-  return (
-    <div className='flex w-full items-center justify-center gap-1'>
-      {updateAccess && (isSSR ? handleUpdateSSR : handleUpdate) && (
-        <Button
-          aria-label='Edit Row'
-          onClick={() => (isSSR ? handleUpdateSSR?.(row) : handleUpdate?.(row))}
-          size={'icon'}
-          variant={'ghost'}
-          className='rounded-full'
-        >
-          <SquarePen className='size-4' />
-        </Button>
-      )}
-      {deleteAccess && (isSSR ? handleDeleteSSR : handleDelete) && (
-        <Button
-          aria-label='Delete Row'
-          onClick={() => (isSSR ? handleDeleteSSR?.(row) : handleDelete?.(row))}
-          size={'icon'}
-          variant={'ghost-destructive'}
-          className='rounded-full'
-        >
-          <Trash2 className='size-4' />
-        </Button>
-      )}
-    </div>
-  );
+  return <></>;
 }
 
 export default TableCellAction;

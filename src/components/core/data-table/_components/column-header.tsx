@@ -1,7 +1,7 @@
 import {
-  ChevronDown,
-  ChevronsUpDown,
-  ChevronUp,
+  ArrowDown,
+  ArrowUp,
+  EllipsisVertical,
   EyeOff,
   Pin,
   PinOff,
@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import DebouncedInput from '@/components/ui/debounce-input';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,16 +17,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
 
 import { cn } from '@/lib/utils';
 
 import type { TableColumnHeaderProps } from '../types';
-import TableColumnFilter from './filter/column';
 
 export function TableColumnHeader<TData, TValue>({
   column,
@@ -45,39 +40,57 @@ export function TableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn('flex items-center', className)}>
+    <div className={cn('flex items-center gap-x-2', className)}>
+      <span className='flex flex-col items-start'>
+        {title.map((e, index) => (
+          <div key={index}>{e}</div>
+        ))}
+      </span>
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Button
             aria-label='Sort Column'
             variant='ghost'
-            size='sm'
-            className='-ml-3 h-7 active:scale-100 data-[state=open]:bg-base-300'
+            size='icon-sm'
+            className='h-7 active:scale-100 '
           >
-            <span className='flex flex-col items-start'>
-              {title.map((e, index) => (
-                <div key={index}>{e}</div>
-              ))}
-            </span>
-            {column.getIsSorted() === 'desc' ? (
-              <ChevronDown className='size-4' />
-            ) : column.getIsSorted() === 'asc' ? (
-              <ChevronUp className='size-4' />
-            ) : (
-              <ChevronsUpDown className='size-4' />
-            )}
+            <EllipsisVertical className='size-4' />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align='start'>
+        <DropdownMenuContent align='center' className='w-48'>
+          {
+            <DebouncedInput
+              icon={<Search className='size-4.5 text-black/45' />}
+              iconPosition='left'
+              className='h-8 placeholder:text-xs placeholder:text-red/45'
+              placeholder='Search here...'
+              type='text'
+              onChange={(value) => column.setFilterValue(value)}
+              list={column.id + 'list'}
+              value={(column.getFilterValue() ?? '') as string}
+            />
+          }
           {!isSSR && (
             <>
-              <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
-                <ChevronUp className='mr-2 size-3.5 text-muted-foreground/70' />
-                Asc
+              <DropdownMenuItem
+                onClick={() => column.toggleSorting(false)}
+                className={cn(
+                  'flex items-center justify-between',
+                  column.getIsSorted() === 'asc' && 'text-destructive'
+                )}
+              >
+                Ascending
+                <ArrowUp className=' size-3.5 ' />
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-                <ChevronDown className='mr-2 size-3.5 text-muted-foreground/70' />
-                Desc
+              <DropdownMenuItem
+                onClick={() => column.toggleSorting(true)}
+                className={cn(
+                  'flex items-center justify-between',
+                  column.getIsSorted() === 'desc' && 'text-destructive'
+                )}
+              >
+                Descending
+                <ArrowDown className=' size-3.5 ' />
               </DropdownMenuItem>
 
               <DropdownMenuSeparator />
@@ -86,6 +99,7 @@ export function TableColumnHeader<TData, TValue>({
 
           {column.getCanPin() && (
             <DropdownMenuItem
+              className='flex items-center justify-between'
               onClick={() => {
                 if (column.getIsPinned() === 'left') {
                   column.pin(false);
@@ -94,38 +108,28 @@ export function TableColumnHeader<TData, TValue>({
                 }
               }}
             >
-              {column.getIsPinned() === 'left' ? (
-                <PinOff className='mr-2 size-3.5 text-muted-foreground/70' />
-              ) : (
-                <Pin className={'mr-2 size-3.5 text-muted-foreground/70'} />
-              )}
               <span>
                 {column.getIsPinned() === 'left' ? 'Unpin' : 'Pin to left'}
               </span>
+              {column.getIsPinned() === 'left' ? (
+                <PinOff className='mr-2 size-3.5 ' />
+              ) : (
+                <Pin className={'rotate-45 mr-2 size-3.5 '} />
+              )}
             </DropdownMenuItem>
           )}
 
           {column.getCanHide() && (
-            <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-              <EyeOff className='mr-2 size-3.5 text-muted-foreground/70' />
-              Hide
+            <DropdownMenuItem
+              className='flex items-center justify-between'
+              onClick={() => column.toggleVisibility(false)}
+            >
+              <span>Hide</span>
+              <EyeOff className='mr-2 size-3.5 ' />
             </DropdownMenuItem>
           )}
         </DropdownMenuContent>
       </DropdownMenu>
-
-      {column.getCanFilter() ? (
-        <Popover>
-          <PopoverTrigger>
-            <Button aria-label='Column Filter' variant='ghost' size={'icon'}>
-              <Search className='size-4' />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className='w-fit bg-background p-2'>
-            <TableColumnFilter column={column} />
-          </PopoverContent>
-        </Popover>
-      ) : null}
     </div>
   );
 }

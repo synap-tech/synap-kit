@@ -5,19 +5,19 @@ import { toast } from 'sonner';
 
 import { useApi } from '@/hooks/useApi';
 
-interface IUseTQuery {
+export interface IUseTQuery {
   queryKey: (string | number | boolean | Date | undefined)[];
   url: string;
   enabled?: boolean;
 }
 
-interface IPost {
+export interface IPost {
   url: string;
   newData: any;
   isOnCloseNeeded?: boolean;
   onClose?: () => void;
 }
-interface IUpdate {
+export interface IUpdate {
   url: string;
   updatedData: any;
   isOnCloseNeeded?: boolean;

@@ -1,6 +1,7 @@
 import { createContext, useLayoutEffect, useMemo, useState } from 'react';
 
 import type {
+  ITableAction,
   ITableAdvanceFilter,
   ITableFacetedFilter,
   IToolbarOptions,
@@ -63,12 +64,9 @@ export interface ITableContext<TData> {
   table: Table<TData>;
   isLoading?: boolean;
   handleCreate?: () => void;
-  handleUpdate?: (row: Row<TData>) => void;
-  handleDelete?: (row: Row<TData>) => void;
   handleRefetch?: (
     options?: RefetchOptions
   ) => Promise<QueryObserverResult<any, Error>>;
-  handleDeleteAll?: (rows: Row<TData>[]) => void;
   initialDateRange: [Date | string, Date | string];
   globalFilterValue?: string;
   facetedFilters?: ITableFacetedFilter[];
@@ -82,6 +80,7 @@ export interface ITableContext<TData> {
   onClear?: () => void;
   isClear?: boolean;
   otherToolBarComponents?: React.ReactNode;
+  actions: ITableAction<TData>[];
 }
 
 export const TableContext = createContext({} as ITableContext<any>);
@@ -99,12 +98,9 @@ export interface ITableProviderProps<TData, TValue> {
   enableRowSelection?: boolean;
   enableDefaultColumns?: boolean;
   handleCreate?: () => void;
-  handleUpdate?: (row: Row<TData>) => void;
-  handleDelete?: (row: Row<TData>) => void;
   handleRefetch?: (
     options?: RefetchOptions
   ) => Promise<QueryObserverResult<any, Error>>;
-  handleDeleteAll?: (rows: Row<TData>[]) => void;
   facetedFilters?: ITableFacetedFilter[];
   advanceFilters?: ITableAdvanceFilter[];
   toolbarOptions?: 'none' | IToolbarOptions[];
@@ -115,6 +111,7 @@ export interface ITableProviderProps<TData, TValue> {
   onClear?: () => void;
   isClear?: boolean;
   otherToolBarComponents?: React.ReactNode;
+  actions: ITableAction<TData>[];
 }
 
 function TableProvider<TData, TValue>({
@@ -130,10 +127,7 @@ function TableProvider<TData, TValue>({
   enableRowSelection = false,
   enableDefaultColumns = true,
   handleCreate,
-  handleUpdate,
-  handleDelete,
   handleRefetch,
-  handleDeleteAll,
   facetedFilters,
   advanceFilters,
   toolbarOptions = ['all'],
@@ -144,6 +138,7 @@ function TableProvider<TData, TValue>({
   onClear,
   otherToolBarComponents,
   isClear,
+  actions,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -228,10 +223,7 @@ function TableProvider<TData, TValue>({
       isLoading,
       table,
       handleCreate,
-      handleUpdate,
-      handleDelete,
       handleRefetch,
-      handleDeleteAll,
       initialDateRange: [minDate, maxDate],
       globalFilterValue: globalFilter,
       facetedFilters,
@@ -245,6 +237,7 @@ function TableProvider<TData, TValue>({
       onClear,
       isClear,
       otherToolBarComponents,
+      actions,
     }),
     [
       title,
@@ -254,10 +247,7 @@ function TableProvider<TData, TValue>({
       isLoading,
       table,
       handleCreate,
-      handleUpdate,
-      handleDelete,
       handleRefetch,
-      handleDeleteAll,
       minDate,
       maxDate,
       globalFilter,
@@ -272,6 +262,7 @@ function TableProvider<TData, TValue>({
       onClear,
       isClear,
       otherToolBarComponents,
+      actions,
     ]
   );
 
