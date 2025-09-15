@@ -42,10 +42,13 @@
   --color-accent: #00adb5;
   --color-accent-foreground: #ffffff;
 
+  --color-badge: #3857ff;
+  --color-badge-foreground: #09090b;
+
   --color-destructive: #f31260;
   --color-destructive-foreground: #ffffff;
 
-  --color-success: #17c964;
+  --color-success: #00b34c;
   --color-success-foreground: #ffffff;
 
   --color-warning: #f5a524;

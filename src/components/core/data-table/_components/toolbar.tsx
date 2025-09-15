@@ -366,19 +366,16 @@ export function TableToolbar() {
 
   if (isEntry) {
     return (
-      <Accordion type='single' collapsible className='w-full'>
-        <AccordionItem
-          value='item-1'
-          className='rounded-t-md bg-gradient-to-r from-secondary to-primary'
-        >
+      <Accordion type='single' collapsible className='w-full mb-4'>
+        <AccordionItem value='item-1' className='rounded-t-md bg-background'>
           <AccordionTrigger
             Icon={Funnel}
             iconClassName='size-5'
-            className='border-b border-border/20 px-4 py-2 text-lg font-semibold capitalize leading-none text-primary-foreground md:text-xl [&[data-state=open]>svg]:rotate-0'
+            className=' pt-2 pb-0 text-2xl font-semibold capitalize leading-none text-foreground [&[data-state=open]>svg]:rotate-0'
           >
             {title}
           </AccordionTrigger>
-          <AccordionContent className='flex items-center justify-between gap-4 px-4 py-2.5'>
+          <AccordionContent className='flex items-center justify-between gap-4 px-0 pt-2.5 pb-0'>
             {toolbarOptions === 'none' ? null : (
               <div className={cn('flex items-center justify-between')}>
                 {renderLeftSection()}
@@ -387,12 +384,10 @@ export function TableToolbar() {
             )}
 
             <DebouncedInput
-              icon={<SearchIcon className={cn('size-5 text-white/50')} />}
+              icon={<SearchIcon className={cn('size-5 ')} />}
               value={globalFilterValue ?? ''}
               onChange={setGlobalFilter}
-              className={cn(
-                'bg-gradient-accent h-10 w-full border-accent/10 lg:max-w-[300px]'
-              )}
+              className={cn(' w-full lg:max-w-[300px]')}
               placeholder='Search...'
               autoFocus={false}
             />

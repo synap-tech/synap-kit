@@ -5,7 +5,7 @@ const formatDate = (date: Date) =>
   date ? format(date, 'yyyy-MM-dd HH:mm:ss') : '--';
 
 const formatDateTable = (date: Date | string) =>
-  date ? format(new Date(date), 'dd/MM/yyyy') : '--';
+  date ? format(new Date(date), 'dd MMM, yy') : '--';
 
 const formatQueryDates = ({ start_date, end_date }: IStartEndDateProps) => ({
   start_date: start_date

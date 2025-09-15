@@ -6,7 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-full border border-neutral-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 dark:border-neutral-800 dark:focus:ring-neutral-300',
+  'inline-flex items-center rounded-full border border-neutral-200  font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 dark:border-neutral-800 dark:focus:ring-neutral-300',
   {
     variants: {
       variant: {
@@ -17,8 +17,12 @@ const badgeVariants = cva(
         secondary:
           'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80',
         destructive:
-          'border-transparent bg-destructive/10 text-destructive hover:bg-destructive hover:text-white dark:bg-green-900 dark:text-neutral-50 dark:hover:bg-green-900/80',
+          'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80',
+        'destructive-outline':
+          'border border-destructive bg-destructive/25 text-foreground hover:bg-destructive/50 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80',
         outline: 'text-neutral-950 dark:text-neutral-50',
+        badge:
+          'border border-badge bg-badge/25 text-badge-foreground hover:bg-badge/50 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80',
         accent:
           'border-transparent bg-accent text-accent-foreground hover:bg-accent/80 ',
         gradient:
@@ -34,9 +38,15 @@ const badgeVariants = cva(
         'outline-destructive':
           'border border-destructive/20 bg-destructive/10 text-destructive hover:bg-destructive hover:text-destructive-foreground',
       },
+      size: {
+        default: 'px-2.5 py-1 text-base',
+        sm: 'px-2 py-0.5 text-sm',
+        lg: 'px-3 py-1 text-lg',
+      },
     },
     defaultVariants: {
       variant: 'default',
+      size: 'default',
     },
   }
 );
@@ -45,6 +55,7 @@ function Badge({
   className,
   variant,
   asChild = false,
+  size,
   ...props
 }: React.ComponentProps<'span'> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
@@ -53,7 +64,7 @@ function Badge({
   return (
     <Comp
       data-slot='badge'
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn(badgeVariants({ variant, size }), className)}
       {...props}
     />
   );

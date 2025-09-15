@@ -20,7 +20,7 @@ const StatusButton: React.FC<StatusButtonProps> = ({
       <Button
         className='size-6 rounded-full'
         size={'icon'}
-        variant={value === true ? 'accent' : 'destructive'}
+        variant={value === true ? 'success' : 'destructive'}
         {...buttonProps}
       >
         {value === true ? (
@@ -36,7 +36,7 @@ const StatusButton: React.FC<StatusButtonProps> = ({
     <Button
       className='size-6 rounded-full'
       size={'icon'}
-      variant={value === 0 ? 'destructive' : 'accent'}
+      variant={value === 0 ? 'destructive' : 'success'}
       {...buttonProps}
     >
       {value === 0 ? <X className='size-4' /> : <Check className='size-4' />}

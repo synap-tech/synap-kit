@@ -1,3 +1,4 @@
+import { Link2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { cn } from '@/lib/utils';
@@ -34,7 +35,11 @@ export const CustomLink = ({
   const displayName = name ? name : label;
   return (
     <div className={cn('flex items-center gap-2', className)}>
-      {showCopyButton && <CopyClipboard text={label} />}
+      {showCopyButton ? (
+        <CopyClipboard text={label} />
+      ) : (
+        <Link2 className='-rotate-45 size-4' size={16} />
+      )}
 
       {url === null ? (
         <span>{displayName}</span>
@@ -42,7 +47,7 @@ export const CustomLink = ({
         <Link
           to={url}
           className={cn(
-            'hover:text-info hover:decoration-info font-semibold underline underline-offset-2 transition-colors duration-300',
+            'hover:text-info hover:decoration-info font-normal underline underline-offset-2 transition-colors duration-300',
             url !== null
               ? 'cursor-pointer'
               : 'pointer-events-none cursor-not-allowed'

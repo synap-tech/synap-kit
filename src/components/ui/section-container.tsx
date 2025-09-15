@@ -18,10 +18,10 @@ const SectionContainer = ({
   contentClassName,
 }: ISectionContainerProps) => {
   return (
-    <div className={cn('', className)}>
-      <div className='flex items-center justify-between gap-2 rounded-t-md bg-primary px-4 py-3'>
+    <div className={cn('rounded-md bg-background py-4', className)}>
+      <div className='flex items-center justify-between gap-2 rounded-t-md  px-5 mb-3'>
         <div className='flex items-center gap-2'>
-          <h3 className='text-2xl font-semibold capitalize leading-tight text-primary-foreground md:text-3xl'>
+          <h3 className='text-2xl font-semibold capitalize leading-tight text-foreground'>
             {title}
           </h3>
 
@@ -33,12 +33,7 @@ const SectionContainer = ({
         </div>
         <div className='w-32'>{selector}</div>
       </div>
-      <div
-        className={cn(
-          'overflow-hidden rounded-md rounded-t-none border',
-          contentClassName
-        )}
-      >
+      <div className={cn('overflow-hidden px-5', contentClassName)}>
         {children}
       </div>
     </div>

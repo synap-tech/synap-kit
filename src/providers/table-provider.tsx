@@ -111,7 +111,7 @@ export interface ITableProviderProps<TData, TValue> {
   onClear?: () => void;
   isClear?: boolean;
   otherToolBarComponents?: React.ReactNode;
-  actions: ITableAction<TData>[];
+  actions?: ITableAction<TData>[];
 }
 
 function TableProvider<TData, TValue>({
@@ -138,7 +138,7 @@ function TableProvider<TData, TValue>({
   onClear,
   otherToolBarComponents,
   isClear,
-  actions,
+  actions = [],
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 

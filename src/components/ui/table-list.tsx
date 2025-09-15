@@ -22,11 +22,11 @@ const TableList = ({
   isSmallTitle = false,
 }: ITableListProps) => {
   return (
-    <div className={cn('h-full', className)}>
+    <div className={cn('h-full border rounded-md', className)}>
       {title && (
         <div>
           {!isSmallTitle && (
-            <h4 className='border-b bg-base-200 px-6 py-2 text-lg font-medium capitalize leading-tight text-primary'>
+            <h4 className='border-b bg-muted px-5 py-2.5 text-lg font-medium capitalize leading-tight text-foreground'>
               {title}
             </h4>
           )}
@@ -40,9 +40,9 @@ const TableList = ({
               item.hidden ? null : (
                 <TableRow
                   key={item.label}
-                  className='h-10 cursor-pointer border-b last:border-b-0'
+                  className='h-10 cursor-pointer border-b last:border-b-0 '
                 >
-                  <TableCell className='w-1/2 font-semibold'>
+                  <TableCell className='w-1/2 font-semibold pl-5'>
                     {item.label}
                   </TableCell>
                   <TableCell className='w-1/2'>{item.value || '--'}</TableCell>

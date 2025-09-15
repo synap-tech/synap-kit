@@ -1,5 +1,6 @@
 import Login from '@/pages/public/login';
 import NotFound from '@/pages/public/not-found';
+import TestPage from '@/pages/test';
 
 const publicRoutes = [
   {
@@ -9,6 +10,10 @@ const publicRoutes = [
   {
     path: '/not-found',
     element: <NotFound />,
+  },
+  {
+    path: '/test',
+    element: <TestPage />,
   },
   {
     path: '*',

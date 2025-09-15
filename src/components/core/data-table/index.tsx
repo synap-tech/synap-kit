@@ -27,8 +27,7 @@ function DataTable() {
       <TableToolbar />
       <div
         className={cn(
-          'relative max-h-fit flex-1 overflow-auto border ',
-          isEntry ? 'rounded-b-md' : 'rounded-md'
+          'relative max-h-fit flex-1 overflow-auto border rounded-md'
         )}
       >
         <TableComponent>
