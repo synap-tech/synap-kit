@@ -14,17 +14,14 @@ type FieldText = {
   type: 'text';
   // inputType?: 'text' | 'number';
   placeholder?: string;
-  disabled?: boolean;
 };
 type FieldTextArea = {
   type: 'textarea';
   placeholder?: string;
-  disabled?: boolean;
 };
 type FieldNumber = {
   type: 'number';
   placeholder?: string;
-  disabled?: boolean;
 };
 type FieldCheckBox = {
   type: 'checkBox';
@@ -35,7 +32,7 @@ type FieldSelect = {
   options: IFormSelectOption[];
   excludeOptions?: string[];
   unique?: boolean;
-  disabled?: boolean;
+
   onChange?: (option?: any, field?: any) => void;
 };
 
@@ -43,14 +40,14 @@ type FieldRadio = {
   type: 'radio';
   placeholder?: string;
   options: IFormSelectOption[];
-  disabled?: boolean;
+
   onChange?: (option?: any, field?: any) => void;
 };
 type FieldJoinInputUnit = {
   type: 'join-input-unit';
   placeholder?: string;
   unit: (index: number) => string;
-  disabled?: boolean;
+
   inputType?: string;
 };
 
@@ -71,14 +68,12 @@ type FieldCheckbox = {
   type: 'checkbox';
   placeholder?: string;
   isUpdate?: boolean;
-  disabled?: boolean;
 };
 
 type FieldDate = {
   type: 'date';
   placeholder?: string;
   isUpdate?: boolean;
-  disabled?: boolean;
 };
 
 type FieldMultiSelect = {
@@ -102,7 +97,7 @@ export type FieldDef = {
   width?: string | number;
   maxWidth?: string | number;
   minWidth?: string | number;
-  disabled?: boolean;
+  disabled?: boolean | ((index: number) => boolean);
 } & (
   | FieldText
   | FieldNumber
