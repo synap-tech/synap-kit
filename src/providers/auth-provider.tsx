@@ -14,6 +14,7 @@ import useCookie from '@/hooks/useCookie';
 import { useLocalStorage } from '@/hooks/useStorage';
 
 import type { ILoginData } from '@/components/auth/login/schema';
+import { ShowToast } from '@/components/ui/toast';
 
 // Define the AuthContext interface with state and functions
 export interface IAuthContext {
@@ -101,17 +102,17 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           return;
         }
 
-        // ShowToast({
-        // 	type: response?.data?.type,
-        // 	message: response?.data?.message,
-        // });
+        ShowToast({
+          type: response?.data?.type,
+          message: response?.data?.message,
+        });
         toast.error(response?.data?.message);
       } catch (error: any) {
-        // ShowToast(error.response);
+        ShowToast(error.response);
         toast.error(error?.response?.data?.message);
       }
     },
-    [updateAuthCookie, updateUserCanAccess, updateUserCookie, redirectUrl]
+    [updateAuthCookie, updateUserCanAccess, updateUserCookie, redirectUrl, post]
   );
 
   // Logout function that clears cookies and state

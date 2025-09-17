@@ -1,6 +1,8 @@
 import axios, { type AxiosHeaderValue } from 'axios';
 import Cookies from 'js-cookie';
 
+import { ShowToast } from '@/components/ui/toast';
+
 import useApp from './useApp';
 
 export const useApi = ({ contentType }: { contentType: AxiosHeaderValue }) => {
@@ -21,7 +23,7 @@ export const useApi = ({ contentType }: { contentType: AxiosHeaderValue }) => {
       return config;
     },
     (error) => {
-      // ShowToast(error?.response);
+      ShowToast(error?.response);
       return Promise.reject(error);
     }
   );

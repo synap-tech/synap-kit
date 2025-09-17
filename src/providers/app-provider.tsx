@@ -3,6 +3,8 @@ import { createContext, useMemo } from 'react';
 import type { IRoute } from '@/types';
 import { Toaster } from 'sonner';
 
+import { Toast } from '@/components/ui/toast';
+
 export interface IAppContext {
   companyTitle: string;
   apiBaseUrl: string;
@@ -38,6 +40,7 @@ const AppProvider: React.FC<{
   return (
     <AppContext.Provider value={value}>
       {children}
+      <Toast />
       <Toaster richColors position={'top-center'} expand={true} />
     </AppContext.Provider>
   );
