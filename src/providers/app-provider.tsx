@@ -1,6 +1,6 @@
 import { createContext, useMemo } from 'react';
 
-import type { IRoute } from '@/types';
+import type { INavAction, IRoute } from '@/types';
 import { Toaster } from 'sonner';
 
 import { Toast } from '@/components/ui/toast';
@@ -10,6 +10,7 @@ export interface IAppContext {
   apiBaseUrl: string;
   imageApiBaseUrl: string;
   sidebarRoutes: IRoute[];
+  navbarActions?: INavAction[];
 }
 
 export const AppContext = createContext<IAppContext | undefined>(undefined);
@@ -20,12 +21,14 @@ const AppProvider: React.FC<{
   imageApiBaseUrl: string;
   sidebarRoutes: IRoute[];
   companyTitle: string;
+  navbarActions?: INavAction[];
 }> = ({
   children,
   apiBaseUrl,
   imageApiBaseUrl,
   sidebarRoutes,
   companyTitle,
+  navbarActions,
 }) => {
   const value = useMemo(
     (): IAppContext => ({
@@ -33,8 +36,9 @@ const AppProvider: React.FC<{
       imageApiBaseUrl,
       sidebarRoutes,
       companyTitle,
+      navbarActions,
     }),
-    [apiBaseUrl, imageApiBaseUrl, sidebarRoutes, companyTitle]
+    [apiBaseUrl, imageApiBaseUrl, sidebarRoutes, companyTitle, navbarActions]
   );
 
   return (

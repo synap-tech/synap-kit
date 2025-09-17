@@ -363,3 +363,9 @@ export type ITableAction<TData> = {
   Icon: LucideIcon;
   action: (rows: Row<TData>) => void;
 } & (ITableActionRegular | ITableActionCustom);
+
+export type INavAction = {
+  component: React.ReactNode;
+  order: number;
+  addSeparator?: boolean;
+};

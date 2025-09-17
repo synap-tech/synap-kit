@@ -1,13 +1,10 @@
-import { Expand } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 import useApp from '@/hooks/useApp';
 import useLayout from '@/hooks/useLayout';
 
 import BrandLogo from '@/components/ui/brand-logo';
-import { Button } from '@/components/ui/button';
 import GlobalBreadcrumbs from '@/components/ui/global-breadcrumbs';
-import ProfileAvatar from '@/components/ui/profile-avatar';
 
 import { cn } from '@/lib/utils';
 
@@ -15,7 +12,7 @@ import SidebarCollapse from '../sidebar/collapse';
 import SidebarMobileToggle from '../sidebar/mobile/toggle';
 
 const Navbar = () => {
-  const { companyTitle } = useApp();
+  const { companyTitle, navbarActions } = useApp();
   const { isCollapsed, setIsCollapsed } = useLayout();
   const { pathname } = useLocation();
   const homePage = pathname === '/';
@@ -51,14 +48,28 @@ const Navbar = () => {
             {!homePage && <GlobalBreadcrumbs />}
           </div>
 
-          <div className='flex items-center gap-4'>
-            <Button size={'icon'} variant='ghost'>
-              <Expand className='size-6' />
-            </Button>
+          {navbarActions && navbarActions.length > 0 && (
+            <div className='flex items-center gap-4'>
+              {navbarActions
+                .sort((a, b) => a.order - b.order)
+                .map((item) => {
+                  return (
+                    <>
+                      {item.component}
+                      {item.addSeparator && (
+                        <span className='block h-4 w-[1px] bg-border' />
+                      )}
+                    </>
+                  );
+                })}
+              {/* <Button size={'icon'} variant='ghost'>
+                <Expand className='size-6' />
+              </Button>
 
-            <span className='block h-4 w-[1px] bg-border' />
-            <ProfileAvatar />
-          </div>
+              <span className='block h-4 w-[1px] bg-border' />
+              <ProfileAvatar /> */}
+            </div>
+          )}
         </div>
       </div>
     </div>
