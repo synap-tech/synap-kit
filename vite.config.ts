@@ -3,7 +3,6 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { glob } from 'glob';
 import path from 'path';
-import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -46,11 +45,6 @@ export default defineConfig({
     tailwindcss(),
     dts({
       insertTypesEntry: true,
-    }),
-
-    visualizer({
-      filename: 'bundle-stats.html', // Output file for the analysis
-      open: true, // Automatically open the report in the browser after build
     }),
   ],
   resolve: {
@@ -128,6 +122,17 @@ export default defineConfig({
         ...Object.fromEntries(
           glob
             .sync('src/hooks/**/*.ts')
+            .map((file) => [
+              path.relative(
+                'src',
+                file.slice(0, file.length - path.extname(file).length)
+              ),
+              file,
+            ])
+        ),
+        ...Object.fromEntries(
+          glob
+            .sync('src/config/**/*.ts')
             .map((file) => [
               path.relative(
                 'src',

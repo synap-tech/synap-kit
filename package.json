@@ -81,6 +81,10 @@
       "types": "./dist/types/components/buttons/*.d.ts",
       "import": "./dist/components/buttons/*.js"
     },
+    "./config/*": {
+      "types": "./dist/types/config/*.d.ts",
+      "import": "./dist/config/*.js"
+    },
     "./hooks/*": {
       "types": "./dist/types/hooks/*.d.ts",
       "import": "./dist/hooks/*.js"
