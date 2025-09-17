@@ -21,7 +21,6 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  type Row,
   type RowData,
   type SortingState,
   type Table,
@@ -112,6 +111,8 @@ export interface ITableProviderProps<TData, TValue> {
   isClear?: boolean;
   otherToolBarComponents?: React.ReactNode;
   actions?: ITableAction<TData>[];
+  rightColumnPinning?: string[];
+  leftColumnPinning?: string[];
 }
 
 function TableProvider<TData, TValue>({
@@ -139,6 +140,8 @@ function TableProvider<TData, TValue>({
   otherToolBarComponents,
   isClear,
   actions = [],
+  rightColumnPinning = [],
+  leftColumnPinning = [],
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -173,7 +176,10 @@ function TableProvider<TData, TValue>({
       ? [TableRowSelection<TData, TValue>(), ...visibleColumns]
       : visibleColumns,
     initialState: {
-      columnPinning: { right: ['actions'] },
+      columnPinning: {
+        right: ['actions', ...rightColumnPinning],
+        left: [...leftColumnPinning],
+      },
     },
     state: {
       sorting,

@@ -14,6 +14,7 @@ interface IProps
     'handleAdd' | 'extraHeader' | 'title' | 'containerClassName'
   > {
   children: React.ReactNode;
+  extraButton?: React.ReactNode;
 }
 
 const DynamicFieldContainer: React.FC<IProps> = ({
@@ -22,6 +23,7 @@ const DynamicFieldContainer: React.FC<IProps> = ({
   handleAdd,
   children,
   containerClassName,
+  extraButton,
 }) => {
   return (
     <div className='overflow-hidden rounded-t-md shadow-sm'>
@@ -44,6 +46,7 @@ const DynamicFieldContainer: React.FC<IProps> = ({
               New
             </Button>
           )}
+          {extraButton}
         </div>
       </div>
 

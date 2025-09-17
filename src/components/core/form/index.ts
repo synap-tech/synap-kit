@@ -9,6 +9,7 @@ import ID from './id';
 import Input from './input';
 import JoinInputSelect from './join-input-select';
 import JoinInputUnit from './join-input-unit';
+import MonthPicker from './month-picker';
 import MultiSelect from './multi-select';
 import Otp from './otp';
 import Phone from './phone';
@@ -47,6 +48,7 @@ const Form = {
   DateTimePicker,
   ID,
   TimePicker,
+  MonthPicker,
   DynamicFields,
 };
 
