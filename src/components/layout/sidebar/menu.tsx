@@ -7,8 +7,6 @@ import SidebarItem from './item';
 const SidebarMenu = () => {
   const { routes } = useSidebar();
 
-  console.log({ routes });
-
   if (!routes || routes.length === 0)
     return (
       <div className='h-full flex-1 space-y-1 overflow-auto px-4'>
