@@ -3,6 +3,7 @@ import z from 'zod';
 
 import useRHF from '@/hooks/useRHF';
 
+import DataTableEntry from '@/components/core/data-table/entry';
 import CoreForm from '@/components/core/form';
 import { Form } from '@/components/ui/form';
 import { FormField } from '@/components/ui/form';
@@ -121,6 +122,10 @@ const TestPage = () => {
       <SectionContainer title='Hello'>
         <div>Hello</div>
       </SectionContainer>
+
+      <DataTableEntry title='Hello' columns={[]} data={[]}>
+        Hello
+      </DataTableEntry>
     </div>
   );
 };

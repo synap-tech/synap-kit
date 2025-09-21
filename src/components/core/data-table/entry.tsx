@@ -13,7 +13,7 @@ const DataTableEntry = <TData, TValue>(
     | 'handleRefetch'
     | 'enableDefaultColumns'
     | 'isLoading'
-  > & { children?: React.ReactNode }
+  > & { children?: React.ReactNode; childrenInsideTable?: boolean }
 ) => {
   const { children, ...rest } = props;
   return (

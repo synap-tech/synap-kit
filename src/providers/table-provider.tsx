@@ -80,6 +80,7 @@ export interface ITableContext<TData> {
   isClear?: boolean;
   otherToolBarComponents?: React.ReactNode;
   actions: ITableAction<TData>[];
+  childrenInsideTable?: boolean;
 }
 
 export const TableContext = createContext({} as ITableContext<any>);
@@ -113,6 +114,7 @@ export interface ITableProviderProps<TData, TValue> {
   actions?: ITableAction<TData>[];
   rightColumnPinning?: string[];
   leftColumnPinning?: string[];
+  childrenInsideTable?: boolean;
 }
 
 function TableProvider<TData, TValue>({
@@ -142,6 +144,7 @@ function TableProvider<TData, TValue>({
   actions = [],
   rightColumnPinning = [],
   leftColumnPinning = [],
+  childrenInsideTable = false,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -244,6 +247,7 @@ function TableProvider<TData, TValue>({
       isClear,
       otherToolBarComponents,
       actions,
+      childrenInsideTable,
     }),
     [
       title,
@@ -269,6 +273,7 @@ function TableProvider<TData, TValue>({
       isClear,
       otherToolBarComponents,
       actions,
+      childrenInsideTable,
     ]
   );
 
@@ -277,8 +282,7 @@ function TableProvider<TData, TValue>({
 
   return (
     <TableContext.Provider value={value}>
-      <DataTable />
-      {children}
+      <DataTable>{children}</DataTable>
     </TableContext.Provider>
   );
 }

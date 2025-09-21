@@ -19,8 +19,8 @@ import TableSkeleton from './_components/skeleton';
 import { TableToolbar } from './_components/toolbar';
 import { getCommonPinningStyles } from './_helpers/getCommonPinningStyle';
 
-function DataTable() {
-  const { table, isLoading, isEntry } = useTable();
+function DataTable({ children }: { children?: React.ReactNode }) {
+  const { table, isLoading, isEntry, childrenInsideTable } = useTable();
 
   return (
     <div className='flex h-fit flex-col px-5 py-4 bg-white rounded-md'>
@@ -102,10 +102,20 @@ function DataTable() {
                 </TableCell>
               </TableRow>
             )}
+
+            {children && childrenInsideTable === true && (
+              <TableRow>
+                <TableCell colSpan={table.getAllColumns().length}>
+                  {children}
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </TableComponent>
       </div>
-
+      {children && childrenInsideTable === false && (
+        <div className='mt-4'>{children}</div>
+      )}
       <TablePagination />
     </div>
   );
