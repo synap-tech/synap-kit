@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SectionHeader from '@/components/ui/section-header';
+
 import { cn } from '@/lib/utils';
 
 import type { IFormSectionProps } from './types';
@@ -12,16 +14,11 @@ const FormSection: React.FC<IFormSectionProps> = ({
 }) => {
   if (title) {
     return (
-      <div className='overflow-hidden rounded-md shadow-sm'>
-        <div className='flex flex-col justify-between gap-1 bg-primary py-2 pl-4 pr-2 sm:flex-row sm:items-center'>
-          <h3 className='text-lg font-medium text-primary-foreground'>
-            {title}
-          </h3>
-          {extraHeader}
-        </div>
+      <div className='overflow-hidden rounded-md shadow-sm bg-base'>
+        <SectionHeader extraHeader={extraHeader}>{title}</SectionHeader>
         <div
           className={cn(
-            'grid grid-cols-1 gap-2.5 rounded-b-md border bg-base p-2.5 sm:grid-cols-1 sm:gap-4 lg:grid-cols-3 lg:p-4',
+            'grid grid-cols-1 gap-2.5 rounded-b-md  px-2.5 pb-2.5 sm:grid-cols-1 sm:gap-4 lg:grid-cols-3 lg:px-4 lg:pb-4',
             className
           )}
         >

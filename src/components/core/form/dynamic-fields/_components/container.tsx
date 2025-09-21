@@ -3,6 +3,7 @@ import React from 'react';
 import { Plus } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import SectionHeader from '@/components/ui/section-header';
 
 import { cn } from '@/lib/utils';
 
@@ -26,8 +27,9 @@ const DynamicFieldContainer: React.FC<IProps> = ({
   extraButton,
 }) => {
   return (
-    <div className='overflow-hidden rounded-t-md shadow-sm'>
-      <div className='flex items-center justify-between bg-primary py-2 pl-4 pr-2'>
+    <div className='overflow-hidden rounded-md shadow-sm bg-base'>
+      <SectionHeader extraHeader={extraHeader}>{title}</SectionHeader>
+      {/* <div className='flex items-center justify-between bg-primary py-2 pl-4 pr-2'>
         <h3 className='text-lg font-medium text-primary-foreground'>
           {title || 'Dynamic Fields'}
         </h3>
@@ -48,16 +50,9 @@ const DynamicFieldContainer: React.FC<IProps> = ({
           )}
           {extraButton}
         </div>
-      </div>
+      </div> */}
 
-      <div
-        className={cn(
-          'rounded-md rounded-t-none border bg-base',
-          containerClassName
-        )}
-      >
-        {children}
-      </div>
+      <div className={cn('px-5 pb-4 ', containerClassName)}>{children}</div>
     </div>
   );
 };

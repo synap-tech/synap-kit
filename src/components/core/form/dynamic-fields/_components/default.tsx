@@ -20,15 +20,17 @@ const DefaultDynamicFields: React.FC<
   Omit<DynamicFieldsProps, 'title' | 'viewAs' | 'extraButtons' | 'handleAdd'>
 > = ({ fields, fieldName, fieldDefs, startIndex = 0, form, children }) => {
   return (
-    <div className='overflow-x-auto rounded-b-md border border-t-0'>
+    <div className='overflow-x-auto rounded-md border'>
       <Table className='w-full'>
-        <TableHeader>
-          <TableRow className='h-8 divide-x-[1px]'>
+        <TableHeader className='bg-muted'>
+          <TableRow className='h-8  '>
             {fieldDefs
               .filter((field) => !field.hidden)
               .map((field) => field.header)
               .map((header) => (
-                <TableHead key={header}>{header}</TableHead>
+                <TableHead className='text-center' key={header}>
+                  {header}
+                </TableHead>
               ))}
           </TableRow>
         </TableHeader>

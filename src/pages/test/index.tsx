@@ -1,119 +1,126 @@
-import DataTableEntry from '@/components/core/data-table/entry';
-import { CustomLink } from '@/components/ui/link';
+import { useFieldArray } from 'react-hook-form';
+import z from 'zod';
+
+import useRHF from '@/hooks/useRHF';
+
+import CoreForm from '@/components/core/form';
+import { Form } from '@/components/ui/form';
+import { FormField } from '@/components/ui/form';
 import SectionContainer from '@/components/ui/section-container';
-import TableList from '@/components/ui/table-list';
+
+import useGenerateFieldDefs from './useGenerateFieldDefs';
 
 const TestPage = () => {
-  return (
-    <div className='p-20 border bg-amber-100 space-y-8'>
-      <SectionContainer title={'Customer Information'}>
-        <div className='grid grid-cols-2 gap-2.5 '>
-          <TableList
-            title='General'
-            items={[
-              {
-                label: 'Name',
-                value: 'John Doe',
-              },
-              {
-                label: 'Address',
-                value: '123 Main St, Anytown, USA',
-              },
-            ]}
-          />
-          <TableList
-            title='Other'
-            items={[
-              {
-                label: 'Email',
-                value: 'iX7Y5@example.com',
-              },
-              {
-                label: 'Phone',
-                value: '(123) 456-7890',
-              },
-              {
-                label: 'Link',
-                value: (
-                  <CustomLink
-                    url={`/`}
-                    label={`Open`}
-                    name='Open'
-                    openInNewTab={true}
-                    showCopyButton={false}
-                  />
-                ),
-              },
-            ]}
-          />
-        </div>
-      </SectionContainer>
+  const form = useRHF(
+    z.object({
+      customer_uuid: z.string(),
+      new_challan_entries: z.array(
+        z.object({
+          is_checked: z.boolean(),
+          uuid: z.string(),
+          employee_uuid: z.string(),
+          employee_name: z.string(),
+          permission_type: z.string().default('permanent'),
+          temporary_from_date: z.string().nullable(),
+          temporary_to_date: z.string().nullable(),
+        })
+      ),
+      challan_entries: z.array(
+        z.object({
+          is_checked: z.boolean(),
+          uuid: z.string(),
+          employee_uuid: z.string(),
+          employee_name: z.string(),
+          permission_type: z.string().default('permanent'),
+          temporary_from_date: z.string().nullable(),
+          temporary_to_date: z.string().nullable(),
+        })
+      ),
+    }),
+    {}
+  );
 
-      <DataTableEntry
-        title='Order'
-        columns={[
-          {
-            header: 'Name',
-            accessorKey: 'name',
-          },
-          {
-            header: 'Email',
-            accessorKey: 'email',
-          },
-          {
-            header: 'Phone',
-            accessorKey: 'phone',
-          },
-          {
-            header: 'Address',
-            accessorKey: 'address',
-          },
-          {
-            header: 'Date',
-            accessorKey: 'date',
-          },
-          {
-            header: 'Time',
-            accessorKey: 'time',
-          },
-        ]}
-        data={[
-          {
-            name: 'John Doe',
-            email: 'iX7Y5@example.com',
-            phone: '(123) 456-7890',
-            address: '123 Main St, Anytown, USA',
-            date: '2023-01-01',
-            time: '10:00 AM',
-          },
-          {
-            name: 'Jane Doe',
-            email: '5l7Kt@example.com',
-            phone: '(123) 456-7890',
-            address: '123 Main St, Anytown, USA',
-            date: '2023-01-01',
-            time: '10:00 AM',
-          },
-          {
-            name: 'John Doe',
-            email: 'iX7Y5@example.com',
-            phone: '(123) 456-7890',
-            address: '123 Main St, Anytown, USA',
-            date: '2023-01-01',
-            time: '10:00 AM',
-          },
-        ]}
-        defaultVisibleColumns={{
-          created_at: false,
-          updated_at: false,
-          created_by_name: false,
-        }}
-        toolbarOptions={[]}
-        otherToolBarComponents={null}
-        handleRefetch={undefined}
-        enableDefaultColumns={true}
-        isLoading={false}
-      />
+  const { fields: newFields } = useFieldArray({
+    control: form.control,
+    name: 'new_challan_entries',
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: 'challan_entries',
+  });
+
+  const handleRemove = (index: number) => {};
+  const handleAdd = (index: number) => {};
+  return (
+    <div className='p-20 border bg-amber-100 space-y-8 '>
+      <Form {...form}>
+        <div className='space-y-4'>
+          <div className='grid grid-cols-3 gap-4'>
+            <div className='col-span-1'>
+              <CoreForm.Section
+                title='Information'
+                className='lg:grid-cols-1 gap-4'
+              >
+                <FormField
+                  control={form.control}
+                  name='customer_uuid'
+                  render={(props) => (
+                    <CoreForm.ReactSelect
+                      menuPortalTarget={document.body}
+                      label='Customer'
+                      placeholder='Select Customer'
+                      options={[]}
+                      {...props}
+                    />
+                  )}
+                />
+              </CoreForm.Section>
+            </div>
+
+            <div className='col-span-2'>
+              <CoreForm.DynamicFields
+                title='Ready For Delivery'
+                form={form as any}
+                fieldName='new_challan_entries'
+                fieldDefs={useGenerateFieldDefs({
+                  entry: 'new_challan_entries',
+                  remove: handleRemove,
+                  add: handleAdd,
+                  watch: form.watch,
+                })}
+                fields={newFields}
+              />
+            </div>
+          </div>
+
+          <CoreForm.DynamicFields
+            title='Challan Entry'
+            form={form as any}
+            fieldName='challan_entries'
+            fieldDefs={useGenerateFieldDefs({
+              entry: 'challan_entries',
+              remove: handleRemove,
+              add: handleAdd,
+              watch: form.watch,
+            })}
+            fields={fields}
+          >
+            <tr>
+              <td className='border-t text-right font-semibold' colSpan={4}>
+                Grand Total:
+              </td>
+
+              <td className='border-t px-3 py-2'>{200}</td>
+              <td className='border-t px-3 py-2'></td>
+            </tr>
+          </CoreForm.DynamicFields>
+        </div>
+      </Form>
+
+      <SectionContainer title='Hello'>
+        <div>Hello</div>
+      </SectionContainer>
     </div>
   );
 };

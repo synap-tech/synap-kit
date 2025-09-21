@@ -5,9 +5,8 @@ import { Button, type ButtonProps } from '@/components/ui/button';
 function Transfer({ onClick, ...props }: ButtonProps) {
   return (
     <Button
-      variant={'accent'}
       size={'icon'}
-      className='size-7 rounded-full'
+      className='size-7 rounded-full bg-black/50'
       onClick={onClick}
       {...props}
     >
