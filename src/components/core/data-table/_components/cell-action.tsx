@@ -32,7 +32,7 @@ function TableCellAction<TData, TValue>({
             <Button
               variant={'ghost'}
               size={'icon'}
-              className=' mx-auto flex items-center'
+              className=' mx-auto flex items-center cursor-pointer'
             >
               <EllipsisVertical className='size-5' />
             </Button>
@@ -52,7 +52,7 @@ function TableCellAction<TData, TValue>({
                   aria-label={action.label}
                   onClick={() => action.action(row)}
                   variant={'ghost'}
-                  className='w-full flex justify-between items-center h-fit font-normal'
+                  className='w-full flex justify-between items-center h-fit font-normal cursor-pointer'
                 >
                   {action.label}
                   <action.Icon className='size-4' />
@@ -79,7 +79,7 @@ function TableCellAction<TData, TValue>({
                 (action.actionType === 'delete' && !deleteAccess) ||
                 (action.actionType === 'custom' && !action.access)
               }
-              className='rounded-full'
+              className='rounded-full cursor-pointer'
             >
               <action.Icon className='size-4' />
             </Button>

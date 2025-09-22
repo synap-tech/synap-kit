@@ -227,7 +227,7 @@ export function TableToolbar() {
                   <Button
                     aria-label='Create new entry'
                     onClick={handleCreate}
-                    variant='outline'
+                    variant='accent'
                     size='toolbar-sm'
                   >
                     <CirclePlus className='size-4' />

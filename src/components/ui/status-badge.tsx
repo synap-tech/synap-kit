@@ -7,13 +7,14 @@ import { Badge } from './badge';
 const StatusBadge: React.FC<{ status: IStatus }> = ({ status }) => {
   return (
     <Badge
-      className='py-0.5 font-medium capitalize'
+      size={'sm'}
+      className='py-0.5 text-xs font-medium capitalize'
       variant={
         status === 'approved'
-          ? 'success'
+          ? 'outline-success'
           : status === 'pending'
-            ? 'warning'
-            : 'destructive'
+            ? 'outline-warning'
+            : 'outline-destructive'
       }
     >
       {status}
