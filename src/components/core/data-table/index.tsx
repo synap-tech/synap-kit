@@ -105,9 +105,9 @@ function DataTable({ children }: { children?: React.ReactNode }) {
 
             {children && childrenInsideTable === true && (
               <TableRow>
-                <TableCell colSpan={table.getAllColumns().length}>
+             
                   {children}
-                </TableCell>
+                
               </TableRow>
             )}
           </TableBody>
