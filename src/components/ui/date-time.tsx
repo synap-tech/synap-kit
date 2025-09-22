@@ -26,6 +26,8 @@ interface IDateTimeProps {
   isTime?: boolean;
   onlyTime?: boolean;
   ClassNameTime?: string;
+  dateFormat?: string;
+  timeFormat?: string;
 }
 
 const DateTime: React.FC<IDateTimeProps> = ({
@@ -34,11 +36,13 @@ const DateTime: React.FC<IDateTimeProps> = ({
   isTime = true,
   onlyTime = false,
   ClassNameTime,
+  dateFormat = 'dd/MM/yy',
+  timeFormat = 'h:mm a',
 }) => {
   if (!date) return null;
 
-  const customizedDate = date ? format(new Date(date), 'dd/MM/yy') : '--';
-  const customizedTime = date ? format(new Date(date), 'h:mm a') : '--';
+  const customizedDate = date ? format(new Date(date), dateFormat) : '--';
+  const customizedTime = date ? format(new Date(date), timeFormat) : '--';
 
   if (onlyTime) return <Body value={customizedTime} />;
 
