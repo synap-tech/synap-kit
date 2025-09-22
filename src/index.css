@@ -1,87 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @import 'tailwindcss';
-@import 'tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
+@config '../tailwind.config.ts';
 
 @theme {
-  --font-inter: Inter, sans-serif;
-  --font-geist: Geist, sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-geist: 'Geist', sans-serif;
 
   --radius-lg: 8px;
   --radius-md: 6px;
   --radius-sm: 4px;
-
-  --color-background: #ffffff;
-  /* --color-background: #f3f3f3; */
-  --color-foreground: #0a0a0a;
-
-  --color-card: #ffffff;
-  --color-card-foreground: #030303;
-
-  --color-layout-background: #f3f3f3;
-  --color-sidebar-background: #f3f3f3;
-  --color-sidebar-foreground: #0a0a0a;
-  --color-sidebar-active-background: #373737;
-  --color-sidebar-active-foreground: #ffffff;
-
-  --color-popover: #ffffff;
-  --color-popover-foreground: #09090b;
-
-  --color-primary: #222831;
-  --color-primary-foreground: #f2f5f8;
-
-  --color-secondary: #393e46;
-  --color-secondary-foreground: #f2f5f8;
-  --color-secondary-light: #9db2bf;
-
-  --color-muted: #f5f5f5;
-  --color-muted-foreground: #737373;
-
-  --color-accent: #00adb5;
-  --color-accent-foreground: #ffffff;
-
-  --color-badge: #3857ff;
-  --color-badge-foreground: #09090b;
-
-  --color-destructive: #f31260;
-  --color-destructive-foreground: #ffffff;
-
-  --color-success: #00b34c;
-  --color-success-foreground: #ffffff;
-
-  --color-warning: #f5a524;
-  --color-warning-foreground: #ffffff;
-
-  --color-base-150: #f4f7fa;
-  --color-base-200: #f1f5f9;
-  --color-base-300: #e2ebf3;
-  --color-base-400: #8b909a;
-  --color-base: #ffffff;
-  --color-base-content: #222831;
-
-  --color-border: #e5e5e5;
-  --color-border-2: #e4e4e7;
-  --color-input: #e5e5e5;
-  --color-ring: 0a0a0a;
-
-  --color-chart-1: #e76e50;
-  --color-chart-2: #2a9d90;
-  --color-chart-3: #274754;
-  --color-chart-4: #e8c468;
-  --color-chart-5: #f4a462;
-
-  --animate-shine: shine 8s ease-in-out infinite;
-
-  @keyframes shine {
-    from {
-      background-position: 200% 0;
-    }
-    to {
-      background-position: -200% 0;
-    }
-  }
 }
 
 /*
@@ -103,7 +31,7 @@
 }
 
 @utility bg-gradient {
-  @apply from-base to-base-150 bg-linear-to-r;
+  @apply from-base-100 to-base-150 bg-linear-to-r;
 }
 
 @utility bg-gradient-accent {
@@ -138,7 +66,7 @@
 
   .handsontable td,
   .handsontable th {
-    @apply border-border! bg-base! first:border-l-transparent! last:border-r-transparent!;
+    @apply border-border! bg-base-100! first:border-l-transparent! last:border-r-transparent!;
   }
 
   .handsontable td {
@@ -152,68 +80,5 @@
 @layer base {
   body {
     @apply border-border bg-background font-inter text-foreground;
-  }
-}
-/*
-  ---break---
-*/
-:root {
-  --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
-}
-/*
-  ---break---
-*/
-.dark {
-  --sidebar: hsl(240 5.9% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
-}
-/*
-  ---break---
-*/
-@theme inline {
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  /*
-  ---break---
-*/
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  /*
-  ---break---
-*/
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
   }
 }

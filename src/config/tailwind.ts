@@ -1,13 +1,24 @@
+const BACKGROUND = '#ffffff';
+const FOREGROUND = '#0a0a0a';
+
 const WHITE = '#FFFFFF';
 const BLACK = '0a0a0a';
-const BACKGROUND = '#ffffff';
-const FOREGROUND = '#222831';
 
-const BASE_100 = '#ffffff';
-const BASE_150 = '#f5f5f5';
-const BASE_200 = '#f1f5f9';
-const BASE_300 = '#e2ebf3';
-const BASE_CONTENT = FOREGROUND;
+const CARD = WHITE;
+const CARD_FOREGROUND = '#030303';
+
+const LAYOUT_BACKGROUND = '#f3f3f3';
+const LAYOUT_FOREGROUND = FOREGROUND;
+
+const SIDEBAR_BACKGROUND = '#fafafa';
+const SIDEBAR_FOREGROUND = '#3f3f46';
+const SIDEBAR_ACTIVE_BACKGROUND = '#373737';
+const SIDEBAR_ACTIVE_FOREGROUND = '#ffffff';
+const SIDEBAR_ACCENT = '#f4f4f5';
+const SIDEBAR_ACCENT_FOREGROUND = '#18181B';
+
+const POPOVER = '#ffffff';
+const POPOVER_FOREGROUND = '#09090b';
 
 const PRIMARY = '#222831';
 const PRIMARY_FOREGROUND = '#f2f5f8';
@@ -15,25 +26,29 @@ const SECONDARY = '#393E46';
 const SECONDARY_FOREGROUND = '#f2f5f8';
 const SECONDARY_LIGHT = '#9DB2BF';
 
-const CARD = WHITE;
-const CARD_FOREGROUND = BLACK;
-const POPOVER = BACKGROUND;
-const POPOVER_FOREGROUND = BLACK;
-
 const MUTED = '#f5f5f5';
 const MUTED_FOREGROUND = '#737373';
+
 const ACCENT = '#00ADB5';
 const ACCENT_FOREGROUND = WHITE;
 const DESTRUCTIVE = '#f31260';
 const DESTRUCTIVE_FOREGROUND = WHITE;
-const SUCCESS = '#17c964';
+const SUCCESS = '#00b34c';
 const SUCCESS_FOREGROUND = WHITE;
 const WARNING = '#f5a524';
 const WARNING_FOREGROUND = WHITE;
 
+const BASE_100 = '#ffffff';
+const BASE_150 = '#f4f7fa';
+const BASE_200 = '#f1f5f9';
+const BASE_300 = '#e2ebf3';
+const BASE_400 = '#8b909a';
+const BASE = '#ffffff';
+const BASE_FOREGROUND = '#222831';
+
 const BORDER = '#e5e5e5';
 const INPUT = '#e5e5e5';
-const RING = BLACK;
+const RING = '#0a0a0a';
 
 const CHART_1 = '#e76e50';
 const CHART_2 = '#2a9d90';
@@ -43,13 +58,24 @@ const CHART_5 = '#f4a462';
 
 const colors = {
   WHITE,
+  BLACK,
+  LAYOUT_BACKGROUND,
+  LAYOUT_FOREGROUND,
+  SIDEBAR_BACKGROUND,
+  SIDEBAR_FOREGROUND,
+  SIDEBAR_ACTIVE_BACKGROUND,
+  SIDEBAR_ACTIVE_FOREGROUND,
+  SIDEBAR_ACCENT,
+  SIDEBAR_ACCENT_FOREGROUND,
   BACKGROUND,
   FOREGROUND,
   BASE_100,
   BASE_150,
   BASE_200,
   BASE_300,
-  BASE_CONTENT,
+  BASE_400,
+  BASE,
+  BASE_FOREGROUND,
   PRIMARY,
   PRIMARY_FOREGROUND,
   SECONDARY,
