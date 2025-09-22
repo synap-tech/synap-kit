@@ -366,7 +366,7 @@ export function TableToolbar() {
 
   if (isEntry) {
     return (
-      <Accordion type='single' collapsible className='w-full mb-4'>
+      <Accordion type='single' collapsible className='w-full'>
         <AccordionItem value='item-1' className='rounded-t-md bg-background'>
           <AccordionTrigger
             Icon={Funnel}
@@ -398,7 +398,7 @@ export function TableToolbar() {
   }
 
   return (
-    <div className={cn('mb-4 flex w-full flex-col overflow-hidden')}>
+    <div className={cn('flex w-full flex-col overflow-hidden')}>
       <div
         className={cn(
           'mb-4 flex w-full flex-col justify-between gap-2  lg:flex-row lg:items-end'

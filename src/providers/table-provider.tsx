@@ -81,6 +81,7 @@ export interface ITableContext<TData> {
   otherToolBarComponents?: React.ReactNode;
   actions: ITableAction<TData>[];
   childrenInsideTable?: boolean;
+  extraHeader?: React.ReactNode;
 }
 
 export const TableContext = createContext({} as ITableContext<any>);
@@ -115,6 +116,7 @@ export interface ITableProviderProps<TData, TValue> {
   rightColumnPinning?: string[];
   leftColumnPinning?: string[];
   childrenInsideTable?: boolean;
+  extraHeader?: React.ReactNode;
 }
 
 function TableProvider<TData, TValue>({
@@ -145,6 +147,7 @@ function TableProvider<TData, TValue>({
   rightColumnPinning = [],
   leftColumnPinning = [],
   childrenInsideTable = false,
+  extraHeader,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -248,6 +251,7 @@ function TableProvider<TData, TValue>({
       otherToolBarComponents,
       actions,
       childrenInsideTable,
+      extraHeader,
     }),
     [
       title,
@@ -274,6 +278,7 @@ function TableProvider<TData, TValue>({
       otherToolBarComponents,
       actions,
       childrenInsideTable,
+      extraHeader,
     ]
   );
 

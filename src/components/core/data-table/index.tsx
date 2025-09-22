@@ -20,11 +20,12 @@ import { TableToolbar } from './_components/toolbar';
 import { getCommonPinningStyles } from './_helpers/getCommonPinningStyle';
 
 function DataTable({ children }: { children?: React.ReactNode }) {
-  const { table, isLoading, isEntry, childrenInsideTable } = useTable();
+  const { table, isLoading, childrenInsideTable, extraHeader } = useTable();
 
   return (
-    <div className='flex h-fit flex-col px-5 py-4 bg-white rounded-md'>
+    <div className='flex h-fit flex-col gap-4 px-5 py-4 bg-white rounded-md'>
       <TableToolbar />
+      {extraHeader && extraHeader}
       <div
         className={cn(
           'relative max-h-fit flex-1 overflow-auto border rounded-md'
@@ -104,11 +105,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
             )}
 
             {children && childrenInsideTable === true && (
-              <TableRow>
-             
-                  {children}
-                
-              </TableRow>
+              <TableRow>{children}</TableRow>
             )}
           </TableBody>
         </TableComponent>
