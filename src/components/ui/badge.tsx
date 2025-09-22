@@ -20,11 +20,11 @@ const badgeVariants = cva(
           'border bg-destructive text-destructive-foreground hover:bg-destructive/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80',
         outline: 'text-neutral-950 dark:text-neutral-50',
         'outline-success':
-          'border border-success/20 bg-success/10 text-success hover:bg-success hover:text-success-foreground',
+          'border !border-success/20 bg-success/10 text-success hover:bg-success hover:text-success-foreground',
         'outline-warning':
-          'border border-warning/20 bg-warning/10 text-warning hover:bg-warning hover:text-warning-foreground',
+          'border !border-warning/20 bg-warning/10 text-warning hover:bg-warning hover:text-warning-foreground',
         'outline-destructive':
-          'border border-destructive/20 bg-destructive/10 text-destructive hover:bg-destructive hover:text-destructive-foreground',
+          'border !border-destructive/20 bg-destructive/10 text-destructive hover:bg-destructive hover:text-destructive-foreground',
 
         accent:
           'border border-accent  bg-accent/25 text-accent-foreground hover:bg-accent/80 ',
@@ -36,9 +36,9 @@ const badgeVariants = cva(
           'border-transparent bg-warning/10 text-warning hover:bg-warning hover:text-white dark:bg-green-900 dark:text-neutral-50 dark:hover:bg-green-900/80',
       },
       size: {
-        default: 'px-2.5 py-1 text-sm',
+        default: 'px-2.5 py-1 text-xs',
         sm: 'px-2 py-0.5 text-xs',
-        lg: 'px-3 py-1 text-[1rem]',
+        lg: 'px-3 py-1 text-sm',
       },
     },
     defaultVariants: {

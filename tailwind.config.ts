@@ -78,6 +78,7 @@ export default {
         border: colors.BORDER,
         input: colors.INPUT,
         ring: colors.RING,
+
         chart: {
           '1': colors.CHART_1,
           '2': colors.CHART_2,

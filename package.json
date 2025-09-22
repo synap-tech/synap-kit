@@ -97,6 +97,10 @@
       "types": "./dist/types/lib/*.d.ts",
       "import": "./dist/lib/*.js"
     },
+    "./tailwind-config": {
+      "types": "./dist/tailwind-config.d.ts",
+      "import": "./dist/tailwind-config.js"
+    },
     "./style.css": {
       "import": "./dist/style.css"
     }
@@ -109,7 +113,8 @@
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
     "check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "git pull && npm i && npm run build"
   },
   "peerDependencies": {
     "@handsontable/react": "14.6.1",

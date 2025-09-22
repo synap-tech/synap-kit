@@ -3,11 +3,14 @@ import z from 'zod';
 
 import useRHF from '@/hooks/useRHF';
 
+import StatusButton from '@/components/buttons/status';
 import DataTableEntry from '@/components/core/data-table/entry';
 import CoreForm from '@/components/core/form';
+import { Badge } from '@/components/ui/badge';
 import { Form } from '@/components/ui/form';
 import { FormField } from '@/components/ui/form';
 import SectionContainer from '@/components/ui/section-container';
+import StatusBadge from '@/components/ui/status-badge';
 
 import useGenerateFieldDefs from './useGenerateFieldDefs';
 
@@ -54,7 +57,7 @@ const TestPage = () => {
   const handleRemove = (index: number) => {};
   const handleAdd = (index: number) => {};
   return (
-    <div className='p-20 border bg-amber-100 space-y-8 '>
+    <div className='p-20 border bg-sky-50 space-y-8 '>
       <Form {...form}>
         <div className='space-y-4'>
           <div className='grid grid-cols-3 gap-4'>
@@ -126,6 +129,15 @@ const TestPage = () => {
       <DataTableEntry title='Hello' columns={[]} data={[]}>
         Hello
       </DataTableEntry>
+      <Badge variant={'outline-success'}>Success</Badge>
+      <Badge variant={'outline-warning'}>Warning</Badge>
+      <Badge variant={'outline-destructive'}>Destructive</Badge>
+
+      <StatusButton value={true} />
+      <StatusButton value={false} />
+      <StatusBadge status={'approved'} />
+      <StatusBadge status={'pending'} />
+      <StatusBadge status={'rejected'} />
     </div>
   );
 };
