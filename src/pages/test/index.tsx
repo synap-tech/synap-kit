@@ -11,6 +11,7 @@ import { Form } from '@/components/ui/form';
 import { FormField } from '@/components/ui/form';
 import SectionContainer from '@/components/ui/section-container';
 import StatusBadge from '@/components/ui/status-badge';
+import { Switch } from '@/components/ui/switch';
 
 import useGenerateFieldDefs from './useGenerateFieldDefs';
 
@@ -132,12 +133,15 @@ const TestPage = () => {
       <Badge variant={'outline-success'}>Success</Badge>
       <Badge variant={'outline-warning'}>Warning</Badge>
       <Badge variant={'outline-destructive'}>Destructive</Badge>
+      <Badge variant={'outline'}>Outline</Badge>
 
       <StatusButton value={true} />
       <StatusButton value={false} />
       <StatusBadge status={'approved'} />
       <StatusBadge status={'pending'} />
       <StatusBadge status={'rejected'} />
+
+      <Switch />
     </div>
   );
 };
