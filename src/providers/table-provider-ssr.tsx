@@ -11,6 +11,7 @@ import type {
   IPagination,
   IPaginationQuery,
   IResponse,
+  ITableAction,
   ITableFilterOptionSSR,
 } from '@/types';
 import type { RankingInfo } from '@tanstack/match-sorter-utils';
@@ -76,8 +77,6 @@ export interface ITableContextSSR<TData> {
   table: Table<TData>;
   isLoading?: boolean;
   handleCreate?: () => void;
-  handleUpdate?: (row: Row<TData>) => void;
-  handleDelete?: (row: Row<TData>) => void;
   handleRefetch?: (
     options?: RefetchOptions
   ) => Promise<QueryObserverResult<IResponse<any>, Error>>;
@@ -98,6 +97,10 @@ export interface ITableContextSSR<TData> {
   >;
   addPinFilter: (filter: ITableFilterOptionSSR<any>) => void;
   removePinFilter: (filter: ITableFilterOptionSSR<any>) => void;
+
+  actions: ITableAction<TData>[];
+  childrenInsideTable?: boolean | null;
+  extraHeader?: React.ReactNode;
 }
 
 export const TableContextSSR = createContext({} as ITableContextSSR<any>);
@@ -114,8 +117,6 @@ interface ITableProviderProps<TData, TValue> {
   enableRowSelection?: boolean;
   enableDefaultColumns?: boolean;
   handleCreate?: () => void;
-  handleUpdate?: (row: Row<TData>) => void;
-  handleDelete?: (row: Row<TData>) => void;
   handleRefetch?: (
     options?: RefetchOptions
   ) => Promise<QueryObserverResult<any, Error>>;
@@ -127,6 +128,10 @@ interface ITableProviderProps<TData, TValue> {
   onClear?: () => void;
   isClear?: boolean;
   filterOptions?: ITableFilterOptionSSR<any>[];
+
+  actions: ITableAction<TData>[];
+  childrenInsideTable?: boolean | null;
+  extraHeader?: React.ReactNode;
 }
 
 function TableProviderSSR<TData, TValue>({
@@ -141,8 +146,6 @@ function TableProviderSSR<TData, TValue>({
   enableRowSelection = false,
   enableDefaultColumns = true,
   handleCreate,
-  handleUpdate,
-  handleDelete,
   handleRefetch,
   handleDeleteAll,
   defaultVisibleColumns = {},
@@ -152,6 +155,9 @@ function TableProviderSSR<TData, TValue>({
   onClear,
   isClear,
   filterOptions,
+  actions = [],
+  childrenInsideTable = null,
+  extraHeader = null,
 }: ITableProviderProps<TData, TValue>) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [pinFilters, setPinFilters] = useState<
@@ -286,8 +292,6 @@ function TableProviderSSR<TData, TValue>({
       handleSearchParams,
       clearSearchParams,
       handleCreate,
-      handleUpdate,
-      handleDelete,
       handleRefetch,
       handleDeleteAll,
       initialDateRange: [minDate, maxDate],
@@ -304,6 +308,9 @@ function TableProviderSSR<TData, TValue>({
       setPinFilters,
       addPinFilter,
       removePinFilter,
+      actions,
+      childrenInsideTable,
+      extraHeader,
     }),
     [
       title,
@@ -315,8 +322,6 @@ function TableProviderSSR<TData, TValue>({
       handleSearchParams,
       clearSearchParams,
       handleCreate,
-      handleUpdate,
-      handleDelete,
       handleRefetch,
       handleDeleteAll,
       minDate,
@@ -333,6 +338,9 @@ function TableProviderSSR<TData, TValue>({
       pinFilters,
       addPinFilter,
       removePinFilter,
+      childrenInsideTable,
+      extraHeader,
+      actions,
     ]
   );
 

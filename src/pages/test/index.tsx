@@ -13,6 +13,7 @@ import SectionContainer from '@/components/ui/section-container';
 import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
 
+import TableSSR from './table-ssr';
 import useGenerateFieldDefs from './useGenerateFieldDefs';
 
 const TestPage = () => {
@@ -142,6 +143,8 @@ const TestPage = () => {
       <StatusBadge status={'rejected'} />
 
       <Switch />
+
+      <TableSSR />
     </div>
   );
 };

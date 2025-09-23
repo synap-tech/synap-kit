@@ -9,6 +9,7 @@ import type { IFilterProps } from '../../../types';
 function DateFilter<TData, TValue>({
   column,
   showLabel,
+  datePickerClassName,
 }: IFilterProps<TData, TValue>) {
   const columnFilterValue = column.getFilterValue() as [Date, Date];
 
@@ -42,6 +43,7 @@ function DateFilter<TData, TValue>({
             range.to ? new Date(range.to) : old[1],
           ]);
         }}
+        className={datePickerClassName}
       />
     </div>
   );

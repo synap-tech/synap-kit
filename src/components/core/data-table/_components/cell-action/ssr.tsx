@@ -2,7 +2,7 @@ import type { CellContext } from '@tanstack/react-table';
 import { EllipsisVertical } from 'lucide-react';
 
 import usePage from '@/hooks/usePage';
-import useTable from '@/hooks/useTable';
+import useTableSSR from '@/hooks/useTableSSR';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -12,17 +12,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-interface ITableCellActionProps<TData, TValue> {
-  info: CellContext<TData, TValue>;
-  isSSR?: boolean;
-}
-
-function TableCellAction<TData, TValue>({
+function CellActionSSR<TData, TValue>({
   info,
-}: ITableCellActionProps<TData, TValue>) {
+}: {
+  info: CellContext<TData, TValue>;
+}) {
   const row = info.row;
   const { updateAccess, deleteAccess } = usePage();
-  const { actions } = useTable();
+  const { actions } = useTableSSR();
 
   if (actions && actions.length > 0) {
     if (actions.length > 2) {
@@ -92,4 +89,4 @@ function TableCellAction<TData, TValue>({
   return <></>;
 }
 
-export default TableCellAction;
+export default CellActionSSR;

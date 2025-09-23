@@ -26,7 +26,13 @@ function TableColumnFilter<T>({
       case 'select':
         return <SelectFilter column={column} showLabel={showLabel} />;
       case 'dateRange':
-        return <DateFilter column={column} showLabel={showLabel} />;
+        return (
+          <DateFilter
+            datePickerClassName='border rounded-sm h-10'
+            column={column}
+            showLabel={showLabel}
+          />
+        );
       case 'text':
         return <StringFilter column={column} showLabel={showLabel} />;
       default:

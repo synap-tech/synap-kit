@@ -23,7 +23,7 @@ const DataTableSSR = () => {
   const { table, isEntry, isLoading } = useTableSSR();
 
   return (
-    <div className='flex h-full flex-col'>
+    <div className='flex h-full flex-col px-5 py-4 bg-white rounded-md'>
       <Toolbar />
       <div
         className={cn(

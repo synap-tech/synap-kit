@@ -38,6 +38,7 @@ export interface TableColumnHeaderProps<TData, TValue>
 
 export type IFilterProps<TData, TValue> = TDefaultColumn<TData, TValue> & {
   showLabel?: boolean;
+  datePickerClassName?: string;
 };
 
 export interface TableFacetedFilterProps<TData, TValue> {
