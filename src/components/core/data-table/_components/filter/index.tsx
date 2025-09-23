@@ -27,7 +27,7 @@ const TableAllFilter = () => {
 
   return (
     <Sheet>
-      <SheetTrigger>
+      <SheetTrigger asChild>
         <Button
           aria-label='Filters All Columns'
           variant='ghost'

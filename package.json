@@ -130,7 +130,6 @@
     "framer-motion": "^12.23.12",
     "handsontable": "^14.6.1",
     "js-cookie": "^3.0.5",
-    "react-toastify": "^10.0.5",
     "lucide-react": "^0.536.0",
     "react": "^19.1.1",
     "react-csv": "^2.2.2",
@@ -143,8 +142,10 @@
     "react-quill-new": "^3.4.6",
     "react-router-dom": "^6.26.2",
     "react-select": "^5.10.2",
+    "react-toastify": "^10.0.5",
     "sonner": "^2.0.7",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "tailwindcss-animate": "^1.0.7"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",

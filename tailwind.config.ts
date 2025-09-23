@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 import { colors } from './src/config/tailwind';
 
@@ -104,4 +105,6 @@ export default {
       },
     },
   },
+
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

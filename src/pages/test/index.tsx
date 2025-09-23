@@ -13,6 +13,7 @@ import SectionContainer from '@/components/ui/section-container';
 import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
 
+import DialogComponent from './dialog';
 import TableSSR from './table-ssr';
 import useGenerateFieldDefs from './useGenerateFieldDefs';
 
@@ -145,6 +146,7 @@ const TestPage = () => {
       <Switch />
 
       <TableSSR />
+      <DialogComponent />
     </div>
   );
 };

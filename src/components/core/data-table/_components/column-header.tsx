@@ -47,7 +47,7 @@ export function TableColumnHeader<TData, TValue>({
         ))}
       </span>
       <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger asChild>
           <Button
             aria-label='Sort Column'
             variant='ghost'

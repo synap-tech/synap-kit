@@ -39,7 +39,7 @@ export function TableViewOptions<TData>({
 
   return (
     <DropdownMenu open={isOpen}>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
         <Button
           onClick={handleOpenModal}
           aria-label='Column Options'

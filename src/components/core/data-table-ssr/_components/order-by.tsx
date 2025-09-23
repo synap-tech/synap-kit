@@ -24,7 +24,7 @@ export function TableOrderBy<TData>({ table }: TableViewOptionsProps<TData>) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger asChild>
         <Button
           aria-label='Sort By'
           variant='ghost'
