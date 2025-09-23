@@ -22,9 +22,8 @@ function TableFilter<T>({ options }: { options: ITableFilterOptionSSR<T>[] }) {
       <SheetTrigger>
         <Button
           aria-label='Filters All Columns'
-          variant='gradient'
-          size='sm'
-          className='hidden lg:flex'
+          variant='ghost'
+          size='toolbar-sm'
         >
           <SlidersHorizontal className='size-4' />
           Filters

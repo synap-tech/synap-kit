@@ -45,7 +45,7 @@ const FormOTP: React.FC<FormOtpProps> = ({
           minLength={minLength}
           pattern={pattern}
           placeholder={placeholder}
-          className={cn('sb-red w-full', className)}
+          className={cn('w-full', className)}
           disabled={disabled}
           {...field}
         >

@@ -296,7 +296,7 @@ export function TableToolbar() {
               aria-label='Reset filters'
               variant='outline-destructive'
               onClick={resetColumnFilters}
-              className='h-8'
+              size={'toolbar-sm'}
             >
               Reset
               <X className='size-4' />

@@ -27,8 +27,8 @@ export function TableOrderBy<TData>({ table }: TableViewOptionsProps<TData>) {
       <DropdownMenuTrigger>
         <Button
           aria-label='Sort By'
-          variant='gradient'
-          size='sm'
+          variant='ghost'
+          size='toolbar-sm'
           className='hidden lg:flex'
         >
           {searchParams.get('orderby') === 'asc' ? (

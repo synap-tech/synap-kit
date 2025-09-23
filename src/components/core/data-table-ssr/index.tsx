@@ -23,7 +23,7 @@ const DataTableSSR = () => {
   const { table, isEntry, isLoading } = useTableSSR();
 
   return (
-    <div className='flex h-full flex-col px-5 py-4 bg-white rounded-md'>
+    <div className='flex h-full relative  flex-col gap-4 px-5 py-4 bg-white rounded-md '>
       <Toolbar />
       <div
         className={cn(
@@ -47,6 +47,7 @@ const DataTableSSR = () => {
                           isHeader: true,
                         }),
                       }}
+                      className='py-2  first:pl-6 text-left '
                     >
                       {header.isPlaceholder
                         ? null
@@ -81,6 +82,7 @@ const DataTableSSR = () => {
                           column: cell.column,
                         }),
                       }}
+                      className='first:pl-6'
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

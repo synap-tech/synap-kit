@@ -37,7 +37,7 @@ const TableAllFilter = () => {
           Filters
         </Button>
       </SheetTrigger>
-      <SheetContent className='flex flex-col gap-0 p-0  sb-red h-screen overflow-hidden '>
+      <SheetContent className='flex flex-col gap-0 p-0 h-screen overflow-hidden '>
         <SheetHeader className='border-b px-3 py-2 lg:px-4 lg:py-3'>
           <SheetTitle className='flex items-center gap-2'>
             <SlidersHorizontal className='size-4' /> All Filters
@@ -48,7 +48,7 @@ const TableAllFilter = () => {
           </SheetDescription>
         </SheetHeader>
 
-        <div className='flex-1 sb-red overflow-hidden py-2'>
+        <div className='flex-1 overflow-hidden pt-3 pb-2'>
           <ScrollArea className='mt-0 h-full px-3 lg:px-4 '>
             <div className='flex flex-col gap-4 px-1'>
               {filteredColumns.length > 0 &&
@@ -63,7 +63,7 @@ const TableAllFilter = () => {
           </ScrollArea>
         </div>
 
-        <SheetFooter className='justify-start'>
+        <SheetFooter className='justify-start px-3 lg:px-4'>
           {isFiltered && (
             <Button
               variant='outline-destructive'
