@@ -90,6 +90,7 @@ export function userColumns({
       accessorKey: 'status',
       header: 'Status',
       enableColumnFilter: false,
+
       cell: (info) => {
         return (
           <Switch
@@ -165,9 +166,16 @@ export function userColumns({
       accessorKey: 'name',
       header: 'Name',
       enableColumnFilter: false,
+      size: 20,
       cell: (info) => (
-        <span className='capitalize'>{info.getValue<string>()}</span>
+        <span className='block w-full line-clamp-2'>
+          {info.getValue() as string}
+        </span>
       ),
+
+      // cell: (info) => (
+      //   <span className='capitalize'>{info.getValue<string>()}</span>
+      // ),
     },
     {
       accessorKey: 'phone',
@@ -181,7 +189,12 @@ export function userColumns({
       accessorKey: 'email',
       header: 'Email',
       enableColumnFilter: false,
-      cell: (info) => info.getValue(),
+      size: 40,
+      cell: (info) => (
+        <span className='block w-full line-clamp-2'>
+          {info.getValue() as string}
+        </span>
+      ),
     },
     {
       accessorKey: 'where_they_find_us',
