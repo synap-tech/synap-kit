@@ -41,6 +41,7 @@ export interface FormDatePickerProps extends IFieldProps {
   icon?: React.ReactNode;
   className?: string;
   calendarProps?: DayPickerProps;
+  displayFormat?: string;
 }
 
 export interface FormCheckboxProps extends IFieldProps, CheckboxProps {

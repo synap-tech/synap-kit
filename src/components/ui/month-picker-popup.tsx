@@ -16,11 +16,15 @@ export default function MonthPickerPopover({
   setDate,
   minDate,
   maxDate,
+  className,
+  displayFormat = 'MMM yyyy',
 }: {
   date: Date;
   setDate: (date: Date) => void;
   minDate?: Date;
   maxDate?: Date;
+  className?: string;
+  displayFormat?: string;
 }) {
   return (
     <Popover>
@@ -29,11 +33,12 @@ export default function MonthPickerPopover({
           variant={'outline'}
           className={cn(
             'w-[280px] justify-start text-left font-normal',
-            !date && 'text-muted-foreground'
+            !date && 'text-muted-foreground',
+            className
           )}
         >
           <CalendarIcon className='mr-2 h-4 w-4' />
-          {date ? format(date, 'MMM yyyy') : <span>Pick a month</span>}
+          {date ? format(date, displayFormat) : <span>Pick a month</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent

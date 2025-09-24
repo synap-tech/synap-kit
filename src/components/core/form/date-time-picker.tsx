@@ -30,10 +30,13 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
   disableLabel,
   calendarProps,
   disabled = false,
+  displayFormat = 'dd/MM/yyyy hh:mm aa',
 }) => {
   function handleTimeChange(type: 'hour' | 'minute' | 'ampm', value: string) {
     const currentDate = field.value || new Date();
     const newDate = new Date(currentDate);
+
+    newDate.setSeconds(0);
 
     if (type === 'hour') {
       const hour = parseInt(value, 10);
@@ -78,7 +81,7 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
               disabled={disabled}
             >
               {field.value ? (
-                format(field.value, 'dd/MM/yyyy hh:mm aa')
+                format(field.value, displayFormat)
               ) : (
                 <span>DD/MM/YYYY hh:mm aa</span>
               )}

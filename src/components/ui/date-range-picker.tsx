@@ -46,10 +46,12 @@ export interface DateRangePickerProps {
   minDate?: Date;
   /** Maximum selectable date */
   maxDate?: Date;
+
+  displayFormat?: string;
 }
 
-const formatDate = (date: Date, locale: string = 'en-US'): string =>
-  format(date, 'yyyy/MM/dd');
+const formatDate = (date: Date, displayFormat: string): string =>
+  format(date, displayFormat);
 
 const getDateAdjustedForTimezone = (dateInput: Date | string): Date => {
   if (typeof dateInput === 'string') {
@@ -100,6 +102,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
   className,
   minDate,
   maxDate,
+  displayFormat = 'yyyy/MM/dd',
 }): React.ReactNode => {
   const [isOpen, setIsOpen] = useState(false);
   const [range, setRange] = useState<DateRange>({
@@ -386,16 +389,18 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
           <CalendarIcon className='size-4' />
           <div className={cn('text-right', isMobile && 'hidden')}>
             <div>
-              <div>{`${formatDate(range.from, locale)}${
-                range.to != null ? ' - ' + formatDate(range.to, locale) : ''
+              <div>{`${formatDate(range.from, displayFormat)}${
+                range.to != null
+                  ? ' - ' + formatDate(range.to, displayFormat)
+                  : ''
               }`}</div>
             </div>
             {rangeCompare != null && (
               <div className='-mt-1 text-xs opacity-60'>
                 <>
-                  vs. {formatDate(rangeCompare.from, locale)}
+                  vs. {formatDate(rangeCompare.from, displayFormat)}
                   {rangeCompare.to != null
-                    ? ` - ${formatDate(rangeCompare.to, locale)}`
+                    ? ` - ${formatDate(rangeCompare.to, displayFormat)}`
                     : ''}
                 </>
               </div>
