@@ -33,6 +33,8 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
     const currentDate = field.value || new Date();
     const newDate = new Date(currentDate);
 
+    newDate.setSeconds(0);
+
     if (type === 'hour') {
       const hour = parseInt(value, 10);
       newDate.setHours(newDate.getHours() >= 12 ? hour + 12 : hour);
@@ -67,7 +69,7 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
           <FormControl>
             <Button
               type='button'
-              variant={'gradient'}
+              variant={'form'}
               className={cn(
                 'h-10 w-full text-left font-normal transition-none active:scale-100',
                 !field.value && 'text-muted-foreground',

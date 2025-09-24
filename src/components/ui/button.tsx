@@ -34,6 +34,7 @@ const buttonVariants = cva(
 
         toolbar:
           'bg-transparent hover:bg-base-200 text-base-content border-0 shadow-none hover:shadow-md',
+        form: 'h-10 w-full rounded-md border bg-background px-3 py-2 text-sm',
       },
       size: {
         default: 'h-10 px-4 py-2',

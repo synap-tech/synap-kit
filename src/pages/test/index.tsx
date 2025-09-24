@@ -87,6 +87,7 @@ const TestPage = () => {
 
             <div className='col-span-2'>
               <CoreForm.DynamicFields
+                viewAs='kanban'
                 title='Ready For Delivery'
                 form={form as any}
                 fieldName='new_challan_entries'
@@ -97,6 +98,9 @@ const TestPage = () => {
                   watch: form.watch,
                 })}
                 fields={newFields}
+                handleAdd={() => {
+                  alert('Add new entry');
+                }}
               />
             </div>
           </div>
