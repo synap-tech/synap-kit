@@ -2,6 +2,7 @@ import type { CheckboxProps } from '@radix-ui/react-checkbox';
 import type { RadioGroupProps } from '@radix-ui/react-radio-group';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import type { OTPInputProps } from 'input-otp';
+import type { required } from 'node_modules/zod/v4/core/util.d.cts';
 import type { DayPickerProps } from 'react-day-picker';
 import type { DropzoneOptions } from 'react-dropzone';
 import type {
@@ -29,6 +30,8 @@ interface IFieldProps {
   optional?: boolean;
   disableLabel?: boolean;
   disabled?: boolean;
+  info?: string;
+  required?: boolean;
 }
 
 export interface FormInputProps extends IFieldProps, InputProps {
@@ -135,6 +138,8 @@ export type FormOtpProps = Omit<OTPInputProps, 'children'> & {
   disableLabel?: boolean;
   disabled?: boolean;
   labelClassName?: string;
+  required?: boolean;
+  info?: string;
 };
 
 export interface FormDatePickerProps extends IFieldProps {

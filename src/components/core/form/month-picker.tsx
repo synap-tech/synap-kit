@@ -14,15 +14,12 @@ import type {
 } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { MonthPicker } from '@/components/ui/month-picker';
 
 import { cn } from '@/lib/utils';
+
+import CormFormLabel from './label';
 
 export default function MonthPickerPopover({
   minDate,
@@ -33,6 +30,8 @@ export default function MonthPickerPopover({
   disableLabel,
   field,
   disabled = false,
+  required,
+  info,
 }: {
   minDate?: Date;
   maxDate?: Date;
@@ -44,18 +43,20 @@ export default function MonthPickerPopover({
   fieldState: ControllerFieldState;
   formState: UseFormStateReturn<any>;
   disabled?: boolean;
+  required?: boolean;
+  info?: string;
 }) {
   const [open, setOpen] = useState(false);
   return (
     <FormItem className='space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>

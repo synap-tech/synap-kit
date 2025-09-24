@@ -4,12 +4,7 @@ import { Calendar as CalendarIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import {
   Popover,
   PopoverContent,
@@ -19,6 +14,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 import { cn } from '@/lib/utils';
 
+import CormFormLabel from './label';
 import type { FormDatePickerProps } from './types';
 
 const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
@@ -31,6 +27,8 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
   calendarProps,
   disabled = false,
   displayFormat = 'dd/MM/yyyy hh:mm aa',
+  required,
+  info,
 }) => {
   function handleTimeChange(type: 'hour' | 'minute' | 'ampm', value: string) {
     const currentDate = field.value || new Date();
@@ -58,13 +56,13 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
   return (
     <FormItem className='space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
 
       <Popover>
@@ -72,7 +70,7 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
           <FormControl>
             <Button
               type='button'
-              variant={'gradient'}
+              variant={'form'}
               className={cn(
                 'h-10 w-full text-left font-normal transition-none active:scale-100',
                 !field.value && 'text-muted-foreground',
@@ -83,7 +81,7 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
               {field.value ? (
                 format(field.value, displayFormat)
               ) : (
-                <span>DD/MM/YYYY hh:mm aa</span>
+                <span>{displayFormat}</span>
               )}
               <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
             </Button>
@@ -97,7 +95,6 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
               mode='single'
               selected={field.value ? new Date(field.value) : new Date()}
               onSelect={(selected, triggerDate) => {
-                console.log({ selected });
                 if (!disabled) {
                   field.onChange(formatDate(triggerDate as Date));
                 }

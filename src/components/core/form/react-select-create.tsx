@@ -6,16 +6,12 @@ import { isArray } from 'lodash-es';
 
 import useAuth from '@/hooks/useAuth';
 
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import ReactSelectCreatable from '@/components/ui/react-select/react-select-creatable';
 
 import nanoid from '@/lib/nanoid';
 
+import CormFormLabel from './label';
 import type { FormReactSelectProps, IFormSelectOption } from './types';
 
 export interface IReactSelectCreateProps extends FormReactSelectProps {
@@ -50,15 +46,21 @@ const FormReactSelectCreate: React.FC<IReactSelectCreateProps> = ({
   apiUrl,
   postData,
   extraPostData,
+  required,
+  subLabel,
+  info,
 }) => {
   const { user } = useAuth();
   return (
     <FormItem className='w-full space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          {label || field.name.split('_').join(' ')}{' '}
-          {optional ? <span className='text-xs'>(Optional)</span> : ''}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <FormControl>
         <ReactSelectCreatable

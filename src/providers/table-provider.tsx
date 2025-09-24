@@ -82,6 +82,7 @@ export interface ITableContext<TData> {
   actions: ITableAction<TData>[];
   childrenInsideTable?: boolean | null;
   extraHeader?: React.ReactNode;
+  info?: string;
 }
 
 export const TableContext = createContext({} as ITableContext<any>);
@@ -117,6 +118,7 @@ export interface ITableProviderProps<TData, TValue> {
   leftColumnPinning?: string[];
   childrenInsideTable?: boolean | null;
   extraHeader?: React.ReactNode;
+  info?: string;
 }
 
 function TableProvider<TData, TValue>({
@@ -148,6 +150,7 @@ function TableProvider<TData, TValue>({
   leftColumnPinning = [],
   childrenInsideTable = null,
   extraHeader,
+  info,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -252,6 +255,7 @@ function TableProvider<TData, TValue>({
       actions,
       childrenInsideTable,
       extraHeader,
+      info,
     }),
     [
       title,
@@ -279,6 +283,7 @@ function TableProvider<TData, TValue>({
       actions,
       childrenInsideTable,
       extraHeader,
+      info,
     ]
   );
 

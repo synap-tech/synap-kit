@@ -1,14 +1,10 @@
 import { isArray } from 'lodash-es';
 
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import ReactSelect from '@/components/ui/react-select';
 import { Skeleton } from '@/components/ui/skeleton';
 
+import CormFormLabel from './label';
 import type { FormReactSelectProps, IFormSelectOption } from './types';
 
 const FormReactSelect: React.FC<FormReactSelectProps> = ({
@@ -23,14 +19,20 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
   menuPortalTarget,
   valueType = 'string',
   isLoading = false,
+  required,
+  info,
+  subLabel,
 }) => {
   return (
     <FormItem className='w-full space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          {label || field.name.split('_').join(' ')}{' '}
-          {optional ? <span className='text-xs'>(Optional)</span> : ''}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <FormControl>
         {isLoading ? (

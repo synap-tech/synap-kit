@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 import { cn } from '@/lib/utils';
 
+import CormFormLabel from './label';
 import type { FormRadioProps } from './types';
 
 const FormRadio: React.FC<FormRadioProps> = ({
@@ -21,17 +22,19 @@ const FormRadio: React.FC<FormRadioProps> = ({
   value,
   onValueChange,
   options,
+  required,
+  info,
 }) => {
   return (
     <FormItem className='flex flex-col gap-y-1'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <FormControl className=''>
         <RadioGroup

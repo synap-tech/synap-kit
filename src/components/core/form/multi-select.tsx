@@ -1,11 +1,7 @@
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { MultiSelect } from '@/components/ui/multi-select';
 
+import CormFormLabel from './label';
 import type { FormMultiSelectProps } from './types';
 
 const FormMultiSelect: React.FC<FormMultiSelectProps> = ({
@@ -16,14 +12,20 @@ const FormMultiSelect: React.FC<FormMultiSelectProps> = ({
   options,
   isDisabled = false,
   disableLabel,
+  subLabel,
+  required,
+  info,
 }) => {
   return (
     <FormItem className='w-full space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          {label || field.name.split('_').join(' ')}{' '}
-          {optional ? <span className='text-xs'>(Optional)</span> : ''}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <FormControl>
         <MultiSelect

@@ -1,9 +1,4 @@
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import {
   Select,
   SelectContent,
@@ -13,6 +8,7 @@ import {
 } from '@/components/ui/select';
 import { Skeleton } from '@/components/ui/skeleton';
 
+import CormFormLabel from './label';
 import type { FormSelectProps } from './types';
 
 const FormSelect: React.FC<FormSelectProps> = ({
@@ -26,14 +22,20 @@ const FormSelect: React.FC<FormSelectProps> = ({
   valueType = 'string',
   isLoading = false,
   onValueChange,
+  required,
+  info,
+  subLabel,
 }) => {
   return (
     <FormItem className='w-full space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          {label || field.name.split('_').join(' ')}{' '}
-          {optional ? <span className='text-xs'>(Optional)</span> : ''}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <FormControl>
         {isLoading ? (

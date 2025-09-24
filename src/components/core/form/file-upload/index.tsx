@@ -5,14 +5,10 @@ import { type Accept, useDropzone } from 'react-dropzone';
 import { useFormContext } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
+import CormFormLabel from '../label';
 import type { FormFileUploadProps } from '../types';
 import { DocumentPreview, ImagePreview, VideoPreview } from './previews';
 import AllPreview from './previews/all';
@@ -29,6 +25,8 @@ const FormFileUpload: React.FC<FormFileUploadProps> = ({
   fileType = 'image',
   errorText = 'Image must be less than 1MB and of type png, jpg, or jpeg',
   baseUrl,
+  required,
+  info,
 }) => {
   const form = useFormContext();
 
@@ -96,13 +94,13 @@ const FormFileUpload: React.FC<FormFileUploadProps> = ({
   return (
     <FormItem className='relative flex w-full flex-col space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
 
       {preview && (

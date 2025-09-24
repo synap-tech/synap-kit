@@ -1,12 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import { buttonVariants } from '@/components/ui/button';
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
 import {
@@ -19,6 +14,7 @@ import {
 
 import { cn } from '@/lib/utils';
 
+import CormFormLabel from './label';
 import type { FormJoinInputSelectProps } from './types';
 
 const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
@@ -31,18 +27,23 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
   className = 'border-0 w-8 bg-transparent',
   icon,
   selectField,
+  disableLabel,
+  required,
+  info,
 }) => {
   const { register, getValues, setValue } = useFormContext();
 
   return (
     <FormItem className='w-full space-y-1.5'>
-      <FormLabel className='flex items-center justify-between capitalize'>
-        <span>
-          {label || field.name.replace('_', ' ')}{' '}
-          {optional ? <span className='text-xs'>(Optional)</span> : ''}
-        </span>
-        {subLabel && <span className='text-xs'>{subLabel}</span>}
-      </FormLabel>
+      {!disableLabel && (
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
+      )}
       <div className='bg-base flex h-10 items-center overflow-hidden rounded-md border border-input p-0.5'>
         <FormControl className='h-8 flex-1'>
           {type === 'password' ? (

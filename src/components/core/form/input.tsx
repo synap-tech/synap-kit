@@ -1,14 +1,10 @@
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
 
 import { cn } from '@/lib/utils';
 
+import CormFormLabel from './label';
 import { type FormInputProps } from './types';
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -22,17 +18,19 @@ const FormInput: React.FC<FormInputProps> = ({
   icon,
   disabled = false,
   disableLabel,
+  required,
+  info,
 }) => {
   return (
     <FormItem className='w-full space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
 
       <FormControl>

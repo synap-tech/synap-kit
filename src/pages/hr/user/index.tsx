@@ -186,6 +186,7 @@ const User = () => {
     >
       <TableProvider
         title={pageInfo.getTitle()}
+        info='Create new user'
         columns={columns}
         data={data ?? []}
         isLoading={isLoading}

@@ -3,12 +3,7 @@ import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import {
   Popover,
   PopoverContent,
@@ -18,6 +13,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 import { cn } from '@/lib/utils';
 
+import CormFormLabel from './label';
 import type { FormDatePickerProps } from './types';
 
 const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
@@ -28,6 +24,8 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
   className,
   disableLabel,
   disabled = false,
+  required,
+  info,
 }) => {
   function handleTimeChange(type: 'hour' | 'minute' | 'ampm', value: string) {
     const currentDate = field.value || new Date();
@@ -55,13 +53,13 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
   return (
     <FormItem className='space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
 
       <Popover>

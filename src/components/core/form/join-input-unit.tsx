@@ -1,15 +1,11 @@
 import { buttonVariants } from '@/components/ui/button';
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
 
 import { cn } from '@/lib/utils';
 
+import CormFormLabel from './label';
 import type { FormJoinInputUnitProps } from './types';
 
 const FormJoinInputUnit: React.FC<FormJoinInputUnitProps> = ({
@@ -24,17 +20,19 @@ const FormJoinInputUnit: React.FC<FormJoinInputUnitProps> = ({
   unit,
   disableLabel,
   disabled = false,
+  required,
+  info,
 }) => {
   return (
     <FormItem className='w-full space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <div className='bg-base flex h-10 items-center overflow-hidden rounded-md border border-input p-0.5'>
         <FormControl className='h-8 flex-1'>

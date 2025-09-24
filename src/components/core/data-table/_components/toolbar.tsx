@@ -76,6 +76,7 @@ export function TableToolbar() {
   const {
     title,
     subtitle,
+    info,
     table,
     toolbarOptions,
     handleCreate,
@@ -404,7 +405,7 @@ export function TableToolbar() {
           'mb-4 flex w-full flex-col justify-between gap-2  lg:flex-row lg:items-end'
         )}
       >
-        <TableTitle title={title} subtitle={subtitle} />
+        <TableTitle title={title} subtitle={subtitle} info={info} />
       </div>
       {toolbarOptions === 'none' ? null : (
         <div className={cn('flex items-center justify-between')}>

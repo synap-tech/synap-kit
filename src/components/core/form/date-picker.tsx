@@ -6,12 +6,7 @@ import { CalendarIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import {
   Popover,
   PopoverContent,
@@ -20,6 +15,7 @@ import {
 
 import { cn } from '@/lib/utils';
 
+import CormFormLabel from './label';
 import type { FormDatePickerProps } from './types';
 
 const FormDatePicker: React.FC<FormDatePickerProps> = ({
@@ -30,20 +26,22 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
   className,
   disableLabel,
   calendarProps,
-  disabled = false, // New prop to disable the field
+  disabled = false,
+  required,
+  info,
 }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <FormItem className='space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          <span>
-            {label || field.name.replace('_', ' ')}{' '}
-            {optional ? <span className='text-xs'>(Optional)</span> : ''}
-          </span>
-          {subLabel && <span className='text-xs'>{subLabel}</span>}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
 
       <Popover open={open} onOpenChange={setOpen}>
@@ -51,7 +49,7 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
           <FormControl>
             <Button
               type='button'
-              variant={'gradient'}
+              variant={'form'}
               className={cn(
                 'h-10 w-full text-left font-normal transition-none active:scale-100',
                 !field.value && 'text-muted-foreground',

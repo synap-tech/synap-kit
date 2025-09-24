@@ -4,13 +4,9 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.bubble.css';
 import 'react-quill-new/dist/quill.snow.css';
 
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
 
+import CormFormLabel from '../label';
 import type { FormTextareaProps } from '../types';
 
 const FormTextarea: React.FC<FormTextareaProps> = ({
@@ -18,14 +14,20 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
   label,
   optional = false,
   disableLabel,
+  subLabel,
+  required,
+  info,
 }) => {
   return (
     <FormItem className='w-full space-y-1.5'>
       {!disableLabel && (
-        <FormLabel className='flex items-center justify-between capitalize'>
-          {label || field.name}{' '}
-          {optional ? <span className='text-xs'>(Optional)</span> : ''}
-        </FormLabel>
+        <CormFormLabel
+          label={label}
+          subLabel={subLabel}
+          optional={optional}
+          required={required}
+          info={info}
+        />
       )}
       <FormControl>
         <ReactQuill value={field.value} onChange={field.onChange} />
