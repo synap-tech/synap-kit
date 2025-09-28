@@ -5,15 +5,18 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 
+import { cn } from '@/lib/utils';
+
 const TooltipWrapper: React.FC<{
   children: React.ReactNode;
   message: string;
-}> = ({ children, message }) => {
+  className?: string;
+}> = ({ children, message, className }) => {
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent align='center'>
+        <TooltipContent className={cn(className)} align='center'>
           <p>{message}</p>
         </TooltipContent>
       </Tooltip>

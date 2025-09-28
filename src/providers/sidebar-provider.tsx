@@ -1,6 +1,5 @@
 import { createContext, useMemo, useState } from 'react';
 
-import { privateRoutesClone } from '@/routes/private';
 import { type IRoute } from '@/types';
 import { useLocation } from 'react-router-dom';
 

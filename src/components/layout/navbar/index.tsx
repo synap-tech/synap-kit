@@ -1,19 +1,20 @@
 import { useLocation } from 'react-router-dom';
 
 import useApp from '@/hooks/useApp';
-import useLayout from '@/hooks/useLayout';
+
+// import useLayout from '@/hooks/useLayout';
 
 import BrandLogo from '@/components/ui/brand-logo';
 import GlobalBreadcrumbs from '@/components/ui/global-breadcrumbs';
 
 import { cn } from '@/lib/utils';
 
-import SidebarCollapse from '../sidebar/collapse';
+// import SidebarCollapse from '../sidebar/collapse';
 import SidebarMobileToggle from '../sidebar/mobile/toggle';
 
 const Navbar = () => {
   const { companyTitle, navbarActions } = useApp();
-  const { isCollapsed, setIsCollapsed } = useLayout();
+  // const { isCollapsed, setIsCollapsed } = useLayout();
   const { pathname } = useLocation();
   const homePage = pathname === '/';
   return (
@@ -39,12 +40,12 @@ const Navbar = () => {
           )}
         >
           <div className={cn('flex items-center gap-4 ')}>
-            <div
+            {/* <div
               className='hidden w-fit cursor-pointer items-center md:flex border-r pr-4'
               onClick={() => setIsCollapsed((prev) => !prev)}
             >
               <SidebarCollapse isCollapsed={isCollapsed} />
-            </div>
+            </div> */}
             {!homePage && <GlobalBreadcrumbs />}
           </div>
 

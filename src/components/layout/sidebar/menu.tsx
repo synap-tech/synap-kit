@@ -10,7 +10,7 @@ const SidebarMenu = () => {
   if (!routes || routes.length === 0)
     return (
       <div className='h-full flex-1 space-y-1 overflow-auto px-4'>
-        <p className='mt-4 flex items-center justify-center gap-1.5 text-center text-sm text-foreground'>
+        <p className='mt-4 flex items-center justify-center gap-1.5 text-center text-sm text-primary-foreground'>
           <File className='size-4' />
           No pages found.
         </p>
