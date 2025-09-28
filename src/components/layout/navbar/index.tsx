@@ -5,12 +5,14 @@ import useApp from '@/hooks/useApp';
 // import useLayout from '@/hooks/useLayout';
 
 import BrandLogo from '@/components/ui/brand-logo';
+import { Button } from '@/components/ui/button';
 import GlobalBreadcrumbs from '@/components/ui/global-breadcrumbs';
 
 import { cn } from '@/lib/utils';
 
 // import SidebarCollapse from '../sidebar/collapse';
 import SidebarMobileToggle from '../sidebar/mobile/toggle';
+import Settings from './settings';
 
 const Navbar = () => {
   const { companyTitle, navbarActions } = useApp();
@@ -49,28 +51,28 @@ const Navbar = () => {
             {!homePage && <GlobalBreadcrumbs />}
           </div>
 
-          {navbarActions && navbarActions.length > 0 && (
-            <div className='flex items-center gap-4'>
-              {navbarActions
-                .sort((a, b) => a.order - b.order)
-                .map((item, index) => {
-                  return (
-                    <div key={index}>
-                      {item.component}
-                      {item.addSeparator && (
-                        <span className='block h-4 w-[1px] bg-border' />
-                      )}
-                    </div>
-                  );
-                })}
-              {/* <Button size={'icon'} variant='ghost'>
-                <Expand className='size-6' />
-              </Button>
+          <div className='flex items-center gap-4'>
+            {navbarActions && navbarActions.length > 0 && (
+              <div className='flex items-center gap-4'>
+                {navbarActions
+                  .sort((a, b) => a.order - b.order)
+                  .map((item, index) => {
+                    return (
+                      <div key={index}>
+                        {item.component}
+                        {item.addSeparator && (
+                          <span className='block h-4 w-[1px] bg-border' />
+                        )}
+                      </div>
+                    );
+                  })}
 
-              <span className='block h-4 w-[1px] bg-border' />
+                {/* <span className='block h-4 w-[1px] bg-border' />
               <ProfileAvatar /> */}
-            </div>
-          )}
+              </div>
+            )}
+            <Settings />
+          </div>
         </div>
       </div>
     </div>

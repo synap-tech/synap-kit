@@ -12,6 +12,7 @@ import useGenerateFieldDefs from './useGenerateFieldDefs';
 const schema = z.object({
   name: z.string(),
   customer_uuid: z.string(),
+  content: z.string(),
   new_challan_entries: z.array(
     z.object({
       is_checked: z.boolean(),
@@ -64,6 +65,13 @@ const TestForm = () => {
                 control={form.control}
                 name='name'
                 render={(props) => <CoreForm.Input {...props} />}
+              />
+              <FormField
+                control={form.control}
+                name='content'
+                render={(props) => (
+                  <CoreForm.RichTextEditor label='Content' {...props} />
+                )}
               />
               <FormField
                 control={form.control}

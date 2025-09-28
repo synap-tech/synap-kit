@@ -6,6 +6,9 @@
 @custom-variant dark (&:where(data-theme=dark, [data-theme=dark] *));
 
 @theme {
+  --font-size: 0.875rem;
+  --accent-color: hsl(183 100% 36%);
+
   --font-inter: 'Inter', sans-serif;
   --font-geist: 'Geist', sans-serif;
 
@@ -31,9 +34,9 @@
     @apply border-border;
   }
 
-  html {
-    font-size: 0.875rem;
-  }
+  /* html {
+    font-size: var(--font-size);
+  } */
 }
 
 @utility bg-gradient {

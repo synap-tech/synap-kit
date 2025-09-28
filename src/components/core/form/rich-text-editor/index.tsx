@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ReactQuill from 'react-quill-new';
-import 'react-quill-new/dist/quill.bubble.css';
 import 'react-quill-new/dist/quill.snow.css';
 
 import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
@@ -30,7 +29,11 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
         />
       )}
       <FormControl>
-        <ReactQuill value={field.value} onChange={field.onChange} />
+        <ReactQuill
+          theme='snow'
+          value={field.value}
+          onChange={field.onChange}
+        />
       </FormControl>
       <FormMessage />
     </FormItem>
