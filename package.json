@@ -114,7 +114,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
     "check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
     "preview": "vite preview",
-    "deploy": "git pull && npm i && npm run build"
+    "deploy": "git pull && npm i && npm run build && npm link"
   },
   "peerDependencies": {
     "@handsontable/react": "14.6.1",
