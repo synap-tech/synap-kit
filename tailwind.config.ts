@@ -59,7 +59,7 @@ export default {
         },
 
         accent: {
-          DEFAULT: 'var(--accent-color)',
+          DEFAULT: 'var(--color-accent)',
           foreground: colors.ACCENT_FOREGROUND,
         },
 

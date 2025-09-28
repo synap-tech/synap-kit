@@ -5,7 +5,6 @@ import useApp from '@/hooks/useApp';
 // import useLayout from '@/hooks/useLayout';
 
 import BrandLogo from '@/components/ui/brand-logo';
-import { Button } from '@/components/ui/button';
 import GlobalBreadcrumbs from '@/components/ui/global-breadcrumbs';
 
 import { cn } from '@/lib/utils';

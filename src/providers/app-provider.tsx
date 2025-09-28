@@ -1,7 +1,10 @@
-import { createContext, useMemo } from 'react';
+import { createContext, useEffect, useMemo } from 'react';
 
+import { colors } from '@/config/tailwind';
 import type { INavAction, IRoute } from '@/types';
 import { Toaster } from 'sonner';
+
+import { useLocalStorage } from '@/hooks/useStorage';
 
 import { Toast } from '@/components/ui/toast';
 
@@ -40,6 +43,21 @@ const AppProvider: React.FC<{
     }),
     [apiBaseUrl, imageApiBaseUrl, sidebarRoutes, companyTitle, navbarActions]
   );
+
+  const [fontSize] = useLocalStorage('fontSize', '13');
+  const [fontSizeUnit] = useLocalStorage('fontSizeUnit', 'px');
+  const [accentColor] = useLocalStorage('accentColor', colors.ACCENT);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--font-size',
+      `${fontSize}${fontSizeUnit}`
+    );
+    document.documentElement.style.setProperty(
+      '--color-accent',
+      `${accentColor}`
+    );
+  }, [fontSize, fontSizeUnit, accentColor]);
 
   return (
     <AppContext.Provider value={value}>
