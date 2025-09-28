@@ -5,7 +5,7 @@ import SidebarMenu from './menu';
 
 const SidebarContent = () => {
   return (
-    <aside className={cn('flex h-full flex-col ')}>
+    <aside className={cn('flex h-screen flex-col overflow-hidden')}>
       <SidebarHeader />
       <SidebarMenu />
       {/* <div className='p-4'>
