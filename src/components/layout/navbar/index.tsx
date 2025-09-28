@@ -53,14 +53,14 @@ const Navbar = () => {
             <div className='flex items-center gap-4'>
               {navbarActions
                 .sort((a, b) => a.order - b.order)
-                .map((item) => {
+                .map((item, index) => {
                   return (
-                    <>
+                    <div key={index}>
                       {item.component}
                       {item.addSeparator && (
                         <span className='block h-4 w-[1px] bg-border' />
                       )}
-                    </>
+                    </div>
                   );
                 })}
               {/* <Button size={'icon'} variant='ghost'>
