@@ -1,3 +1,4 @@
+import { FILE } from '@/utils/validators';
 import { useFieldArray } from 'react-hook-form';
 import z from 'zod';
 
@@ -13,6 +14,7 @@ const schema = z.object({
   name: z.string(),
   customer_uuid: z.string(),
   content: z.string(),
+  banner: FILE,
   new_challan_entries: z.array(
     z.object({
       is_checked: z.boolean(),
@@ -66,11 +68,34 @@ const TestForm = () => {
                 name='name'
                 render={(props) => <CoreForm.Input {...props} />}
               />
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name='content'
                 render={(props) => (
                   <CoreForm.RichTextEditor label='Content' {...props} />
+                )}
+              /> */}
+              <FormField
+                control={form.control}
+                name='banner'
+                render={(props) => (
+                  <CoreForm.FileUpload
+                    baseUrl='/'
+                    label='Banner'
+                    // render={({ preview }) => (
+                    //   <div>
+                    //     {preview && (
+                    //       <img src={preview as string} alt='Preview' />
+                    //     )}
+                    //     {!preview && (
+                    //       <div className='border h-9 rounded-md p-2 text-sm '>
+                    //         Please upload an image
+                    //       </div>
+                    //     )}
+                    //   </div>
+                    // )}
+                    {...props}
+                  />
                 )}
               />
               <FormField

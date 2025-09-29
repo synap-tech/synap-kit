@@ -19,7 +19,6 @@ import TableDateRange from '../../data-table/_components/date-range';
 import TableExportCSV from '../../data-table/_components/export-csv';
 import TableRefresh from '../../data-table/_components/refresh';
 import TableTitle from '../../data-table/_components/title';
-import { ToolbarComponent } from '../../data-table/_components/toolbar';
 import { TableViewOptions } from '../../data-table/_components/view-options';
 import TableFilter from './filter';
 import PinFilters from './filter/pin-filters';

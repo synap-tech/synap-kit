@@ -121,6 +121,19 @@ export interface FormFileUploadProps extends IFieldProps, InputProps {
   errorText?: string;
   small?: boolean;
   previewClassName?: string;
+  render?: ({
+    preview,
+    setPreview,
+    field,
+    inputRef,
+  }: {
+    preview: string | ArrayBuffer | null;
+    setPreview: React.Dispatch<
+      React.SetStateAction<string | ArrayBuffer | null>
+    >;
+    field: ControllerRenderProps<any, any>;
+    inputRef: React.RefObject<HTMLInputElement>;
+  }) => React.ReactNode;
 }
 
 export interface FormSwitchProps extends IFieldProps, CheckboxProps {

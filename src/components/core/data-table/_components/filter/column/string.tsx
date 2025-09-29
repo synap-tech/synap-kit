@@ -4,10 +4,7 @@ import DebouncedInput from '@/components/ui/debounce-input';
 
 import type { IFilterProps } from '../../../types';
 
-function StringFilter<TData, TValue>({
-  column,
-  showLabel,
-}: IFilterProps<TData, TValue>) {
+function StringFilter<TData, TValue>({ column }: IFilterProps<TData, TValue>) {
   const columnFilterValue = column.getFilterValue();
 
   const sortedUniqueValues = useMemo(
@@ -16,14 +13,7 @@ function StringFilter<TData, TValue>({
   );
 
   return (
-    <div className='flex flex-col gap-1'>
-      {showLabel && (
-        <label className='text-sm font-medium capitalize'>
-          {typeof column.columnDef.header === 'string'
-            ? column.columnDef.header
-            : column.id?.split('_').join(' ')}
-        </label>
-      )}
+    <div>
       <datalist id={column.id + 'list'}>
         {sortedUniqueValues.slice(0, 10).map((value, index) => (
           <option

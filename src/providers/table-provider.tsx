@@ -1,4 +1,10 @@
-import { createContext, useLayoutEffect, useMemo, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import type {
   ITableAction,
@@ -83,6 +89,11 @@ export interface ITableContext<TData> {
   childrenInsideTable?: boolean | null;
   extraHeader?: React.ReactNode;
   info?: string;
+
+  pinnedColumns: string[];
+  addPinnedColumn: (columnId: string) => void;
+  removePinnedColumn: (columnId: string) => void;
+  resetPinnedColumns: () => void;
 }
 
 export const TableContext = createContext({} as ITableContext<any>);
@@ -119,6 +130,8 @@ export interface ITableProviderProps<TData, TValue> {
   childrenInsideTable?: boolean | null;
   extraHeader?: React.ReactNode;
   info?: string;
+
+  defaultPinnedColumns?: string[];
 }
 
 function TableProvider<TData, TValue>({
@@ -151,8 +164,22 @@ function TableProvider<TData, TValue>({
   childrenInsideTable = null,
   extraHeader,
   info,
+  defaultPinnedColumns,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
+
+  const [pinnedColumns, setPinnedColumns] = useState<string[]>(
+    defaultPinnedColumns || []
+  );
+  const addPinnedColumn = useCallback((columnId: string) => {
+    setPinnedColumns((prev) => [...prev, columnId]);
+  }, []);
+  const removePinnedColumn = useCallback((columnId: string) => {
+    setPinnedColumns((prev) => prev.filter((id) => id !== columnId));
+  }, []);
+  const resetPinnedColumns = useCallback(() => {
+    setPinnedColumns([]);
+  }, []);
 
   // react table hook, and other codes...
   const tableData = useMemo(() => data, [data]);
@@ -256,6 +283,10 @@ function TableProvider<TData, TValue>({
       childrenInsideTable,
       extraHeader,
       info,
+      pinnedColumns,
+      addPinnedColumn,
+      removePinnedColumn,
+      resetPinnedColumns,
     }),
     [
       title,
@@ -284,6 +315,10 @@ function TableProvider<TData, TValue>({
       childrenInsideTable,
       extraHeader,
       info,
+      pinnedColumns,
+      addPinnedColumn,
+      removePinnedColumn,
+      resetPinnedColumns,
     ]
   );
 

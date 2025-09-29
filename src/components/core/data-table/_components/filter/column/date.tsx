@@ -8,7 +8,7 @@ import type { IFilterProps } from '../../../types';
 
 function DateFilter<TData, TValue>({
   column,
-  showLabel,
+
   datePickerClassName,
 }: IFilterProps<TData, TValue>) {
   const columnFilterValue = column.getFilterValue() as [Date, Date];
@@ -28,27 +28,18 @@ function DateFilter<TData, TValue>({
   const toDate = columnFilterValue?.[1] || maxDate;
 
   return (
-    <div className='flex flex-col gap-1'>
-      {showLabel && (
-        <label className='text-sm font-medium capitalize'>
-          {typeof column.columnDef.header === 'string'
-            ? column.columnDef.header
-            : column.id?.split('_').join(' ')}
-        </label>
-      )}
-      <DateRangePicker
-        initialDateFrom={isValid(fromDate) ? fromDate : undefined}
-        initialDateTo={isValid(toDate) ? toDate : undefined}
-        align={'start'}
-        onUpdate={({ range }) => {
-          column?.setFilterValue((old: [Date, Date]) => [
-            new Date(range.from),
-            range.to ? new Date(range.to) : old[1],
-          ]);
-        }}
-        className={datePickerClassName}
-      />
-    </div>
+    <DateRangePicker
+      initialDateFrom={isValid(fromDate) ? fromDate : undefined}
+      initialDateTo={isValid(toDate) ? toDate : undefined}
+      align={'start'}
+      onUpdate={({ range }) => {
+        column?.setFilterValue((old: [Date, Date]) => [
+          new Date(range.from),
+          range.to ? new Date(range.to) : old[1],
+        ]);
+      }}
+      className={datePickerClassName}
+    />
   );
 }
 

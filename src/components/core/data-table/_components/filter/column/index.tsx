@@ -1,4 +1,13 @@
 import type { Column } from '@tanstack/react-table';
+import { Pin } from 'lucide-react';
+import { toast } from 'sonner';
+
+import useTable from '@/hooks/useTable';
+
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+
+import { cn } from '@/lib/utils';
 
 import DateFilter from './date';
 import NumberFilter from './number';
@@ -16,6 +25,7 @@ function TableColumnFilter<T>({
   column,
   showLabel = false,
 }: TableColumnFilterProps<T>) {
+  const { pinnedColumns, addPinnedColumn, removePinnedColumn } = useTable();
   const filterVariant = column.columnDef.meta?.filterVariant;
 
   // Render the appropriate filter component based on the filter variant
@@ -40,7 +50,53 @@ function TableColumnFilter<T>({
     }
   };
 
-  return renderFilter();
+  const isPinned = pinnedColumns.includes(column.id);
+
+  function handlePinning(id: string) {
+    const isAlreadyPinned = pinnedColumns.some((filter) => filter === id);
+
+    if (isAlreadyPinned) {
+      removePinnedColumn(id);
+      toast.warning(`${id} has been unpinned`, {
+        position: 'bottom-right',
+      });
+    } else {
+      addPinnedColumn(id);
+      toast.success(`${id} has been pinned`, {
+        position: 'bottom-right',
+      });
+    }
+  }
+
+  return (
+    <div className='flex flex-col gap-0.5'>
+      <div className='flex items-center justify-between gap-2'>
+        {showLabel && (
+          <Label id={column.id}>
+            {typeof column.columnDef.header === 'string'
+              ? column.columnDef.header
+              : column.id?.split('_').join(' ')}
+          </Label>
+        )}
+
+        <Button
+          onClick={() => handlePinning(column.id)}
+          className='size-8 rounded-full p-0'
+          variant={isPinned ? 'ghost-destructive' : 'ghost'}
+          size={'icon'}
+        >
+          <Pin
+            fill={isPinned ? 'currentColor' : 'none'}
+            className={cn(
+              'size-4 transition-transform duration-100 ease-in',
+              isPinned ? 'rotate-45 text-destructive' : 'text-muted-foreground'
+            )}
+          />
+        </Button>
+      </div>
+      {renderFilter()}
+    </div>
+  );
 }
 
 export default TableColumnFilter;

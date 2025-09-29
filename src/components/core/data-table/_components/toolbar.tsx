@@ -37,6 +37,7 @@ import TableExportCSV from './export-csv';
 import TableAllFilter from './filter';
 import TableAdvanceFilters from './filter/advance';
 import { TableFacetedFilter } from './filter/faceted';
+import PinnedColumns from './filter/pinned-columns';
 import TableRefresh from './refresh';
 import { TableRowDelete } from './row/delete';
 import TableTitle from './title';
@@ -426,6 +427,8 @@ export function TableToolbar() {
           />
         </div>
       )}
+
+      <PinnedColumns />
     </div>
   );
 }
