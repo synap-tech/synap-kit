@@ -22,7 +22,7 @@ const FormInput: React.FC<FormInputProps> = ({
   info,
 }) => {
   return (
-    <FormItem className='w-full space-y-1.5'>
+    <FormItem className='w-full space-y-1.5 '>
       {!disableLabel && (
         <CormFormLabel
           label={label}

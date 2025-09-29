@@ -7,7 +7,7 @@ export const classNames = (
 ): ClassNamesConfig => ({
   control: ({ isFocused, isDisabled }) =>
     cn(
-      'bg-background min-h-10 rounded-md border border-border px-3 py-2 text-sm text-foreground',
+      'bg-background h-10 rounded-md border border-border px-3 py-2 text-sm text-foreground m-0',
       isFocused && 'outline outline-2 outline-offset-2 outline-secondary',
       isDisabled &&
         'cursor-not-allowed border-destructive/50 !from-destructive/5 !to-destructive/5 text-destructive',
