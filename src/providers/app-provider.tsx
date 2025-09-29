@@ -45,19 +45,15 @@ const AppProvider: React.FC<{
   );
 
   const [fontSize] = useLocalStorage('fontSize', '13');
-  const [fontSizeUnit] = useLocalStorage('fontSizeUnit', 'px');
   const [accentColor] = useLocalStorage('accentColor', colors.ACCENT);
 
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      '--font-size',
-      `${fontSize}${fontSizeUnit}`
-    );
+    document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
     document.documentElement.style.setProperty(
       '--color-accent',
       `${accentColor}`
     );
-  }, [fontSize, fontSizeUnit, accentColor]);
+  }, [fontSize, accentColor]);
 
   return (
     <AppContext.Provider value={value}>

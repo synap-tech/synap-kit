@@ -324,7 +324,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
       size={'sm'}
       className={cn(
         'flex w-full justify-start text-left',
-        isSelected && 'pointer-events-none bg-primary text-primary-foreground'
+        isSelected && 'pointer-events-none bg-accent text-accent-foreground'
       )}
       variant='ghost'
       onClick={() => {

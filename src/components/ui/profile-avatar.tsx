@@ -1,4 +1,12 @@
-import { CircleUser, LogOut, Moon, Settings } from 'lucide-react';
+import { useState } from 'react';
+
+import {
+  CircleUser,
+  LogOut,
+  Moon,
+  Settings as SettingsIcon,
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import useAuth from '@/hooks/useAuth';
 
@@ -11,42 +19,55 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
+import Settings from '../layout/navbar/settings';
+
 const ProfileAvatar = () => {
-  const { logout, signed } = useAuth();
+  const { user, logout, signed } = useAuth();
+
+  const [isOpenSettings, setIsOpenSettings] = useState(false);
 
   if (!signed) return null;
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Avatar>
-          <AvatarImage src='https://github.com/shadcn.png' />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align='end' className='w-56'>
-        <DropdownMenuItem className='flex items-center justify-between'>
-          Profile
-          <CircleUser />
-        </DropdownMenuItem>
-        <DropdownMenuItem className='flex items-center justify-between'>
-          Settings
-          <Settings />
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className='flex items-center justify-between'>
-          Dark Mode
-          <Moon />
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={logout}
-          className='flex items-center justify-between'
-        >
-          Log Out
-          <LogOut />
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Avatar>
+            <AvatarImage src='https://github.com/shadcn.png' />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align='end' className='w-56'>
+          <Link to={`/profile/${user?.employee_uuid}`}>
+            <DropdownMenuItem className='flex items-center justify-between'>
+              Profile
+              <CircleUser />
+            </DropdownMenuItem>
+          </Link>
+          <DropdownMenuItem
+            onClick={() => setIsOpenSettings(true)}
+            className='flex items-center justify-between'
+          >
+            Settings
+            <SettingsIcon />
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem className='flex items-center justify-between'>
+            Dark Mode
+            <Moon />
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={logout}
+            className='flex items-center justify-between'
+          >
+            Log Out
+            <LogOut />
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <Settings open={isOpenSettings} setOpen={setIsOpenSettings} />
+    </>
   );
 };
 

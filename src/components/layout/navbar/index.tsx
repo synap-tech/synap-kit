@@ -11,7 +11,6 @@ import { cn } from '@/lib/utils';
 
 // import SidebarCollapse from '../sidebar/collapse';
 import SidebarMobileToggle from '../sidebar/mobile/toggle';
-import Settings from './settings';
 
 const Navbar = () => {
   const { companyTitle, navbarActions } = useApp();
@@ -65,12 +64,8 @@ const Navbar = () => {
                       </div>
                     );
                   })}
-
-                {/* <span className='block h-4 w-[1px] bg-border' />
-              <ProfileAvatar /> */}
               </div>
             )}
-            <Settings />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { max, min } from 'date-fns';
+import { isValid, max, min } from 'date-fns';
 
 import { DateRangePicker } from '@/components/ui/date-range-picker';
 
@@ -24,6 +24,9 @@ function DateFilter<TData, TValue>({
   const minDate = min(allDates);
   const maxDate = max(allDates);
 
+  const fromDate = columnFilterValue?.[0] || minDate;
+  const toDate = columnFilterValue?.[1] || maxDate;
+
   return (
     <div className='flex flex-col gap-1'>
       {showLabel && (
@@ -34,8 +37,8 @@ function DateFilter<TData, TValue>({
         </label>
       )}
       <DateRangePicker
-        initialDateFrom={columnFilterValue?.[0] || minDate}
-        initialDateTo={columnFilterValue?.[1] || maxDate}
+        initialDateFrom={isValid(fromDate) ? fromDate : undefined}
+        initialDateTo={isValid(toDate) ? toDate : undefined}
         align={'start'}
         onUpdate={({ range }) => {
           column?.setFilterValue((old: [Date, Date]) => [
