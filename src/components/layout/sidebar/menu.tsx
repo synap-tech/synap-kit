@@ -10,14 +10,15 @@ const SidebarMenu = () => {
   if (!routes || routes.length === 0)
     return (
       <div className='h-full flex-1 space-y-1 overflow-auto px-4'>
-        <p className='mt-4 flex items-center justify-center gap-1.5 text-center text-sm text-primary-foreground'>
+        <p className='mt-4 flex items-center justify-center gap-1.5 text-center text-sm text-foreground'>
           <File className='size-4' />
           No pages found.
         </p>
       </div>
     );
+
   return (
-    <ul className='h-full flex-1 space-y-1 overflow-auto px-4'>
+    <ul className='h-full flex-1 space-y-1 overflow-auto px-4   scrollbar-thin   scrollbar-track-layout-background scrollbar-thumb-[#8b8b8b]'>
       {routes.map((item: any, index: number) => {
         return <SidebarItem key={index} {...item} />;
       })}

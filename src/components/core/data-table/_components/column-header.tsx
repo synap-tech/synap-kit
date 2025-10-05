@@ -49,7 +49,8 @@ export function TableColumnHeader<TData, TValue>({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
-            aria-label='Sort Column'
+            title='Filter Column'
+            aria-label='Filter Column'
             variant='ghost'
             size='icon-sm'
             className='h-7 active:scale-100 '

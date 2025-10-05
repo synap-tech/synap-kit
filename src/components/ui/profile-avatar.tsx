@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-import Settings from '../layout/navbar/settings';
+import AppSettings from '../layout/navbar/app-settings';
 
 const ProfileAvatar = () => {
   const { user, logout, signed } = useAuth();
@@ -66,7 +66,7 @@ const ProfileAvatar = () => {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Settings open={isOpenSettings} setOpen={setIsOpenSettings} />
+      <AppSettings open={isOpenSettings} setOpen={setIsOpenSettings} />
     </>
   );
 };

@@ -15,6 +15,7 @@ const schema = z.object({
   customer_uuid: z.string(),
   content: z.string(),
   banner: FILE,
+  item: z.string(),
   new_challan_entries: z.array(
     z.object({
       is_checked: z.boolean(),
@@ -68,13 +69,21 @@ const TestForm = () => {
                 name='name'
                 render={(props) => <CoreForm.Input {...props} />}
               />
-              {/* <FormField
+              <FormField
                 control={form.control}
-                name='content'
+                name='item'
                 render={(props) => (
-                  <CoreForm.RichTextEditor label='Content' {...props} />
+                  <CoreForm.MultiSelect
+                    options={[
+                      {
+                        label: 'test',
+                        value: 'test',
+                      },
+                    ]}
+                    {...props}
+                  />
                 )}
-              /> */}
+              />
               <FormField
                 control={form.control}
                 name='banner'

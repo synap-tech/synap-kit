@@ -25,7 +25,7 @@ const PinnedColumns = () => {
 
   return (
     <div className='bg-base mt-4 space-y-4 rounded-md border px-4 pb-3 pt-2'>
-      <div className='flex flex-wrap gap-4'>
+      <div className='flex flex-wrap gap-2 lg:gap-4'>
         {columns.map((column, index) => (
           <TableColumnFilter key={index} column={column} showLabel />
         ))}

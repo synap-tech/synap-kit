@@ -689,7 +689,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
             onClick={handleTogglePopover}
             disabled={disabled}
             className={cn(
-              'flex p-1 rounded-md border min-h-10 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto',
+              'flex p-1 rounded-md border min-h-10 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto active:scale-100',
               autoSize ? 'w-auto' : 'w-full',
               responsiveSettings.compactMode && 'min-h-8 text-sm',
               screenSize === 'mobile' && 'min-h-12 text-base',
@@ -900,14 +900,14 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                   >
                     <div
                       className={cn(
-                        'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
+                        'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-accent/30',
                         selectedValues.length ===
                           getAllOptions().filter((opt) => !opt.disabled).length
-                          ? 'bg-primary text-primary-foreground'
+                          ? 'bg-accent/10 !text-accent-foreground'
                           : 'opacity-50 [&_svg]:invisible'
                       )}
                     >
-                      <CheckIcon className='h-4 w-4' />
+                      <CheckIcon className='h-4 w-4 text-accent' />
                     </div>
                     <span>
                       (Select All
@@ -969,13 +969,13 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                       >
                         <div
                           className={cn(
-                            'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
+                            'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-accent/30 ',
                             isSelected
-                              ? 'bg-primary text-primary-foreground'
+                              ? 'bg-accent/10 !text-accent-foreground'
                               : 'opacity-50 [&_svg]:invisible'
                           )}
                         >
-                          <CheckIcon className='h-4 w-4' />
+                          <CheckIcon className='h-4 w-4 text-accent' />
                         </div>
                         {option.icon && (
                           <option.icon className='mr-2 h-4 w-4 text-muted-foreground' />

@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@uidotdev/usehooks';
 import { SlidersHorizontal, X } from 'lucide-react';
 
 import useTable from '@/hooks/useTable';
@@ -30,8 +31,9 @@ const TableAllFilter = () => {
       <SheetTrigger asChild>
         <Button
           aria-label='Filters All Columns'
-          variant='ghost'
+          variant={'ghost'}
           size='toolbar-sm'
+          className='border lg:border-0'
         >
           <SlidersHorizontal className='size-4' />
           Filters

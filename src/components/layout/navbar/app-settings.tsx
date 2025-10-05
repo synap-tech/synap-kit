@@ -13,7 +13,7 @@ import { ButtonGroup } from '@/components/ui/button-group';
 import DebouncedInput from '@/components/ui/debounce-input';
 import { Label } from '@/components/ui/label';
 
-const Settings: React.FC<{
+const AppSettings: React.FC<{
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ open, setOpen }) => {
@@ -102,4 +102,4 @@ const Settings: React.FC<{
   );
 };
 
-export default Settings;
+export default AppSettings;

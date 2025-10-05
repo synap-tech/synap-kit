@@ -125,6 +125,25 @@ export function TableToolbar() {
     () =>
       isSmallDevice ? (
         <div className='flex flex-1 items-center gap-2'>
+          {handleCreate && (
+            <ToolbarComponent
+              option='new-entry'
+              render={() =>
+                createAccess && (
+                  <Button
+                    aria-label='Create new entry'
+                    onClick={handleCreate}
+                    variant='accent'
+                    size='toolbar-sm'
+                  >
+                    <CirclePlus className='size-4' />
+                    New
+                  </Button>
+                )
+              }
+            />
+          )}
+
           <ToolbarComponent
             option='all-filter'
             render={() =>
@@ -146,7 +165,12 @@ export function TableToolbar() {
 
           <Popover>
             <PopoverTrigger>
-              <Button aria-label='More options' variant='gradient' size='icon'>
+              <Button
+                aria-label='More options'
+                variant='outline'
+                size='icon'
+                className='rounded-[10px]'
+              >
                 <ChevronDown className='size-4' />
               </Button>
             </PopoverTrigger>
@@ -162,6 +186,7 @@ export function TableToolbar() {
                       onUpdate={onUpdate}
                       onClear={onClear}
                       isClear={isClear}
+                      className='border'
                     />
                   )
                 }
@@ -169,7 +194,7 @@ export function TableToolbar() {
               <ToolbarComponent
                 option='view'
                 render={() => (
-                  <TableViewOptions className='w-full' table={table} />
+                  <TableViewOptions className='w-full border' table={table} />
                 )}
               />
 
@@ -200,24 +225,6 @@ export function TableToolbar() {
               />
             </PopoverContent>
           </Popover>
-
-          {validDateRange && (
-            <Separator orientation='vertical' className='h-6' />
-          )}
-          <ToolbarComponent
-            option='export-csv'
-            render={() =>
-              validDateRange && (
-                <TableExportCSV
-                  table={table}
-                  title={title}
-                  isEntry={isEntry}
-                  start_date={startDate}
-                  end_date={endDate}
-                />
-              )
-            }
-          />
         </div>
       ) : (
         <div className='flex flex-1 items-center gap-2'>
@@ -307,23 +314,6 @@ export function TableToolbar() {
           {validDateRange && (
             <Separator orientation='vertical' className='h-6' />
           )}
-
-          <ButtonGroup>
-            <ToolbarComponent
-              option='export-csv'
-              render={() =>
-                validDateRange && (
-                  <TableExportCSV
-                    table={table}
-                    title={title}
-                    isEntry={isEntry}
-                    start_date={startDate}
-                    end_date={endDate}
-                  />
-                )
-              }
-            />
-          </ButtonGroup>
         </div>
       ),
 
@@ -338,8 +328,6 @@ export function TableToolbar() {
       endDate,
       onClear,
       isClear,
-      isEntry,
-      title,
       otherToolBarComponents,
       isSmallDevice,
       validDateRange,
@@ -353,17 +341,44 @@ export function TableToolbar() {
    */
   const renderRightSection = useCallback(
     () => (
-      <div className='flex gap-2 lg:gap-4'>
+      <div className='flex items-center gap-2 lg:gap-4'>
         <TableRowDelete />
-        <ToolbarComponent
-          option='refresh'
-          render={() =>
-            handleRefetch && <TableRefresh handleRefetch={handleRefetch} />
-          }
-        />
+        <ButtonGroup>
+          <ToolbarComponent
+            option='export-csv'
+            render={() =>
+              validDateRange && (
+                <TableExportCSV
+                  table={table}
+                  title={title}
+                  isEntry={isEntry}
+                  start_date={startDate}
+                  end_date={endDate}
+                />
+              )
+            }
+          />
+          <ToolbarComponent
+            option='refresh'
+            render={() =>
+              handleRefetch && <TableRefresh handleRefetch={handleRefetch} />
+            }
+          />
+        </ButtonGroup>
+
+        <div className='hidden lg:block'>{otherToolBarComponents}</div>
       </div>
     ),
-    [handleRefetch]
+    [
+      handleRefetch,
+      otherToolBarComponents,
+      table,
+      title,
+      isEntry,
+      startDate,
+      endDate,
+      validDateRange,
+    ]
   );
 
   if (isEntry) {
@@ -409,12 +424,14 @@ export function TableToolbar() {
         <TableTitle title={title} subtitle={subtitle} info={info} />
       </div>
       {toolbarOptions === 'none' ? null : (
-        <div className={cn('flex items-center justify-between')}>
+        <div
+          className={cn(
+            'flex flex-col-reverse gap-4 lg:flex-row lg:items-center justify-between'
+          )}
+        >
           <div className='flex items-center gap-2'>
             {renderLeftSection()}
             {renderRightSection()}
-            <Separator orientation='vertical' className='h-6' />
-            {otherToolBarComponents}
           </div>
 
           <DebouncedInput

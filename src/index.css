@@ -90,6 +90,10 @@
   body {
     @apply border-border bg-background font-inter text-foreground;
   }
+
+  button {
+    @apply !cursor-pointer;
+  }
 }
 
 @theme inline {

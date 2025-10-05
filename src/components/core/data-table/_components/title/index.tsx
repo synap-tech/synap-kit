@@ -28,7 +28,7 @@ const TableTitle: React.FC<TableTitleProps> = ({
         <div className='flex items-center gap-2'>
           <h1
             className={cn(
-              'text-xl font-semibold capitalize leading-tight text-primary md:text-2xl',
+              'text-lg font-semibold capitalize leading-tight text-primary md:text-2xl',
               titleClassName
             )}
           >

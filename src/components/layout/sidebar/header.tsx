@@ -24,7 +24,7 @@ const SidebarHeader = () => {
         </div>
 
         <button
-          className='btn btn-square btn-ghost btn-sm absolute right-4 top-4 text-white md:hidden'
+          className='btn btn-square btn-ghost btn-sm absolute right-4 top-4 text-destructive md:hidden'
           onClick={() => setSidebarOpen(false)}
         >
           <X />

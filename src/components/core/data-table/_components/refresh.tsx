@@ -19,10 +19,7 @@ interface TableRefreshProps {
   ) => Promise<QueryObserverResult<IResponse<unknown>, Error>>;
   isSmallScreen?: boolean;
 }
-const TableRefresh: React.FC<TableRefreshProps> = ({
-  handleRefetch,
-  isSmallScreen,
-}) => {
+const TableRefresh: React.FC<TableRefreshProps> = ({ handleRefetch }) => {
   const [isFetching, setIsFetching] = useState(false);
 
   const handleClick = async () => {
@@ -41,15 +38,15 @@ const TableRefresh: React.FC<TableRefreshProps> = ({
       setIsFetching(false);
     }
   };
+
   return (
     <TooltipWrapper message='Refresh data'>
       <Button
         aria-label='Refresh Data'
         disabled={isFetching}
-        variant={'outline'}
-        size={isSmallScreen ? 'icon' : 'sm'}
+        variant={'ghost'}
+        size={'toolbar-sm'}
         onClick={handleClick}
-        className='rounded-[10px]'
       >
         <RefreshCw className={cn('size-4', isFetching && 'animate-spin')} />
 

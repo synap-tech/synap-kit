@@ -21,7 +21,7 @@ const Navbar = () => {
     <div className='w-full '>
       <div className='flex flex-col'>
         {/* Mobile View */}
-        <div
+        {/* <div
           className={cn(
             'flex items-center justify-between gap-4 border-b  px-4 py-1 md:hidden',
             homePage && 'border-none'
@@ -29,10 +29,9 @@ const Navbar = () => {
         >
           <BrandLogo title={companyTitle} className={'w-fit text-primary'} />
           <SidebarMobileToggle />
-        </div>
+        </div> */}
 
         {/* Desktop View */}
-
         <div
           className={cn(
             'md:py-0 min-h-14 py-3 flex items-center justify-between px-4 ',
@@ -49,7 +48,7 @@ const Navbar = () => {
             {!homePage && <GlobalBreadcrumbs />}
           </div>
 
-          <div className='flex items-center gap-4'>
+          <div className='flex items-center gap-2 lg:gap-4'>
             {navbarActions && navbarActions.length > 0 && (
               <div className='flex items-center gap-4'>
                 {navbarActions
@@ -66,6 +65,11 @@ const Navbar = () => {
                   })}
               </div>
             )}
+
+            <div className='flex items-center gap-2 lg:hidden'>
+              <span className='block h-4 w-[1px] bg-border' />
+              <SidebarMobileToggle />
+            </div>
           </div>
         </div>
       </div>

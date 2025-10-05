@@ -8,9 +8,6 @@ const SidebarContent = () => {
     <aside className={cn('flex h-screen flex-col overflow-hidden')}>
       <SidebarHeader />
       <SidebarMenu />
-      {/* <div className='p-4'>
-        <SidebarLogout />
-      </div> */}
     </aside>
   );
 };

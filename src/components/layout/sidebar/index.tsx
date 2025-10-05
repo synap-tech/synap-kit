@@ -5,7 +5,7 @@ import SidebarDesktop from './desktop';
 import SidebarMobile from './mobile';
 
 const Sidebar = () => {
-  const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)');
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 1024px)');
   return (
     <SidebarProvider>
       {!isSmallDevice && <SidebarDesktop />}

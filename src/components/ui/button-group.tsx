@@ -10,7 +10,7 @@ const buttonGroupVariants = cva(
     variants: {
       orientation: {
         horizontal:
-          ' flex-row [&_button]:first:rounded-l-none [&_button]:last:rounded-r-none *:not-last:rounded-r-none *:not-first:rounded-l-none [&_button]:!border-0 [&_button]:!border-r-[1px]  [&_button]:last:!border-r-0 ',
+          ' flex-row [&_button]:first:rounded-l-none [&_button]:last:rounded-r-none *:not-last:rounded-r-none *:not-first:rounded-l-none  [&_button]:!border-r-[1px]   [&_button]:last:!border-r-0 ',
         vertical:
           'flex-col [&_button]:first:rounded-t-none [&_button]:last:rounded-b-none',
       },

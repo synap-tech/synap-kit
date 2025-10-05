@@ -23,6 +23,7 @@ function PaginateButtons({
       pageLinkClassName={buttonVariants({
         variant: 'ghost',
         size: 'icon-lg',
+        className: 'cursor-pointer',
       })}
       activeLinkClassName={buttonVariants({
         variant: 'outline',

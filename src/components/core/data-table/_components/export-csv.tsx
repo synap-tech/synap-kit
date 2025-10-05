@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { FileSpreadsheet } from 'lucide-react';
 import { CSVLink } from 'react-csv';
 
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 
 import { cn } from '@/lib/utils';
 
@@ -14,7 +14,6 @@ const TableExportCSV = ({
   end_date,
   table,
   title,
-  isEntry,
   className,
 }: TTableExportCSV) => {
   const filteredRows = table._getFilteredRowModel?.().rows || [];
@@ -55,21 +54,17 @@ const TableExportCSV = ({
       : 'Table.csv';
 
   return (
-    <CSVLink
-      aria-label='Export to CSV'
-      role='button'
-      type='button'
-      className={buttonVariants({
-        variant: isEntry ? 'gradient-accent' : 'ghost',
-        size: 'toolbar-sm',
-        className: cn(className),
-      })}
-      data={csvData}
-      filename={filename}
-    >
-      <FileSpreadsheet className='size-4' />
-      <span className='hidden lg:inline'>Excel</span>
-    </CSVLink>
+    <Button variant={'ghost'} size={'toolbar-sm'} className={className}>
+      <CSVLink
+        className='size-full flex items-center gap-2'
+        aria-label='Export to CSV'
+        data={csvData}
+        filename={filename}
+      >
+        <FileSpreadsheet className='size-4' />
+        <span className='hidden lg:inline'>Excel</span>
+      </CSVLink>
+    </Button>
   );
 };
 

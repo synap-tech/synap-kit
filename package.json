@@ -208,6 +208,7 @@
     "react-dropzone": "^14.3.8",
     "rollup-plugin-visualizer": "^6.0.3",
     "sonner": "^2.0.7",
+    "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.11",
     "tw-animate-css": "^1.3.6",
     "typescript": "~5.8.3",

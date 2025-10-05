@@ -69,7 +69,7 @@ function TableColumnFilter<T>({
   }
 
   return (
-    <div className='flex flex-col gap-0.5'>
+    <div className='flex flex-col gap-0.5 w-full'>
       <div className='flex items-center justify-between gap-2'>
         {showLabel && (
           <Label id={column.id}>
