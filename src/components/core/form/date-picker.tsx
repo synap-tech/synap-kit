@@ -6,7 +6,7 @@ import { CalendarIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import {
   Popover,
   PopoverContent,
@@ -15,7 +15,7 @@ import {
 
 import { cn } from '@/lib/utils';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormDatePickerProps } from './types';
 
 const FormDatePicker: React.FC<FormDatePickerProps> = ({
@@ -33,17 +33,14 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <FormItem className='space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
-
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <FormControl>
@@ -51,7 +48,7 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
               type='button'
               variant={'form'}
               className={cn(
-                'h-10 w-full text-left font-normal transition-none active:scale-100',
+                'h-9 bg-background w-full text-left font-normal transition-none active:scale-100 rounded-toolbar',
                 !field.value && 'text-muted-foreground',
                 className
               )}
@@ -89,8 +86,7 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
           />
         </PopoverContent>
       </Popover>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

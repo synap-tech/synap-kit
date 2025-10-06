@@ -1,4 +1,4 @@
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import {
   Select,
   SelectContent,
@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/select';
 import { Skeleton } from '@/components/ui/skeleton';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormSelectProps } from './types';
 
 const FormSelect: React.FC<FormSelectProps> = ({
@@ -27,16 +27,14 @@ const FormSelect: React.FC<FormSelectProps> = ({
   subLabel,
 }) => {
   return (
-    <FormItem className='w-full space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl>
         {isLoading ? (
           <Skeleton className='bg-gradient h-10 w-full rounded-md border border-input' />
@@ -74,8 +72,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
           </Select>
         )}
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

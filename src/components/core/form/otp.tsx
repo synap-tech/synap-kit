@@ -1,4 +1,4 @@
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import {
   InputOTP,
   InputOTPGroup,
@@ -7,7 +7,7 @@ import {
 
 import { cn } from '@/lib/utils';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormOtpProps } from './types';
 
 const FormOTP: React.FC<FormOtpProps> = ({
@@ -26,17 +26,14 @@ const FormOTP: React.FC<FormOtpProps> = ({
   info,
 }) => {
   return (
-    <FormItem className='w-full space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
-
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl>
         <InputOTP
           maxLength={maxLength}
@@ -58,8 +55,7 @@ const FormOTP: React.FC<FormOtpProps> = ({
           </InputOTPGroup>
         </InputOTP>
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

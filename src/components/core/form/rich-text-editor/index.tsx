@@ -3,9 +3,9 @@ import React from 'react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 
-import CormFormLabel from '../label';
+import FormItemWrapper from '../form-item-wrapper';
 import type { FormTextareaProps } from '../types';
 
 const FormTextarea: React.FC<FormTextareaProps> = ({
@@ -18,16 +18,14 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
   info,
 }) => {
   return (
-    <FormItem className='w-full space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl>
         <ReactQuill
           theme='snow'
@@ -35,8 +33,7 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
           onChange={field.onChange}
         />
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

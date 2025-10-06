@@ -2,9 +2,9 @@ import type { IRoute } from '@/types';
 import { cloneDeep } from 'lodash';
 
 import HrRoutes from './Hr';
-import TestRoutes from './test';
+import UiRoutes from './ui';
 
-const privateRoutes: IRoute[] = [...HrRoutes, ...TestRoutes];
+const privateRoutes: IRoute[] = [...HrRoutes, ...UiRoutes];
 
 const privateRoutesClone = cloneDeep(privateRoutes);
 

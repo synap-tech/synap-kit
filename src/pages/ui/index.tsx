@@ -8,11 +8,17 @@ import { Switch } from '@/components/ui/switch';
 import DialogComponent from './dialog';
 import TestForm from './form';
 import TableSSR from './table-ssr';
+import Wrapper from './wrapper';
 
 const TestPage = () => {
   return (
-    <div className='p-20 border bg-sky-50 space-y-8 '>
-      <TestForm />
+    <div className='p-12 border bg-sky-50 space-y-8 '>
+      <h1 className='text-center text-2xl font-medium'>UI Components</h1>
+
+      <Wrapper title='Form Fields'>
+        <TestForm />
+      </Wrapper>
+
       <SectionContainer title='Hello'>
         <div>Hello</div>
       </SectionContainer>

@@ -1,10 +1,10 @@
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
 
 import { cn } from '@/lib/utils';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import { type FormInputProps } from './types';
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -22,17 +22,14 @@ const FormInput: React.FC<FormInputProps> = ({
   info,
 }) => {
   return (
-    <FormItem className='w-full space-y-1.5 '>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
-
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl>
         {type === 'password' ? (
           <PasswordInput
@@ -66,8 +63,7 @@ const FormInput: React.FC<FormInputProps> = ({
           />
         )}
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

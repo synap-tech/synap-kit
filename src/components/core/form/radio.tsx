@@ -1,14 +1,9 @@
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 import { cn } from '@/lib/utils';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormRadioProps } from './types';
 
 const FormRadio: React.FC<FormRadioProps> = ({
@@ -26,16 +21,14 @@ const FormRadio: React.FC<FormRadioProps> = ({
   info,
 }) => {
   return (
-    <FormItem className='flex flex-col gap-y-1'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl className=''>
         <RadioGroup
           disabled={disabled}
@@ -55,8 +48,7 @@ const FormRadio: React.FC<FormRadioProps> = ({
           ))}
         </RadioGroup>
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

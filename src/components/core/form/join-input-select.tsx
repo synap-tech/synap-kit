@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import { buttonVariants } from '@/components/ui/button';
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
 import {
@@ -14,14 +14,14 @@ import {
 
 import { cn } from '@/lib/utils';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormJoinInputSelectProps } from './types';
 
 const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
   field,
   label,
   subLabel,
-  placeholder = 'Write here',
+  placeholder = 'Select',
   optional = false,
   type,
   className = 'border-0 w-8 bg-transparent',
@@ -33,29 +33,29 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
 }) => {
   const { register, getValues, setValue } = useFormContext();
 
+  const inputClass = `rounded-r-none focus:outline-none focus-visible:ring-0`;
+
   return (
-    <FormItem className='w-full space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
-      <div className='bg-base flex h-10 items-center overflow-hidden rounded-md border border-input p-0.5'>
+    <FormItemWrapper
+      label={label}
+      subLabel={subLabel}
+      disableLabel={disableLabel}
+      info={info}
+      optional={optional}
+      required={required}
+    >
+      <div className='bg-base flex h-9 items-center overflow-hidden rounded-toolbar border border-border p-0.5'>
         <FormControl className='h-8 flex-1'>
           {type === 'password' ? (
             <PasswordInput
-              className={cn(className)}
+              className={cn(inputClass, className)}
               placeholder={placeholder}
               icon={icon}
               {...field}
             />
           ) : type === 'number' ? (
             <Input
-              className={cn(className)}
+              className={cn(inputClass, className)}
               placeholder={placeholder}
               icon={icon}
               {...field}
@@ -65,7 +65,7 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
             />
           ) : (
             <Input
-              className={cn(className)}
+              className={cn(inputClass, className)}
               placeholder={placeholder}
               type={type}
               icon={icon}
@@ -89,7 +89,7 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
               className={buttonVariants({
                 variant: 'accent',
                 className:
-                  'h-8 max-w-[100px] justify-between truncate rounded bg-base capitalize transition-none active:scale-100',
+                  'h-8 rounded-toolbar max-w-[100px] justify-between truncate  capitalize transition-none active:scale-100',
               })}
             >
               <SelectValue placeholder={placeholder} />
@@ -108,8 +108,7 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
           </SelectContent>
         </Select>
       </div>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

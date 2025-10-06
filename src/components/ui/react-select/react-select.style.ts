@@ -6,7 +6,7 @@ export const classNames = (
   extraControlClassName?: string
 ): ClassNamesConfig => ({
   container: () =>
-    'w-full h-full border border-border bg-background rounded-toolbar ',
+    'w-full h-full border border-border bg-background rounded-toolbar',
   control: ({ isFocused, isDisabled }) =>
     cn(
       'w-full h-9 !min-h-auto  px-3 py-2 text-sm text-foreground !m-0',

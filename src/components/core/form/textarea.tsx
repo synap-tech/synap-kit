@@ -1,9 +1,9 @@
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 
 import { cn } from '@/lib/utils';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormTextareaProps } from './types';
 
 const FormTextarea: React.FC<FormTextareaProps> = ({
@@ -19,27 +19,24 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
   info,
 }) => {
   return (
-    <FormItem className='w-full space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
+    <FormItemWrapper
+      label={label}
+      subLabel={subLabel}
+      disableLabel={disableLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl>
         <Textarea
-          className={cn(className, 'min-w-48')}
+          className={cn(className)}
           disabled={disabled}
           placeholder={placeholder}
           {...field}
           value={field.value === null ? '' : field.value}
         />
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

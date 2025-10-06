@@ -1,87 +1,68 @@
 import { useState } from 'react';
 
+import { format } from 'date-fns';
+import { CalendarIcon } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { FormControl } from '@/components/ui/form';
+import { MonthPicker } from '@/components/ui/month-picker';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@radix-ui/react-popover';
-import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
-import type {
-  ControllerFieldState,
-  ControllerRenderProps,
-  UseFormStateReturn,
-} from 'react-hook-form';
-
-import { Button } from '@/components/ui/button';
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
-import { MonthPicker } from '@/components/ui/month-picker';
+} from '@/components/ui/popover';
 
 import { cn } from '@/lib/utils';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
+import type { FormMonthPickerProps } from './types';
 
-export default function MonthPickerPopover({
-  minDate,
-  maxDate,
+const FormMonthPicker: React.FC<FormMonthPickerProps> = ({
+  field,
   label,
   subLabel,
-  optional,
+  optional = false,
+  className,
   disableLabel,
-  field,
   disabled = false,
   required,
   info,
-}: {
-  minDate?: Date;
-  maxDate?: Date;
-  label?: string;
-  subLabel?: string;
-  optional?: boolean;
-  disableLabel?: boolean;
-  field: ControllerRenderProps<any, any>;
-  fieldState: ControllerFieldState;
-  formState: UseFormStateReturn<any>;
-  disabled?: boolean;
-  required?: boolean;
-  info?: string;
-}) {
+  minDate,
+  maxDate,
+}) => {
   const [open, setOpen] = useState(false);
   return (
-    <FormItem className='space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <FormControl>
             <Button
-              variant={'outline'}
+              type='button'
+              variant={'form'}
               className={cn(
-                'w-full justify-start text-left font-normal',
-                !field.value && 'text-muted-foreground'
+                'h-9 bg-background rounded-toolbar w-full text-left font-normal transition-none active:scale-100',
+                !field.value && 'text-muted-foreground',
+                className
               )}
               disabled={disabled}
             >
-              <CalendarIcon className='mr-2 h-4 w-4' />
               {field.value ? (
                 format(field.value, 'MMM yyyy')
               ) : (
                 <span>Pick a month</span>
               )}
+              <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
             </Button>
           </FormControl>
         </PopoverTrigger>
-        <PopoverContent
-          style={{ zIndex: 9999 }}
-          className='h-full w-full border bg-slate-50'
-        >
+        <PopoverContent className='w-auto p-0 '>
           <MonthPicker
             className='z-50'
             onMonthSelect={(date) => {
@@ -98,7 +79,8 @@ export default function MonthPickerPopover({
           />
         </PopoverContent>
       </Popover>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
-}
+};
+
+export default FormMonthPicker;

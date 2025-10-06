@@ -6,12 +6,12 @@ import { isArray } from 'lodash-es';
 
 import useAuth from '@/hooks/useAuth';
 
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import ReactSelectCreatable from '@/components/ui/react-select/react-select-creatable';
 
 import nanoid from '@/lib/nanoid';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormReactSelectProps, IFormSelectOption } from './types';
 
 export interface IReactSelectCreateProps extends FormReactSelectProps {
@@ -52,19 +52,17 @@ const FormReactSelectCreate: React.FC<IReactSelectCreateProps> = ({
 }) => {
   const { user } = useAuth();
   return (
-    <FormItem className='w-full space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl>
         <ReactSelectCreatable
-          className='min-w-64'
+          className='min-w-64 !h-9'
           isMulti={isMulti}
           options={
             unique
@@ -140,8 +138,7 @@ const FormReactSelectCreate: React.FC<IReactSelectCreateProps> = ({
           isClearable
         />
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 

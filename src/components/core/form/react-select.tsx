@@ -1,10 +1,10 @@
 import { isArray } from 'lodash-es';
 
-import { FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { FormControl } from '@/components/ui/form';
 import ReactSelect from '@/components/ui/react-select';
 import { Skeleton } from '@/components/ui/skeleton';
 
-import CormFormLabel from './label';
+import FormItemWrapper from './form-item-wrapper';
 import type { FormReactSelectProps, IFormSelectOption } from './types';
 
 const FormReactSelect: React.FC<FormReactSelectProps> = ({
@@ -25,22 +25,20 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
   onChange,
 }) => {
   return (
-    <FormItem className='w-full space-y-1.5'>
-      {!disableLabel && (
-        <CormFormLabel
-          label={label}
-          subLabel={subLabel}
-          optional={optional}
-          required={required}
-          info={info}
-        />
-      )}
+    <FormItemWrapper
+      label={label}
+      disableLabel={disableLabel}
+      subLabel={subLabel}
+      optional={optional}
+      required={required}
+      info={info}
+    >
       <FormControl>
         {isLoading ? (
-          <Skeleton className='bg-gradient h-10 w-full rounded-md border border-input' />
+          <Skeleton className='bg-gradient h-9 w-full rounded-md border border-input' />
         ) : (
           <ReactSelect
-            className='min-w-48'
+            className='min-w-48 !h-9'
             isMulti={isMulti}
             options={options}
             isDisabled={isDisabled}
@@ -60,18 +58,6 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
                     (item: IFormSelectOption) => item.value === field.value
                   )
             }
-            // value={() => {
-            // 	if (!isMulti) {
-            // 		return options.filter((item: IFormSelectOption) => item.value === field.value);
-            // 	}
-            // 	if (isArray(field.value)) {
-            // 		return field.value.map((item: any) => {
-            // 			return options.find((option: IFormSelectOption) => option.value === item);
-            // 		});
-            // 	}
-
-            // 	return [];
-            // }}
             onChange={(option: any) => {
               if (onChange) {
                 onChange(option, field);
@@ -101,8 +87,7 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
           />
         )}
       </FormControl>
-      <FormMessage />
-    </FormItem>
+    </FormItemWrapper>
   );
 };
 
