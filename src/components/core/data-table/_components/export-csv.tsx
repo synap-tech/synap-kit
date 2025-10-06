@@ -3,9 +3,7 @@ import { format } from 'date-fns';
 import { FileSpreadsheet } from 'lucide-react';
 import { CSVLink } from 'react-csv';
 
-import { Button, buttonVariants } from '@/components/ui/button';
-
-import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 import type { TTableExportCSV } from '../types';
 

@@ -73,7 +73,7 @@ const TestForm = () => {
                 control={form.control}
                 name='item'
                 render={(props) => (
-                  <CoreForm.MultiSelect
+                  <CoreForm.ReactSelect
                     options={[
                       {
                         label: 'test',
@@ -81,6 +81,9 @@ const TestForm = () => {
                       },
                     ]}
                     {...props}
+                    onChange={(props) => {
+                      window.alert('test');
+                    }}
                   />
                 )}
               />

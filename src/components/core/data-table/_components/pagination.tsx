@@ -25,7 +25,7 @@ export function TablePagination() {
             {table.getFilteredRowModel().rows.length} row(s) selected.
           </div>
         ) : null}
-        <div className='w-full  flex flex-col-reverse flex-1 lg:items-center  justify-between gap-2 lg:gap-8'>
+        <div className='w-full  flex flex-col-reverse lg:flex-row flex-1 lg:items-center  justify-between gap-2 lg:gap-8'>
           <div className='flex items-center gap-2  sticky right-0 top-0'>
             <p className='text-sm font-medium text-base-400 hidden lg:block'>
               Showing
@@ -58,7 +58,7 @@ export function TablePagination() {
             </p>
           </div>
 
-          <div className='flex-1 w-full  overflow-auto flex items-center gap-1'>
+          <div className='flex-1  w-full  overflow-auto flex items-center lg:justify-center gap-1'>
             <Button
               aria-label='Go to previous page'
               variant='ghost'

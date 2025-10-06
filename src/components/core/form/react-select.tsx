@@ -22,6 +22,7 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
   required,
   info,
   subLabel,
+  onChange,
 }) => {
   return (
     <FormItem className='w-full space-y-1.5'>
@@ -72,6 +73,11 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
             // 	return [];
             // }}
             onChange={(option: any) => {
+              if (onChange) {
+                onChange(option, field);
+                return;
+              }
+
               if (option === null) {
                 if (isMulti) {
                   field.onChange([]);

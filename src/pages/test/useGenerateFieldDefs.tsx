@@ -60,7 +60,7 @@ const useGenerateFieldDefs = ({
             {accessories?.map((item: string, index: number) => (
               <span
                 key={index}
-                className='rounded-[10px] bg-accent px-2 py-1 capitalize text-white'
+                className='rounded-toolbar bg-accent px-2 py-1 capitalize text-white'
               >
                 {item?.replace(/_/g, '\n')}
               </span>

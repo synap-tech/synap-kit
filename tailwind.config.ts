@@ -103,6 +103,7 @@ export default {
         lg: 'var(--radius-lg)',
         md: 'var(--radius-md)',
         sm: 'var(--radius-sm)',
+        toolbar: 'var(--radius-toolbar)',
       },
     },
   },

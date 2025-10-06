@@ -169,7 +169,7 @@ export function TableToolbar() {
                 aria-label='More options'
                 variant='outline'
                 size='icon'
-                className='rounded-[10px]'
+                className='rounded-toolbar'
               >
                 <ChevronDown className='size-4' />
               </Button>
@@ -366,7 +366,13 @@ export function TableToolbar() {
           />
         </ButtonGroup>
 
-        <div className='hidden lg:block'>{otherToolBarComponents}</div>
+        {otherToolBarComponents && (
+          <span className='block h-5 bg-border w-[1px]' />
+        )}
+
+        <div className='hidden lg:flex flex-wrap items-center gap-2 lg:gap-4 '>
+          {otherToolBarComponents}
+        </div>
       </div>
     ),
     [
@@ -438,7 +444,7 @@ export function TableToolbar() {
             icon={<SearchIcon className={cn('size-5 text-secondary/50')} />}
             value={globalFilterValue ?? ''}
             onChange={setGlobalFilter}
-            className={cn('h-10 w-full lg:max-w-[300px] rounded-[10px]')}
+            className={cn('h-10 w-full lg:max-w-[300px] rounded-toolbar')}
             placeholder='Search here...'
             autoFocus={false}
           />

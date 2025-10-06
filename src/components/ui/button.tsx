@@ -44,7 +44,7 @@ const buttonVariants = cva(
         icon: 'size-8',
         'icon-sm': 'size-6',
         'icon-lg': 'size-9',
-        'toolbar-sm': 'h-8 rounded-[10px] px-3',
+        'toolbar-sm': 'h-8 rounded-toolbar px-3',
       },
     },
     defaultVariants: {

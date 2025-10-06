@@ -96,7 +96,10 @@ const AddModal: React.FC<IAddModalProps> = ({
                   <div className={cn('space-y-3', containerClassName)}>
                     {children}
                   </div>
-                  <CoreForm.Submit className='w-full' title='Save' />
+                  <CoreForm.Submit
+                    className='w-full max-w-sm mx-auto block rounded-toolbar'
+                    title='Save'
+                  />
                   <DevTool control={form.control} placement='top-left' />
                 </form>
               </Form>

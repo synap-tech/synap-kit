@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonGroupVariants = cva(
-  'flex items-center border rounded-[10px] overflow-hidden ',
+  'flex items-center border rounded-toolbar overflow-hidden ',
   {
     variants: {
       orientation: {
