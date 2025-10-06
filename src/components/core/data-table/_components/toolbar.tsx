@@ -72,7 +72,7 @@ ToolbarComponent.displayName = 'ToolbarComponent';
  */
 export function TableToolbar() {
   const { createAccess } = usePage();
-  const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)');
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 1024px)');
 
   const {
     title,
@@ -444,7 +444,7 @@ export function TableToolbar() {
             icon={<SearchIcon className={cn('size-5 text-secondary/50')} />}
             value={globalFilterValue ?? ''}
             onChange={setGlobalFilter}
-            className={cn('h-10 w-full lg:max-w-[300px] rounded-toolbar')}
+            className={cn('h-9 w-full lg:max-w-[300px] rounded-toolbar')}
             placeholder='Search here...'
             autoFocus={false}
           />

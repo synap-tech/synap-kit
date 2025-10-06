@@ -5,9 +5,11 @@ import { cn } from '@/lib/utils';
 export const classNames = (
   extraControlClassName?: string
 ): ClassNamesConfig => ({
+  container: () =>
+    'w-full h-full border border-border bg-background rounded-toolbar ',
   control: ({ isFocused, isDisabled }) =>
     cn(
-      'bg-background h-10 rounded-md border border-border px-3 py-2 text-sm text-foreground m-0',
+      'w-full h-9 !min-h-auto  px-3 py-2 text-sm text-foreground !m-0',
       isFocused && 'outline outline-2 outline-offset-2 outline-secondary',
       isDisabled &&
         'cursor-not-allowed border-destructive/50 !from-destructive/5 !to-destructive/5 text-destructive',

@@ -199,17 +199,11 @@ const User = () => {
             menuPortalTarget={document.body}
             styles={{
               menuPortal: (base) => ({ ...base, zIndex: 999 }),
-
-              container: (base) => ({
-                ...base,
-                height: '40px !important',
-                overflow: 'hidden !important',
-              }),
-
               control: (base) => ({
                 ...base,
-                minWidth: 140,
-                borderRadius: '10px',
+                minWidth: 150,
+                height: '32px !important',
+                padding: '0 10px',
               }),
             }}
             onChange={(e: any) => {

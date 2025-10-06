@@ -349,20 +349,21 @@ export interface DynamicFieldsProps {
   startIndex?: number;
 }
 
-export interface ITableActionRegular {
+export interface ITableActionRegular<TData> {
   actionType: 'edit' | 'delete';
+  access?: ((row: Row<TData>) => boolean) | boolean | undefined;
 }
 
-export interface ITableActionCustom {
+export interface ITableActionCustom<TData> {
   actionType: 'custom';
-  access: boolean;
+  access?: ((row: Row<TData>) => boolean) | boolean;
 }
 
 export type ITableAction<TData> = {
   label: string;
   Icon: LucideIcon;
   action: (rows: Row<TData>) => void;
-} & (ITableActionRegular | ITableActionCustom);
+} & (ITableActionRegular<TData> | ITableActionCustom<TData>);
 
 export type INavAction = {
   component: React.ReactNode;
