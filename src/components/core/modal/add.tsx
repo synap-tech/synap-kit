@@ -60,7 +60,7 @@ const AddModal: React.FC<IAddModalProps> = ({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className={cn(
-                'relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg bg-background p-6 shadow-lg',
+                'relative max-h-[90vh] w-full max-w-lg overflow-auto rounded-lg bg-background p-6 shadow-lg  flex flex-col gap-4',
                 isSmall && 'sm:max-w-5xl',
                 isLarge && 'max-w-7xl',
                 className
@@ -76,7 +76,7 @@ const AddModal: React.FC<IAddModalProps> = ({
                   <X className='size-4' />
                 </Button>
               </div>
-              <div className='mb-4 space-y-1.5'>
+              <div className=' space-y-1.5  flex flex-col '>
                 <DialogTitle className='text-lg font-bold'>{title}</DialogTitle>
                 <Description
                   className={cn(
@@ -91,7 +91,7 @@ const AddModal: React.FC<IAddModalProps> = ({
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className='relative space-y-6'
+                  className='relative space-y-6   flex-1 flex flex-col justify-between'
                 >
                   <div className={cn('space-y-3', containerClassName)}>
                     {children}

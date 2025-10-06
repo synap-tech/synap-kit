@@ -211,12 +211,13 @@ const PageAssign: React.FC<IPageAssignProps> = ({
 
   return (
     <AddModal
-      isSmall
+      isLarge
       open={open}
       setOpen={onClose}
       title={'Page Assign : ' + updatedData?.name}
       form={form as any}
       onSubmit={onSubmit}
+      className='h-fit overflow-hidden flex flex-col'
     >
       <div className='flex gap-8'>
         <DebouncedInput
@@ -262,7 +263,7 @@ const PageAssign: React.FC<IPageAssignProps> = ({
         </TabsList>
       </Tabs>
 
-      <div className='h-80 space-y-2.5 overflow-auto rounded-md p-2 shadow-xl'>
+      <div className='h-[60vh] space-y-2.5 overflow-auto rounded-md p-2 shadow-xl '>
         {filteredPageActions.length === 0 ? (
           <div className='text-error flex h-full animate-pulse items-center justify-center py-6 text-center text-2xl font-semibold'>
             No page found
@@ -273,7 +274,7 @@ const PageAssign: React.FC<IPageAssignProps> = ({
               <div
                 key={page_name}
                 className={cn(
-                  'flex flex-col gap-2 rounded-md border p-3 pt-2 transition-colors duration-300 ease-in-out hover:bg-base-150'
+                  'flex flex-col gap-2 rounded-md border p-3 pt-2 transition-colors duration-300 ease-in-out hover:bg-base-150 '
                 )}
               >
                 <div className='flex items-center justify-between'>

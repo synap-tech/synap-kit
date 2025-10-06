@@ -17,6 +17,7 @@ const FormSubmit: React.FC<
       aria-label='Submit Form'
       disabled={!isDirty || isSubmitting || props.isSubmitDisable}
       type='submit'
+      variant={'accent'}
       {...props}
     >
       {isSubmitting && <RotateCw className='mr-2 h-4 w-4 animate-spin' />}

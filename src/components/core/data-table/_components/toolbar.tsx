@@ -370,7 +370,7 @@ export function TableToolbar() {
           <span className='block h-5 bg-border w-[1px]' />
         )}
 
-        <div className='hidden lg:flex flex-wrap items-center gap-2 lg:gap-4 '>
+        <div className='hidden lg:flex flex-wrap flex-col lg:flex-row gap-4'>
           {otherToolBarComponents}
         </div>
       </div>
