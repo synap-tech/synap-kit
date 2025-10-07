@@ -5,7 +5,6 @@ import useApp from '@/hooks/useApp';
 // import useLayout from '@/hooks/useLayout';
 
 import GlobalBreadcrumbs from '@/components/ui/global-breadcrumbs';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 import { cn } from '@/lib/utils';
 
@@ -13,24 +12,13 @@ import { cn } from '@/lib/utils';
 import SidebarMobileToggle from '../sidebar/mobile/toggle';
 
 const Navbar = () => {
-  const { companyTitle, navbarActions } = useApp();
+  const { navbarActions } = useApp();
   // const { isCollapsed, setIsCollapsed } = useLayout();
   const { pathname } = useLocation();
   const homePage = pathname === '/';
   return (
     <div className='w-full '>
       <div className='flex flex-col'>
-        {/* Mobile View */}
-        {/* <div
-          className={cn(
-            'flex items-center justify-between gap-4 border-b  px-4 py-1 md:hidden',
-            homePage && 'border-none'
-          )}
-        >
-          <BrandLogo title={companyTitle} className={'w-fit text-primary'} />
-          <SidebarMobileToggle />
-        </div> */}
-
         {/* Desktop View */}
         <div
           className={cn(
@@ -65,7 +53,6 @@ const Navbar = () => {
                   })}
               </div>
             )}
-            <ThemeToggle />
 
             <div className='flex items-center gap-2 lg:hidden'>
               <span className='block h-4 w-[1px] bg-border' />

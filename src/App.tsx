@@ -1,6 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 
 import ProfileAvatar from './components/ui/profile-avatar';
+import { ThemeToggle } from './components/ui/theme-toggle';
 import { AppProvider, AuthProvider } from './providers';
 import { sidebarRoutes } from './routes';
 import { router } from './routes/router';
@@ -18,6 +19,10 @@ function App() {
         {
           component: <ProfileAvatar />,
           order: 1,
+        },
+        {
+          component: <ThemeToggle />,
+          order: 2,
         },
       ]}
     >
