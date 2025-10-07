@@ -690,7 +690,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
             disabled={disabled}
             variant={'form'}
             className={cn(
-              'flex p-1 bg-background rounded-toolbar border h-9  items-center justify-between   [&_svg]:pointer-events-auto active:scale-100',
+              'flex p-1 bg-input rounded-md border h-9   items-center justify-between   [&_svg]:pointer-events-auto active:scale-100',
               autoSize ? 'w-auto' : 'w-full',
               responsiveSettings.compactMode && 'min-h-8 text-sm',
               screenSize === 'mobile' && 'min-h-12 text-base',
@@ -746,7 +746,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                             getBadgeAnimationClass(),
                             multiSelectVariants({ variant }),
                             customStyle?.gradient &&
-                              'text-white border-transparent',
+                              'text-white border-transparent ',
                             responsiveSettings.compactMode &&
                               'text-xs px-1.5 py-0.5',
                             screenSize === 'mobile' && 'max-w-[120px] truncate',

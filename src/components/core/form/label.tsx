@@ -33,9 +33,9 @@ const CormFormLabel: React.FC<IFormLabelProps> = ({
       className={cn('flex items-center justify-between capitalize', className)}
     >
       <div className='flex items-center gap-2'>
-        <span>
+        <span className='text-foreground'>
           {label || name.replace('_', ' ')}{' '}
-          {required && <span className='text-xs'>*</span>}
+          {required && <span className='text-xs text-destructive'>*</span>}
           {optional ? <span className='text-xs'>(Optional)</span> : ''}
         </span>
         {info && (

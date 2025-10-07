@@ -11,10 +11,10 @@ function ReactSelectCreatable<T, IsMulti extends boolean>({
     <Creatable
       classNames={{
         // container: () =>
-        //   'w-full h-full border border-border bg-background rounded-toolbar',
+        //   'w-full h-full border border-border bg-background rounded-md',
         control: ({ isFocused, isDisabled }) =>
           cn(
-            '!bg-base h-9 !min-h-0 !rounded-toolbar border !border-border !text-sm !text-foreground',
+            '!bg-input h-9 !min-h-0 !rounded-md border !border-border !text-sm !text-foreground',
             isFocused &&
               '!outline-none !outline-0 !outline-offset-0 !outline-secondary',
             isDisabled &&
@@ -22,14 +22,14 @@ function ReactSelectCreatable<T, IsMulti extends boolean>({
           ),
 
         placeholder: () => 'text-muted-foreground text-sm',
-        input: () => 'grow',
-        singleValue: () => 'grow',
+        input: () => 'grow ',
+        singleValue: () => 'grow !text-foreground',
         menu: () =>
-          '!bg-base !overflow-hidden  !rounded !shadow-2xl !text-sm border !border-input !p-1',
+          '!bg-popover text-popover-foreground !overflow-hidden  !rounded !shadow-2xl !text-sm border !border-input !p-1',
         option: ({ isFocused, isSelected }) =>
           cn(
             'rounded !px-3 !py-1.5 text-sm text-foreground',
-            isFocused && '!bg-base-200',
+            isFocused && '!bg-background text-foreground',
             isSelected &&
               '!bg-transparent !text-foreground before:mr-1 before:content-["✔"]'
           ),
@@ -39,10 +39,7 @@ function ReactSelectCreatable<T, IsMulti extends boolean>({
       }}
       components={{
         ClearIndicator: (props) => (
-          <components.ClearIndicator
-            className='mr-1 border-r border-r-input pr-1'
-            {...props}
-          >
+          <components.ClearIndicator className='mr-1 border-r  pr-1' {...props}>
             <X className='size-5 font-medium text-destructive' />
           </components.ClearIndicator>
         ),
@@ -57,7 +54,7 @@ function ReactSelectCreatable<T, IsMulti extends boolean>({
           <components.DropdownIndicator {...props}>
             <ChevronDown
               className={cn(
-                'size-5 transform text-secondary/50 transition-transform duration-300',
+                'size-5 transform text-foreground transition-transform duration-300',
                 props.selectProps.menuIsOpen && 'rotate-90'
               )}
             />

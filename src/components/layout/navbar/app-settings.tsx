@@ -13,6 +13,8 @@ import { ButtonGroup } from '@/components/ui/button-group';
 import DebouncedInput from '@/components/ui/debounce-input';
 import { Label } from '@/components/ui/label';
 
+import { cn } from '@/lib/utils';
+
 const AppSettings: React.FC<{
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,8 +44,14 @@ const AppSettings: React.FC<{
               value={Number(fontSize)}
               defaultValue={Number(currentFontSize)}
               min={10}
+              max={16}
               onChange={(value) => setFontSize(Number(value))}
-              className='h-9 disabled:border-input disabled:text-primary'
+              className={cn(
+                'h-9 disabled:border-input disabled:text-primary',
+                fontSize === 10 || fontSize === 16
+                  ? 'cursor-not-allowed !border-destructive/30'
+                  : ''
+              )}
             />
 
             <ButtonGroup className='rounded-md'>
@@ -57,6 +65,7 @@ const AppSettings: React.FC<{
               </Button>
 
               <Button
+                disabled={fontSize >= 16}
                 onClick={() => setFontSize(Number(fontSize) + 1)}
                 variant={'ghost'}
                 size={'icon-lg'}
@@ -84,10 +93,7 @@ const AppSettings: React.FC<{
               `${fontSize}px`
             );
 
-            document.documentElement.style.setProperty(
-              '--color-accent',
-              `${color}`
-            );
+            document.documentElement.style.setProperty('--accent', `${color}`);
 
             setCurrentFontSize(`${fontSize}`);
             setCurrentAccentColor(`${color}`);

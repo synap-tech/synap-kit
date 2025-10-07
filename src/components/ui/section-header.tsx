@@ -10,7 +10,7 @@ const SectionHeader: React.FC<{
   return (
     <div
       className={cn(
-        'bg-base flex flex-col justify-between gap-1 py-3 pl-4 pr-2 sm:flex-row sm:items-center',
+        'bg-content flex flex-col justify-between gap-1 py-3 pl-4 pr-2 sm:flex-row sm:items-center',
         className
       )}
     >

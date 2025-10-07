@@ -1,16 +1,18 @@
-import { REGEXP_ONLY_DIGITS } from 'input-otp';
+import FormInputMusk from './input-mask';
+import type { FormInputMaskProps } from './types';
 
-import FormOTP from './otp';
-import type { FormOtpProps } from './types';
-
-const FormPhone: React.FC<
-  Omit<FormOtpProps, 'maxLength' | 'minLength' | 'pattern'>
-> = ({ field, ...props }) => {
+const FormPhone: React.FC<Omit<FormInputMaskProps, 'mask' | 'maskOptions'>> = ({
+  field,
+  ...props
+}) => {
   return (
-    <FormOTP
-      maxLength={11}
-      minLength={11}
-      pattern={REGEXP_ONLY_DIGITS}
+    <FormInputMusk
+      mask='99999-999999'
+      maskOptions={{
+        placeholder: 'X',
+        autoUnmask: true,
+      }}
+      placeholder='Phone Number'
       {...props}
       field={field}
     />

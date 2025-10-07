@@ -103,7 +103,7 @@ const SidebarFile: React.FC<IRoute> = ({ path, name, page_type }) => {
           cn(
             'relative flex w-full justify-between gap-2 rounded-r-md border-l-[3px] border-none px-4 py-2 text-sm transition-colors duration-200',
             isActive || matchUrl(path!, pathname)
-              ? 'bg-sidebar-active-background font-medium text-sidebar-active-foreground'
+              ? 'bg-secondary font-medium text-secondary-foreground'
               : 'text-foreground hover:bg-sidebar-active-background/80  hover:text-sidebar-active-foreground'
           )
         }

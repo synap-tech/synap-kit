@@ -66,7 +66,7 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
               type='button'
               variant={'form'}
               className={cn(
-                'h-9 bg-background rounded-toolbar w-full text-left font-normal transition-none active:scale-100',
+                'h-9 bg-input rounded-md w-full text-left font-normal transition-none active:scale-100',
                 !field.value && 'text-muted-foreground',
                 className
               )}

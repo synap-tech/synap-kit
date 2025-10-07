@@ -57,6 +57,7 @@ const ProfileAvatar = () => {
             <Moon />
           </DropdownMenuItem>
           <DropdownMenuItem
+            variant='destructive'
             onClick={logout}
             className='flex items-center justify-between'
           >

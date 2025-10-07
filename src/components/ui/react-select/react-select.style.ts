@@ -5,8 +5,7 @@ import { cn } from '@/lib/utils';
 export const classNames = (
   extraControlClassName?: string
 ): ClassNamesConfig => ({
-  container: () =>
-    'w-full h-full border border-border bg-background rounded-toolbar',
+  container: () => 'w-full h-full border border-border bg-input rounded-md',
   control: ({ isFocused, isDisabled }) =>
     cn(
       'w-full h-9 !min-h-auto  px-3 py-2 text-sm text-foreground !m-0',
@@ -21,11 +20,11 @@ export const classNames = (
   multiValue: () => 'border border-input px-2 rounded bg-base-200',
   valueContainer: () => 'flex flex-wrap gap-2',
   menu: () =>
-    'bg-base overflow-hidden  rounded shadow-2xl text-sm border border-input p-1 ',
+    'bg-popover text-popover-foreground overflow-hidden  rounded shadow-2xl text-sm border border-input p-1 ',
   option: ({ isFocused, isSelected }) =>
     cn(
       'rounded px-3 py-1.5 text-sm text-foreground',
-      isFocused && 'bg-base-200',
+      isFocused && 'bg-background',
       isSelected && 'before:mr-1 before:content-["✔"]'
     ),
   noOptionsMessage: () =>

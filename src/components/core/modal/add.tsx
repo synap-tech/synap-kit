@@ -97,7 +97,7 @@ const AddModal: React.FC<IAddModalProps> = ({
                     {children}
                   </div>
                   <CoreForm.Submit
-                    className='w-full max-w-sm mx-auto flex rounded-toolbar'
+                    className='w-full max-w-sm mx-auto flex rounded-md'
                     title='Save'
                   />
                   <DevTool control={form.control} placement='top-left' />

@@ -1,6 +1,7 @@
 import { flexRender } from '@tanstack/react-table';
 
 import useTable from '@/hooks/useTable';
+import useTheme from '@/hooks/useTheme';
 
 import {
   TableBody,
@@ -20,10 +21,11 @@ import { TableToolbar } from './_components/toolbar';
 import { getCommonPinningStyles } from './_helpers/getCommonPinningStyle';
 
 function DataTable({ children }: { children?: React.ReactNode }) {
+  const { theme } = useTheme();
   const { table, isLoading, childrenInsideTable, extraHeader } = useTable();
 
   return (
-    <div className='flex h-full relative  flex-col gap-4 px-3 lg:px-5 py-4 bg-white rounded-md '>
+    <div className='flex h-full relative  flex-col gap-4 px-3 lg:px-5 py-4 bg-content rounded-md '>
       <TableToolbar />
       {extraHeader && extraHeader}
       <div className={cn('max-h-fit flex-1  overflow-auto')}>
@@ -41,9 +43,10 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                         ...getCommonPinningStyles({
                           column: header.column,
                           isHeader: true,
+                          theme,
                         }),
                       }}
-                      className='py-2  first:pl-6 text-left '
+                      className='py-2  first:pl-6 text-left !bg-background '
                     >
                       {header.isPlaceholder
                         ? null
@@ -77,9 +80,13 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                       style={{
                         ...getCommonPinningStyles({
                           column: cell.column,
+                          theme,
                         }),
                       }}
-                      className='first:pl-6'
+                      className={cn(
+                        'first:pl-6',
+                        cell.column.getIsPinned() && 'bg-content  border-b'
+                      )}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

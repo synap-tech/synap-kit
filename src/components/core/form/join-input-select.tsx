@@ -33,7 +33,7 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
 }) => {
   const { register, getValues, setValue } = useFormContext();
 
-  const inputClass = `rounded-r-none focus:outline-none focus-visible:ring-0`;
+  const inputClass = `rounded-r-none focus:outline-none focus-visible:ring-ring`;
 
   return (
     <FormItemWrapper
@@ -44,7 +44,7 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
       optional={optional}
       required={required}
     >
-      <div className='bg-base flex h-9 items-center overflow-hidden rounded-toolbar border border-border p-0.5'>
+      <div className='bg-input flex h-9 items-center overflow-hidden rounded-md border border-border p-0.5'>
         <FormControl className='h-8 flex-1'>
           {type === 'password' ? (
             <PasswordInput
@@ -89,7 +89,7 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
               className={buttonVariants({
                 variant: 'accent',
                 className:
-                  'h-8 rounded-toolbar max-w-[100px] justify-between truncate  capitalize transition-none active:scale-100',
+                  'h-8 rounded-md max-w-[100px] justify-between truncate  capitalize transition-none active:scale-100',
               })}
             >
               <SelectValue placeholder={placeholder} />

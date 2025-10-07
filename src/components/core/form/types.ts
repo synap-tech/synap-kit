@@ -2,7 +2,6 @@ import type { CheckboxProps } from '@radix-ui/react-checkbox';
 import type { RadioGroupProps } from '@radix-ui/react-radio-group';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import type { OTPInputProps } from 'input-otp';
-import type { required } from 'node_modules/zod/v4/core/util.d.cts';
 import type { DayPickerProps } from 'react-day-picker';
 import type { DropzoneOptions } from 'react-dropzone';
 import type {
@@ -11,6 +10,7 @@ import type {
   UseFormReturn,
   UseFormStateReturn,
 } from 'react-hook-form';
+import { type Mask, type Options, withMask } from 'use-mask-input';
 
 import type { InputProps } from '../../ui/input';
 import type { TextareaProps } from '../../ui/textarea';
@@ -36,6 +36,12 @@ interface IFieldProps {
 
 export interface FormInputProps extends IFieldProps, InputProps {
   icon?: React.ReactNode;
+}
+
+export interface FormInputMaskProps extends IFieldProps, InputProps {
+  icon?: React.ReactNode;
+  mask?: Mask;
+  maskOptions?: Options;
 }
 
 export interface FormTextareaProps extends IFieldProps, TextareaProps {}

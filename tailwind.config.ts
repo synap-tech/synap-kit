@@ -10,6 +10,7 @@ export default {
     './src/app/**/*.{ts,tsx,js,jsx}',
     './src/stories/**/*.{ts,tsx,js,jsx}',
   ],
+
   theme: {
     extend: {
       fontFamily: {

@@ -61,10 +61,10 @@ const Search = () => {
         const filteredRoutes = handleSearch(value as string, sidebarRoutes);
         setRoutes(filteredRoutes);
       }}
-      icon={<SearchIcon className='size-4 text-black/50' />}
+      icon={<SearchIcon className='size-4 text-foreground' />}
       iconPosition={'left'}
       placeholder='Search here...'
-      className='h-fit rounded-[5px] border-border bg-transparent  text-black placeholder:text-black/50 focus:border-border focus:ring-0 focus:ring-offset-0'
+      className='h-fit rounded-[5px] border-border bg-transparent  text-foreground focus:border-border focus:ring-0 focus:ring-offset-0'
     />
   );
 };

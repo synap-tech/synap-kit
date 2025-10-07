@@ -8,10 +8,13 @@ import CoreForm from '@/components/core/form';
 import { Form } from '@/components/ui/form';
 import { FormField } from '@/components/ui/form';
 
+import { DevTool } from '@/lib/react-hook-devtool';
+
 import useGenerateFieldDefs from './useGenerateFieldDefs';
 
 const schema = z.object({
   input: z.string(),
+  inputmask: z.string(),
   textarea: z.string(),
   checkbox: z.boolean(),
   datepicker: z.string(),
@@ -68,13 +71,36 @@ const TestForm = () => {
           title='Core Form Section'
           className='lg:grid-cols-1 gap-4'
         >
-          <div className='border p-4 rounded-toolbar bg-gray-50'>
+          <div className='border p-4 rounded-md bg-background'>
             <h4 className='text-2xl font-bold mb-4'>Input Fields</h4>
             <div className='grid grid-cols-4 gap-4'>
               <FormField
                 control={form.control}
                 name='input'
-                render={(props) => <CoreForm.Input {...props} />}
+                render={(props) => (
+                  <CoreForm.Input
+                    required
+                    info='This is a regular input field  with info text'
+                    {...props}
+                  />
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='inputmask'
+                render={(props) => (
+                  <CoreForm.InputMask
+                    required
+                    info='This is a regular input field  with info text'
+                    {...props}
+                  />
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name='phone'
+                render={(props) => <CoreForm.Phone {...props} />}
               />
 
               <FormField
@@ -108,7 +134,7 @@ const TestForm = () => {
             </div>
           </div>
 
-          <div className='border p-4 rounded-toolbar bg-gray-50'>
+          <div className='border p-4 rounded-md bg-background'>
             <h4 className='text-2xl font-bold mb-4'>Date Fields</h4>
             <div className='grid grid-cols-4 gap-4'>
               <FormField
@@ -134,7 +160,7 @@ const TestForm = () => {
             </div>
           </div>
 
-          <div className='border p-4 rounded-toolbar bg-gray-50'>
+          <div className='border p-4 rounded-md bg-background'>
             <h4 className='text-2xl font-bold mb-4'>Select Fields</h4>
             <div className='grid grid-cols-4 gap-4'>
               <FormField
@@ -281,11 +307,6 @@ const TestForm = () => {
             name='gender'
             render={(props) => <CoreForm.Gender {...props} />}
           />
-          <FormField
-            control={form.control}
-            name='phone'
-            render={(props) => <CoreForm.Phone {...props} />}
-          />
 
           <FormField
             control={form.control}
@@ -335,6 +356,8 @@ const TestForm = () => {
           </tr>
         </CoreForm.DynamicFields>
       </div>
+
+      <DevTool control={form.control} placement='top-left' />
     </Form>
   );
 };

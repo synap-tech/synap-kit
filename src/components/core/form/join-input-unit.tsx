@@ -33,7 +33,7 @@ const FormJoinInputUnit: React.FC<FormJoinInputUnitProps> = ({
       optional={optional}
       required={required}
     >
-      <div className='bg-background flex h-9 items-center  rounded-toolbar border border-border p-0.5'>
+      <div className='bg-input flex h-9 items-center  rounded-md border border-border p-0.5'>
         <FormControl className='h-full flex-1'>
           {type === 'password' ? (
             <PasswordInput
@@ -70,7 +70,7 @@ const FormJoinInputUnit: React.FC<FormJoinInputUnitProps> = ({
           className={buttonVariants({
             variant: 'accent',
             className:
-              '!h-8 max-w-[100px] justify-between truncate rounded-toolbar capitalize',
+              '!h-8 max-w-[100px] justify-between truncate rounded-md capitalize',
           })}
         >
           {unit}

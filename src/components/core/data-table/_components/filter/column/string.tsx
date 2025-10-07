@@ -25,7 +25,7 @@ function StringFilter<TData, TValue>({ column }: IFilterProps<TData, TValue>) {
         ))}
       </datalist>
       <DebouncedInput
-        className='w-full rounded-toolbar border'
+        className='w-full rounded-md border'
         onChange={(value) => column.setFilterValue(value)}
         placeholder={`Search...`}
         type='text'

@@ -72,7 +72,7 @@ const GlobalBreadcrumbs = () => {
                 <BreadcrumbItem>
                   <BreadcrumbLink
                     aria-label='breadcrumb'
-                    className={cn('text-secondary')}
+                    className={cn('text-primary/60')}
                     href={item.href}
                   >
                     {item.label}

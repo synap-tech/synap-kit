@@ -49,10 +49,7 @@ const AppProvider: React.FC<{
 
   useEffect(() => {
     document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-    document.documentElement.style.setProperty(
-      '--color-accent',
-      `${accentColor}`
-    );
+    document.documentElement.style.setProperty('--accent', `${accentColor}`);
   }, [fontSize, accentColor]);
 
   return (

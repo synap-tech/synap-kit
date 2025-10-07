@@ -1,9 +1,11 @@
 import { colors } from '@/config/tailwind';
+import type { Theme } from '@/providers/theme-provider';
 import { type Column } from '@tanstack/react-table';
 
 export function getCommonPinningStyles<TData>({
   column,
   isHeader = false,
+  theme,
 }: {
   column: Column<TData>;
   /**
@@ -13,6 +15,7 @@ export function getCommonPinningStyles<TData>({
    */
   withBorder?: boolean;
   isHeader?: boolean;
+  theme?: Theme;
 }): React.CSSProperties {
   const isPinned = column.getIsPinned();
   const isLastLeftPinnedColumn =
@@ -22,9 +25,9 @@ export function getCommonPinningStyles<TData>({
 
   return {
     boxShadow: isLastLeftPinnedColumn
-      ? `-4px 0 3px -3px ${colors.BORDER}  inset`
+      ? `-4px 0 3px -3px ${theme === 'dark' ? colors.BORDER_DARK : colors.BORDER}  inset`
       : isFirstRightPinnedColumn
-        ? `4px 0 3px -3px ${colors.BORDER}  inset`
+        ? `4px 0 3px -3px ${theme === 'dark' ? colors.BORDER_DARK : colors.BORDER}  inset`
         : undefined,
     left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
     right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
@@ -33,7 +36,7 @@ export function getCommonPinningStyles<TData>({
     width: column.getSize(),
     minWidth: column.getSize(),
     maxWidth: column.getSize() + 40,
-    background: isHeader ? colors.BASE_150 : colors.BASE_100,
+    // background: isHeader ? colors.BASE_150 : colors.BASE_100,
     zIndex: isPinned ? 1 : 'none',
   };
 }

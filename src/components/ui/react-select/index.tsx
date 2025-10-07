@@ -51,7 +51,7 @@ const ReactSelect = forwardRef<Ref, Props & { extraControlClassName?: string }>(
         components={{
           ClearIndicator: (props) => (
             <components.ClearIndicator
-              className='mx-1 border-r border-r-input pr-1'
+              className='mx-1 border-r border-border pr-1'
               {...props}
             >
               <X className='size-4 font-medium text-destructive' />
@@ -68,7 +68,7 @@ const ReactSelect = forwardRef<Ref, Props & { extraControlClassName?: string }>(
             <components.DropdownIndicator {...props}>
               <ChevronDown
                 className={cn(
-                  'size-5 transform text-secondary/50 transition-transform duration-300',
+                  'size-5 transform text-foreground transition-transform duration-300',
                   props.selectProps.menuIsOpen && 'rotate-90'
                 )}
               />

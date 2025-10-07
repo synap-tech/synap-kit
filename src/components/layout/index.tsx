@@ -20,7 +20,7 @@ const Layout = () => {
 
   return (
     <LayoutProvider>
-      <div className='relative flex h-screen w-screen overflow-hidden bg-layout-background'>
+      <div className='relative flex h-screen w-screen overflow-hidden bg-background '>
         <ResizablePanelGroup direction='horizontal' className='size-full'>
           <ResizablePanel
             defaultSize={isDesktop ? 12 : isLaptop ? 15 : isTablet ? 0 : 20}
@@ -46,25 +46,6 @@ const Layout = () => {
             </main>
           </ResizablePanel>
         </ResizablePanelGroup>
-      </div>
-    </LayoutProvider>
-  );
-
-  return (
-    <LayoutProvider>
-      <div className='relative flex h-screen w-screen overflow-hidden bg-layout-background'>
-        <Sidebar />
-        <main className='flex size-full flex-1 flex-col overflow-hidden'>
-          <Navbar />
-          <div className='relative flex size-full flex-1 flex-col overflow-hidden'>
-            <div className='size-full flex-1 overflow-auto pr-3'>
-              {/* px-3 py-2.5 lg:px-6 lg:py-3.5 */}
-              <Suspense fallback='loading...'>
-                <Outlet />
-              </Suspense>
-            </div>
-          </div>
-        </main>
       </div>
     </LayoutProvider>
   );

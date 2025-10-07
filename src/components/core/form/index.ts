@@ -7,6 +7,7 @@ import FileUpload from './file-upload';
 import Gender from './gender';
 import ID from './id';
 import Input from './input';
+import InputMask from './input-mask';
 import JoinInputSelect from './join-input-select';
 import JoinInputUnit from './join-input-unit';
 import MonthPicker from './month-picker';
@@ -26,6 +27,7 @@ import TimePicker from './time-picker';
 
 const Form = {
   Input,
+  InputMask,
   Textarea,
   Submit,
   Section,

@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import SectionContainer from '@/components/ui/section-container';
 import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 import DialogComponent from './dialog';
 import TestForm from './form';
@@ -14,6 +15,7 @@ const TestPage = () => {
   return (
     <div className='p-12 border bg-sky-50 space-y-8 '>
       <h1 className='text-center text-2xl font-medium'>UI Components</h1>
+      <ThemeToggle />
 
       <Wrapper title='Form Fields'>
         <TestForm />

@@ -156,6 +156,7 @@ const BASE = 'hsl(0 0% 100%)';
 const BASE_FOREGROUND = 'hsl(212 16% 16%)';
 
 const BORDER = 'hsl(0 0% 90%)';
+const BORDER_DARK = 'oklch(0.37 0 0)';
 const INPUT = 'hsl(0 0% 90%)';
 const RING = 'hsl(0 0% 4%)';
 
@@ -205,6 +206,7 @@ const colors = {
   WARNING,
   WARNING_FOREGROUND,
   BORDER,
+  BORDER_DARK,
   INPUT,
   RING,
   CHART_1,

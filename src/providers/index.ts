@@ -6,3 +6,4 @@ export { default as TableFilterProvider } from './table-filter-provider';
 export { default as LayoutProvider } from './layout-provider';
 export { default as SidebarProvider } from './sidebar-provider';
 export { default as AuthProvider } from './auth-provider';
+export { default as ThemeProvider } from './theme-provider';

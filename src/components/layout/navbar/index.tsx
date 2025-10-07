@@ -4,8 +4,8 @@ import useApp from '@/hooks/useApp';
 
 // import useLayout from '@/hooks/useLayout';
 
-import BrandLogo from '@/components/ui/brand-logo';
 import GlobalBreadcrumbs from '@/components/ui/global-breadcrumbs';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 import { cn } from '@/lib/utils';
 
@@ -65,6 +65,7 @@ const Navbar = () => {
                   })}
               </div>
             )}
+            <ThemeToggle />
 
             <div className='flex items-center gap-2 lg:hidden'>
               <span className='block h-4 w-[1px] bg-border' />

@@ -169,7 +169,7 @@ export function TableToolbar() {
                 aria-label='More options'
                 variant='outline'
                 size='icon'
-                className='rounded-toolbar'
+                className='rounded-md'
               >
                 <ChevronDown className='size-4' />
               </Button>
@@ -444,7 +444,7 @@ export function TableToolbar() {
             icon={<SearchIcon className={cn('size-5 text-secondary/50')} />}
             value={globalFilterValue ?? ''}
             onChange={setGlobalFilter}
-            className={cn('h-9 w-full lg:max-w-[300px] rounded-toolbar')}
+            className={cn('h-9 w-full lg:max-w-[300px] rounded-md')}
             placeholder='Search here...'
             autoFocus={false}
           />
