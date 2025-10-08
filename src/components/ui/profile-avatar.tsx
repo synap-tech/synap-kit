@@ -52,10 +52,6 @@ const ProfileAvatar = () => {
             <SettingsIcon />
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className='flex items-center justify-between'>
-            Dark Mode
-            <Moon />
-          </DropdownMenuItem>
           <DropdownMenuItem
             variant='destructive'
             onClick={logout}

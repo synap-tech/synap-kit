@@ -253,8 +253,8 @@ const SidebarFolder: React.FC<IRoute> = (props) => {
   const folderClassName = cn(
     'group relative z-10 flex w-full items-center justify-between gap-2 rounded-none rounded-r-md border-l-[3px] px-4 py-2 text-sm text-primary-foreground',
     isOpen && !isCloseAll
-      ? 'border-accent text-foreground font-medium'
-      : 'border-transparent text-primary hover:bg-secondary/20 hover:text-primary/80'
+      ? 'border-primary text-foreground font-medium'
+      : 'border-transparent text-foreground hover:bg-primary/5 hover:text-primary'
   );
 
   //* Handle folder click
@@ -313,7 +313,7 @@ const SidebarFolder: React.FC<IRoute> = (props) => {
         animate={isOpen ? 'open' : 'closed'}
         className='pl-3'
       >
-        <ul className='space-y-1 border-l !border-accent/10 pt-1'>
+        <ul className='space-y-1 border-l !border-primary/10 pt-1'>
           {children?.map((child: any, index: number) => {
             if (child?.children) {
               return <SidebarFolder key={index} {...child} />;

@@ -7,7 +7,7 @@ const PageContainer: React.FC<{
   className?: string;
 }> = ({ children, className }) => {
   return (
-    <div className={cn('border bg-base p-4 rounded-md', className)}>
+    <div className={cn('border bg-base p-4 rounded', className)}>
       {children}
     </div>
   );

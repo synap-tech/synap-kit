@@ -45,12 +45,13 @@ const AppProvider: React.FC<{
   );
 
   const [fontSize] = useLocalStorage('fontSize', '13');
-  const [accentColor] = useLocalStorage('accentColor', colors.ACCENT);
+  const [primaryColor] = useLocalStorage('primaryColor', '');
 
   useEffect(() => {
     document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
-    document.documentElement.style.setProperty('--accent', `${accentColor}`);
-  }, [fontSize, accentColor]);
+    document.documentElement.style.setProperty('--primary', `${primaryColor}`);
+    document.documentElement.style.setProperty('--ring', `${primaryColor}`);
+  }, [fontSize, primaryColor]);
 
   return (
     <AppContext.Provider value={value}>

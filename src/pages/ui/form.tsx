@@ -71,7 +71,7 @@ const TestForm = () => {
           title='Core Form Section'
           className='lg:grid-cols-1 gap-4'
         >
-          <div className='border p-4 rounded-md bg-background'>
+          <div className='border p-4 rounded bg-background'>
             <h4 className='text-2xl font-bold mb-4'>Input Fields</h4>
             <div className='grid grid-cols-4 gap-4'>
               <FormField
@@ -134,7 +134,7 @@ const TestForm = () => {
             </div>
           </div>
 
-          <div className='border p-4 rounded-md bg-background'>
+          <div className='border p-4 rounded bg-background'>
             <h4 className='text-2xl font-bold mb-4'>Date Fields</h4>
             <div className='grid grid-cols-4 gap-4'>
               <FormField
@@ -160,7 +160,7 @@ const TestForm = () => {
             </div>
           </div>
 
-          <div className='border p-4 rounded-md bg-background'>
+          <div className='border p-4 rounded bg-background'>
             <h4 className='text-2xl font-bold mb-4'>Select Fields</h4>
             <div className='grid grid-cols-4 gap-4'>
               <FormField

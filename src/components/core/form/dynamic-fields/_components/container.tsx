@@ -27,7 +27,7 @@ const DynamicFieldContainer: React.FC<IProps> = ({
   extraButton,
 }) => {
   return (
-    <div className='overflow-hidden rounded-md shadow-sm bg-base'>
+    <div className='overflow-hidden rounded shadow-sm bg-base'>
       <SectionHeader
         extraHeader={
           <div className='flex items-center gap-4'>
@@ -36,9 +36,8 @@ const DynamicFieldContainer: React.FC<IProps> = ({
               <Button
                 onClick={handleAdd}
                 type='button'
-                variant={'accent'}
                 size={'xs'}
-                className='gap-1 rounded-md'
+                className='gap-1 rounded'
               >
                 <Plus className='size-4' />
                 New

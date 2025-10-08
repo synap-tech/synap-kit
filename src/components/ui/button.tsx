@@ -6,7 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-95  duration-100',
+  'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-95  duration-100',
   {
     variants: {
       variant: {
@@ -15,7 +15,7 @@ const buttonVariants = cva(
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         success: 'bg-success text-success-foreground hover:bg-success/90',
         outline:
-          'border border-border bg-background hover:bg-base-200 hover:text-base-content',
+          'border border-border bg-background hover:bg-accent hover:text-accent-foreground',
         'outline-destructive':
           'border border-destructive/20 bg-background text-destructive hover:bg-destructive hover:text-destructive-foreground',
         'outline-success':
@@ -25,7 +25,7 @@ const buttonVariants = cva(
         accent: 'bg-accent text-accent-foreground hover:bg-accent/90',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'text-foreground hover:bg-base-300',
+        ghost: 'text-foreground hover:bg-background',
         'ghost-destructive': 'text-destructive hover:bg-destructive/10 ',
         link: 'text-primary underline-offset-4 hover:underline',
         gradient: 'bg-gradient text-foreground border',
@@ -34,17 +34,17 @@ const buttonVariants = cva(
 
         toolbar:
           'bg-transparent hover:bg-base-200 text-base-content border-0 shadow-none hover:shadow-md',
-        form: 'h-10 w-full rounded-md border bg-background px-3 py-2 text-sm',
+        form: 'h-10 w-full rounded border bg-background px-3 py-2 text-sm',
       },
       size: {
         default: 'h-10 px-4 py-2',
         xs: 'h-7 px-2.5 text-xs',
-        sm: 'h-8 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
+        sm: 'h-8  px-3',
+        lg: 'h-11  px-8',
         icon: 'size-8',
         'icon-sm': 'size-6',
         'icon-lg': 'size-9',
-        'toolbar-sm': 'h-8 rounded-md px-3',
+        'toolbar-sm': 'h-8  px-3',
       },
     },
     defaultVariants: {

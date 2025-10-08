@@ -25,11 +25,11 @@ function DataTable({ children }: { children?: React.ReactNode }) {
   const { table, isLoading, childrenInsideTable, extraHeader } = useTable();
 
   return (
-    <div className='flex h-full relative  flex-col gap-4 px-3 lg:px-5 py-4 bg-content rounded-md '>
+    <div className='flex h-full relative  flex-col gap-4 px-3 lg:px-5 py-4 bg-content rounded '>
       <TableToolbar />
       {extraHeader && extraHeader}
       <div className={cn('max-h-fit flex-1  overflow-auto')}>
-        <TableComponent className='border rounded-md'>
+        <TableComponent className='border rounded'>
           <TableHeader className='w-full sticky left-0 right-0 top-0 z-20'>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

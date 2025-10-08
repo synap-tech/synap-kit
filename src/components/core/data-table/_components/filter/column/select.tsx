@@ -23,7 +23,7 @@ function SelectFilter<TData, TValue>({ column }: IFilterProps<TData, TValue>) {
 
   return (
     <Select onValueChange={(e) => column.setFilterValue(e)}>
-      <SelectTrigger className='w-[180px] rounded-md'>
+      <SelectTrigger className='w-[180px] rounded'>
         <SelectValue placeholder='All' />
       </SelectTrigger>
       <SelectContent>

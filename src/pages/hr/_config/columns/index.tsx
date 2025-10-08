@@ -513,7 +513,7 @@ export const individualReportColumns = (
       return (
         <div className='space-y-1'>
           <span>{shift_details.name}</span>
-          <div className='flex w-fit items-center gap-2 rounded-md border bg-slate-200 px-2'>
+          <div className='flex w-fit items-center gap-2 rounded border bg-slate-200 px-2'>
             <DateTime
               date={shift_details.start_time as Date}
               isTime={true}

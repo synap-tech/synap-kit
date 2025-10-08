@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 export const classNames = (
   extraControlClassName?: string
 ): ClassNamesConfig => ({
-  container: () => 'w-full h-full border border-border bg-input rounded-md',
+  container: () => 'w-full h-full border border-border bg-input/30 rounded',
   control: ({ isFocused, isDisabled }) =>
     cn(
       'w-full h-9 !min-h-auto  px-3 py-2 text-sm text-foreground !m-0',

@@ -23,12 +23,12 @@ const DataTableSSR = () => {
   const { table, isEntry, isLoading } = useTableSSR();
 
   return (
-    <div className='flex h-full relative  flex-col gap-4 px-5 py-4 bg-white rounded-md '>
+    <div className='flex h-full relative  flex-col gap-4 px-5 py-4 bg-white rounded '>
       <Toolbar />
       <div
         className={cn(
           'relative max-h-fit flex-1 overflow-auto border border-secondary/10',
-          isEntry ? 'rounded-b-md' : 'rounded-md'
+          isEntry ? 'rounded-b-md' : 'rounded'
         )}
       >
         <TableComponent>

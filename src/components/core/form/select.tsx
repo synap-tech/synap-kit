@@ -37,7 +37,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
     >
       <FormControl>
         {isLoading ? (
-          <Skeleton className='bg-gradient h-10 w-full rounded-md border border-input' />
+          <Skeleton className='bg-gradient h-10 w-full rounded border border-input' />
         ) : (
           <Select
             onValueChange={(value) => {

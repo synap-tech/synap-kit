@@ -324,7 +324,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
       size={'sm'}
       className={cn(
         'flex w-full justify-start text-left',
-        isSelected && 'pointer-events-none bg-accent text-accent-foreground'
+        isSelected && 'pointer-events-none bg-primary text-primary-foreground'
       )}
       variant='ghost'
       onClick={() => {
@@ -478,7 +478,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
               </div>
             </div>
 
-            <div className='flex flex-col items-center justify-center bg-base-150 py-4 lg:flex-row lg:items-start lg:py-0'>
+            <div className='flex flex-col items-center justify-center bg-background py-4 lg:flex-row lg:items-start lg:py-0'>
               {isSmallScreen && (
                 <Select
                   defaultValue={selectedPreset}
@@ -569,7 +569,6 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
             <Button
               size={'sm'}
               aria-label='Apply'
-              variant={'accent'}
               onClick={() => {
                 setIsOpen(false);
                 if (

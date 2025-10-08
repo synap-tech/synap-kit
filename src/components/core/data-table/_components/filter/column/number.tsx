@@ -21,7 +21,7 @@ function NumberFilter<TData, TValue>({ column }: IFilterProps<TData, TValue>) {
           column.setFilterValue((old: [number, number]) => [value, old?.[1]])
         }
         placeholder={`Min (${Math.min(...sortedUniqueValues)})`}
-        className='flex-1 rounded-md border'
+        className='flex-1 rounded border'
       />
       <DebouncedInput
         type='number'
@@ -30,7 +30,7 @@ function NumberFilter<TData, TValue>({ column }: IFilterProps<TData, TValue>) {
           column.setFilterValue((old: [number, number]) => [old?.[0], value])
         }
         placeholder={`Max (${Math.max(...sortedUniqueValues)})`}
-        className='flex-1 rounded-md border'
+        className='flex-1 rounded border'
       />
     </div>
   );

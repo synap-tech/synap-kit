@@ -14,7 +14,7 @@ const FormSection: React.FC<IFormSectionProps> = ({
 }) => {
   if (title) {
     return (
-      <div className='overflow-hidden rounded-md shadow-sm bg-content'>
+      <div className='overflow-hidden rounded shadow-sm bg-content'>
         <SectionHeader extraHeader={extraHeader}>{title}</SectionHeader>
         <div
           className={cn(
@@ -30,7 +30,7 @@ const FormSection: React.FC<IFormSectionProps> = ({
   return (
     <div
       className={cn(
-        'grid grid-cols-1 gap-2.5 rounded-md border bg-content p-4 shadow-sm sm:grid-cols-2 sm:gap-4 lg:grid-cols-3',
+        'grid grid-cols-1 gap-2.5 rounded border bg-content p-4 shadow-sm sm:grid-cols-2 sm:gap-4 lg:grid-cols-3',
         className
       )}
     >

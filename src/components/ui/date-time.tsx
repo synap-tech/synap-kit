@@ -12,7 +12,7 @@ const Body = ({
   return (
     <span
       className={
-        'text-[0.7rem] font-semibold capitalize text-primary ' + className
+        'text-[0.7rem] font-semibold capitalize text-foreground ' + className
       }
     >
       {value}
@@ -53,7 +53,7 @@ const DateTime: React.FC<IDateTimeProps> = ({
         <Body
           value={customizedTime}
           className={cn(
-            '-mt-1 text-secondary',
+            'mt-0 text-foreground/75',
             !isDate && 'mt-0',
             ClassNameTime
           )}

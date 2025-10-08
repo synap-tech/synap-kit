@@ -1,5 +1,3 @@
-'use client';
-
 import { type KeyboardEvent, useEffect, useMemo, useState } from 'react';
 
 import { format } from 'date-fns';

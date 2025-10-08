@@ -70,7 +70,7 @@ export interface IAddModalProps {
   onSubmit(values: any): void;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  title?: string;
+  title: string;
   subtitle?: string;
   children?: React.ReactNode;
   className?: string;

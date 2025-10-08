@@ -15,13 +15,18 @@ const ImagePreview: React.FC<{ preview: string | ArrayBuffer | null }> = ({
         />
       ) : (
         <>
-          <ImagePlus className={cn(`block size-7`, preview && 'hidden')} />
+          <ImagePlus
+            className={cn(
+              `block size-7 text-foreground/50`,
+              preview && 'hidden'
+            )}
+          />
 
-          <p className='my-2 text-sm text-gray-500 dark:text-gray-400'>
+          <p className='my-2 text-sm text-foreground/50'>
             <span className='font-semibold'>Click to upload</span> or drag and
             drop
           </p>
-          <p className='text-xs text-gray-500 dark:text-gray-400'>
+          <p className='text-xs text-foreground/50'>
             SVG, PNG, JPG or GIF (MAX. 800x400px)
           </p>
         </>

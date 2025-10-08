@@ -20,7 +20,7 @@ const DefaultDynamicFields: React.FC<
   Omit<DynamicFieldsProps, 'title' | 'viewAs' | 'extraButtons' | 'handleAdd'>
 > = ({ fields, fieldName, fieldDefs, startIndex = 0, form, children }) => {
   return (
-    <div className='overflow-x-auto rounded-md border'>
+    <div className='overflow-x-auto rounded border'>
       <Table className='w-full'>
         <TableHeader className='bg-muted'>
           <TableRow className='h-8  '>

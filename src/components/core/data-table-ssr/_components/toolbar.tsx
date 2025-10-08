@@ -70,7 +70,6 @@ const Toolbar = () => {
           <Button
             aria-label='Create new entry'
             onClick={handleCreate}
-            variant='accent'
             size='toolbar-sm'
           >
             <CirclePlus className='size-4' />

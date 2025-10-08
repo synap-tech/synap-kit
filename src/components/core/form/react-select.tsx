@@ -35,7 +35,7 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
     >
       <FormControl>
         {isLoading ? (
-          <Skeleton className='bg-input h-9 w-full rounded-md border border-input' />
+          <Skeleton className='bg-input/30 h-9 w-full rounded border border-input' />
         ) : (
           <ReactSelect
             className='min-w-48 !h-9'

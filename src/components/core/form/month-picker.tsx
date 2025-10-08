@@ -47,7 +47,7 @@ const FormMonthPicker: React.FC<FormMonthPickerProps> = ({
               type='button'
               variant={'form'}
               className={cn(
-                'h-9 bg-input rounded-md w-full text-left font-normal transition-none active:scale-100',
+                'h-9 bg-input/30 rounded w-full text-left font-normal transition-none active:scale-100',
                 !field.value && 'text-muted-foreground',
                 className
               )}

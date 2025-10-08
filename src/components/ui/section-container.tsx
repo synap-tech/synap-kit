@@ -20,7 +20,7 @@ const SectionContainer = ({
   headerClassName,
 }: ISectionContainerProps) => {
   return (
-    <div className={cn('rounded-md bg-background overflow-hidden', className)}>
+    <div className={cn('rounded bg-background overflow-hidden', className)}>
       <SectionHeader className={headerClassName} extraHeader={extraHeader}>
         {title}
       </SectionHeader>

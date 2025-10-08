@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 import { format, isValid } from 'date-fns';

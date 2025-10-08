@@ -126,7 +126,7 @@ const FormFileUpload: React.FC<FormFileUploadProps> = ({
         >
           <label htmlFor='dropzone-file' className='relative size-full'>
             {!render && (
-              <div className='flex size-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500'>
+              <div className='flex size-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-input bg-input/30'>
                 {fileType === 'image' && <ImagePreview preview={preview} />}
                 {fileType === 'video' && <VideoPreview preview={preview} />}
                 {fileType === 'document' && (

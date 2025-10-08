@@ -133,7 +133,7 @@ export function TableToolbar() {
                   <Button
                     aria-label='Create new entry'
                     onClick={handleCreate}
-                    variant='accent'
+                    variant='default'
                     size='toolbar-sm'
                   >
                     <CirclePlus className='size-4' />
@@ -169,7 +169,7 @@ export function TableToolbar() {
                 aria-label='More options'
                 variant='outline'
                 size='icon'
-                className='rounded-md'
+                className='rounded'
               >
                 <ChevronDown className='size-4' />
               </Button>
@@ -236,7 +236,7 @@ export function TableToolbar() {
                   <Button
                     aria-label='Create new entry'
                     onClick={handleCreate}
-                    variant='accent'
+                    variant='default'
                     size='toolbar-sm'
                   >
                     <CirclePlus className='size-4' />
@@ -441,10 +441,10 @@ export function TableToolbar() {
           </div>
 
           <DebouncedInput
-            icon={<SearchIcon className={cn('size-5 text-secondary/50')} />}
+            icon={<SearchIcon className={cn('size-5 text-foreground/50')} />}
             value={globalFilterValue ?? ''}
             onChange={setGlobalFilter}
-            className={cn('h-9 w-full lg:max-w-[300px] rounded-md')}
+            className={cn('h-9 w-full lg:max-w-[300px] rounded')}
             placeholder='Search here...'
             autoFocus={false}
           />

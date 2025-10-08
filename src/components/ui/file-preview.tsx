@@ -9,7 +9,7 @@ const FilePreview: React.FC<{
   return (
     <a
       className={buttonVariants({
-        variant: buttonProps?.variant || 'accent',
+        variant: buttonProps?.variant || 'default',
         size: buttonProps?.size || 'sm',
         className: buttonProps?.className,
       })}

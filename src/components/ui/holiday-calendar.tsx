@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 import { getMonth, getYear } from 'date-fns';
@@ -51,11 +49,10 @@ function HolidayCalendar({
         ),
         weeks: 'w-full border-collapse space-y-4', // 👈 more vertical space between weeks
         weekdays: 'flex gap-4',
-        weekday:
-          'text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]',
+        weekday: 'text-muted-foreground rounded w-9 font-normal text-[0.8rem]',
         week: 'flex w-full gap-1 mt-5', // 👈 horizontal gap between days
         day_button:
-          'h-9 w-9 text-center text-sm p-0 relative mx-[2px] my-[2px] [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
+          'h-9 w-9 text-center text-sm p-0 relative mx-[2px] my-[2px] [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-primary/50 [&:has([aria-selected])]:bg-primary first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
         day: cn(
           buttonVariants({ variant: 'ghost' }),
           'h-12 w-12 p-0 font-normal aria-selected:opacity-100'
@@ -63,9 +60,9 @@ function HolidayCalendar({
         range_end: 'day-range-end',
         selected:
           'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
-        today: 'bg-accent text-accent-foreground',
+        today: 'bg-primary text-primary-foreground',
         outside:
-          'day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
+          'day-outside text-muted-foreground opacity-50 aria-selected:bg-primary/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
         disabled: 'text-muted-foreground opacity-50',
         range_middle:
           'rounded-none aria-selected:bg-gray-200 aria-selected:text-foreground',

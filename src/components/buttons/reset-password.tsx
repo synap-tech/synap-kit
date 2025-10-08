@@ -5,7 +5,7 @@ import { Button, type ButtonProps } from '@/components/ui/button';
 function ResetPassword({ onClick, ...props }: ButtonProps) {
   return (
     <Button
-      variant={'accent'}
+      variant={'default'}
       size={'icon'}
       className='size-7 rounded-full'
       onClick={onClick}

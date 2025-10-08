@@ -11,10 +11,10 @@ function ReactSelectCreatable<T, IsMulti extends boolean>({
     <Creatable
       classNames={{
         // container: () =>
-        //   'w-full h-full border border-border bg-background rounded-md',
+        //   'w-full h-full border border-border bg-background rounded',
         control: ({ isFocused, isDisabled }) =>
           cn(
-            '!bg-input h-9 !min-h-0 !rounded-md border !border-border !text-sm !text-foreground',
+            '!bg-input/30 h-9 !min-h-0 !rounded border !border-border !text-sm !text-foreground',
             isFocused &&
               '!outline-none !outline-0 !outline-offset-0 !outline-secondary',
             isDisabled &&

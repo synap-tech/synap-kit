@@ -22,7 +22,7 @@ const TableList = ({
   isSmallTitle = false,
 }: ITableListProps) => {
   return (
-    <div className={cn('h-full border rounded-md', className)}>
+    <div className={cn('h-full border rounded', className)}>
       {title && (
         <div>
           {!isSmallTitle && (
