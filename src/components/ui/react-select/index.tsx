@@ -23,11 +23,15 @@ const selectStyles: StylesConfig = {
       overflow: 'visible',
     };
   },
+  menuPortal: (base) => ({ ...base, zIndex: 999 }),
 };
 
 export type Ref = any;
 
-const ReactSelect = forwardRef<Ref, Props & { extraControlClassName?: string }>(
+const ReactSelect = forwardRef<
+  Ref,
+  Props & { extraControlClassName?: string; toolbar?: boolean }
+>(
   (
     {
       options,
@@ -37,6 +41,7 @@ const ReactSelect = forwardRef<Ref, Props & { extraControlClassName?: string }>(
       isSearchable = true,
       isDisabled = false,
       extraControlClassName,
+      toolbar,
       ...props
     },
     ref
@@ -46,7 +51,7 @@ const ReactSelect = forwardRef<Ref, Props & { extraControlClassName?: string }>(
         ref={ref}
         unstyled
         classNamePrefix={'react-select-'}
-        classNames={classNames(extraControlClassName)}
+        classNames={classNames(extraControlClassName, toolbar)}
         styles={selectStyles}
         components={{
           ClearIndicator: (props) => (

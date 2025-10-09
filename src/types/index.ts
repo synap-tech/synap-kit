@@ -123,6 +123,16 @@ export type IUser = {
   department: string;
   employee_uuid: string;
   user_type: 'employee' | 'customer' | 'vendor';
+  email: string;
+  department_name: string;
+  designation_name: string;
+  phone: string;
+  where_they_find_us: string;
+  address: string;
+  city: string;
+  district: string;
+  location: string;
+  created_at: string;
 };
 
 export type IAuthResponse = {

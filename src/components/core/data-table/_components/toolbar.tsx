@@ -134,7 +134,7 @@ export function TableToolbar() {
                     aria-label='Create new entry'
                     onClick={handleCreate}
                     variant='default'
-                    size='toolbar-sm'
+                    size='toolbar'
                   >
                     <CirclePlus className='size-4' />
                     New
@@ -198,7 +198,11 @@ export function TableToolbar() {
                 )}
               />
 
-              {otherToolBarComponents}
+              {otherToolBarComponents && otherToolBarComponents.length > 0 && (
+                <div className='flex flex-col gap-2'>
+                  {otherToolBarComponents.map((component) => component)}
+                </div>
+              )}
               <ToolbarComponent
                 option='faceted-filter'
                 render={() =>
@@ -237,7 +241,7 @@ export function TableToolbar() {
                     aria-label='Create new entry'
                     onClick={handleCreate}
                     variant='default'
-                    size='toolbar-sm'
+                    size='toolbar'
                   >
                     <CirclePlus className='size-4' />
                     New
@@ -305,7 +309,7 @@ export function TableToolbar() {
               aria-label='Reset filters'
               variant='outline-destructive'
               onClick={resetColumnFilters}
-              size={'toolbar-sm'}
+              size={'toolbar'}
             >
               Reset
               <X className='size-4' />
@@ -370,8 +374,8 @@ export function TableToolbar() {
           <span className='block h-5 bg-border w-[1px]' />
         )}
 
-        <div className='hidden lg:flex flex-wrap flex-col lg:flex-row gap-4'>
-          {otherToolBarComponents}
+        <div className='hidden lg:flex  gap-4'>
+          {otherToolBarComponents?.map((component) => component)}
         </div>
       </div>
     ),

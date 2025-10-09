@@ -28,7 +28,7 @@ export function TableOrderBy<TData>({ table }: TableViewOptionsProps<TData>) {
         <Button
           aria-label='Sort By'
           variant='ghost'
-          size='toolbar-sm'
+          size='toolbar'
           className='hidden lg:flex'
         >
           {searchParams.get('orderby') === 'asc' ? (

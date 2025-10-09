@@ -241,7 +241,7 @@ const PageAssign: React.FC<IPageAssignProps> = ({
         />
       </div>
       <Tabs value={selectPageName} className='w-full'>
-        <TabsList className='flex w-full justify-start bg-base-200'>
+        <TabsList className='flex w-full justify-start'>
           <TabsTrigger
             type={'button'}
             value={'all'}
@@ -274,7 +274,7 @@ const PageAssign: React.FC<IPageAssignProps> = ({
               <div
                 key={page_name}
                 className={cn(
-                  'flex flex-col gap-2 rounded border p-3 pt-2 transition-colors duration-300 ease-in-out hover:bg-base-150 '
+                  'flex flex-col gap-2 rounded border p-3 pt-2 transition-colors duration-300 ease-in-out hover:bg-background '
                 )}
               >
                 <div className='flex items-center justify-between'>

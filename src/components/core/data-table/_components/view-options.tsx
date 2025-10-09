@@ -44,7 +44,7 @@ export function TableViewOptions<TData>({
           onClick={handleOpenModal}
           aria-label='Column Options'
           variant='ghost'
-          size='toolbar-sm'
+          size='toolbar'
           className={cn(className)}
         >
           <Columns2 className='size-4' />

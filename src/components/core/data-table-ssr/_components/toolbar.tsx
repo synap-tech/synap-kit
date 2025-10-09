@@ -70,7 +70,7 @@ const Toolbar = () => {
           <Button
             aria-label='Create new entry'
             onClick={handleCreate}
-            size='toolbar-sm'
+            size='toolbar'
           >
             <CirclePlus className='size-4' />
             New
@@ -97,7 +97,7 @@ const Toolbar = () => {
             aria-label='Reset filters'
             variant='outline-destructive'
             onClick={clearSearchParams}
-            size={'toolbar-sm'}
+            size={'toolbar'}
           >
             Reset
             <X className='size-4' />

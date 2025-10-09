@@ -45,7 +45,7 @@ const TableRefresh: React.FC<TableRefreshProps> = ({ handleRefetch }) => {
         aria-label='Refresh Data'
         disabled={isFetching}
         variant={'ghost'}
-        size={'toolbar-sm'}
+        size={'toolbar'}
         onClick={handleClick}
       >
         <RefreshCw className={cn('size-4', isFetching && 'animate-spin')} />

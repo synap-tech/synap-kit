@@ -84,7 +84,7 @@ export interface ITableContext<TData> {
   onUpdate?: ({ range }: { range: DateRange }) => void;
   onClear?: () => void;
   isClear?: boolean;
-  otherToolBarComponents?: React.ReactNode;
+  otherToolBarComponents?: React.ReactNode[];
   actions: ITableAction<TData>[];
   childrenInsideTable?: boolean | null;
   extraHeader?: React.ReactNode;
@@ -123,7 +123,7 @@ export interface ITableProviderProps<TData, TValue> {
   onUpdate?: ({ range }: { range: DateRange }) => void;
   onClear?: () => void;
   isClear?: boolean;
-  otherToolBarComponents?: React.ReactNode;
+  otherToolBarComponents?: React.ReactNode[];
   actions?: ITableAction<TData>[];
   rightColumnPinning?: string[];
   leftColumnPinning?: string[];

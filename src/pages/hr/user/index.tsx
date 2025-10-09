@@ -11,6 +11,9 @@ import useAccess from '@/hooks/useAccess';
 
 import { DeleteAllModal, DeleteModal } from '@/components/core/modal';
 import ReactSelect from '@/components/ui/react-select';
+import SingleDatePicker from '@/components/ui/single-date-picker';
+
+import { cn } from '@/lib/utils';
 
 import { userColumns } from '../_config/columns';
 import type {
@@ -192,25 +195,25 @@ const User = () => {
         isLoading={isLoading}
         handleCreate={handleCreate}
         handleRefetch={refetch}
-        otherToolBarComponents={
+        otherToolBarComponents={[
           <ReactSelect
+            toolbar
             options={typeOptions || []}
             value={typeOptions?.find((option) => option.value === type)}
             menuPortalTarget={document.body}
-            styles={{
-              menuPortal: (base) => ({ ...base, zIndex: 999 }),
-              control: (base) => ({
-                ...base,
-                minWidth: 150,
-                height: '32px !important',
-                padding: '0 10px',
-              }),
-            }}
             onChange={(e: any) => {
               setType(e?.value);
             }}
-          />
-        }
+          />,
+          <SingleDatePicker
+            toolbar
+            selected={new Date()}
+            onSelect={(date: Date) => {
+              console.log({ date });
+            }}
+            maxDate={new Date()}
+          />,
+        ]}
         actions={[
           {
             label: 'Edit',

@@ -73,10 +73,10 @@ const AppSettings: React.FC<{
           <Button
             onClick={() => {
               setCurrentPrimaryColor('');
-              setCurrentFontSize('16');
-              setFontSize(16);
+              setCurrentFontSize('14');
+              setFontSize(14);
               setColor('');
-              document.documentElement.style.setProperty('--font-size', `16px`);
+              document.documentElement.style.setProperty('--font-size', `14px`);
               document.documentElement.style.setProperty('--primary', ``);
               setOpen(false);
             }}

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { format, isValid } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import { Button, type ButtonProps } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
   Popover,
@@ -14,17 +14,19 @@ import {
 import { cn } from '@/lib/utils';
 
 interface IProps {
+  toolbar?: boolean;
   selected: Date;
   onSelect: (date: Date) => void;
   disableIcon?: boolean;
   className?: string;
-  size?: 'sm' | 'lg' | 'default' | 'xs' | 'icon' | null | undefined;
+  size?: ButtonProps['size'];
   minDate?: Date;
   maxDate?: Date;
   disabled?: (date: Date) => boolean;
 }
 
 const SingleDatePicker: React.FC<IProps> = ({
+  toolbar,
   selected,
   onSelect,
   disableIcon = false,
@@ -57,16 +59,21 @@ const SingleDatePicker: React.FC<IProps> = ({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          size={size}
-          variant={'outline'}
+          size={toolbar ? 'toolbar' : size}
+          variant={toolbar ? 'ghost' : 'outline'}
           className={cn(
-            'min-w-[140px] max-w-fit justify-start text-left font-normal transition-none active:scale-100',
+            'min-w-[140px] max-w-fit  active:scale-100',
             !selected && 'text-muted-foreground',
+            toolbar && 'border ',
             className
           )}
         >
-          {!disableIcon && <CalendarIcon className='size-5' />}
-          {selected ? format(selected, 'MMM d, y') : <span>Pick a date</span>}
+          {!disableIcon && <CalendarIcon className='size-4' />}
+          {selected ? (
+            <span className='inline'>{format(selected, 'dd MMM, yyyy')}</span>
+          ) : (
+            <span className='inline'>Pick a date</span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-auto p-0'>

@@ -382,7 +382,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
       <PopoverTrigger asChild>
         <Button
           aria-label='Open date range picker'
-          size={isMobile ? 'icon' : 'toolbar-sm'}
+          size={isMobile ? 'icon' : 'toolbar'}
           variant='ghost'
           className={cn(className)}
         >

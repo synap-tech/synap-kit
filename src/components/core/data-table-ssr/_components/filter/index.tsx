@@ -20,11 +20,7 @@ function TableFilter<T>({ options }: { options: ITableFilterOptionSSR<T>[] }) {
   return (
     <Sheet>
       <SheetTrigger>
-        <Button
-          aria-label='Filters All Columns'
-          variant='ghost'
-          size='toolbar-sm'
-        >
+        <Button aria-label='Filters All Columns' variant='ghost' size='toolbar'>
           <SlidersHorizontal className='size-4' />
           Filters
         </Button>

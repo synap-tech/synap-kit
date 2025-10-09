@@ -52,7 +52,7 @@ const TableExportCSV = ({
       : 'Table.csv';
 
   return (
-    <Button variant={'ghost'} size={'toolbar-sm'} className={className}>
+    <Button variant={'ghost'} size={'toolbar'} className={className}>
       <CSVLink
         className='size-full flex items-center gap-2'
         aria-label='Export to CSV'

@@ -25,7 +25,7 @@ const buttonVariants = cva(
         accent: 'bg-accent text-accent-foreground hover:bg-accent/90',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'text-foreground hover:bg-background',
+        ghost: ' text-foreground hover:bg-background',
         'ghost-destructive': 'text-destructive hover:bg-destructive/10 ',
         link: 'text-primary underline-offset-4 hover:underline',
         gradient: 'bg-gradient text-foreground border',
@@ -44,7 +44,7 @@ const buttonVariants = cva(
         icon: 'size-8',
         'icon-sm': 'size-6',
         'icon-lg': 'size-9',
-        'toolbar-sm': 'h-8  px-3',
+        toolbar: 'h-8  px-3',
       },
     },
     defaultVariants: {
