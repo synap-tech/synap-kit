@@ -23,7 +23,6 @@ const selectStyles: StylesConfig = {
       overflow: 'visible',
     };
   },
-  menuPortal: (base) => ({ ...base, zIndex: 999 }),
 };
 
 export type Ref = any;

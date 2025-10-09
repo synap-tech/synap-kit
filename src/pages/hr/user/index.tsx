@@ -204,6 +204,13 @@ const User = () => {
             onChange={(e: any) => {
               setType(e?.value);
             }}
+            styles={{
+              menuPortal: (base) => ({ ...base, zIndex: 999 }),
+              container: (base) => ({
+                ...base,
+                width: '10rem',
+              }),
+            }}
           />,
           <SingleDatePicker
             toolbar
