@@ -93,6 +93,7 @@ export function TableToolbar() {
     isClear,
     initialDateRange,
     otherToolBarComponents,
+    collapsible,
   } = useTable();
 
   const column = table.getColumn('created_at');
@@ -391,33 +392,38 @@ export function TableToolbar() {
     ]
   );
 
-  if (isEntry) {
+  if (isEntry || collapsible === true) {
     return (
       <Accordion type='single' collapsible className='w-full'>
-        <AccordionItem value='item-1' className='rounded-t-md bg-background'>
+        <AccordionItem value='item-1' className='rounded-t-md'>
           <AccordionTrigger
             Icon={Funnel}
             iconClassName='size-5'
-            className=' pt-2 pb-0 text-2xl font-semibold capitalize leading-none text-foreground [&[data-state=open]>svg]:rotate-0'
+            className='pt-2 pb-0 [&[data-state=open]>svg]:rotate-0'
           >
-            {title}
+            <TableTitle title={title} subtitle={subtitle} info={info} />
           </AccordionTrigger>
-          <AccordionContent className='flex items-center justify-between gap-4 px-0 pt-2.5 pb-0'>
-            {toolbarOptions === 'none' ? null : (
-              <div className={cn('flex items-center justify-between')}>
-                {renderLeftSection()}
-                {renderRightSection()}
-              </div>
-            )}
+          <AccordionContent>
+            <div className='flex items-center justify-between gap-4 px-0 pt-4 pb-0'>
+              {toolbarOptions === 'none' ? null : (
+                <div className={cn('flex items-center gap-2')}>
+                  {renderLeftSection()}
+                  {renderRightSection()}
+                </div>
+              )}
 
-            <DebouncedInput
-              icon={<SearchIcon className={cn('size-5 ')} />}
-              value={globalFilterValue ?? ''}
-              onChange={setGlobalFilter}
-              className={cn(' w-full lg:max-w-[300px]')}
-              placeholder='Search...'
-              autoFocus={false}
-            />
+              <DebouncedInput
+                icon={
+                  <SearchIcon className={cn('size-5 text-foreground/50')} />
+                }
+                value={globalFilterValue ?? ''}
+                onChange={setGlobalFilter}
+                className={cn('h-9 w-full lg:max-w-[300px] rounded')}
+                placeholder='Search here...'
+                autoFocus={false}
+              />
+            </div>
+            <PinnedColumns />
           </AccordionContent>
         </AccordionItem>
       </Accordion>

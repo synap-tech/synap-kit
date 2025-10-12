@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createRoot } from 'react-dom/client';
 
 import App from './App.tsx';
-import './index2.css';
+import './index.css';
 import ThemeProvider from './providers/theme-provider.tsx';
 
 const queryClient = new QueryClient();

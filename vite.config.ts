@@ -67,7 +67,7 @@ export default defineConfig({
         layout: path.resolve(__dirname, 'src/components/layout/index.tsx'),
         login: path.resolve(__dirname, 'src/components/auth/login/index.tsx'),
         form: path.resolve(__dirname, 'src/components/core/form/index.ts'),
-        'tailwind-config': path.resolve(__dirname, 'tailwind.config.ts'),
+        // 'tailwind-config': path.resolve(__dirname, 'tailwind.config.ts'),
         'data-table': path.resolve(
           __dirname,
           'src/components/core/data-table/index.tsx'

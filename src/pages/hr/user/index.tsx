@@ -188,6 +188,7 @@ const User = () => {
       pageTitle={pageInfo.getTabName()}
     >
       <TableProvider
+        collapsible
         title={pageInfo.getTitle()}
         info='Create new user'
         columns={columns}

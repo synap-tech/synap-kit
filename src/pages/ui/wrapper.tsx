@@ -1,16 +1,15 @@
 import React from 'react';
 
-import { Separator } from '@/components/ui/separator';
-
 const Wrapper: React.FC<{
   title: string;
   children: React.ReactNode;
 }> = ({ title, children }) => {
   return (
-    <div className='border px-6 py-4 rounded bg-background'>
-      <h4 className='text-2xl font-bold'>{title}</h4>
-      <Separator className='mt-1 mb-4' />
-      {children}
+    <div className='w-full max-w-7xl mx-auto p-6'>
+      {title && (
+        <h1 className='text-3xl font-bold mb-6 text-center'>{title}</h1>
+      )}
+      <div className='bg-white rounded-lg shadow-sm'>{children}</div>
     </div>
   );
 };

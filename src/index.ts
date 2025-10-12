@@ -1,4 +1,4 @@
-import './index2.css';
+import './index.css';
 
 // src/main.ts
 // Export all your components from this file.

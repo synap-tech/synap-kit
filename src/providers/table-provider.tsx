@@ -94,6 +94,7 @@ export interface ITableContext<TData> {
   addPinnedColumn: (columnId: string) => void;
   removePinnedColumn: (columnId: string) => void;
   resetPinnedColumns: () => void;
+  collapsible?: boolean;
 }
 
 export const TableContext = createContext({} as ITableContext<any>);
@@ -132,6 +133,7 @@ export interface ITableProviderProps<TData, TValue> {
   info?: string;
 
   defaultPinnedColumns?: string[];
+  collapsible?: boolean;
 }
 
 function TableProvider<TData, TValue>({
@@ -165,6 +167,7 @@ function TableProvider<TData, TValue>({
   extraHeader,
   info,
   defaultPinnedColumns,
+  collapsible = false,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -287,6 +290,7 @@ function TableProvider<TData, TValue>({
       addPinnedColumn,
       removePinnedColumn,
       resetPinnedColumns,
+      collapsible,
     }),
     [
       title,
@@ -319,6 +323,7 @@ function TableProvider<TData, TValue>({
       addPinnedColumn,
       removePinnedColumn,
       resetPinnedColumns,
+      collapsible,
     ]
   );
 

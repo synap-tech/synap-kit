@@ -7,16 +7,18 @@ import { Switch } from '@/components/ui/switch';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 import DialogComponent from './dialog';
+import FingerprintEnroll from './fingerprint-enroll/fingerprint-enroll';
 import TestForm from './form';
 import TableSSR from './table-ssr';
 import Wrapper from './wrapper';
 
 const TestPage = () => {
   return (
-    <div className='p-12 border bg-sky-50 space-y-8 '>
+    <div className='p-12 border bg-background space-y-8 '>
       <h1 className='text-center text-2xl font-medium'>UI Components</h1>
       <ThemeToggle />
 
+      <FingerprintEnroll />
       <Wrapper title='Form Fields'>
         <TestForm />
       </Wrapper>
@@ -25,8 +27,8 @@ const TestPage = () => {
         <div>Hello</div>
       </SectionContainer>
 
-      <DataTableEntry title='Hello' columns={[]} data={[]}>
-        Hello
+      <DataTableEntry title='Data Table Entry Mode' columns={[]} data={[]}>
+        Data Table Entry
       </DataTableEntry>
       <Badge variant={'outline-success'}>Success</Badge>
       <Badge variant={'outline-warning'}>Warning</Badge>

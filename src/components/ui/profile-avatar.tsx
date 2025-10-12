@@ -42,7 +42,7 @@ const ProfileAvatar = () => {
                 {user?.name}
               </p>
               <p className='text-xs font-medium text-foreground/50'>
-                {user?.email}
+                {user?.department_name}
               </p>
             </div>
           </div>
