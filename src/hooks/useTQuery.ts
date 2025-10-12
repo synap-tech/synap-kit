@@ -9,6 +9,8 @@ export interface IUseTQuery {
   queryKey: (string | number | boolean | Date | undefined)[];
   url: string;
   enabled?: boolean;
+  refetchInterval?: number | false;
+  refetchIntervalInBackground?: boolean;
 }
 
 export interface IPost {
@@ -24,7 +26,13 @@ export interface IUpdate {
   onClose?: () => void;
 }
 
-const useTQuery = <T>({ queryKey, url, enabled = true }: IUseTQuery) => {
+const useTQuery = <T>({
+  queryKey,
+  url,
+  enabled = true,
+  refetchInterval = false,
+  refetchIntervalInBackground = false,
+}: IUseTQuery) => {
   const api = useApi({ contentType: 'application/json' });
   const image_api = useApi({ contentType: 'multipart/form-data' });
 
@@ -34,11 +42,11 @@ const useTQuery = <T>({ queryKey, url, enabled = true }: IUseTQuery) => {
     useQuery<T>({
       queryKey,
       queryFn: () => api.get(url).then((res) => res.data),
-      refetchInterval: false,
+      refetchInterval,
       refetchOnMount: false,
       refetchOnWindowFocus: true,
       refetchOnReconnect: false,
-      refetchIntervalInBackground: false,
+      refetchIntervalInBackground,
       enabled,
     });
 
