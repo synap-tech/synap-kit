@@ -34,7 +34,7 @@ const ContentModal: React.FC<IContentModalProps> = ({
           e.preventDefault();
         }}
         className={cn(
-          'max-h-[90vh] w-full cursor-default overflow-auto bg-popover',
+          'max-h-[90vh] w-full cursor-default overflow-auto scrollbar bg-popover',
           isSmall && 'sm:max-w-5xl',
           className
         )}

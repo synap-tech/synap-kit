@@ -69,6 +69,8 @@ const TestForm = () => {
       <div className='space-y-4'>
         <CoreForm.Section
           title='Core Form Section'
+          info='This is a core form section'
+          extraHeader={<div>Extra Header</div>}
           className='lg:grid-cols-1 gap-4'
         >
           <div className='border p-4 rounded bg-background'>

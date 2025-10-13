@@ -117,7 +117,7 @@ export type FieldDef = {
 );
 
 export interface DynamicFieldsProps {
-  title: string | React.ReactNode;
+  title: string;
   form: UseFormReturn<any>;
   fieldName: string;
   fieldDefs: FieldDef[];

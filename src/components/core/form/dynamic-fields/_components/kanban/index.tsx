@@ -23,7 +23,7 @@ const KanbanDynamicFields: React.FC<
       )}
       {fields.length > 0 &&
         fields.map((field, fieldIndex) => (
-          <div className='relative flex flex-col items-start space-y-4 overflow-hidden rounded border bg-white px-2.5 pb-3 pt-10 shadow-sm lg:px-4 lg:pt-12'>
+          <div className='relative flex flex-col items-start space-y-4 overflow-hidden rounded border bg-card px-2.5 pb-3 pt-10 shadow-sm lg:px-4 lg:pt-12'>
             {fieldDefs
               .filter((fieldDef) => !fieldDef.hidden)
               .map((fieldDef) => {
@@ -44,7 +44,7 @@ const KanbanDynamicFields: React.FC<
 
                       {fieldDef.type === 'custom' &&
                         fieldDef.accessorKey === 'actions' && (
-                          <div className='bg-base rounded-y absolute left-0 right-0 top-0 flex items-center justify-between border-b px-4 py-1.5'>
+                          <div className='bg-muted rounded-y absolute left-0 right-0 top-0 flex items-center justify-between border-b px-4 py-1.5'>
                             {fieldDef.component(fieldIndex)}
                           </div>
                         )}

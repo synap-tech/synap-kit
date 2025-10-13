@@ -246,11 +246,11 @@
 
   --white: oklch(1 0 0);
   --black: oklch(0.23 0 0);
-  --content: oklch(0.2 0 0);
+  --content: oklch(0.225 0 0);
 
   /* --------------------- */
-  --background: oklch(0.1125 0 0);
-  --foreground: oklch(1 0 0);
+  --background: oklch(0.2 0 0);
+  --foreground: oklch(0.85 0 0);
   --card: oklch(0.14 0 0);
   --card-foreground: oklch(1 0 0);
   --popover: oklch(0.18 0 0);
@@ -265,7 +265,7 @@
   --accent-foreground: oklch(1 0 0);
   /* --destructive: oklch(0.69 0.2 23.91);
   --destructive-foreground: oklch(0 0 0); */
-  --border: oklch(0.26 0 0);
+  --border: oklch(0.3 0 0);
   --input: oklch(0.32 0 0);
   --ring: oklch(0.72 0 0);
   --chart-1: oklch(0.81 0.17 75.35);
@@ -395,4 +395,8 @@
     outline-offset: 2px;
     border-radius: 4px;
   }
+}
+
+@utility scrollbar {
+  @apply [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700;
 }

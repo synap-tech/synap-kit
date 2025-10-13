@@ -13,8 +13,6 @@ import { DeleteAllModal, DeleteModal } from '@/components/core/modal';
 import ReactSelect from '@/components/ui/react-select';
 import SingleDatePicker from '@/components/ui/single-date-picker';
 
-import { cn } from '@/lib/utils';
-
 import { userColumns } from '../_config/columns';
 import type {
   IPageAssign,
@@ -188,7 +186,6 @@ const User = () => {
       pageTitle={pageInfo.getTabName()}
     >
       <TableProvider
-        collapsible
         title={pageInfo.getTitle()}
         info='Create new user'
         columns={columns}

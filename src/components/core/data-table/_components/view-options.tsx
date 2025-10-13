@@ -54,7 +54,7 @@ export function TableViewOptions<TData>({
       <DropdownMenuContent
         ref={ref as any}
         align='end'
-        className='z-[999] max-h-[400px] w-fit overflow-auto'
+        className='z-[999] max-h-[400px] w-fit overflow-auto scrollbar'
       >
         <DropdownMenuLabel>Toggle Columns</DropdownMenuLabel>
         <DropdownMenuSeparator />

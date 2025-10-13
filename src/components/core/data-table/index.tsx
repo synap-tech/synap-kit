@@ -17,6 +17,7 @@ import { cn } from '@/lib/utils';
 import { TableColumnHeader } from './_components/column-header';
 import { TablePagination } from './_components/pagination';
 import TableSkeleton from './_components/skeleton';
+import TableWrapper from './_components/table-wrapper';
 import { TableToolbar } from './_components/toolbar';
 import { getCommonPinningStyles } from './_helpers/getCommonPinningStyle';
 
@@ -25,11 +26,11 @@ function DataTable({ children }: { children?: React.ReactNode }) {
   const { table, isLoading, childrenInsideTable, extraHeader } = useTable();
 
   return (
-    <div className='flex h-full relative  flex-col gap-4 px-3 lg:px-5 py-4 bg-content rounded '>
+    <TableWrapper>
       <TableToolbar />
       {extraHeader && extraHeader}
-      <div className={cn('max-h-fit flex-1  overflow-auto')}>
-        <TableComponent className='border rounded'>
+      <div className={cn('flex-1 flex flex-col  overflow-auto scrollbar')}>
+        <TableComponent>
           <TableHeader className='w-full sticky left-0 right-0 top-0 z-20'>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -84,8 +85,8 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                         }),
                       }}
                       className={cn(
-                        'first:pl-6',
-                        cell.column.getIsPinned() && 'bg-content  border-b'
+                        'first:pl-6 break-words text-wrap',
+                        cell.column.getIsPinned() && 'bg-card  border-b'
                       )}
                     >
                       {flexRender(
@@ -121,7 +122,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
 
         <TablePagination />
       </div>
-    </div>
+    </TableWrapper>
   );
 }
 

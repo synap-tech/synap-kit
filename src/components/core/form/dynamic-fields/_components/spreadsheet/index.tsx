@@ -32,7 +32,7 @@ const SpreadsheetDynamicFields: React.FC<
   });
 
   return (
-    <div className='overflow-auto rounded-b-md border border-y-0'>
+    <div className='overflow-auto scrollbar rounded-b-md border border-y-0'>
       <HotTable
         layoutDirection='ltr'
         data={data}

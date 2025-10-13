@@ -45,7 +45,7 @@ const ModalWrapper: React.FC<IModalWrapperProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className='fixed inset-0 backdrop-blur-sm backdrop-brightness-50'
+            className='fixed inset-0 backdrop-blur-sm backdrop-brightness-30'
           />
           <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
             <DialogPanel
@@ -54,7 +54,7 @@ const ModalWrapper: React.FC<IModalWrapperProps> = ({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className={cn(
-                'relative max-h-[90vh] w-full max-w-lg overflow-auto rounded-lg bg-popover p-6 shadow-lg  flex flex-col gap-4',
+                'relative max-h-[90vh] w-full max-w-lg overflow-auto scrollbar rounded-lg bg-popover p-6  border  flex flex-col gap-4',
                 isSmall && 'sm:max-w-5xl',
                 isLarge && 'max-w-7xl',
                 className

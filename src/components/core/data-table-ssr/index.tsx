@@ -1,6 +1,7 @@
 import { flexRender } from '@tanstack/react-table';
 
 import useTableSSR from '@/hooks/useTableSSR';
+import useTheme from '@/hooks/useTheme';
 
 import { TableColumnHeader } from '@/components/core/data-table/_components/column-header';
 import TableSkeleton from '@/components/core/data-table/_components/skeleton';
@@ -16,14 +17,16 @@ import {
 
 import { cn } from '@/lib/utils';
 
+import TableWrapper from '../data-table/_components/table-wrapper';
 import { TablePagination } from './_components/pagination';
 import Toolbar from './_components/toolbar';
 
 const DataTableSSR = () => {
+  const { theme } = useTheme();
   const { table, isEntry, isLoading } = useTableSSR();
 
   return (
-    <div className='flex h-full relative  flex-col gap-4 px-5 py-4 bg-white rounded '>
+    <TableWrapper>
       <Toolbar />
       <div
         className={cn(
@@ -45,9 +48,10 @@ const DataTableSSR = () => {
                         ...getCommonPinningStyles({
                           column: header.column,
                           isHeader: true,
+                          theme,
                         }),
                       }}
-                      className='py-2  first:pl-6 text-left '
+                      className='py-2  first:pl-6 text-left !bg-background'
                     >
                       {header.isPlaceholder
                         ? null
@@ -65,7 +69,7 @@ const DataTableSSR = () => {
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody className='divide-y-[1px] divide-secondary/10'>
+          <TableBody className='divide-y-[1px] divide-border w-full'>
             {isLoading ? (
               <TableSkeleton colSpan={table.getAllColumns().length} />
             ) : table.getRowModel().rows?.length ? (
@@ -80,9 +84,13 @@ const DataTableSSR = () => {
                       style={{
                         ...getCommonPinningStyles({
                           column: cell.column,
+                          theme,
                         }),
                       }}
-                      className='first:pl-6'
+                      className={cn(
+                        'first:pl-6 break-words text-wrap',
+                        cell.column.getIsPinned() && 'bg-card  border-b'
+                      )}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -96,7 +104,7 @@ const DataTableSSR = () => {
               <TableRow>
                 <TableCell
                   colSpan={table.getAllColumns().length}
-                  className='h-24 text-center'
+                  className='h-24 text-center w-full'
                 >
                   No results.
                 </TableCell>
@@ -107,7 +115,7 @@ const DataTableSSR = () => {
 
         <TablePagination />
       </div>
-    </div>
+    </TableWrapper>
   );
 };
 

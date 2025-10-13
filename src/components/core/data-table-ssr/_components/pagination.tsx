@@ -25,8 +25,8 @@ export function TablePagination() {
     useTableSSR();
 
   return (
-    <div className='sticky bottom-0 left-0 right-0 z-50 bg-base shadow-lg'>
-      <div className='flex w-full items-center justify-between overflow-hidden border-t border-secondary/10 px-6 py-3'>
+    <div className='sticky bottom-0 left-0 right-0 z-50 bg-card shadow-lg'>
+      <div className='flex w-full items-center justify-between overflow-hidden pt-3'>
         {enableRowSelection === true ? (
           <div className='flex-1 text-sm text-muted-foreground'>
             {table.getFilteredSelectedRowModel().rows.length} of{' '}

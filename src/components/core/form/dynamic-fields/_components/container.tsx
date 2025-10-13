@@ -27,8 +27,9 @@ const DynamicFieldContainer: React.FC<IProps> = ({
   extraButton,
 }) => {
   return (
-    <div className='overflow-hidden rounded shadow-sm bg-base'>
+    <div className='overflow-hidden  rounded shadow-sm bg-card'>
       <SectionHeader
+        title={title}
         extraHeader={
           <div className='flex items-center gap-4'>
             {extraHeader && extraHeader}
@@ -46,10 +47,15 @@ const DynamicFieldContainer: React.FC<IProps> = ({
             {extraButton && extraButton}
           </div>
         }
+      />
+      <div
+        className={cn(
+          'px-5 py-4 lg:px-4 border border-t-0 rounded-b',
+          containerClassName
+        )}
       >
-        {title}
-      </SectionHeader>
-      <div className={cn('px-5 pb-4 ', containerClassName)}>{children}</div>
+        {children}
+      </div>
     </div>
   );
 };

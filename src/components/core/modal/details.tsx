@@ -27,7 +27,7 @@ const DetailsModal: React.FC<IDetailsModalProps> = ({
           e.preventDefault();
         }}
         className={cn(
-          'max-h-[90vh] w-full cursor-default overflow-auto bg-background',
+          'max-h-[90vh] w-full cursor-default overflow-auto scrollbar bg-background',
           isSmall && 'sm:max-w-7xl',
           className
         )}

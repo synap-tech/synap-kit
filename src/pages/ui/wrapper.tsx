@@ -9,7 +9,7 @@ const Wrapper: React.FC<{
       {title && (
         <h1 className='text-3xl font-bold mb-6 text-center'>{title}</h1>
       )}
-      <div className='bg-white rounded-lg shadow-sm'>{children}</div>
+      <div className='rounded-lg'>{children}</div>
     </div>
   );
 };

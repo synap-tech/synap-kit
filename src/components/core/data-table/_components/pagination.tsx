@@ -17,7 +17,7 @@ export function TablePagination() {
   const { table, enableRowSelection } = useTable();
 
   return (
-    <div className='sticky bottom-0 left-0 right-0 z-50 bg-content'>
+    <div className='sticky bottom-0 left-0 right-0 z-50 bg-card'>
       <div className='flex w-full items-center justify-between overflow-hidden pt-3'>
         {enableRowSelection === true ? (
           <div className='flex-1 text-sm text-muted-foreground'>
@@ -58,7 +58,7 @@ export function TablePagination() {
             </p>
           </div>
 
-          <div className='flex-1  w-full  overflow-auto flex items-center lg:justify-center gap-1'>
+          <div className='flex-1  w-full  overflow-auto scrollbar flex items-center lg:justify-center gap-1'>
             <Button
               aria-label='Go to previous page'
               variant='ghost'

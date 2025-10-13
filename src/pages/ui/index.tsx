@@ -6,6 +6,7 @@ import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 
+import User from '../hr/user';
 import DialogComponent from './dialog';
 import FingerprintEnroll from './fingerprint-enroll/fingerprint-enroll';
 import TestForm from './form';
@@ -14,11 +15,12 @@ import Wrapper from './wrapper';
 
 const TestPage = () => {
   return (
-    <div className='p-12 border bg-background space-y-8 '>
+    <div className='p-12  bg-background space-y-8 '>
       <h1 className='text-center text-2xl font-medium'>UI Components</h1>
       <ThemeToggle />
 
       <FingerprintEnroll />
+
       <Wrapper title='Form Fields'>
         <TestForm />
       </Wrapper>
@@ -43,6 +45,7 @@ const TestPage = () => {
 
       <Switch />
 
+      <User />
       <TableSSR />
       <DialogComponent />
     </div>

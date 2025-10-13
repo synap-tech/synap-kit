@@ -10,15 +10,22 @@ const FormSection: React.FC<IFormSectionProps> = ({
   children,
   className,
   title,
+  info,
   extraHeader,
+  extraHeaderClassName,
 }) => {
   if (title) {
     return (
-      <div className='overflow-hidden rounded shadow-sm bg-content'>
-        <SectionHeader extraHeader={extraHeader}>{title}</SectionHeader>
+      <div className='overflow-hidden rounded shadow-sm bg-card'>
+        <SectionHeader
+          title={title}
+          info={info}
+          extraHeader={extraHeader}
+          className={extraHeaderClassName}
+        />
         <div
           className={cn(
-            'grid grid-cols-1 gap-2.5 rounded-b-md  px-2.5 pb-2.5 sm:grid-cols-1 sm:gap-4 lg:grid-cols-3 lg:px-4 lg:pb-4',
+            'grid grid-cols-1 gap-2.5  px-5 py-4 sm:grid-cols-1 sm:gap-4 lg:grid-cols-3 lg:px-4  border border-t-0 rounded-b',
             className
           )}
         >

@@ -3,15 +3,18 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 function Table({ className, ...props }: React.ComponentProps<'table'>) {
+  // return (
+  //   <table
+  //     data-slot='table'
+  //     className={cn('w-full caption-bottom text-sm ', className)}
+  //     {...props}
+  //   />
+  // );
   return (
-    <table
-      data-slot='table'
-      className={cn('w-full caption-bottom text-sm ', className)}
-      {...props}
-    />
-  );
-  return (
-    <div data-slot='table-container' className='relative w-full rounded border'>
+    <div
+      data-slot='table-container'
+      className='relative max-h-full w-full rounded border overflow-auto  scrollbar '
+    >
       <table
         data-slot='table'
         className={cn('w-full caption-bottom text-sm', className)}
@@ -85,7 +88,7 @@ function TableCell({ className, ...props }: React.ComponentProps<'td'>) {
     <td
       data-slot='table-cell'
       className={cn(
-        'p-2 align-middle  [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
+        'p-2 align-middle text-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
         className
       )}
       {...props}

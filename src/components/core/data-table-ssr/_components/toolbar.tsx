@@ -164,7 +164,6 @@ const Toolbar = () => {
           {renderLeftSection()}
           {renderRightSection()}
         </div>
-
         <PinFilters />
       </div>
     </TableFilterProvider>

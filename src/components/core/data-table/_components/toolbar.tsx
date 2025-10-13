@@ -399,7 +399,7 @@ export function TableToolbar() {
           <AccordionTrigger
             Icon={Funnel}
             iconClassName='size-5'
-            className='pt-2 pb-0 [&[data-state=open]>svg]:rotate-0'
+            className='p-0 [&[data-state=open]>svg]:rotate-0'
           >
             <TableTitle title={title} subtitle={subtitle} info={info} />
           </AccordionTrigger>

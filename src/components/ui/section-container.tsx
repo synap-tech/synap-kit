@@ -3,7 +3,8 @@ import { cn } from '@/lib/utils';
 import SectionHeader from './section-header';
 
 export interface ISectionContainerProps {
-  title: string | React.ReactNode;
+  title: string;
+  info?: string;
   children: React.ReactNode;
   className?: string;
   extraHeader?: React.ReactNode;
@@ -13,6 +14,7 @@ export interface ISectionContainerProps {
 
 const SectionContainer = ({
   title,
+  info,
   children,
   className,
   extraHeader,
@@ -21,9 +23,12 @@ const SectionContainer = ({
 }: ISectionContainerProps) => {
   return (
     <div className={cn('rounded bg-background overflow-hidden', className)}>
-      <SectionHeader className={headerClassName} extraHeader={extraHeader}>
-        {title}
-      </SectionHeader>
+      <SectionHeader
+        title={title}
+        info={info}
+        className={headerClassName}
+        extraHeader={extraHeader}
+      />
       <div className={cn('overflow-hidden px-4 pb-4', contentClassName)}>
         {children}
       </div>

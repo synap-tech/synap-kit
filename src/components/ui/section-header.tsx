@@ -3,18 +3,19 @@ import { cn } from '@/lib/utils';
 import SectionTitle from './section-title';
 
 const SectionHeader: React.FC<{
-  children: React.ReactNode;
+  title: string;
+  info?: string;
   extraHeader?: React.ReactNode;
   className?: string;
-}> = ({ children, extraHeader, className }) => {
+}> = ({ title, info, extraHeader, className }) => {
   return (
     <div
       className={cn(
-        'bg-content flex flex-col justify-between gap-1 py-3 pl-4 pr-2 sm:flex-row sm:items-center',
+        'bg-muted border flex flex-col gap-4 py-3 pl-4 pr-2 sm:flex-row sm:items-center rounded-t',
         className
       )}
     >
-      <SectionTitle>{children}</SectionTitle>
+      <SectionTitle title={title} info={info} />
       {extraHeader}
     </div>
   );

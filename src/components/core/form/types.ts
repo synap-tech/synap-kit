@@ -10,7 +10,7 @@ import type {
   UseFormReturn,
   UseFormStateReturn,
 } from 'react-hook-form';
-import { type Mask, type Options, withMask } from 'use-mask-input';
+import { type Mask, type Options } from 'use-mask-input';
 
 import type { InputProps } from '../../ui/input';
 import type { TextareaProps } from '../../ui/textarea';
@@ -98,10 +98,12 @@ export interface FormReactSelectProps extends IFieldProps {
 }
 
 export interface IFormSectionProps {
-  title?: React.ReactNode;
+  title?: string;
+  info?: string;
   children: React.ReactNode;
   className?: string;
   extraHeader?: React.ReactNode;
+  extraHeaderClassName?: string;
 }
 
 export interface FormJoinInputUnitProps extends IFieldProps, InputProps {

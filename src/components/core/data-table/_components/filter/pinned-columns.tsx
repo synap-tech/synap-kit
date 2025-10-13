@@ -24,7 +24,7 @@ const PinnedColumns = () => {
     .filter((column) => pinnedColumns.includes(column.id));
 
   return (
-    <div className='bg-card mt-4 space-y-4 rounded border px-4 pb-3 pt-2 '>
+    <div className='bg-card mt-4 space-y-4 rounded border px-4 pb-3 pt-2'>
       <div className='flex flex-wrap gap-2 lg:gap-4'>
         {columns.map((column, index) => (
           <TableColumnFilter key={index} column={column} showLabel />

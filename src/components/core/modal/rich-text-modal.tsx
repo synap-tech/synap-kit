@@ -34,7 +34,7 @@ const RichTextModal: React.FC<IRichTextModalProps> = ({
           e.preventDefault();
         }}
         className={cn(
-          'max-h-[90vh] w-full cursor-default overflow-auto bg-background',
+          'max-h-[90vh] w-full cursor-default overflow-auto scrollbar bg-background',
           isSmall && 'sm:max-w-5xl',
           className
         )}

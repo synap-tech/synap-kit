@@ -1,10 +1,11 @@
+import { format } from 'date-fns';
+import { CalendarIcon } from 'lucide-react';
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@radix-ui/react-popover';
-import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
+} from '@/components/ui/popover';
 
 import { cn } from '@/lib/utils';
 
@@ -32,7 +33,7 @@ export default function MonthPickerPopover({
         <Button
           variant={'outline'}
           className={cn(
-            'w-[280px] justify-start text-left font-normal',
+            'w-full justify-start text-left font-normal',
             !date && 'text-muted-foreground',
             className
           )}
@@ -41,10 +42,7 @@ export default function MonthPickerPopover({
           {date ? format(date, displayFormat) : <span>Pick a month</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent
-        style={{ zIndex: 9999 }}
-        className='h-full w-auto border bg-slate-50'
-      >
+      <PopoverContent className='w-auto p-0'>
         <MonthPicker
           className='z-50'
           onMonthSelect={setDate}

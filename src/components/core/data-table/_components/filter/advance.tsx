@@ -31,7 +31,7 @@ const TableAdvanceFilters = ({ filters }: IProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align='end'
-        className='max-h-[400px] w-fit min-w-[200px] overflow-auto'
+        className='max-h-[400px] w-fit min-w-[200px] overflow-auto scrollbar'
       >
         {filters.map((item) => {
           return (
