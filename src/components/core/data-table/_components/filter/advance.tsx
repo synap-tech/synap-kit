@@ -21,8 +21,8 @@ const TableAdvanceFilters = ({ filters }: IProps) => {
       <DropdownMenuTrigger asChild>
         <Button
           aria-label='Switch Options'
-          variant='gradient'
-          size='sm'
+          variant='toolbar'
+          size='toolbar'
           className='hidden lg:flex'
         >
           <Filter className='size-4' />
@@ -55,7 +55,7 @@ const TableAdvanceFilters = ({ filters }: IProps) => {
           <Button
             variant={'ghost'}
             onClick={() => filters.forEach((item) => item.clear())}
-            size='sm'
+            size='toolbar'
             className='w-fit'
           >
             Reset

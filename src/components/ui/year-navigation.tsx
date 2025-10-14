@@ -23,27 +23,25 @@ export const YearNavigation: React.FC<YearNavigationProps> = ({
     <div className='flex items-center gap-2'>
       <Button
         variant='outline'
-        size='icon'
+        size='toolbar'
         onClick={onPrevYear}
-        className='h-10 w-10'
         aria-label='Previous month'
       >
-        <ChevronLeft className='h-4 w-4' />
+        <ChevronLeft className='size-4' />
       </Button>
 
-      <span className='min-w-[140px] text-center text-lg font-medium'>
+      <span className='min-w-[140px] text-center text-lg text-foreground font-medium'>
         {year}
       </span>
 
       <Button
         variant='outline'
-        size='icon'
+        size='toolbar'
         disabled={year === maxYear}
         onClick={onNextYear}
-        className='h-10 w-10'
         aria-label='Next month'
       >
-        <ChevronRight className='h-4 w-4' />
+        <ChevronRight className='size-4' />
       </Button>
     </div>
   );

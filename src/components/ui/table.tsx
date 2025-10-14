@@ -2,7 +2,11 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-function Table({ className, ...props }: React.ComponentProps<'table'>) {
+function Table({
+  className,
+  containerClassName,
+  ...props
+}: React.ComponentProps<'table'> & { containerClassName?: string }) {
   // return (
   //   <table
   //     data-slot='table'
@@ -13,7 +17,10 @@ function Table({ className, ...props }: React.ComponentProps<'table'>) {
   return (
     <div
       data-slot='table-container'
-      className='relative max-h-full w-full rounded border overflow-auto  scrollbar '
+      className={cn(
+        'relative max-h-full w-full overflow-auto scrollbar',
+        containerClassName
+      )}
     >
       <table
         data-slot='table'

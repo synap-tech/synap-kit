@@ -15,7 +15,7 @@ const buttonVariants = cva(
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         success: 'bg-success text-success-foreground hover:bg-success/90',
         outline:
-          'border border-border bg-background hover:bg-accent hover:text-accent-foreground',
+          'border border-border text-foreground bg-background hover:bg-primary hover:text-primary-foreground',
         'outline-destructive':
           'border border-destructive/20 bg-background text-destructive hover:bg-destructive hover:text-destructive-foreground',
         'outline-success':
@@ -25,7 +25,7 @@ const buttonVariants = cva(
         accent: 'bg-accent text-accent-foreground hover:bg-accent/90',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: ' text-foreground hover:bg-background',
+        ghost: 'text-foreground hover:bg-background',
         'ghost-destructive': 'text-destructive hover:bg-destructive/10 ',
         link: 'text-primary underline-offset-4 hover:underline',
         gradient: 'bg-gradient text-foreground border',
@@ -33,7 +33,7 @@ const buttonVariants = cva(
           '!bg-gradient-to-r !from-accent/80 !to-accent/70 !text-accent-foreground',
 
         toolbar:
-          'bg-transparent hover:bg-base-200 text-base-content border-0 shadow-none hover:shadow-md',
+          'bg-transparent hover:bg-background text-foreground border shadow-none hover:shadow-md',
         form: 'h-10 w-full rounded border bg-background px-3 py-2 text-sm',
       },
       size: {

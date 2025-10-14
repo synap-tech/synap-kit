@@ -34,7 +34,7 @@ const DataTableSSR = () => {
           isEntry ? 'rounded-b-md' : 'rounded'
         )}
       >
-        <TableComponent>
+        <TableComponent containerClassName='rounded border'>
           <TableHeader className='sticky left-0 right-0 top-0 z-20'>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

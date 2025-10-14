@@ -28,7 +28,10 @@ const DefaultDynamicFields: React.FC<
               .filter((field) => !field.hidden)
               .map((field) => field.header)
               .map((header) => (
-                <TableHead className='text-center' key={header}>
+                <TableHead
+                  className='text-center border-r last:border-r-0'
+                  key={header}
+                >
                   {header}
                 </TableHead>
               ))}
@@ -44,10 +47,7 @@ const DefaultDynamicFields: React.FC<
           )}
           {fields.length > 0 &&
             fields.map((field, fieldIndex) => (
-              <TableRow
-                key={field.id}
-                className='divide-x-[1px] hover:bg-base-150'
-              >
+              <TableRow key={field.id} className='divide-x-[1px]'>
                 {fieldDefs
                   .filter((fieldDef) => !fieldDef.hidden)
                   .map((fieldDef) => {

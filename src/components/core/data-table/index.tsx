@@ -30,7 +30,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
       <TableToolbar />
       {extraHeader && extraHeader}
       <div className={cn('flex-1 flex flex-col  overflow-auto scrollbar')}>
-        <TableComponent>
+        <TableComponent containerClassName='rounded border'>
           <TableHeader className='w-full sticky left-0 right-0 top-0 z-20'>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

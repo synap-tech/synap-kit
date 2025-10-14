@@ -35,11 +35,11 @@ export function TableFacetedFilter<TData, TValue>({
       <PopoverTrigger asChild>
         <Button
           aria-label={title}
-          variant='gradient'
-          size='sm'
-          className='h-8 border-dashed'
+          variant='outline'
+          size='toolbar'
+          className='border-dashed'
         >
-          <CirclePlus className='mr-2 h-4 w-4' />
+          <CirclePlus className='mr-2 size-4' />
           {title}
           {selectedValues?.size > 0 && (
             <>

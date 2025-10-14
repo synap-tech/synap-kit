@@ -2,6 +2,8 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
 import { cn } from '@/lib/utils';
 
+import SectionHeader from './section-header';
+
 export type ITableListItems = {
   label: string;
   value: string | React.ReactNode;
@@ -13,27 +15,30 @@ interface ITableListProps {
   title?: string;
   className?: string;
   isSmallTitle?: boolean;
+  headerClassName?: string;
+  info?: string;
+  extraHeader?: React.ReactNode;
 }
 
 const TableList = ({
   items,
   title,
   className,
-  isSmallTitle = false,
+  headerClassName,
+  info,
+  extraHeader,
 }: ITableListProps) => {
   return (
-    <div className={cn('h-full border rounded', className)}>
+    <div className={cn('rounded bg-background overflow-hidden', className)}>
       {title && (
-        <div>
-          {!isSmallTitle && (
-            <h4 className='border-b bg-muted px-5 py-2.5 text-lg font-medium capitalize leading-tight text-foreground'>
-              {title}
-            </h4>
-          )}
-          {isSmallTitle && <h2 className='font-semibold'>{title}</h2>}
-        </div>
+        <SectionHeader
+          title={title}
+          info={info}
+          className={headerClassName}
+          extraHeader={extraHeader}
+        />
       )}
-      <div className='overflow-x-auto'>
+      <div className='overflow-x-auto border border-t-0 rounded-b'>
         <Table>
           <TableBody>
             {items.map((item) =>
