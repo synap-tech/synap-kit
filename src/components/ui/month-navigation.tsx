@@ -13,6 +13,7 @@ interface MonthNavigationProps {
   onPrevMonth: () => void;
   onNextMonth: () => void;
   maxDate?: Date;
+  startDate?: Date;
 }
 
 export const MonthNavigation: React.FC<MonthNavigationProps> = ({
@@ -21,13 +22,19 @@ export const MonthNavigation: React.FC<MonthNavigationProps> = ({
   onPrevMonth,
   onNextMonth,
   maxDate = new Date(),
+  startDate = '',
 }) => {
+  const disabledPrevButton = startDate
+    ? getMonth(startDate) === month && getYear(maxDate) === year
+    : false;
+
   return (
     <div className='flex items-center gap-2'>
       <Button
         variant='outline'
         size='icon'
         onClick={onPrevMonth}
+        disabled={disabledPrevButton}
         className='h-10 w-10'
         aria-label='Previous month'
       >
