@@ -20,6 +20,7 @@ import type {
 import {
   type ColumnDef,
   type ColumnFiltersState,
+  type ColumnPinningState,
   type FilterFn,
   getCoreRowModel,
   getFacetedRowModel,
@@ -34,6 +35,7 @@ import {
   type VisibilityState,
 } from '@tanstack/react-table';
 import { max, min } from 'date-fns';
+import { result, set } from 'lodash';
 import type { DateRange } from 'react-day-picker';
 
 import DataTable from '@/components/core/data-table';
@@ -201,6 +203,10 @@ function TableProvider<TData, TValue>({
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>(defaultSorting);
+  const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({
+    left: [...leftColumnPinning],
+    right: [...rightColumnPinning, 'actions'],
+  });
 
   const [globalFilter, setGlobalFilter] = useState('');
 
@@ -214,18 +220,19 @@ function TableProvider<TData, TValue>({
     columns: enableRowSelection
       ? [TableRowSelection<TData, TValue>(), ...visibleColumns]
       : visibleColumns,
-    initialState: {
-      columnPinning: {
-        right: ['actions', ...rightColumnPinning],
-        left: [...leftColumnPinning],
-      },
-    },
+    // initialState: {
+    //   columnPinning: {
+    //     right: ['actions', ...rightColumnPinning],
+    //     left: [...leftColumnPinning],
+    //   },
+    // },
     state: {
       sorting,
       columnVisibility,
       rowSelection,
       columnFilters,
       globalFilter,
+      columnPinning,
     },
     enableRowSelection: true,
 
@@ -238,6 +245,19 @@ function TableProvider<TData, TValue>({
     globalFilterFn: 'fuzzy',
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
+    onColumnPinningChange: setColumnPinning,
+    // onColumnPinningChange: (value) => {
+    //   setColumnPinning(value);
+    //   setColumnPinning((prev) => {
+    //     return {
+    //       ...prev,
+    //       right: [
+    //         ...(prev.right || []).filter((id) => id !== 'actions'),
+    //         'actions',
+    //       ],
+    //     };
+    //   });
+    // },
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),

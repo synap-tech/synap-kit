@@ -120,6 +120,28 @@ export function TableColumnHeader<TData, TValue>({
             </DropdownMenuItem>
           )}
 
+          {column.getCanPin() && (
+            <DropdownMenuItem
+              className='flex items-center justify-between'
+              onClick={() => {
+                if (column.getIsPinned() === 'right') {
+                  column.pin(false);
+                } else {
+                  column.pin('right');
+                }
+              }}
+            >
+              <span>
+                {column.getIsPinned() === 'right' ? 'Unpin' : 'Pin to right'}
+              </span>
+              {column.getIsPinned() === 'right' ? (
+                <PinOff className='mr-2 size-3.5 ' />
+              ) : (
+                <Pin className={'rotate-45 mr-2 size-3.5 '} />
+              )}
+            </DropdownMenuItem>
+          )}
+
           {column.getCanHide() && (
             <DropdownMenuItem
               className='flex items-center justify-between'

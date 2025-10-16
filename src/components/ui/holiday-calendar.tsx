@@ -117,8 +117,10 @@ function HolidayCalendar({
                   {...dayProps}
                   className={cn(
                     buttonVariants({ variant: 'ghost' }),
-                    'h-12 w-12 p-0 font-normal aria-selected:opacity-100 cursor-pointer',
-                    holiday?.info ? 'bg-yellow-200 text-black' : ''
+                    'size-10 p-0 font-normal aria-selected:opacity-100 cursor-pointer',
+                    holiday?.info
+                      ? 'bg-success text-success-foreground hover:bg-success/80'
+                      : ''
                   )}
                 >
                   {day.date.getDate()}
@@ -133,8 +135,10 @@ function HolidayCalendar({
               {...dayProps}
               className={cn(
                 buttonVariants({ variant: 'ghost' }),
-                'h-12 w-12 p-0 font-normal aria-selected:opacity-100 cursor-pointer',
-                holiday?.info ? 'bg-yellow-200 text-black' : ''
+                'size-10 p-0 font-normal aria-selected:opacity-100 cursor-pointer',
+                holiday?.info
+                  ? 'bg-success text-success-foreground hover:bg-success/80'
+                  : ''
               )}
             >
               {day.date.getDate()}

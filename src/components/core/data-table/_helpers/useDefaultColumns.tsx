@@ -35,7 +35,6 @@ const useDefaultColumns = <TData, TValue>({
     {
       accessorKey: 'created_at',
       header: 'Created At',
-      enablePinning: false,
       cell: (info) => <DateTime date={info.getValue() as Date} />,
       filterFn: 'dateRange',
       meta: {
@@ -45,7 +44,6 @@ const useDefaultColumns = <TData, TValue>({
     {
       accessorKey: 'updated_at',
       header: 'Updated At',
-      enablePinning: false,
       cell: (info) => <DateTime date={info.getValue() as Date} />,
       meta: {
         filterVariant: 'dateRange',

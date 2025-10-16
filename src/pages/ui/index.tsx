@@ -1,6 +1,11 @@
+import { toast } from 'sonner';
+
 import StatusButton from '@/components/buttons/status';
 import DataTableEntry from '@/components/core/data-table/entry';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { ButtonGroup } from '@/components/ui/button-group';
+import { HolidayCalendar } from '@/components/ui/holiday-calendar';
 import SectionContainer from '@/components/ui/section-container';
 import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
@@ -17,10 +22,49 @@ const TestPage = () => {
   return (
     <div className='p-12  bg-background space-y-8 '>
       <h1 className='text-center text-2xl font-medium'>UI Components</h1>
+
       <ThemeToggle />
 
-      <FingerprintEnroll />
+      <Wrapper title='Toast Button'>
+        <ButtonGroup className='w-fit block mx-auto'>
+          <Button
+            variant={'success'}
+            onClick={() => {
+              toast.success('Success Toast');
+            }}
+          >
+            Success
+          </Button>
+          <Button
+            variant={'warning'}
+            onClick={() => {
+              toast.warning('Warning Toast');
+            }}
+          >
+            Warning
+          </Button>
+          <Button
+            variant={'destructive'}
+            onClick={() => {
+              toast.error('Error Toast');
+            }}
+          >
+            Error
+          </Button>
+        </ButtonGroup>
+      </Wrapper>
 
+      <HolidayCalendar
+        selected={new Date()}
+        highlightedDates={
+          [{ date: '2026-01-01', name: 'New Year' }].map((e) => ({
+            date: new Date(e.date),
+            info: e.name,
+          })) ?? []
+        }
+        className=''
+      />
+      <FingerprintEnroll />
       <Wrapper title='Form Fields'>
         <TestForm />
       </Wrapper>

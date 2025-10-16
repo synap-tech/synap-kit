@@ -235,6 +235,30 @@ const TestForm = () => {
                   />
                 )}
               />
+              <FormField
+                control={form.control}
+                name='react_select'
+                render={(props) => (
+                  <CoreForm.ReactSelect
+                    isMulti
+                    options={[
+                      {
+                        label: 'Option 1',
+                        value: 'option-1',
+                      },
+                      {
+                        label: 'Option 2',
+                        value: 'option-2',
+                      },
+                      {
+                        label: 'Option 3',
+                        value: 'option-3',
+                      },
+                    ]}
+                    {...props}
+                  />
+                )}
+              />
 
               <FormField
                 control={form.control}

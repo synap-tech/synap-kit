@@ -1,10 +1,10 @@
 import { createContext, useEffect, useMemo } from 'react';
 
-import { colors } from '@/config/tailwind';
 import type { INavAction, IRoute } from '@/types';
 import { Toaster } from 'sonner';
 
 import { useLocalStorage } from '@/hooks/useStorage';
+import useTheme from '@/hooks/useTheme';
 
 import { Toast } from '@/components/ui/toast';
 
@@ -33,6 +33,7 @@ const AppProvider: React.FC<{
   companyTitle,
   navbarActions,
 }) => {
+  const { theme } = useTheme();
   const value = useMemo(
     (): IAppContext => ({
       apiBaseUrl,
@@ -57,7 +58,7 @@ const AppProvider: React.FC<{
     <AppContext.Provider value={value}>
       {children}
       <Toast />
-      <Toaster richColors position={'top-center'} expand={true} />
+      <Toaster richColors theme={theme} position={'top-center'} />
     </AppContext.Provider>
   );
 };

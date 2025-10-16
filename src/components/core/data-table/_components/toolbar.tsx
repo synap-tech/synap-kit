@@ -279,6 +279,18 @@ export function TableToolbar() {
               option='view'
               render={() => <TableViewOptions table={table} />}
             />
+
+            {isFiltered && (
+              <Button
+                aria-label='Reset filters'
+                variant='ghost-destructive'
+                onClick={resetColumnFilters}
+                size={'toolbar'}
+              >
+                Reset Filters
+                <X className='size-4' />
+              </Button>
+            )}
           </ButtonGroup>
 
           <ToolbarComponent
@@ -305,17 +317,7 @@ export function TableToolbar() {
               ) : null
             }
           />
-          {isFiltered && (
-            <Button
-              aria-label='Reset filters'
-              variant='outline-destructive'
-              onClick={resetColumnFilters}
-              size={'toolbar'}
-            >
-              Reset
-              <X className='size-4' />
-            </Button>
-          )}
+
           {validDateRange && (
             <Separator orientation='vertical' className='h-6' />
           )}
