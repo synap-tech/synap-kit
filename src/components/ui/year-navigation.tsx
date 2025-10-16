@@ -11,6 +11,7 @@ interface YearNavigationProps {
   onPrevYear: () => void;
   onNextYear: () => void;
   maxYear?: number;
+  minYear?: number;
 }
 
 export const YearNavigation: React.FC<YearNavigationProps> = ({
@@ -18,12 +19,14 @@ export const YearNavigation: React.FC<YearNavigationProps> = ({
   onPrevYear,
   onNextYear,
   maxYear = getYear(getDateTime()),
+  minYear = getYear(getDateTime()),
 }) => {
   return (
     <div className='flex items-center gap-2'>
       <Button
         variant='outline'
         size='toolbar'
+        disabled={year === minYear}
         onClick={onPrevYear}
         aria-label='Previous month'
       >
