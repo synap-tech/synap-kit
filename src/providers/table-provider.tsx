@@ -245,19 +245,20 @@ function TableProvider<TData, TValue>({
     globalFilterFn: 'fuzzy',
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
-    onColumnPinningChange: setColumnPinning,
-    // onColumnPinningChange: (value) => {
-    //   setColumnPinning(value);
-    //   setColumnPinning((prev) => {
-    //     return {
-    //       ...prev,
-    //       right: [
-    //         ...(prev.right || []).filter((id) => id !== 'actions'),
-    //         'actions',
-    //       ],
-    //     };
-    //   });
-    // },
+    // onColumnPinningChange: setColumnPinning,
+    onColumnPinningChange: (value) => {
+      setColumnPinning(value);
+      //!!NEED TO FIX
+      setColumnPinning((prev) => {
+        return {
+          ...prev,
+          right: [
+            ...(prev.right || []).filter((id) => id !== 'actions'),
+            'actions',
+          ],
+        };
+      });
+    },
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
