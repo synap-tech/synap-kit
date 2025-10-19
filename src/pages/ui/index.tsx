@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { toast } from 'sonner';
 
 import StatusButton from '@/components/buttons/status';
@@ -7,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { HolidayCalendar } from '@/components/ui/holiday-calendar';
 import SectionContainer from '@/components/ui/section-container';
+import SingleDatePicker from '@/components/ui/single-date-picker';
 import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
@@ -19,6 +22,7 @@ import TableSSR from './table-ssr';
 import Wrapper from './wrapper';
 
 const TestPage = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
   return (
     <div className='p-12  bg-background space-y-8 '>
       <h1 className='text-center text-2xl font-medium'>UI Components</h1>
@@ -54,6 +58,13 @@ const TestPage = () => {
         </ButtonGroup>
       </Wrapper>
 
+      <SingleDatePicker
+        showAssistant
+        disableIcon
+        className='justify-center'
+        selected={selectedDate}
+        onSelect={setSelectedDate}
+      />
       <HolidayCalendar
         selected={new Date()}
         highlightedDates={
