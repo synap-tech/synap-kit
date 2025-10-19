@@ -38,6 +38,9 @@ const Profile: React.FC<{ data: any; url: string; openInNewTab?: boolean }> = ({
           <p className='text-xs'>
             {data.designation_name}, {data.department_name}
           </p>
+          {data?.starting_date && (
+            <span className='block text-xs'>{data.starting_date}</span>
+          )}
         </div>
       </div>
     </div>
