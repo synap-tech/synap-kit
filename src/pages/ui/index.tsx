@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { HolidayCalendar } from '@/components/ui/holiday-calendar';
+import MonthPickerPopover from '@/components/ui/month-picker-popup';
 import SectionContainer from '@/components/ui/section-container';
 import SingleDatePicker from '@/components/ui/single-date-picker';
 import StatusBadge from '@/components/ui/status-badge';
@@ -64,6 +65,14 @@ const TestPage = () => {
         className='justify-center'
         selected={selectedDate}
         onSelect={setSelectedDate}
+      />
+      <MonthPickerPopover
+        showAssistant
+        disableIcon
+        className='justify-center'
+        date={selectedDate}
+        setDate={setSelectedDate}
+        maxDate={new Date()}
       />
       <HolidayCalendar
         selected={new Date()}
