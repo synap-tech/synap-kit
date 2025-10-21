@@ -4,17 +4,26 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 import { cn } from '@/lib/utils';
 
-const Profile: React.FC<{ data: any; url: string; openInNewTab?: boolean }> = ({
-  data,
-  url,
-  openInNewTab = true,
-}) => {
+const Profile: React.FC<{
+  data: {
+    image?: string;
+    name: string;
+    department_name: string;
+    designation_name: string;
+    starting_date?: string;
+  };
+  url: string;
+  openInNewTab?: boolean;
+}> = ({ data, url, openInNewTab = true }) => {
   return (
     <div className='flex w-full flex-col space-y-4'>
       {/* Profile Section */}
       <div className='flex items-center gap-3'>
         <Avatar className='size-12 border'>
-          <AvatarImage src='/placeholder-user.jpg' alt='Employee' />
+          <AvatarImage
+            src={data?.image ? data.image : '/placeholder-user.jpg'}
+            alt='Employee'
+          />
           <AvatarFallback className='text-primary'>
             {String(data.name)
               .split(' ')
