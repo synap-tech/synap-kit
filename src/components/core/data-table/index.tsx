@@ -55,7 +55,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                           theme,
                         }),
                       }}
-                      className='py-2 first:pl-6 text-left !bg-background border-r last:border-0'
+                      className='py-2 first:pl-6 text-left !bg-background'
                     >
                       {header.isPlaceholder
                         ? null
