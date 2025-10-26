@@ -5,7 +5,7 @@ import type { ColumnDef, Row } from '@tanstack/react-table';
 
 import { makeData, type Person } from './_data';
 
-const GroupedColumnTable = () => {
+const GroupedColumnExpandableRowTable = () => {
   const columns: ColumnDef<Person>[] = [
     {
       header: 'Name',
@@ -105,4 +105,4 @@ const GroupedColumnTable = () => {
   );
 };
 
-export default GroupedColumnTable;
+export default GroupedColumnExpandableRowTable;

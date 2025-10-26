@@ -16,7 +16,7 @@ import { Switch } from '@/components/ui/switch';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 import User from '../hr/user';
-import GroupedColumnTable from './_components/grouped-column/grouped-column-table';
+import GroupedColumnExpandableRowTable from './_components/grouped-column/grouped-column-expandable-row-table';
 import DialogComponent from './dialog';
 import FingerprintEnroll from './fingerprint-enroll/fingerprint-enroll';
 import TestForm from './form';
@@ -60,7 +60,7 @@ const TestPage = () => {
         </ButtonGroup>
       </Wrapper>
       <Wrapper title='Grouped Column & Expand Row Table'>
-        <GroupedColumnTable />
+        <GroupedColumnExpandableRowTable />
       </Wrapper>
 
       <SingleDatePicker
