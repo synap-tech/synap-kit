@@ -276,6 +276,19 @@ const AddOrUpdate: React.FC<IUserAddOrUpdateProps> = ({
         name='remarks'
         render={(props) => <CoreForm.Textarea {...props} />}
       />
+      <FormField
+        control={form.control}
+        name='price'
+        render={(props) => (
+          <CoreForm.ReactSelect
+            isModal
+            label='Price Rating'
+            placeholder='Price Rating'
+            options={ratingOption!}
+            {...props}
+          />
+        )}
+      />
     </AddModal>
   );
 };

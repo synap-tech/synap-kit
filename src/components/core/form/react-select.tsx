@@ -16,13 +16,13 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
   isDisabled = false,
   disableLabel,
   isMulti = false,
-  menuPortalTarget,
   valueType = 'string',
   isLoading = false,
   required,
   info,
   subLabel,
   onChange,
+  isModal = false,
 }) => {
   return (
     <FormItemWrapper
@@ -43,7 +43,13 @@ const FormReactSelect: React.FC<FormReactSelectProps> = ({
             options={options}
             isDisabled={isDisabled}
             placeholder={placeholder}
-            menuPortalTarget={menuPortalTarget}
+            menuPortalTarget={isModal ? document.body : undefined}
+            styles={{
+              menuPortal: (base) => ({
+                ...base,
+                zIndex: isModal ? 999 : 'auto',
+              }),
+            }}
             {...field}
             value={
               isMulti

@@ -690,7 +690,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
             disabled={disabled}
             variant={'form'}
             className={cn(
-              'flex p-1 bg-input/30 rounded border h-9   items-center justify-between   [&_svg]:pointer-events-auto active:scale-100',
+              'flex p-1 bg-input/30 rounded border min-h-9 h-fit   items-center justify-between   [&_svg]:pointer-events-auto active:scale-100',
               autoSize ? 'w-auto' : 'w-full',
               responsiveSettings.compactMode && 'min-h-8 text-sm',
               screenSize === 'mobile' && 'min-h-12 text-base',
@@ -783,7 +783,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                           </span>
                           <XCircle
                             className={cn(
-                              'ml-2 h-4 w-4 cursor-pointer',
+                              'ml-2 size-4 cursor-pointer text-destructive',
                               responsiveSettings.compactMode && 'ml-1 h-3 w-3'
                             )}
                             onClick={(event) => {
@@ -831,7 +831,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                 </div>
                 <div className='flex items-center justify-between'>
                   <XIcon
-                    className='h-4 mx-2 cursor-pointer text-muted-foreground'
+                    className='h-4 mx-2 cursor-pointer text-destructive'
                     onClick={(event) => {
                       event.stopPropagation();
                       handleClear();
@@ -970,7 +970,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                       >
                         <div
                           className={cn(
-                            'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary/30 ',
+                            'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary/30',
                             isSelected
                               ? 'bg-primary/10 !text-primary-foreground'
                               : 'opacity-50 [&_svg]:invisible'
