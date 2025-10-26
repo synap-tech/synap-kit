@@ -93,7 +93,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                           }),
                         }}
                         className={cn(
-                          'first:pl-6 break-words text-wrap border-r last:border-0',
+                          'first:pl-6 break-words text-wrap',
                           cell.column.getIsPinned() && 'bg-card  border-b'
                         )}
                       >
