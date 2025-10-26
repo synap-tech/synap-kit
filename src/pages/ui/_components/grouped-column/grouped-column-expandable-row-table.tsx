@@ -45,7 +45,6 @@ const GroupedColumnExpandableRowTable = () => {
               {getValue<string>()}
             </div>
           ),
-          footer: (props) => props.column.id,
         },
         {
           accessorFn: (row) => row.lastName,

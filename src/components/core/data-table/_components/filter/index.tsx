@@ -20,8 +20,12 @@ const TableAllFilter = () => {
   const { table } = useTable();
 
   const filteredColumns = table
-    .getAllFlatColumns()
-    .filter((column) => column.columnDef.meta?.disableFullFilter !== true);
+    ?.getAllFlatColumns()
+    ?.filter(
+      (column) =>
+        column?.columnDef.meta?.disableFullFilter !== true &&
+        column.getCanFilter()
+    );
 
   const isFiltered = table.getState().columnFilters.length > 0;
 
