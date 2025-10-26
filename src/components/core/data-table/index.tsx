@@ -1,3 +1,5 @@
+import React, { Fragment } from 'react';
+
 import { flexRender } from '@tanstack/react-table';
 
 import useTable from '@/hooks/useTable';
@@ -23,7 +25,13 @@ import { getCommonPinningStyles } from './_helpers/getCommonPinningStyle';
 
 function DataTable({ children }: { children?: React.ReactNode }) {
   const { theme } = useTheme();
-  const { table, isLoading, childrenInsideTable, extraHeader } = useTable();
+  const {
+    table,
+    isLoading,
+    childrenInsideTable,
+    extraHeader,
+    renderSubComponent,
+  } = useTable();
 
   return (
     <TableWrapper>
@@ -47,7 +55,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                           theme,
                         }),
                       }}
-                      className='py-2  first:pl-6 text-left !bg-background '
+                      className='py-2 first:pl-6 text-left !bg-background border-r last:border-0'
                     >
                       {header.isPlaceholder
                         ? null
@@ -70,32 +78,42 @@ function DataTable({ children }: { children?: React.ReactNode }) {
               <TableSkeleton colSpan={table.getAllColumns().length} />
             ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
-                  className=''
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      key={cell.id}
-                      style={{
-                        ...getCommonPinningStyles({
-                          column: cell.column,
-                          theme,
-                        }),
-                      }}
-                      className={cn(
-                        'first:pl-6 break-words text-wrap',
-                        cell.column.getIsPinned() && 'bg-card  border-b'
-                      )}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
+                <Fragment key={row.id}>
+                  <TableRow
+                    data-state={row.getIsSelected() && 'selected'}
+                    className=''
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell
+                        key={cell.id}
+                        style={{
+                          ...getCommonPinningStyles({
+                            column: cell.column,
+                            theme,
+                          }),
+                        }}
+                        className={cn(
+                          'first:pl-6 break-words text-wrap border-r last:border-0',
+                          cell.column.getIsPinned() && 'bg-card  border-b'
+                        )}
+                      >
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+
+                  {row.getIsExpanded() && renderSubComponent && (
+                    <TableRow>
+                      {/* 2nd row is a custom 1 cell row */}
+                      <TableCell colSpan={row.getVisibleCells().length}>
+                        {renderSubComponent({ row })}
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </Fragment>
               ))
             ) : (
               <TableRow className='w-full'>

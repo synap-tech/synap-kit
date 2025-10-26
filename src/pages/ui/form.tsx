@@ -5,6 +5,7 @@ import z from 'zod';
 import useRHF from '@/hooks/useRHF';
 
 import CoreForm from '@/components/core/form';
+import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { FormField } from '@/components/ui/form';
 
@@ -381,6 +382,28 @@ const TestForm = () => {
             <td className='border-t px-3 py-2'></td>
           </tr>
         </CoreForm.DynamicFields>
+
+        <CoreForm.DynamicFields
+          title='Add Bulk Shifts'
+          extraHeader={
+            <Button
+              size={'sm'}
+              type='button'
+              onClick={() => alert('Add Shift')}
+            >
+              Add Shift
+            </Button>
+          }
+          form={form as any}
+          fieldName='challan_entries'
+          fieldDefs={useGenerateFieldDefs({
+            entry: 'challan_entries',
+            remove: handleRemove,
+            add: handleAdd,
+            watch: form.watch,
+          })}
+          fields={fields}
+        />
       </div>
 
       <DevTool control={form.control} placement='top-left' />

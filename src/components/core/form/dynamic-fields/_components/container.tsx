@@ -12,7 +12,12 @@ import type { DynamicFieldsProps } from '../types';
 interface IProps
   extends Pick<
     DynamicFieldsProps,
-    'handleAdd' | 'extraHeader' | 'title' | 'containerClassName'
+    | 'handleAdd'
+    | 'extraHeader'
+    | 'title'
+    | 'containerClassName'
+    | 'className'
+    | 'viewAs'
   > {
   children: React.ReactNode;
   extraButton?: React.ReactNode;
@@ -25,6 +30,7 @@ const DynamicFieldContainer: React.FC<IProps> = ({
   children,
   containerClassName,
   extraButton,
+  viewAs,
 }) => {
   return (
     <div className='overflow-hidden  rounded shadow-sm bg-card'>
@@ -51,6 +57,7 @@ const DynamicFieldContainer: React.FC<IProps> = ({
       <div
         className={cn(
           'px-5 py-4 lg:px-4 border border-t-0 rounded-b',
+          (viewAs === 'default' || viewAs === undefined) && ' p-0 lg:p-0',
           containerClassName
         )}
       >

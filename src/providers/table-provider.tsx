@@ -23,11 +23,13 @@ import {
   type ColumnPinningState,
   type FilterFn,
   getCoreRowModel,
+  getExpandedRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type Row,
   type RowData,
   type SortingState,
   type Table,
@@ -35,7 +37,6 @@ import {
   type VisibilityState,
 } from '@tanstack/react-table';
 import { max, min } from 'date-fns';
-import { result, set } from 'lodash';
 import type { DateRange } from 'react-day-picker';
 
 import DataTable from '@/components/core/data-table';
@@ -97,6 +98,8 @@ export interface ITableContext<TData> {
   removePinnedColumn: (columnId: string) => void;
   resetPinnedColumns: () => void;
   collapsible?: boolean;
+
+  renderSubComponent?: (props: { row: Row<TData> }) => React.ReactElement;
 }
 
 export const TableContext = createContext({} as ITableContext<any>);
@@ -136,6 +139,9 @@ export interface ITableProviderProps<TData, TValue> {
 
   defaultPinnedColumns?: string[];
   collapsible?: boolean;
+
+  getRowCanExpand?: (row: Row<TData>) => boolean;
+  renderSubComponent?: (props: { row: Row<TData> }) => React.ReactElement;
 }
 
 function TableProvider<TData, TValue>({
@@ -170,6 +176,8 @@ function TableProvider<TData, TValue>({
   info,
   defaultPinnedColumns,
   collapsible = false,
+  getRowCanExpand = () => true,
+  renderSubComponent,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -226,6 +234,7 @@ function TableProvider<TData, TValue>({
     //     left: [...leftColumnPinning],
     //   },
     // },
+    getRowCanExpand,
     state: {
       sorting,
       columnVisibility,
@@ -267,6 +276,7 @@ function TableProvider<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+    getExpandedRowModel: getExpandedRowModel(),
   });
 
   const allDates: Date[] = [];
@@ -312,6 +322,8 @@ function TableProvider<TData, TValue>({
       removePinnedColumn,
       resetPinnedColumns,
       collapsible,
+
+      renderSubComponent,
     }),
     [
       title,
@@ -345,6 +357,7 @@ function TableProvider<TData, TValue>({
       removePinnedColumn,
       resetPinnedColumns,
       collapsible,
+      renderSubComponent,
     ]
   );
 
