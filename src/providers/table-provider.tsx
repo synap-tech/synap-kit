@@ -99,7 +99,10 @@ export interface ITableContext<TData> {
   removePinnedColumn: (columnId: string) => void;
   resetPinnedColumns: () => void;
   collapsible?: boolean;
-
+  pagination?: {
+    pageIndex: number;
+    pageSize: number;
+  };
   renderSubComponent?: (props: { row: Row<TData> }) => React.ReactElement;
 }
 
@@ -141,9 +144,12 @@ export interface ITableProviderProps<TData, TValue> {
 
   defaultPinnedColumns?: string[];
   collapsible?: boolean;
-
   getRowCanExpand?: (row: Row<TData>) => boolean;
   renderSubComponent?: (props: { row: Row<TData> }) => React.ReactElement;
+  pagination?: {
+    pageIndex: number;
+    pageSize: number;
+  };
 }
 
 function TableProvider<TData, TValue>({
@@ -181,6 +187,10 @@ function TableProvider<TData, TValue>({
   collapsible = false,
   getRowCanExpand = () => true,
   renderSubComponent,
+  pagination: defaultPagination = {
+    pageIndex: 0,
+    pageSize: 10,
+  },
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -219,6 +229,8 @@ function TableProvider<TData, TValue>({
     right: [...rightColumnPinning, 'actions'],
   });
 
+  const [pagination, setPagination] = useState(defaultPagination);
+
   const [globalFilter, setGlobalFilter] = useState('');
 
   // Fix error on react table, when the table is not mounted
@@ -240,6 +252,7 @@ function TableProvider<TData, TValue>({
     getRowCanExpand,
     state: {
       sorting,
+      pagination,
       columnVisibility,
       rowSelection,
       columnFilters,
@@ -247,7 +260,6 @@ function TableProvider<TData, TValue>({
       columnPinning,
     },
     enableRowSelection: true,
-
     filterFns: {
       dateRange: (row, columnId, value) => dateRange(row, columnId, value),
       fuzzy: fuzzyFilter,
@@ -276,6 +288,7 @@ function TableProvider<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -326,7 +339,7 @@ function TableProvider<TData, TValue>({
       removePinnedColumn,
       resetPinnedColumns,
       collapsible,
-
+      pagination,
       renderSubComponent,
     }),
     [
@@ -363,6 +376,7 @@ function TableProvider<TData, TValue>({
       resetPinnedColumns,
       collapsible,
       renderSubComponent,
+      pagination,
     ]
   );
 
