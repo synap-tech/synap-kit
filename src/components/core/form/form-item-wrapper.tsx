@@ -1,10 +1,12 @@
+import type React from 'react';
+
 import { FormItem, FormMessage } from '@/components/ui/form';
 
 import CormFormLabel from './label';
 
 interface IItemWrapperProps {
   disableLabel?: boolean;
-  label?: string;
+  label?: string | React.ReactNode;
   subLabel?: string;
   optional?: boolean;
   required?: boolean;

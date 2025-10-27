@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import CoreForm from '@/components/core/form';
-import { FormField } from '@/components/ui/form';
+import { SearchIcon } from 'lucide-react';
+
+import DebouncedInput from '@/components/ui/debounce-input';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
   Table,
@@ -15,22 +16,61 @@ import {
 import { cn } from '@/lib/utils';
 
 import type { DynamicFieldsProps } from '../types';
+import RenderCell from './render-cell';
 
 const DefaultDynamicFields: React.FC<
   Omit<DynamicFieldsProps, 'title' | 'viewAs' | 'extraButtons' | 'handleAdd'>
-> = ({ fields, fieldName, fieldDefs, startIndex = 0, form, children }) => {
+> = ({
+  fields,
+  fieldName,
+  fieldDefs,
+  startIndex = 0,
+  form,
+  children,
+  searchKeys = [],
+}) => {
+  const [rows, setRows] = useState(fields);
+  const [query, setQuery] = useState('');
+
+  const handleSearch = (query: string) => {
+    setQuery(query);
+    const filteredRows = fields.filter((field) =>
+      searchKeys.some((key) => {
+        return field[key as keyof typeof field]
+          ?.toString()
+          .toLowerCase()
+          .includes(query.toLowerCase())
+          ? true
+          : false;
+      })
+    );
+    setRows(filteredRows);
+  };
   return (
     <div className='overflow-x-auto rounded-none'>
+      {searchKeys.length > 0 && (
+        <div className='flex justify-start pt-4 pb-0 px-4 border-b'>
+          <DebouncedInput
+            placeholder={`Search by ${searchKeys.join(', ')}...`}
+            icon={<SearchIcon className={cn('size-5 text-foreground/50')} />}
+            className='mb-4 max-w-sm'
+            value={query}
+            onChange={(value) => {
+              handleSearch(String(value));
+            }}
+          />
+        </div>
+      )}
       <Table className='w-full'>
         <TableHeader className='bg-secondary/10'>
           <TableRow className='h-8  '>
             {fieldDefs
               .filter((field) => !field.hidden)
               .map((field) => field.header)
-              .map((header) => (
+              .map((header, index) => (
                 <TableHead
                   className='text-center border-r last:border-r-0'
-                  key={header}
+                  key={index}
                 >
                   {header}
                 </TableHead>
@@ -38,16 +78,16 @@ const DefaultDynamicFields: React.FC<
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fields.length === 0 && (
-            <TableRow>
+          {rows.length === 0 && (
+            <TableRow className='h-12'>
               <TableCell className='text-center' colSpan={fieldDefs.length}>
-                <p className='text-destructive'>No fields added yet</p>
+                <p className='text-destructive'>No fields found</p>
               </TableCell>
             </TableRow>
           )}
-          {fields.length > 0 &&
-            fields.map((field, fieldIndex) => (
-              <TableRow key={field.id} className='divide-x-[1px]'>
+          {rows.length > 0 &&
+            rows.map((row, fieldIndex) => (
+              <TableRow key={row.id} className='divide-x-[1px]'>
                 {fieldDefs
                   .filter((fieldDef) => !fieldDef.hidden)
                   .map((fieldDef) => {
@@ -85,233 +125,14 @@ const DefaultDynamicFields: React.FC<
                           )}
                           key={fieldDef.accessorKey}
                         >
-                          {fieldDef.type === 'readOnly' &&
-                            field[fieldDef.accessorKey as keyof typeof field]}
-
-                          {fieldDef.type === 'custom' &&
-                            fieldDef.component(fieldIndex)}
-
-                          {fieldDef.type === 'join-input-unit' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.JoinInputUnit
-                                  unit={fieldDef.unit(fieldIndex + startIndex)}
-                                  disableLabel
-                                  disabled={
-                                    typeof fieldDef.disabled === 'boolean'
-                                      ? fieldDef.disabled
-                                      : fieldDef.disabled?.(
-                                          fieldIndex + startIndex
-                                        )
-                                  }
-                                  type={fieldDef.inputType}
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-
-                          {fieldDef.type === 'text' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.Input
-                                  type={'text'}
-                                  disableLabel
-                                  disabled={
-                                    typeof fieldDef.disabled === 'boolean'
-                                      ? fieldDef.disabled
-                                      : fieldDef.disabled?.(
-                                          fieldIndex + startIndex
-                                        )
-                                  }
-                                  placeholder={fieldDef.placeholder}
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-                          {fieldDef.type === 'checkbox' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.Checkbox
-                                  disableLabel
-                                  disabled={
-                                    typeof fieldDef.disabled === 'boolean'
-                                      ? fieldDef.disabled
-                                      : fieldDef.disabled?.(
-                                          fieldIndex + startIndex
-                                        )
-                                  }
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-
-                          {fieldDef.type === 'date' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.DatePicker
-                                  disableLabel
-                                  disabled={
-                                    typeof fieldDef.disabled === 'boolean'
-                                      ? fieldDef.disabled
-                                      : fieldDef.disabled?.(
-                                          fieldIndex + startIndex
-                                        )
-                                  }
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-
-                          {fieldDef.type === 'number' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.Input
-                                  type='number'
-                                  disableLabel
-                                  disabled={
-                                    typeof fieldDef.disabled === 'boolean'
-                                      ? fieldDef.disabled
-                                      : fieldDef.disabled?.(
-                                          fieldIndex + startIndex
-                                        )
-                                  }
-                                  placeholder={fieldDef.placeholder}
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-                          {fieldDef.type === 'textarea' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.Textarea
-                                  disableLabel
-                                  placeholder={fieldDef.placeholder}
-                                  disabled={
-                                    typeof fieldDef.disabled === 'boolean'
-                                      ? fieldDef.disabled
-                                      : fieldDef.disabled?.(
-                                          fieldIndex + startIndex
-                                        )
-                                  }
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-
-                          {fieldDef.type === 'select' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.ReactSelect
-                                  menuPortalTarget={document.body}
-                                  options={fieldDef.options}
-                                  placeholder={fieldDef.placeholder}
-                                  disableLabel
-                                  unique={fieldDef.unique}
-                                  excludeOptions={fieldDef.excludeOptions}
-                                  isDisabled={
-                                    typeof fieldDef.disabled === 'boolean'
-                                      ? fieldDef.disabled
-                                      : fieldDef.disabled?.(
-                                          fieldIndex + startIndex
-                                        )
-                                  }
-                                  onChange={fieldDef.onChange}
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-                          {fieldDef.type === 'radio' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.Radio
-                                  options={fieldDef.options}
-                                  placeholder={fieldDef.placeholder}
-                                  disableLabel
-                                  onChange={fieldDef.onChange}
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-
-                          {fieldDef.type === 'image' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.FileUpload
-                                  baseUrl={fieldDef.baseUrl}
-                                  disableLabel={true}
-                                  isUpdate={fieldDef.isUpdate}
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
-
-                          {fieldDef.type === 'file' && (
-                            <FormField
-                              control={form.control}
-                              name={`${fieldName}.${fieldIndex + startIndex}.${
-                                fieldDef.accessorKey
-                              }`}
-                              render={(props) => (
-                                <CoreForm.FileUpload
-                                  baseUrl={fieldDef.baseUrl}
-                                  fileType='document'
-                                  disableLabel={true}
-                                  errorText='File must be less than 10MB and of type pdf, doc, docx'
-                                  options={{
-                                    maxSize: 10000000,
-                                  }}
-                                  small={true}
-                                  isUpdate={fieldDef.isUpdate}
-                                  {...props}
-                                />
-                              )}
-                            />
-                          )}
+                          <RenderCell
+                            fieldName={fieldName}
+                            startIndex={startIndex}
+                            form={form}
+                            fieldDef={fieldDef}
+                            fieldIndex={fieldIndex}
+                            field={row}
+                          />
                         </TableCell>
                       );
                     }

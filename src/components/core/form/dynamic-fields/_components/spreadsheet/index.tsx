@@ -37,7 +37,7 @@ const SpreadsheetDynamicFields: React.FC<
         layoutDirection='ltr'
         data={data}
         rowHeaders={false}
-        colHeaders={columnHeaders}
+        colHeaders={columnHeaders as string[]}
         height='auto'
         width='100%'
         stretchH='all'

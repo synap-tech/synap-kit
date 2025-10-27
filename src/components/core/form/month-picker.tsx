@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { FormControl } from '@/components/ui/form';
@@ -58,7 +58,17 @@ const FormMonthPicker: React.FC<FormMonthPickerProps> = ({
               ) : (
                 <span>Pick a month</span>
               )}
-              <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              {field.value ? (
+                <X
+                  className='ml-auto size-4  text-destructive'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    field.onChange('');
+                  }}
+                />
+              ) : (
+                <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              )}
             </Button>
           </FormControl>
         </PopoverTrigger>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { formatDate } from '@/utils/formatDate';
 import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -48,7 +48,7 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
               type='button'
               variant={'form'}
               className={cn(
-                'h-9 bg-input/30 w-full text-left font-normal transition-none active:scale-100 rounded',
+                'h-9 bg-input/30 w-full text-left font-normal transition-none active:scale-100 rounded relative',
                 !field.value && 'text-muted-foreground',
                 className
               )}
@@ -59,12 +59,24 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
               ) : (
                 <span>Pick a date</span>
               )}
-              <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+
+              {field.value ? (
+                <X
+                  className='ml-auto size-4  text-destructive'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    field.onChange('');
+                  }}
+                />
+              ) : (
+                <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              )}
             </Button>
           </FormControl>
         </PopoverTrigger>
         <PopoverContent className='w-auto p-0' align='start'>
           <Calendar
+            endMonth={new Date(2040, 11)}
             {...calendarProps}
             captionLayout={'dropdown'}
             mode='single'
@@ -82,7 +94,6 @@ const FormDatePicker: React.FC<FormDatePickerProps> = ({
               }
             }}
             month={field.value ? new Date(field.value) : undefined}
-            endMonth={new Date(2040, 11)}
           />
         </PopoverContent>
       </Popover>

@@ -1,6 +1,6 @@
 import { formatDate } from '@/utils/formatDate';
 import { format } from 'date-fns';
-import { Calendar as CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { FormControl } from '@/components/ui/form';
@@ -77,7 +77,17 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
               ) : (
                 <span>hh:mm aa</span>
               )}
-              <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              {field.value ? (
+                <X
+                  className='ml-auto size-4  text-destructive'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    field.onChange('');
+                  }}
+                />
+              ) : (
+                <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              )}
             </Button>
           </FormControl>
         </PopoverTrigger>

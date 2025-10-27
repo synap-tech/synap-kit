@@ -10,7 +10,7 @@ import TooltipWrapper from '@/components/ui/tooltip-wrapper';
 import { cn } from '@/lib/utils';
 
 interface IFormLabelProps {
-  label?: string;
+  label?: string | React.ReactNode;
   optional?: boolean;
   subLabel?: string;
   info?: string;

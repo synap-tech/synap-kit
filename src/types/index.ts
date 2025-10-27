@@ -317,7 +317,7 @@ type FieldSelectCreate = {
 };
 
 export type FieldDef = {
-  header: string;
+  header: string | React.ReactNode;
   accessorKey: string;
   className?: string;
   isLoading?: boolean;
@@ -325,7 +325,7 @@ export type FieldDef = {
   width?: string | number;
   maxWidth?: string | number;
   minWidth?: string | number;
-  disabled?: boolean;
+  disabled?: boolean | ((index: number) => boolean);
 } & (
   | FieldText
   | FieldNumber
@@ -345,18 +345,19 @@ export type FieldDef = {
 );
 
 export interface DynamicFieldsProps {
-  title: string | React.ReactNode;
+  title: string;
   form: UseFormReturn<any>;
   fieldName: string;
   fieldDefs: FieldDef[];
   extraHeader?: React.ReactNode;
   handleAdd?: () => void;
   fields: FieldArrayWithId<any>[];
-  viewAs?: 'default' | 'spreadsheet' | 'kanban';
+  viewAs?: 'default' | 'spreadsheet' | 'kanban' | 'table';
   containerClassName?: string;
   className?: string;
   children?: React.ReactNode;
   startIndex?: number;
+  extraButton?: React.ReactNode;
 }
 
 export interface ITableActionRegular<TData> {

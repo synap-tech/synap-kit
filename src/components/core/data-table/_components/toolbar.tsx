@@ -86,6 +86,7 @@ export function TableToolbar() {
     facetedFilters,
     advanceFilters,
     isEntry,
+    isDynamicTable,
     start_date,
     end_date,
     onUpdate,
@@ -434,13 +435,15 @@ export function TableToolbar() {
 
   return (
     <div className={cn('flex w-full flex-col overflow-hidden')}>
-      <div
-        className={cn(
-          'mb-4 flex w-full flex-col justify-between gap-2  lg:flex-row lg:items-end'
-        )}
-      >
-        <TableTitle title={title} subtitle={subtitle} info={info} />
-      </div>
+      {isDynamicTable === true ? null : (
+        <div
+          className={cn(
+            'mb-4 flex w-full flex-col justify-between gap-2  lg:flex-row lg:items-end'
+          )}
+        >
+          <TableTitle title={title} subtitle={subtitle} info={info} />
+        </div>
+      )}
       {toolbarOptions === 'none' ? null : (
         <div
           className={cn(

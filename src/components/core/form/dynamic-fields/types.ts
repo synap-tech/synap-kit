@@ -89,7 +89,7 @@ type FieldSelectCreate = {
 };
 
 export type FieldDef = {
-  header: string;
+  header: string | React.ReactNode;
   accessorKey: string;
   className?: string;
   isLoading?: boolean;
@@ -124,10 +124,11 @@ export interface DynamicFieldsProps {
   extraHeader?: React.ReactNode;
   handleAdd?: () => void;
   fields: FieldArrayWithId<any>[];
-  viewAs?: 'default' | 'spreadsheet' | 'kanban';
+  viewAs?: 'default' | 'spreadsheet' | 'kanban' | 'table';
   containerClassName?: string;
   className?: string;
   children?: React.ReactNode;
   startIndex?: number;
   extraButton?: React.ReactNode;
+  searchKeys?: string[];
 }

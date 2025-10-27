@@ -48,19 +48,52 @@ const schema = z.object({
       temporary_to_date: z.string().nullable(),
     })
   ),
+
+  challan_entries: z.array(
+    z.object({
+      order: z.string(),
+      item: z.string(),
+      quantity: z.string(),
+      accessories: z.array(z.string()),
+      bill_amount: z.string(),
+      location: z.string(),
+      remarks: z.string(),
+    })
+  ),
 });
 
 const TestForm = () => {
-  const form = useRHF(schema, {});
+  const form = useRHF(schema, {
+    challan_entries: [
+      {
+        order: '001',
+        item: 'Item 1',
+        quantity: '1',
+        accessories: ['accessory_1', 'accessory_2'],
+        bill_amount: '100',
+        location: 'Location 1',
+        remarks: 'Remark 1',
+      },
+      {
+        order: '002',
+        item: 'Item 2',
+        quantity: '2',
+        accessories: ['accessory_3'],
+        bill_amount: '0',
+        location: 'Location 2',
+        remarks: 'Remark 2',
+      },
+    ],
+  });
 
   const { fields: newFields } = useFieldArray({
     control: form.control,
     name: 'dynamic_fields',
   });
 
-  const { fields } = useFieldArray({
+  const { fields: challanFields } = useFieldArray({
     control: form.control,
-    name: 'dynamic_fields',
+    name: 'challan_entries',
   });
 
   const handleRemove = (index: number) => {};
@@ -143,7 +176,15 @@ const TestForm = () => {
               <FormField
                 control={form.control}
                 name='datepicker'
-                render={(props) => <CoreForm.DatePicker {...props} />}
+                render={(props) => (
+                  <CoreForm.DatePicker
+                    calendarProps={{
+                      startMonth: new Date(1990, 0, 1),
+                      endMonth: new Date(2030, 11, 31),
+                    }}
+                    {...props}
+                  />
+                )}
               />
               <FormField
                 control={form.control}
@@ -371,7 +412,8 @@ const TestForm = () => {
             add: handleAdd,
             watch: form.watch,
           })}
-          fields={fields}
+          fields={challanFields}
+          viewAs='table'
         >
           <tr>
             <td className='border-t text-right font-semibold' colSpan={4}>
@@ -402,7 +444,7 @@ const TestForm = () => {
             add: handleAdd,
             watch: form.watch,
           })}
-          fields={fields}
+          fields={challanFields}
         />
       </div>
 

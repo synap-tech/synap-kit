@@ -25,7 +25,7 @@ interface IFieldProps {
   field: ControllerRenderProps<any, any>;
   fieldState: ControllerFieldState;
   formState: UseFormStateReturn<any>;
-  label?: string;
+  label?: string | React.ReactNode;
   subLabel?: string;
   placeholder?: string;
   optional?: boolean;

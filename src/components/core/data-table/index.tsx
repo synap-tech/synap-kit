@@ -31,10 +31,11 @@ function DataTable({ children }: { children?: React.ReactNode }) {
     childrenInsideTable,
     extraHeader,
     renderSubComponent,
+    isDynamicTable,
   } = useTable();
 
   return (
-    <TableWrapper>
+    <TableWrapper className={isDynamicTable ? 'p-0  lg:p-0 border-0' : ''}>
       <TableToolbar />
       {extraHeader && extraHeader}
       <div className={cn('flex-1 flex flex-col  overflow-auto scrollbar')}>

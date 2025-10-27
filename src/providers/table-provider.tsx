@@ -69,6 +69,7 @@ export interface ITableContext<TData> {
   subtitle?: string;
   clientRedirectUrl?: string;
   isEntry?: boolean;
+  isDynamicTable?: boolean;
   table: Table<TData>;
   isLoading?: boolean;
   handleCreate?: () => void;
@@ -109,6 +110,7 @@ export interface ITableProviderProps<TData, TValue> {
   subtitle?: string;
   clientRedirectUrl?: string;
   isEntry?: boolean;
+  isDynamicTable?: boolean;
   children?: React.ReactNode;
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -149,6 +151,7 @@ function TableProvider<TData, TValue>({
   subtitle,
   clientRedirectUrl,
   isEntry = false,
+  isDynamicTable = false,
   children,
   columns,
   data,
@@ -296,6 +299,7 @@ function TableProvider<TData, TValue>({
       subtitle,
       clientRedirectUrl,
       isEntry,
+      isDynamicTable,
       isLoading,
       table,
       handleCreate,
@@ -330,6 +334,7 @@ function TableProvider<TData, TValue>({
       subtitle,
       clientRedirectUrl,
       isEntry,
+      isDynamicTable,
       isLoading,
       table,
       handleCreate,

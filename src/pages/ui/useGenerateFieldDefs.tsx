@@ -36,14 +36,14 @@ const useGenerateFieldDefs = ({
     {
       header: 'Quantity',
       accessorKey: 'quantity',
-      type: 'custom',
-      component: (index: number) => {
-        const orderId = watch
-          ? String(watch(`${entry}.${index}.quantity` as any))
-          : '';
+      type: 'text',
+      // component: (index: number) => {
+      //   const orderId = watch
+      //     ? String(watch(`${entry}.${index}.quantity` as any))
+      //     : '';
 
-        return <span>{orderId}</span>;
-      },
+      //   return <span>{orderId}</span>;
+      // },
     },
 
     {

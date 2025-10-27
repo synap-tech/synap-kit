@@ -1,6 +1,6 @@
 import { formatDate } from '@/utils/formatDate';
 import { format } from 'date-fns';
-import { Calendar as CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -80,13 +80,24 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
               ) : (
                 <span>{displayFormat}</span>
               )}
-              <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              {field.value ? (
+                <X
+                  className='ml-auto size-4  text-destructive'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    field.onChange('');
+                  }}
+                />
+              ) : (
+                <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+              )}
             </Button>
           </FormControl>
         </PopoverTrigger>
         <PopoverContent className='w-auto p-0'>
           <div className='sm:flex'>
             <Calendar
+              endMonth={new Date(2040, 11)}
               {...calendarProps}
               captionLayout={'dropdown'}
               mode='single'
@@ -102,7 +113,6 @@ const FormDateTimePicker: React.FC<FormDatePickerProps> = ({
                 }
               }}
               month={field.value ? new Date(field.value) : undefined}
-              endMonth={new Date(2040, 11)}
             />
             <div className='flex flex-col divide-y sm:h-[300px] sm:flex-row sm:divide-x sm:divide-y-0'>
               <ScrollArea className='w-64 sm:w-auto'>
