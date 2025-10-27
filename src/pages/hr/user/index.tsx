@@ -101,17 +101,17 @@ const User = () => {
   >(null);
 
   // Delete All Row Handlers
-  const handleDeleteAll = (rows: Row<IUserTableData>[]) => {
-    const selectedRows = rows.map((row) => row.original);
+  // const handleDeleteAll = (rows: Row<IUserTableData>[]) => {
+  //   const selectedRows = rows.map((row) => row.original);
 
-    setDeleteItems(
-      selectedRows.map((row) => ({
-        id: row.uuid,
-        name: row.name,
-        checked: true,
-      }))
-    );
-  };
+  //   setDeleteItems(
+  //     selectedRows.map((row) => ({
+  //       id: row.uuid,
+  //       name: row.name,
+  //       checked: true,
+  //     }))
+  //   );
+  // };
 
   // Action Trx Modal state
   const [isOpenResetPasswordModal, setIsOpenResetPasswordModal] =
