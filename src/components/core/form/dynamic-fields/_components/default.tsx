@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { SearchIcon } from 'lucide-react';
 
@@ -46,6 +46,11 @@ const DefaultDynamicFields: React.FC<
     );
     setRows(filteredRows);
   };
+
+  useEffect(() => {
+    setRows(fields);
+  }, [fields]);
+
   return (
     <div className='overflow-x-auto rounded-none'>
       {searchKeys.length > 0 && (
