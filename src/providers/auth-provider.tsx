@@ -97,7 +97,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         if (token && user) {
           toast.success('Logged in successfully');
-
           window.location.href = redirectUrl;
           return;
         }
@@ -121,6 +120,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     deleteUserCookie();
     removeUserCanAccess();
     setUser(null);
+    window.location.href = `/login?redirect=${window.location.pathname}`;
   }, [deleteAuthCookie, deleteUserCookie, removeUserCanAccess]);
 
   // Memoized value for the AuthContext with derived state properties

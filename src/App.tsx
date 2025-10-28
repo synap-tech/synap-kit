@@ -1,4 +1,4 @@
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router/dom';
 
 import ProfileAvatar from './components/ui/profile-avatar';
 import { ThemeToggle } from './components/ui/theme-toggle';
