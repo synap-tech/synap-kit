@@ -4,7 +4,7 @@ import type { AxiosError } from 'axios';
 import type { LucideIcon } from 'lucide-react';
 //Dynamic Field Types
 import type { FieldArrayWithId, UseFormReturn } from 'react-hook-form';
-import type { RouteObject } from 'react-router-dom';
+import type { RouteObject } from 'react-router';
 
 export type IToast = {
   status: number;
