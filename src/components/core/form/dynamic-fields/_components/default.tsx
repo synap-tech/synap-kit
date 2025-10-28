@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { SearchIcon } from 'lucide-react';
-
-import DebouncedInput from '@/components/ui/debounce-input';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
   Table,
@@ -30,32 +27,36 @@ const DefaultDynamicFields: React.FC<
   searchKeys = [],
 }) => {
   const [rows, setRows] = useState(fields);
-  const [query, setQuery] = useState('');
-
-  const handleSearch = (query: string) => {
-    setQuery(query);
-    const filteredRows = fields.filter((field) =>
-      searchKeys.some((key) => {
-        return field[key as keyof typeof field]
-          ?.toString()
-          .toLowerCase()
-          .includes(query.toLowerCase())
-          ? true
-          : false;
-      })
-    );
-    setRows(filteredRows);
-  };
+  // const [query, setQuery] = useState('');
 
   useEffect(() => {
     setRows(fields);
+    // if (!query || query.trim() === '') {
+    //   setRows(fields);
+    // }
   }, [fields]);
+
+  // const handleSearch = (query: string) => {
+  //   setQuery(query);
+  //   const filteredRows = fields.filter((field) =>
+  //     searchKeys.some((key) => {
+  //       return field[key as keyof typeof field]
+  //         ?.toString()
+  //         .toLowerCase()
+  //         .includes(query.toLowerCase())
+  //         ? true
+  //         : false;
+  //     })
+  //   );
+  //   setRows(filteredRows);
+  // };
 
   return (
     <div className='overflow-x-auto rounded-none'>
-      {searchKeys.length > 0 && (
+      {/* {searchKeys.length > 0 && (
         <div className='flex justify-start pt-4 pb-0 px-4 border-b'>
           <DebouncedInput
+            autoFocus={false}
             placeholder={`Search by ${searchKeys.join(', ')}...`}
             icon={<SearchIcon className={cn('size-5 text-foreground/50')} />}
             className='mb-4 max-w-sm'
@@ -65,7 +66,7 @@ const DefaultDynamicFields: React.FC<
             }}
           />
         </div>
-      )}
+      )} */}
       <Table className='w-full'>
         <TableHeader className='bg-secondary/10'>
           <TableRow className='h-8  '>
