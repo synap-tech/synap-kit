@@ -1,3 +1,4 @@
+import NewFormPage from '@/pages/new-form';
 import Login from '@/pages/public/login';
 import NotFound from '@/pages/public/not-found';
 import UiPage from '@/pages/ui';
@@ -14,6 +15,10 @@ const publicRoutes = [
   {
     path: '/ui',
     element: <UiPage />,
+  },
+  {
+    path: '/new-form',
+    element: <NewFormPage />,
   },
   {
     path: '*',

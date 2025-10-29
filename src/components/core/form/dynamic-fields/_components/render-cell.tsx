@@ -12,7 +12,6 @@ const RenderCell: React.FC<
     field: any;
   }
 > = ({ fieldName, startIndex = 0, form, fieldDef, fieldIndex, field }) => {
-  console.log({ fieldName, fieldDef });
   return (
     <Fragment>
       {fieldDef.type === 'readOnly' &&

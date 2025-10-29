@@ -8,7 +8,7 @@ function Textarea({ className, ...props }: TextareaProps) {
   return (
     <textarea
       className={cn(
-        'bg-input/30 flex min-h-9 w-full rounded border border-border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:border-destructive/30 disabled:from-destructive/5 disabled:to-destructive/5 disabled:text-destructive disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'bg-input/30 flex min-h-9 w-full rounded border border-border  placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 field-sizing-content  px-3 py-2 text-sm  transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
         className
       )}
       {...props}

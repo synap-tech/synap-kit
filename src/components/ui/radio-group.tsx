@@ -1,9 +1,15 @@
+'use client';
+
 import * as React from 'react';
 
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import { CircleIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+
+export type RadioGroupProps = React.ComponentProps<
+  typeof RadioGroupPrimitive.Root
+>;
 
 function RadioGroup({
   className,
@@ -12,7 +18,7 @@ function RadioGroup({
   return (
     <RadioGroupPrimitive.Root
       data-slot='radio-group'
-      className={cn('grid gap-2', className)}
+      className={cn('grid gap-3', className)}
       {...props}
     />
   );
@@ -20,27 +26,22 @@ function RadioGroup({
 
 function RadioGroupItem({
   className,
-  circleClassName,
   ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item> & {
-  circleClassName?: string;
-}) {
+}: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
   return (
     <RadioGroupPrimitive.Item
       data-slot='radio-group-item'
       className={cn(
-        'aspect-square size-4 rounded-full border border-neutral-200 text-primary ring-offset-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50  dark:border-neutral-800 dark:text-neutral-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300',
+        'border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-5 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',
         className
       )}
       {...props}
     >
       <RadioGroupPrimitive.Indicator
         data-slot='radio-group-indicator'
-        className='flex items-center justify-center'
+        className='relative flex items-center justify-center'
       >
-        <CircleIcon
-          className={cn('size-3 fill-current text-current', circleClassName)}
-        />
+        <CircleIcon className='fill-primary absolute top-1/2 left-1/2 size-3 -translate-x-1/2 -translate-y-1/2' />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );

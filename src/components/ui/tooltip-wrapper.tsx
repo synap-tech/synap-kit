@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 const TooltipWrapper: React.FC<{
   children: React.ReactNode;
-  message: string;
+  message: string | React.ReactNode;
   className?: string;
 }> = ({ children, message, className }) => {
   return (
