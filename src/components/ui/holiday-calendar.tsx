@@ -47,10 +47,10 @@ function HolidayCalendar({
           buttonVariants({ variant: 'outline' }),
           'z-10 h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100'
         ),
-        weeks: 'w-full border-collapse space-y-4', // 👈 more vertical space between weeks
-        weekdays: 'flex gap-4',
+        weeks: 'w-full border-collapse space-y-2', // 👈 more vertical space between weeks
+        weekdays: 'flex justify-between w-full mb-2',
         weekday: 'text-muted-foreground rounded w-9 font-normal text-[0.8rem]',
-        week: 'flex w-full gap-1 mt-5', // 👈 horizontal gap between days
+        week: 'flex w-full grid grid-cols-7 gap-2', // 👈 horizontal gap between days
         day_button:
           'h-9 w-9 text-center text-sm p-0 relative mx-[2px] my-[2px] [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-primary/50 [&:has([aria-selected])]:bg-primary first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
         day: cn(
@@ -82,7 +82,7 @@ function HolidayCalendar({
 
           return (
             <select defaultValue={currentMonth} onChange={onChange}>
-              {options?.map((e, index) => (
+              {options?.map((e) => (
                 <option key={e.label} value={e.value}>
                   {e.label}
                 </option>
@@ -95,7 +95,7 @@ function HolidayCalendar({
           const currentMonth = getYear(new Date(props.selected));
           return (
             <select defaultValue={currentMonth} onChange={onChange}>
-              {options?.map((e, index) => (
+              {options?.map((e) => (
                 <option key={e.label} value={e.value}>
                   {e.label}
                 </option>
