@@ -33,6 +33,7 @@ import {
   useReactTable,
   type VisibilityState,
 } from '@tanstack/react-table';
+import type { clear } from 'console';
 import { max, min } from 'date-fns';
 import type { DateRange } from 'react-day-picker';
 import { useSearchParams } from 'react-router-dom';
@@ -100,7 +101,10 @@ export interface ITableContextSSR<TData> {
 
   actions: ITableAction<TData>[];
   childrenInsideTable?: boolean | null;
-  extraHeader?: React.ReactNode;
+  extraHeader?: (
+    handleSearchParams?: (params: Partial<IPaginationQuery>) => void,
+    clearSearchParams?: () => void
+  ) => React.ReactNode;
 }
 
 export const TableContextSSR = createContext({} as ITableContextSSR<any>);
@@ -131,7 +135,10 @@ interface ITableProviderProps<TData, TValue> {
 
   actions: ITableAction<TData>[];
   childrenInsideTable?: boolean | null;
-  extraHeader?: React.ReactNode;
+  extraHeader?: (
+    handleSearchParams?: (params: Partial<IPaginationQuery>) => void,
+    clearSearchParams?: () => void
+  ) => React.ReactNode;
 }
 
 function TableProviderSSR<TData, TValue>({
@@ -157,7 +164,7 @@ function TableProviderSSR<TData, TValue>({
   filterOptions,
   actions = [],
   childrenInsideTable = null,
-  extraHeader = null,
+  extraHeader = () => null,
 }: ITableProviderProps<TData, TValue>) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [pinFilters, setPinFilters] = useState<
