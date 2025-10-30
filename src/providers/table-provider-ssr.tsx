@@ -135,8 +135,8 @@ interface ITableProviderProps<TData, TValue> {
   actions: ITableAction<TData>[];
   childrenInsideTable?: boolean | null;
   extraHeader?: (
-    handleSearchParams?: (params: Partial<IPaginationQuery>) => void,
-    clearSearchParams?: () => void
+    handleSearchParams: (params: Partial<IPaginationQuery>) => void,
+    clearSearchParams: () => void
   ) => React.ReactNode;
 }
 
