@@ -1,26 +1,31 @@
 import type React from 'react';
 
 import type { IFormSelectOption } from '@/types';
+import type { OTPInputProps } from 'input-otp';
 import type { DayPickerProps } from 'react-day-picker';
 import type {
   ControllerRenderProps,
   FieldValues,
   UseFormReturn,
 } from 'react-hook-form';
+import type ReactQuill from 'react-quill-new';
 import { type Props as ReactSelectProps } from 'react-select';
-import type { DropzoneOptions } from 'react-dropzone';
 import type { Mask, Options } from 'use-mask-input';
 
 import type { CheckboxProps } from '@/components/ui/checkbox';
 import type { InputProps } from '@/components/ui/input';
 import type { RadioGroupProps } from '@/components/ui/radio-group';
 import type { SelectProps } from '@/components/ui/select';
+import type { SwitchProps } from '@/components/ui/switch';
 import type { TextareaProps } from '@/components/ui/textarea';
 
 import type { FormControlFunc } from './_helper/form-base';
 
 export type FormInput = FormControlFunc<{
   fieldProps?: InputProps;
+}>;
+export type FormOtpInput = FormControlFunc<{
+  fieldProps: OTPInputProps;
 }>;
 
 export type FormJoinInputUnit = FormControlFunc<{
@@ -44,13 +49,23 @@ export type FormInputMask = FormControlFunc<{
   mask?: Mask;
   maskOptions?: Options;
 }>;
+export type FormPhone = FormControlFunc<{
+  fieldProps?: InputProps;
+}>;
 
 export type FormTextarea = FormControlFunc<{
   fieldProps?: TextareaProps;
 }>;
 
+export type FormRichTextEditor = FormControlFunc<{
+  fieldProps?: React.ComponentProps<typeof ReactQuill>;
+}>;
+
 export type FormCheckbox = FormControlFunc<{
   fieldProps?: CheckboxProps;
+}>;
+export type FormSwitch = FormControlFunc<{
+  fieldProps?: SwitchProps;
 }>;
 
 export type FormRadio = FormControlFunc<{
@@ -61,6 +76,12 @@ export type FormRadio = FormControlFunc<{
 export type FormSelect = FormControlFunc<{
   fieldProps?: SelectProps;
   options: IFormSelectOption[];
+  valueType?: 'string' | 'number';
+  isLoading?: boolean;
+}>;
+
+export type FormGender = FormControlFunc<{
+  fieldProps?: SelectProps;
   valueType?: 'string' | 'number';
   isLoading?: boolean;
 }>;
@@ -81,29 +102,6 @@ export type FormReactSelect = FormControlFunc<{
   ) => void;
 }>;
 
-export type FormFileUpload = FormControlFunc<{
-  options?: DropzoneOptions;
-  isUpdate?: boolean;
-  fileType?: 'image' | 'document' | 'all' | 'video' | 'audio';
-  errorText?: string;
-  baseUrl: string;
-  small?: boolean;
-  previewClassName?: string;
-  render?: ({
-    preview,
-    setPreview,
-    field,
-    inputRef,
-  }: {
-    preview: string | ArrayBuffer | null;
-    setPreview: React.Dispatch<
-      React.SetStateAction<string | ArrayBuffer | null>
-    >;
-    field: ControllerRenderProps<any, any>;
-    inputRef: React.RefObject<HTMLInputElement>;
-  }) => React.ReactNode;
-}>;
-
 export type FormDatePicker = FormControlFunc<{
   calendarProps?: DayPickerProps;
   displayFormat?: string;
@@ -119,11 +117,12 @@ export type FormSection = {
 };
 
 export type AddEditWrapper<
-  TFieldValues extends FieldValues = FieldValues,
+  TFieldValues extends FieldValues,
   TContext = any,
+  TTransformedValues = TFieldValues,
 > = {
   children: React.ReactNode;
-  form: UseFormReturn<TFieldValues, TContext>;
+  form: UseFormReturn<TFieldValues, TContext, TTransformedValues>;
   onSubmit(values: TFieldValues): void;
   title?: string;
   isSubmitDisable?: boolean;

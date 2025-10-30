@@ -24,7 +24,7 @@ const FormSubmit: React.FC<
       aria-label='Submit Form'
       disabled={!isDirty || isSubmitting || props.isSubmitDisable}
       type='submit'
-      className={cn('w-full md:max-w-sm  mx-auto', props.className)}
+      className={cn('w-full md:max-w-md  mx-auto', props.className)}
       {...props}
     >
       {isSubmitting && <Spinner />}

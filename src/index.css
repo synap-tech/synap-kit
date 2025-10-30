@@ -320,6 +320,24 @@
     scroll-behavior: smooth;
   }
 
+  .ql-container,
+  .ql-editor {
+    height: auto !important;
+    @apply bg-input/30;
+  }
+
+  .ql-container {
+    @apply !border-border rounded-b;
+  }
+
+  .ql-toolbar.ql-snow {
+    @apply !border-border bg-background rounded-t;
+  }
+
+  .ql-snow .ql-stroke {
+    @apply !stroke-foreground;
+  }
+
   .handsontable td,
   .handsontable th {
     @apply border-border! bg-base-100! first:border-l-transparent! last:border-r-transparent!;

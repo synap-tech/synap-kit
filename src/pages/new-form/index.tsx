@@ -20,14 +20,18 @@ const NewFormPage = () => {
   return (
     <div className='bg-background p-8'>
       <ThemeToggle />
-      <div className='w-7xl mx-auto border p-8 rounded bg-popover '>
+      <div className='w-7xl mx-auto border p-8 rounded bg-popover space-y-4'>
         <Title className='text-center '>New Form Components</Title>
         <NewForm.AddEditWrapper
           form={form}
           onSubmit={onSubmit}
           title='New Form Components Playground'
         >
-          <NewForm.Section className='lg:grid-cols-2'>
+          <NewForm.Section
+            title='Basic Controls'
+            info='Inputs composed with extra UI elements.'
+            className='lg:grid-cols-2'
+          >
             <NewForm.Input
               control={form.control}
               name='name'
@@ -39,32 +43,47 @@ const NewFormPage = () => {
               name='description'
               label='Description (Textarea)'
             />
+
             <NewForm.InputMask
               control={form.control}
               name='phone_number'
               label='Phone Number (Input Mask)'
               mask='999-99999999'
             />
-            <NewForm.Checkbox
+            <NewForm.Phone
               control={form.control}
-              name='is_married'
-              label='Is Married (Checkbox)'
+              name='phone_number'
+              label='Phone Number (Phone)'
             />
+
             <NewForm.DatePicker
               control={form.control}
               name='birthdate'
               label='Birthdate (Date Picker)'
             />
-            <NewForm.Radio
-              control={form.control}
-              name='hobby'
-              label='Hobby (Radio)'
-              options={[
-                { label: 'Reading', value: 'reading' },
-                { label: 'Coding', value: 'coding' },
-                { label: 'Sleeping', value: 'sleeping' },
-              ]}
-            />
+            <div className='space-y-4'>
+              <NewForm.Checkbox
+                control={form.control}
+                name='is_married'
+                label='Is Married (Checkbox)'
+              />
+              <NewForm.Switch
+                control={form.control}
+                name='is_married'
+                label='Is Married (Switch)'
+              />
+
+              <NewForm.Radio
+                control={form.control}
+                name='hobby'
+                label='Hobby (Radio)'
+                options={[
+                  { label: 'Reading', value: 'reading' },
+                  { label: 'Coding', value: 'coding' },
+                  { label: 'Sleeping', value: 'sleeping' },
+                ]}
+              />
+            </div>
           </NewForm.Section>
 
           <NewForm.Section
@@ -72,6 +91,13 @@ const NewFormPage = () => {
             info='Inputs composed with extra UI elements.'
             className='lg:grid-cols-2'
           >
+            <div className='col-span-2'>
+              <NewForm.RichTextEditor
+                control={form.control}
+                name='description'
+                label='Description (Rich Text Editor)'
+              />
+            </div>
             <NewForm.Select
               control={form.control}
               name='favorite_food'
@@ -82,6 +108,12 @@ const NewFormPage = () => {
                 { label: 'Burger', value: 'burger' },
               ]}
             />
+            <NewForm.Gender
+              control={form.control}
+              name='gender'
+              label='Gender (Gender)'
+            />
+
             <NewForm.ReactSelect
               control={form.control}
               name='favorite_language'
@@ -123,15 +155,6 @@ const NewFormPage = () => {
                   { label: 'Grams', value: 'g' },
                 ],
               }}
-            />
-            <NewForm.FileUpload
-              control={form.control}
-              name='profile_image'
-              label='Profile Image (File Upload)'
-              baseUrl=''
-              fileType='image'
-              errorText='Image must be less than 10MB and of type png, jpg, jpeg'
-              options={{ maxSize: 10_000_000 }}
             />
           </NewForm.Section>
         </NewForm.AddEditWrapper>

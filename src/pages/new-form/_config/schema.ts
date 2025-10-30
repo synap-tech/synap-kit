@@ -1,6 +1,6 @@
 import {
   BOOLEAN_REQUIRED,
-  FILE,
+  GENDER,
   NUMBER_DOUBLE_OPTIONAL,
   STRING_ARRAY,
   STRING_OPTIONAL,
@@ -21,7 +21,7 @@ export const NEW_FORM_SCHEMA = z.object({
   monthly_income: NUMBER_DOUBLE_OPTIONAL,
   weight_value: NUMBER_DOUBLE_OPTIONAL,
   weight_unit: STRING_REQUIRED,
-  profile_image: FILE.optional(),
+  gender: GENDER,
 });
 
 export type INewForm = z.infer<typeof NEW_FORM_SCHEMA>;
