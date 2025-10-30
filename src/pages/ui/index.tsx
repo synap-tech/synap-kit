@@ -14,9 +14,11 @@ import SingleDatePicker from '@/components/ui/single-date-picker';
 import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { Title } from '@/components/ui/title';
 
 import User from '../hr/user';
 import GroupedColumnExpandableRowTable from './_components/grouped-column/grouped-column-expandable-row-table';
+import DatePickers from './date-pickers';
 import DialogComponent from './dialog';
 import FingerprintEnroll from './fingerprint-enroll/fingerprint-enroll';
 import TestForm from './form';
@@ -24,7 +26,6 @@ import TableSSR from './table-ssr';
 import Wrapper from './wrapper';
 
 const TestPage = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
   return (
     <div className='p-12  bg-background space-y-8 '>
       <h1 className='text-center text-2xl font-medium'>UI Components</h1>
@@ -63,31 +64,10 @@ const TestPage = () => {
         <GroupedColumnExpandableRowTable />
       </Wrapper>
 
-      <SingleDatePicker
-        showAssistant
-        disableIcon
-        className='justify-center'
-        selected={selectedDate}
-        onSelect={setSelectedDate}
-      />
-      <MonthPickerPopover
-        showAssistant
-        disableIcon
-        className='justify-center'
-        date={selectedDate}
-        setDate={setSelectedDate}
-        maxDate={new Date()}
-      />
-      <HolidayCalendar
-        selected={new Date()}
-        highlightedDates={
-          [{ date: '2026-01-01', name: 'New Year' }].map((e) => ({
-            date: new Date(e.date),
-            info: e.name,
-          })) ?? []
-        }
-        className=''
-      />
+      <Wrapper title='Date/Month/Year Pickers'>
+        <DatePickers />
+      </Wrapper>
+
       <FingerprintEnroll />
       <Wrapper title='Form Fields'>
         <TestForm />

@@ -1,5 +1,4 @@
 import { addMonths, format, subMonths } from 'date-fns';
-import { max } from 'lodash';
 import { CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import {
