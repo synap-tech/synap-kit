@@ -26,6 +26,7 @@ interface IProps {
   maxDate?: Date;
   disabled?: (date: Date) => boolean;
   showAssistant?: boolean;
+  displayFormat?: string;
 }
 
 const SingleDatePicker: React.FC<IProps> = ({
@@ -39,6 +40,7 @@ const SingleDatePicker: React.FC<IProps> = ({
   maxDate,
   disabled,
   showAssistant = false,
+  displayFormat = 'dd MMM, yyyy',
 }) => {
   // Create a disabled function that combines minDate, maxDate, and custom disabled
   const isDisabled = React.useCallback(
@@ -87,7 +89,7 @@ const SingleDatePicker: React.FC<IProps> = ({
               {!disableIcon && <CalendarIcon className='size-4' />}
               {selected ? (
                 <span className='inline'>
-                  {format(selected, 'dd MMM, yyyy')}
+                  {format(selected, displayFormat)}
                 </span>
               ) : (
                 <span className='inline'>Pick a date</span>
@@ -119,7 +121,7 @@ const SingleDatePicker: React.FC<IProps> = ({
           >
             {!disableIcon && <CalendarIcon className='size-4' />}
             {selected ? (
-              <span className='inline'>{format(selected, 'dd MMM, yyyy')}</span>
+              <span className='inline'>{format(selected, displayFormat)}</span>
             ) : (
               <span className='inline'>Pick a date</span>
             )}
