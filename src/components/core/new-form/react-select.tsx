@@ -14,7 +14,6 @@ const FormReactSelect: FormReactSelect = ({
   disabled,
   placeholder = 'Select an option',
   isLoading,
-  isModal,
   onChange,
   ...props
 }) => {
@@ -30,11 +29,11 @@ const FormReactSelect: FormReactSelect = ({
             options={options}
             isDisabled={disabled}
             placeholder={placeholder}
-            menuPortalTarget={isModal ? document.body : undefined}
+            menuPortalTarget={document.body}
             styles={{
               menuPortal: (base) => ({
                 ...base,
-                zIndex: isModal ? 999 : 'auto',
+                zIndex: 999,
               }),
             }}
             {...field}
