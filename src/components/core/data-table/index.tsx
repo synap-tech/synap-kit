@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 import { flexRender } from '@tanstack/react-table';
+import { useMediaQuery } from '@uidotdev/usehooks';
 
 import useTable from '@/hooks/useTable';
 import useTheme from '@/hooks/useTheme';
@@ -34,6 +35,8 @@ function DataTable({ children }: { children?: React.ReactNode }) {
     isDynamicTable,
   } = useTable();
 
+  const isMobile = useMediaQuery('only screen and (max-width : 768px)');
+
   return (
     <TableWrapper className={isDynamicTable ? 'p-0  lg:p-0 border-0' : ''}>
       <TableToolbar />
@@ -53,6 +56,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                         ...getCommonPinningStyles({
                           column: header.column,
                           isHeader: true,
+                          isMobile,
                           theme,
                         }),
                       }}
@@ -90,6 +94,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
                         style={{
                           ...getCommonPinningStyles({
                             column: cell.column,
+                            isMobile,
                             theme,
                           }),
                         }}
