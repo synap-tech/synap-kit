@@ -8,8 +8,6 @@ import {
   Search,
 } from 'lucide-react';
 
-import useTable from '@/hooks/useTable';
-
 import { Button } from '@/components/ui/button';
 import DebouncedInput from '@/components/ui/debounce-input';
 import {
@@ -29,11 +27,6 @@ export function TableColumnHeader<TData, TValue>({
   className,
   isSSR,
 }: TableColumnHeaderProps<TData, TValue>) {
-  const { table } = useTable();
-
-  // const pinnedColumns = table.getState().columnPinning.right;
-  // console.log({ pinnedColumns });
-
   const title = (column.columnDef.header as string).split('\n');
 
   if (!column.getCanSort()) {
