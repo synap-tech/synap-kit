@@ -199,7 +199,13 @@ const TestForm = () => {
               <FormField
                 control={form.control}
                 name='month_picker'
-                render={(props) => <CoreForm.MonthPicker {...props} />}
+                render={(props) => (
+                  <CoreForm.MonthPicker
+                    defaultMonth={new Date('2023-01-01')}
+                    maxDate={new Date('2026-01-01')}
+                    {...props}
+                  />
+                )}
               />
             </div>
           </div>

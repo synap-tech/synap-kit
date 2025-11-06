@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { toast } from 'sonner';
 
 import StatusButton from '@/components/buttons/status';
@@ -7,14 +5,10 @@ import DataTableEntry from '@/components/core/data-table/entry';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
-import { HolidayCalendar } from '@/components/ui/holiday-calendar';
-import MonthPickerPopover from '@/components/ui/month-picker-popup';
 import SectionContainer from '@/components/ui/section-container';
-import SingleDatePicker from '@/components/ui/single-date-picker';
 import StatusBadge from '@/components/ui/status-badge';
 import { Switch } from '@/components/ui/switch';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
-import { Title } from '@/components/ui/title';
 
 import User from '../hr/user';
 import GroupedColumnExpandableRowTable from './_components/grouped-column/grouped-column-expandable-row-table';
