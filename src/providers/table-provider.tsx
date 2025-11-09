@@ -150,6 +150,7 @@ export interface ITableProviderProps<TData, TValue> {
     pageIndex: number;
     pageSize: number;
   };
+  autoResetPage?: boolean;
 }
 
 function TableProvider<TData, TValue>({
@@ -191,6 +192,7 @@ function TableProvider<TData, TValue>({
     pageIndex: 0,
     pageSize: 10,
   },
+  autoResetPage = true,
 }: ITableProviderProps<TData, TValue>) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -293,6 +295,8 @@ function TableProvider<TData, TValue>({
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getExpandedRowModel: getExpandedRowModel(),
+
+    autoResetPageIndex: autoResetPage,
   });
 
   const allDates: Date[] = [];

@@ -100,7 +100,7 @@ export function TableColumnHeader<TData, TValue>({
 
           {column.getCanPin() && (
             <DropdownMenuItem
-              className='flex items-center justify-between'
+              className='hidden md:flex items-center justify-between'
               onClick={() => {
                 if (column.getIsPinned() === 'left') {
                   column.pin(false);

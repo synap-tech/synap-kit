@@ -29,6 +29,7 @@ const FormMonthPicker: React.FC<FormMonthPickerProps> = ({
   info,
   minDate,
   maxDate,
+  defaultMonth = new Date(),
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -82,9 +83,9 @@ const FormMonthPicker: React.FC<FormMonthPickerProps> = ({
             selectedMonth={
               field.value
                 ? format(new Date(field.value), 'yyyy-MM-dd HH:mm:ss')
-                : format(new Date(), 'yyyy-MM-dd HH:mm:ss')
+                : format(new Date(defaultMonth), 'yyyy-MM-dd HH:mm:ss')
             }
-            maxDate={maxDate || new Date()}
+            maxDate={maxDate || undefined}
             minDate={minDate || undefined}
           />
         </PopoverContent>

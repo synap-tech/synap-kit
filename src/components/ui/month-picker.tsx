@@ -136,7 +136,7 @@ function MonthCal({
     const value = e.target.value;
     // Allow only numbers
     if (/^\d*$/.test(value)) {
-      setYearInputValue(value);
+      setYearInputValue(String(value));
     }
   };
 
@@ -201,22 +201,24 @@ function MonthCal({
       <div className='relative flex items-center justify-center pt-1'>
         {isEditingYear ? (
           <input
-            type='text'
+            type='number'
             value={yearInputValue}
             onChange={handleYearInputChange}
             onBlur={handleYearInputSubmit}
             onKeyDown={handleYearInputKeyDown}
-            className='w-16 rounded border-gray-500 bg-white px-2 py-1 text-center text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:text-white'
+            className='w-24 rounded border-gray-500 bg-white px-2 py-1 text-center text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:text-white'
             autoFocus
             maxLength={4}
             placeholder={menuYear.toString()}
+            max={getMaxYear().toString()}
+            min={getMinYear().toString()}
           />
         ) : (
           <button
             onClick={(e) => {
               e.preventDefault();
               setIsEditingYear(true);
-              setMenuYear(menuYear + 1);
+              setMenuYear(menuYear);
             }}
             className='rounded px-2 py-1 text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800'
           >

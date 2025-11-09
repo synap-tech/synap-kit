@@ -42,6 +42,8 @@ const Toolbar = () => {
     isEntry,
     isFiltered,
     clearSearchParams,
+    extraHeader,
+    handleSearchParams,
   } = useTableSSR();
 
   const [searchParams] = useSearchParams();
@@ -164,6 +166,7 @@ const Toolbar = () => {
           {renderLeftSection()}
           {renderRightSection()}
         </div>
+        {extraHeader && extraHeader(handleSearchParams, clearSearchParams)}
         <PinFilters />
       </div>
     </TableFilterProvider>

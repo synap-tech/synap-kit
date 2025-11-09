@@ -5,6 +5,7 @@ import { type Column } from '@tanstack/react-table';
 export function getCommonPinningStyles<TData>({
   column,
   isHeader = false,
+  isMobile,
   theme,
 }: {
   column: Column<TData>;
@@ -15,6 +16,7 @@ export function getCommonPinningStyles<TData>({
    */
   withBorder?: boolean;
   isHeader?: boolean;
+  isMobile?: boolean;
   theme?: Theme;
 }): React.CSSProperties {
   const isPinned = column.getIsPinned();
@@ -24,12 +26,16 @@ export function getCommonPinningStyles<TData>({
     isPinned === 'right' && column.getIsFirstColumn('right');
 
   return {
-    boxShadow: isLastLeftPinnedColumn
-      ? `-4px 0 3px -3px ${theme === 'dark' ? colors.BORDER_DARK : colors.BORDER}  inset`
-      : isFirstRightPinnedColumn
-        ? `4px 0 3px -3px ${theme === 'dark' ? colors.BORDER_DARK : colors.BORDER}  inset`
+    boxShadow:
+      isLastLeftPinnedColumn && isMobile !== true
+        ? `-4px 0 3px -3px ${theme === 'dark' ? colors.BORDER_DARK : colors.BORDER}  inset`
+        : isFirstRightPinnedColumn
+          ? `4px 0 3px -3px ${theme === 'dark' ? colors.BORDER_DARK : colors.BORDER}  inset`
+          : undefined,
+    left:
+      isPinned === 'left' && isMobile !== true
+        ? `${column.getStart('left')}px`
         : undefined,
-    left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
     right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
     opacity: isPinned ? 0.95 : 1,
     position: isPinned ? 'sticky' : 'relative',

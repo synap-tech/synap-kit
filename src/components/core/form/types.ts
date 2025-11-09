@@ -59,6 +59,7 @@ export interface FormMonthPickerProps extends IFieldProps {
   displayFormat?: string;
   minDate?: Date;
   maxDate?: Date;
+  defaultMonth?: Date;
 }
 
 export interface FormCheckboxProps extends IFieldProps, CheckboxProps {
