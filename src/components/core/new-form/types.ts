@@ -1,6 +1,8 @@
 import type React from 'react';
 
-import type { IFormSelectOption } from '@/types';
+import type { IFormSelectOption, IToast } from '@/types';
+import type { UseMutationResult } from '@tanstack/react-query';
+import type { AxiosError } from 'axios';
 import type { OTPInputProps } from 'input-otp';
 import type { DayPickerProps } from 'react-day-picker';
 import type {
@@ -25,7 +27,7 @@ export type FormInput = FormControlFunc<{
   fieldProps?: InputProps;
 }>;
 export type FormOtpInput = FormControlFunc<{
-  fieldProps: OTPInputProps;
+  fieldProps: Omit<OTPInputProps, 'children'>;
 }>;
 
 export type FormJoinInputUnit = FormControlFunc<{
@@ -100,11 +102,47 @@ export type FormReactSelect = FormControlFunc<{
     option?: IFormSelectOption,
     field?: ControllerRenderProps<any, any>
   ) => void;
+  unique?: boolean;
+  excludeOptions?: string[];
+}>;
+
+export type FormReactSelectCreate = FormControlFunc<{
+  fieldProps?: ReactSelectProps;
+  options: IFormSelectOption[];
+  valueType?: 'string' | 'number';
+  isLoading?: boolean;
+  isModal?: boolean;
+  onChange?: (
+    option?: IFormSelectOption,
+    field?: ControllerRenderProps<any, any>
+  ) => void;
+  apiUrl?: string;
+  postData?: UseMutationResult<
+    IToast,
+    AxiosError<IToast, any>,
+    {
+      url: string;
+      newData: any;
+      isOnCloseNeeded?: boolean;
+      onClose?: (() => void) | undefined;
+    },
+    any
+  >;
+  extraPostData?: any;
+  unique?: boolean;
+  excludeOptions?: string[];
 }>;
 
 export type FormDatePicker = FormControlFunc<{
   calendarProps?: DayPickerProps;
   displayFormat?: string;
+}>;
+export type FormMonthPicker = FormControlFunc<{
+  calendarProps?: DayPickerProps;
+  displayFormat?: string;
+  minDate?: Date;
+  maxDate?: Date;
+  defaultMonth?: Date;
 }>;
 
 export type FormSection = {

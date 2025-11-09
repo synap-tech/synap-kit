@@ -57,6 +57,10 @@
       "types": "./dist/types/components/core/form/index.d.ts",
       "import": "./dist/form"
     },
+    "./form/new": {
+      "types": "./dist/types/components/core/new-form/index.d.ts",
+      "import": "./dist/new-form"
+    },
     "./data-table": {
       "types": "./dist/types/components/core/data-table/index.d.ts",
       "import": "./dist/data-table"

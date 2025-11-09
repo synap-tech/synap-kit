@@ -22,6 +22,7 @@ export const NEW_FORM_SCHEMA = z.object({
   weight_value: NUMBER_DOUBLE_OPTIONAL,
   weight_unit: STRING_REQUIRED,
   gender: GENDER,
+  secret_code: STRING_REQUIRED,
 });
 
 export type INewForm = z.infer<typeof NEW_FORM_SCHEMA>;

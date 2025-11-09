@@ -2,12 +2,11 @@ import { useState } from 'react';
 
 import { formatDate } from '@/utils/formatDate';
 import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
+import { Clock8 } from 'lucide-react';
 import { useController } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
-import { Calendar } from '@/components/ui/calendar';
 import {
   Popover,
   PopoverContent,
@@ -21,12 +20,12 @@ import DeleteButton from './_helper/delete-button';
 import { FormBase } from './_helper/form-base';
 import type { FormDatePicker } from './types';
 
-const FormDateTimePicker: FormDatePicker = ({
+const FormTimePicker: FormDatePicker = ({
   calendarProps,
   className,
   disabled,
   control,
-  displayFormat = 'dd/MM/yyyy hh:mm aa',
+  displayFormat = 'hh:mm aa',
 
   ...props
 }) => {
@@ -76,10 +75,10 @@ const FormDateTimePicker: FormDatePicker = ({
                 {field.value ? (
                   format(new Date(field.value), displayFormat)
                 ) : (
-                  <span>Pick a date</span>
+                  <span>hh:mm aa</span>
                 )}
 
-                <CalendarIcon className='size-4 opacity-50' />
+                <Clock8 className='size-4 opacity-50' />
               </Button>
             </PopoverTrigger>
             {field.value && <DeleteButton onClick={() => field.onChange('')} />}
@@ -87,24 +86,6 @@ const FormDateTimePicker: FormDatePicker = ({
 
           <PopoverContent className='w-auto p-0' align='start'>
             <div className='sm:flex'>
-              <Calendar
-                endMonth={new Date(2040, 11)}
-                {...calendarProps}
-                captionLayout={'dropdown'}
-                mode='single'
-                selected={field.value ? new Date(field.value) : new Date()}
-                onSelect={(selected, triggerDate) => {
-                  if (!disabled) {
-                    field.onChange(formatDate(triggerDate as Date));
-                  }
-                }}
-                onMonthChange={(date) => {
-                  if (!disabled) {
-                    field.onChange(formatDate(date as Date));
-                  }
-                }}
-                month={field.value ? new Date(field.value) : undefined}
-              />
               <div className='flex flex-col divide-y sm:h-[300px] sm:flex-row sm:divide-x sm:divide-y-0'>
                 <ScrollArea className='w-64 sm:w-auto'>
                   <div className='flex p-2 sm:flex-col'>
@@ -188,4 +169,4 @@ const FormDateTimePicker: FormDatePicker = ({
   );
 };
 
-export default FormDateTimePicker;
+export default FormTimePicker;

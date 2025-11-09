@@ -156,6 +156,29 @@ const NewFormPage = () => {
                 ],
               }}
             />
+            <NewForm.DateTimePicker
+              control={form.control}
+              name='birthdate'
+              label='Birthdate (Date Time Picker)'
+            />
+            <NewForm.TimePicker
+              control={form.control}
+              name='birthdate'
+              label='Birthdate (Time Picker)'
+            />
+            <NewForm.MonthPicker
+              control={form.control}
+              name='birthdate'
+              label='Birthdate (Month Picker)'
+            />
+            <NewForm.Otp
+              fieldProps={{
+                maxLength: 6,
+              }}
+              control={form.control}
+              name='secret_code'
+              label='Secret Code (OTP)'
+            />
           </NewForm.Section>
         </NewForm.AddEditWrapper>
       </div>
