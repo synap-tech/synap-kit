@@ -48,11 +48,19 @@ const FormJoinInputUnit: React.FC<FormJoinInputUnitProps> = ({
               className={cn(inputClass, className)}
               placeholder={placeholder}
               icon={icon}
-              {...field}
-              onBlur={(e) => {
-                field.onChange(+e.target.value);
-              }}
               disabled={disabled}
+              {...field}
+              value={
+                field.value === null || field.value === ''
+                  ? ''
+                  : Number(field.value)
+              }
+              onChange={(e) => {
+                field.onChange(Number(e.target.value));
+              }}
+              onBlur={(e) => {
+                field.onChange(Number(e.target.value));
+              }}
             />
           ) : (
             <Input

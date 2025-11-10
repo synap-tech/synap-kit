@@ -59,8 +59,16 @@ const FormJoinInputSelect: React.FC<FormJoinInputSelectProps> = ({
               placeholder={placeholder}
               icon={icon}
               {...field}
+              value={
+                field.value === null || field.value === ''
+                  ? ''
+                  : Number(field.value)
+              }
+              onChange={(e) => {
+                field.onChange(Number(e.target.value));
+              }}
               onBlur={(e) => {
-                field.onChange(+e.target.value);
+                field.onChange(Number(e.target.value));
               }}
             />
           ) : (
