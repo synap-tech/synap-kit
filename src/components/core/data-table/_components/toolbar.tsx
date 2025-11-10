@@ -284,9 +284,10 @@ export function TableToolbar() {
             {isFiltered && (
               <Button
                 aria-label='Reset filters'
-                variant='ghost-destructive'
+                variant='outline-toolbar'
                 onClick={resetColumnFilters}
                 size={'toolbar'}
+                className='text-destructive'
               >
                 Reset Filters
                 <X className='size-4' />

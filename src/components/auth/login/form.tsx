@@ -1,7 +1,7 @@
 import useAuth from '@/hooks/useAuth';
 import useRHF from '@/hooks/useRHF';
 
-import CoreForm from '@/components/core/form';
+import CoreForm from '@/components/core/form/v1';
 import { Form, FormField } from '@/components/ui/form';
 
 import { type ILoginData, LOGIN_NULL, LOGIN_SCHEMA } from './schema';

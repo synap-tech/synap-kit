@@ -41,7 +41,19 @@ const useTQuery = <T>({
   const { data, isError, isLoading, isPending, refetch, isFetching, status } =
     useQuery<T>({
       queryKey,
-      queryFn: () => api.get(url).then((res) => res.data),
+      queryFn: () =>
+        api
+          .get(url)
+          .then((res) => res.data)
+          .catch((err: AxiosError) => {
+            const statusCode = err?.response?.status;
+            const statusText = err?.response?.statusText;
+
+            // toast.error(statusText || 'Something went wrong', {
+            //   position: 'bottom-right',
+            // });
+            console.log({ statusCode, statusText, err });
+          }),
       refetchInterval,
       refetchOnMount: false,
       refetchOnWindowFocus: true,

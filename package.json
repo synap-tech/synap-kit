@@ -54,12 +54,12 @@
       "import": "./dist/login"
     },
     "./form": {
-      "types": "./dist/types/components/core/form/index.d.ts",
-      "import": "./dist/form"
+      "types": "./dist/types/components/core/form/v1/index.d.ts",
+      "import": "./dist/form/v1"
     },
-    "./form/new": {
-      "types": "./dist/types/components/core/new-form/index.d.ts",
-      "import": "./dist/new-form"
+    "./form/v2": {
+      "types": "./dist/types/components/core/form/v2/index.d.ts",
+      "import": "./dist/form/v2"
     },
     "./data-table": {
       "types": "./dist/types/components/core/data-table/index.d.ts",

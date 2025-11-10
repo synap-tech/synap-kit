@@ -23,6 +23,7 @@ export const useApi = ({ contentType }: { contentType: AxiosHeaderValue }) => {
       return config;
     },
     (error) => {
+      console.log({ error });
       ShowToast(error?.response);
       return Promise.reject(error);
     }

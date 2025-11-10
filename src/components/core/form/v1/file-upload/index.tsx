@@ -64,7 +64,6 @@ const FormFileUpload: React.FC<FormFileUploadProps> = ({
         reader.readAsDataURL(acceptedFiles[0]);
         field.onChange(acceptedFiles[0]);
         form.clearErrors(field.name);
-
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setPreview(null);

@@ -61,7 +61,7 @@ export function TableColumnHeader<TData, TValue>({
         <DropdownMenuContent align='center' className='w-48'>
           {
             <DebouncedInput
-              icon={<Search className='size-4.5 text-black/45' />}
+              icon={<Search className='size-4.5 text-foreground/40' />}
               iconPosition='left'
               className='h-8 placeholder:text-xs placeholder:text-red/45'
               placeholder='Search here...'

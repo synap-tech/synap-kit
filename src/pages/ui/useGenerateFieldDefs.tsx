@@ -1,7 +1,7 @@
 import { type UseFormWatch } from 'react-hook-form';
 
 import FieldActionButton from '@/components/buttons/field-action';
-import type { FieldDef } from '@/components/core/form/dynamic-fields/types';
+import type { FieldDef } from '@/components/core/form/v1/dynamic-fields/types';
 
 interface IGenerateFieldDefsProps {
   entry: string;

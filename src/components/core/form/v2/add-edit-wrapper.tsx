@@ -7,7 +7,7 @@ import {
   type SubmitHandler,
 } from 'react-hook-form';
 
-import NewForm from '@/components/core/new-form';
+import NewForm from '@/components/core/form/v2';
 import { FieldGroup } from '@/components/ui/field';
 
 import { DevTool } from '@/lib/react-hook-devtool';

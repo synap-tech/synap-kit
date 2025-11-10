@@ -5,6 +5,7 @@ import type { UseMutationResult } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 import type { OTPInputProps } from 'input-otp';
 import type { DayPickerProps } from 'react-day-picker';
+import type { DropzoneOptions } from 'react-dropzone';
 import type {
   ControllerRenderProps,
   FieldValues,
@@ -26,6 +27,31 @@ import type { FormControlFunc } from './_helper/form-base';
 export type FormInput = FormControlFunc<{
   fieldProps?: InputProps;
 }>;
+
+export type FileType = 'image' | 'document' | 'all' | 'video' | 'audio';
+
+export type FormFileUpload = FormControlFunc<{
+  options?: DropzoneOptions;
+  isUpdate?: boolean;
+  fileType?: FileType;
+  errorText?: string;
+  small?: boolean;
+  previewClassName?: string;
+  render?: ({
+    preview,
+    setPreview,
+    field,
+    inputRef,
+  }: {
+    preview: string | ArrayBuffer | null;
+    setPreview: React.Dispatch<
+      React.SetStateAction<string | ArrayBuffer | null>
+    >;
+    field: ControllerRenderProps<any, any>;
+    inputRef: React.RefObject<HTMLInputElement>;
+  }) => React.ReactNode;
+}>;
+
 export type FormOtpInput = FormControlFunc<{
   fieldProps: Omit<OTPInputProps, 'children'>;
 }>;

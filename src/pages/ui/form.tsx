@@ -4,7 +4,7 @@ import z from 'zod';
 
 import useRHF from '@/hooks/useRHF';
 
-import CoreForm from '@/components/core/form';
+import CoreForm from '@/components/core/form/v1';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { FormField } from '@/components/ui/form';

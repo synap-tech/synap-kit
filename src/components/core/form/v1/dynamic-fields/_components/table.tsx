@@ -106,8 +106,6 @@ const TableDynamicFields: React.FC<
   //   },
   // ];
 
-  console.log('Table Dynamic Fields', { fields, fieldDefs, columns, data });
-
   return (
     <TableProvider
       isDynamicTable

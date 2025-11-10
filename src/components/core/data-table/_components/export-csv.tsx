@@ -5,6 +5,8 @@ import { CSVLink } from 'react-csv';
 
 import { Button } from '@/components/ui/button';
 
+import { cn } from '@/lib/utils';
+
 import type { TTableExportCSV } from '../types';
 
 const TableExportCSV = ({
@@ -52,7 +54,11 @@ const TableExportCSV = ({
       : 'Table.csv';
 
   return (
-    <Button variant={'ghost'} size={'toolbar'} className={className}>
+    <Button
+      variant={'outline-toolbar'}
+      size={'toolbar'}
+      className={cn(className)}
+    >
       <CSVLink
         className='size-full flex items-center gap-2'
         aria-label='Export to CSV'

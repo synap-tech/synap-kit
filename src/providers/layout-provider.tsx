@@ -1,9 +1,6 @@
 import { createContext, useMemo, useState } from 'react';
 
 import { useHotkeys } from 'react-hotkeys-hook';
-import { Navigate, useLocation } from 'react-router-dom';
-
-import useAuth from '@/hooks/useAuth';
 
 export interface ILayoutContext {
   isCollapsed: boolean;
@@ -21,7 +18,6 @@ interface ILayoutProps {
 const LayoutProvider: React.FC<ILayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const pathName = useLocation().pathname;
 
   useHotkeys('ctrl+q', () => {
     setIsCollapsed(!isCollapsed);

@@ -2,6 +2,8 @@ import AddEditWrapper from './add-edit-wrapper';
 import * as Checkbox from './checkbox';
 import * as DatePicker from './date-picker';
 import * as DateTimePicker from './date-time-picker';
+import * as DynamicFields from './dynamic-fields';
+import * as FileUpload from './file-upload';
 import * as Gender from './gender';
 import * as Input from './input';
 import * as FromInputMask from './input-mask';
@@ -45,6 +47,8 @@ const NewForm = {
   DateTimePicker: DateTimePicker.default,
   TimePicker: TimePicker.default,
   MonthPicker: MonthPicker.default,
+  FileUpload: FileUpload.default,
+  DynamicFields: DynamicFields.default,
   AddEditWrapper,
 };
 

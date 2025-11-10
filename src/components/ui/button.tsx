@@ -12,7 +12,7 @@ const buttonVariants = cva(
       variant: {
         default: 'bg-primary text-primary-foreground hover:bg-primary/90',
         destructive:
-          'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
+          'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/50',
         outline:
           'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
         secondary:
@@ -25,6 +25,8 @@ const buttonVariants = cva(
         warning: 'bg-warning text-warning-foreground hover:bg-warning/90',
         'outline-destructive':
           'border border-destructive/20 bg-background text-destructive hover:bg-destructive hover:text-destructive-foreground',
+        'outline-toolbar':
+          'border hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
         'outline-success':
           'border border-success/20 bg-background text-success hover:bg-success hover:text-success-foreground',
         'outline-accent':

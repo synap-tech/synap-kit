@@ -66,10 +66,13 @@ export default defineConfig({
         providers: path.resolve(__dirname, 'src/providers/index.ts'),
         layout: path.resolve(__dirname, 'src/components/layout/index.tsx'),
         login: path.resolve(__dirname, 'src/components/auth/login/index.tsx'),
-        form: path.resolve(__dirname, 'src/components/core/form/index.ts'),
-        'new-form': path.resolve(
+        'form/v1': path.resolve(
           __dirname,
-          'src/components/core/new-form/index.ts'
+          'src/components/core/form/v1/index.ts'
+        ),
+        'form/v2': path.resolve(
+          __dirname,
+          'src/components/core/form/v2/index.ts'
         ),
         // 'tailwind-config': path.resolve(__dirname, 'tailwind.config.ts'),
         'data-table': path.resolve(

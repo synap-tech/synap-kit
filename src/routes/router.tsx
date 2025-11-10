@@ -1,4 +1,4 @@
-import { getUser } from '@/utils/getUser';
+import { getUserAndToken } from '@/utils/getUser';
 import { createBrowserRouter, redirect } from 'react-router';
 
 import Layout from '@/components/layout';
@@ -8,9 +8,9 @@ import publicRoutes from './public';
 
 // @ts-expect-error
 async function clientMiddleware({ request }, next) {
-  const user = await getUser();
+  const data = await getUserAndToken();
 
-  if (!user) {
+  if (!data) {
     throw redirect('/login');
   }
 

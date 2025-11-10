@@ -1,6 +1,6 @@
 import { useHotkeys } from 'react-hotkeys-hook';
 
-import CoreForm from '@/components/core/form';
+import CoreForm from '@/components/core/form/v1';
 import { Form } from '@/components/ui/form';
 
 import { DevTool } from '@/lib/react-hook-devtool';

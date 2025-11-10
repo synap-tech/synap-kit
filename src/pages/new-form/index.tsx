@@ -2,7 +2,7 @@ import { toast } from 'sonner';
 
 import useRHF from '@/hooks/useRHF';
 
-import NewForm from '@/components/core/new-form';
+import NewForm from '@/components/core/form/v2';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Title } from '@/components/ui/title';
 
@@ -36,6 +36,9 @@ const NewFormPage = () => {
               control={form.control}
               name='name'
               label='Name (Input)'
+              fieldProps={{
+                type: 'number',
+              }}
               required
             />
             <NewForm.Textarea
@@ -178,6 +181,11 @@ const NewFormPage = () => {
               control={form.control}
               name='secret_code'
               label='Secret Code (OTP)'
+            />
+            <NewForm.FileUpload
+              control={form.control}
+              name='profile_photo'
+              label='Profile Photo (File Upload)'
             />
           </NewForm.Section>
         </NewForm.AddEditWrapper>

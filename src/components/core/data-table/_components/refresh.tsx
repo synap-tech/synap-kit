@@ -44,7 +44,7 @@ const TableRefresh: React.FC<TableRefreshProps> = ({ handleRefetch }) => {
       <Button
         aria-label='Refresh Data'
         disabled={isFetching}
-        variant={'ghost'}
+        variant={'outline-toolbar'}
         size={'toolbar'}
         onClick={handleClick}
       >

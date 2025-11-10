@@ -34,9 +34,8 @@ const TableAllFilter = () => {
       <SheetTrigger asChild>
         <Button
           aria-label='Filters All Columns'
-          variant={'ghost'}
+          variant={'outline-toolbar'}
           size='toolbar'
-          className='border lg:border-0'
         >
           <SlidersHorizontal className='size-4' />
           Filters

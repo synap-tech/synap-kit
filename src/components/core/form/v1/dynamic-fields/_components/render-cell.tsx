@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import CoreForm from '@/components/core/form';
+import CoreForm from '@/components/core/form/v1';
 import { FormField } from '@/components/ui/form';
 
 import type { DynamicFieldsProps } from '../types';

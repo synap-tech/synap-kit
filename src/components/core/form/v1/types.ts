@@ -13,8 +13,8 @@ import type {
 import { type Props } from 'react-select';
 import { type Mask, type Options } from 'use-mask-input';
 
-import type { InputProps } from '../../ui/input';
-import type { TextareaProps } from '../../ui/textarea';
+import type { InputProps } from '../../../ui/input';
+import type { TextareaProps } from '../../../ui/textarea';
 
 export interface IFormSelectOption {
   label: string | number;

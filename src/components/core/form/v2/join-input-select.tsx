@@ -32,43 +32,45 @@ const FormJoinInputSelect: FormJoinInputSelect = (props) => {
   return (
     <FormBase {...rest} control={control}>
       {(field) => (
-        <div className='flex w-full gap-2'>
-          <Input
-            {...field}
-            {...fieldProps}
-            disabled={disabled}
-            className={cn('flex-1', className)}
-            value={
-              field.value === undefined || field.value === null
-                ? ''
-                : field.value
-            }
-            onBlur={(event) => {
-              fieldProps?.onBlur?.(event);
-              if (fieldProps?.type === 'number') {
-                const inputValue = event.target.value.trim();
-                if (inputValue.length === 0) {
-                  field.onChange(null);
-                } else {
-                  const numericValue = Number(inputValue);
-                  field.onChange(
-                    Number.isNaN(numericValue) ? null : numericValue
-                  );
-                }
+        <div className='flex rounded-md'>
+          {fieldProps?.type === 'number' ? (
+            <Input
+              {...field}
+              {...fieldProps}
+              disabled={disabled}
+              className={cn(
+                '-me-px rounded-r-none shadow-none focus-visible:z-1',
+                className
+              )}
+              value={
+                field.value === null || field.value === ''
+                  ? ''
+                  : Number(field.value)
               }
-            }}
-          />
+              onChange={(e) => {
+                field.onChange(Number(e.target.value));
+              }}
+              onBlur={(e) => {
+                field.onChange(Number(e.target.value));
+              }}
+            />
+          ) : (
+            <Input
+              {...field}
+              {...fieldProps}
+              disabled={disabled}
+              className={cn(
+                '-me-px rounded-r-none shadow-none focus-visible:z-1',
+                className
+              )}
+              value={field.value === null ? '' : field.value}
+            />
+          )}
+
           <Controller
             control={control}
             name={selectField.name as any}
             render={({ field: selectController }) => {
-              const normalizedValue =
-                selectController.value === undefined ||
-                selectController.value === null ||
-                selectController.value === ''
-                  ? undefined
-                  : selectController.value.toString();
-
               return (
                 <Select
                   onValueChange={(value) => {
@@ -76,16 +78,17 @@ const FormJoinInputSelect: FormJoinInputSelect = (props) => {
                       valueType === 'number' ? Number(value) : value;
                     selectController.onChange(transformedValue);
                   }}
-                  value={normalizedValue}
                   disabled={selectField.isDisabled}
+                  {...selectController}
+                  value={selectController?.value?.toString()}
                 >
                   <ButtonGroup>
-                    <SelectTrigger className='min-w-[140px]'>
+                    <SelectTrigger className='rounded-l-none shadow-none'>
                       <SelectValue placeholder={selectPlaceholder} />
                     </SelectTrigger>
-                    {normalizedValue ? (
+                    {selectController.value ? (
                       <DeleteButton
-                        onClick={() => selectController.onChange('')}
+                        onClick={() => selectController.onChange('Hello')}
                       />
                     ) : null}
                   </ButtonGroup>

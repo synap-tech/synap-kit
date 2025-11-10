@@ -6,7 +6,7 @@ import type {
 import useTableFilter from '@/hooks/useTableFilter';
 import useTQuery from '@/hooks/useTQuery';
 
-import type { IFormSelectOption } from '@/components/core/form/types';
+import type { IFormSelectOption } from '@/components/core/form/v1/types';
 import ReactSelectAsync from '@/components/ui/react-select/react-select-async';
 
 function DynamicSelect<T>({
