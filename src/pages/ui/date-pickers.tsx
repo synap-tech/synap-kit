@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { HolidayCalendar } from '@/components/ui/holiday-calendar';
 import MonthPickerPopover from '@/components/ui/month-picker-popup';
+import ReactSelect from '@/components/ui/react-select';
+import SelectWithLabel from '@/components/ui/select-with-label';
 import SingleDatePicker from '@/components/ui/single-date-picker';
 import { Title } from '@/components/ui/title';
 import YearPickerPopover from '@/components/ui/year-picker-popup';
@@ -54,6 +56,10 @@ const DatePickers = () => {
           }
           className=''
         />
+      </div>
+      <div className='space-y-8'>
+        <ReactSelect label='Status' className='' />
+        <SelectWithLabel label='Status' options={[]} />
       </div>
     </div>
   );

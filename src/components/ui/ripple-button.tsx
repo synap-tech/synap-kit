@@ -1,11 +1,13 @@
+'use client';
+
 import * as React from 'react';
 
 import type { VariantProps } from 'class-variance-authority';
 import { type HTMLMotionProps, motion, type Transition } from 'motion/react';
 
-import { buttonVariants } from '@/components/ui/button';
-
 import { cn } from '@/lib/utils';
+
+import { buttonVariants } from './button';
 
 interface Ripple {
   id: number;

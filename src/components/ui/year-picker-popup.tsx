@@ -41,7 +41,7 @@ export default function YearPickerPopover({
               setDate(subYears(date, 1));
             }}
             size={'toolbar'}
-            variant={'ghost'}
+            variant={'outline'}
             className='bg-muted text-muted-foreground'
           >
             <ChevronLeft className='size-4' />
@@ -50,7 +50,7 @@ export default function YearPickerPopover({
           <PopoverTrigger asChild>
             <Button
               size={'toolbar'}
-              variant={'ghost'}
+              variant={'outline'}
               className={cn(
                 'active:scale-100',
                 !date && 'text-muted-foreground',
@@ -68,7 +68,7 @@ export default function YearPickerPopover({
               setDate(addYears(date, 1));
             }}
             size={'toolbar'}
-            variant={'ghost'}
+            variant={'outline'}
           >
             <ChevronRight className='size-4' />
           </Button>

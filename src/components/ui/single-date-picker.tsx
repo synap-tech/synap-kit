@@ -70,7 +70,7 @@ const SingleDatePicker: React.FC<IProps> = ({
               onSelect(subDays(new Date(selected), 1));
             }}
             size={'toolbar'}
-            variant={'ghost'}
+            variant={'outline'}
             className='bg-muted text-muted-foreground'
           >
             <ChevronLeft className='size-4' />
@@ -79,7 +79,7 @@ const SingleDatePicker: React.FC<IProps> = ({
           <PopoverTrigger asChild>
             <Button
               size={'toolbar'}
-              variant={'ghost'}
+              variant={'outline'}
               className={cn(
                 'active:scale-100',
                 !selected && 'text-muted-foreground',
@@ -102,7 +102,7 @@ const SingleDatePicker: React.FC<IProps> = ({
               onSelect(addDays(new Date(selected), 1));
             }}
             size={'toolbar'}
-            variant={'ghost'}
+            variant={'outline'}
           >
             <ChevronRight className='size-4' />
           </Button>

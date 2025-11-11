@@ -25,10 +25,11 @@ const Layout = () => {
             defaultSize={isDesktop ? 12 : isLaptop ? 15 : isTablet ? 0 : 20}
             minSize={0}
             maxSize={isTablet ? 0 : 20}
+            className='sb-red'
           >
             <Sidebar />
           </ResizablePanel>
-          <ResizableHandle withHandle className='opacity-0 lg:opacity-100' />
+          <ResizableHandle className='opacity-0 lg:opacity-100' />
           <ResizablePanel
             defaultSize={isDesktop ? 88 : isLaptop ? 85 : isLaptop ? 100 : 100}
           >
