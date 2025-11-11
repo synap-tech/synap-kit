@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
 import { flexRender } from '@tanstack/react-table';
-import { useMediaQuery } from '@uidotdev/usehooks';
 
+import useScreen from '@/hooks/useScreen';
 import useTable from '@/hooks/useTable';
 import useTheme from '@/hooks/useTheme';
 
@@ -35,7 +35,7 @@ function DataTable({ children }: { children?: React.ReactNode }) {
     isDynamicTable,
   } = useTable();
 
-  const isMobile = useMediaQuery('only screen and (max-width : 768px)');
+  const { isMobile } = useScreen();
 
   return (
     <TableWrapper className={isDynamicTable ? 'p-0  lg:p-0 border-0' : ''}>

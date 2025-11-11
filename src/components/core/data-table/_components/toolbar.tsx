@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 
 import type { IToolbarOptions } from '@/types';
-import { useMediaQuery } from '@uidotdev/usehooks';
 import { isValid } from 'date-fns';
 import {
   ChevronDown,
@@ -12,6 +11,7 @@ import {
 } from 'lucide-react';
 
 import usePage from '@/hooks/usePage';
+import useScreen from '@/hooks/useScreen';
 import useTable from '@/hooks/useTable';
 
 import {
@@ -72,7 +72,7 @@ ToolbarComponent.displayName = 'ToolbarComponent';
  */
 export function TableToolbar() {
   const { createAccess } = usePage();
-  const isSmallDevice = useMediaQuery('only screen and (max-width : 1024px)');
+  const { isTablet } = useScreen();
 
   const {
     title,
@@ -125,7 +125,7 @@ export function TableToolbar() {
    */
   const renderLeftSection = useCallback(
     () =>
-      isSmallDevice ? (
+      isTablet ? (
         <div className='flex flex-1 items-center gap-2'>
           {handleCreate && (
             <ToolbarComponent
@@ -338,7 +338,7 @@ export function TableToolbar() {
       onClear,
       isClear,
       otherToolBarComponents,
-      isSmallDevice,
+      isTablet,
       validDateRange,
       createAccess,
       handleCreate,

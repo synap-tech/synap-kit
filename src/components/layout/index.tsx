@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
 
 import { LayoutProvider } from '@/providers';
-import { useMediaQuery } from '@uidotdev/usehooks';
 import { Outlet } from 'react-router-dom';
+
+import useScreen from '@/hooks/useScreen';
 
 import {
   ResizableHandle,
@@ -14,9 +15,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 
 const Layout = () => {
-  const isLaptop = useMediaQuery('only screen and (max-width : 1366px)');
-  const isDesktop = useMediaQuery('only screen and (min-width : 1520px)');
-  const isTablet = useMediaQuery('only screen and (max-width : 1024px)');
+  const { isTablet, isLaptop, isDesktop } = useScreen();
 
   return (
     <LayoutProvider>
