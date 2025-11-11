@@ -52,7 +52,7 @@ const useTQuery = <T>({
             // toast.error(statusText || 'Something went wrong', {
             //   position: 'bottom-right',
             // });
-            console.log({ statusCode, statusText, err });
+            // console.log({ statusCode, statusText, err });
           }),
       refetchInterval,
       refetchOnMount: false,
