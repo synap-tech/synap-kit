@@ -1,6 +1,13 @@
 import * as React from 'react';
 
-import { addDays, format, isValid, subDays } from 'date-fns';
+import {
+  addDays,
+  format,
+  isAfter,
+  isSameDay,
+  isValid,
+  subDays,
+} from 'date-fns';
 import { CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Button, type ButtonProps } from '@/components/ui/button';
@@ -59,6 +66,10 @@ const SingleDatePicker: React.FC<IProps> = ({
     [minDate, maxDate, disabled]
   );
 
+  const leftDisabled = minDate && (isSameDay(selected, minDate) ? true : false);
+  const rightDisabled =
+    maxDate && (isSameDay(selected, maxDate) ? true : false);
+
   if (!selected || !isValid(selected)) return null;
 
   return (
@@ -66,6 +77,7 @@ const SingleDatePicker: React.FC<IProps> = ({
       {showAssistant === true ? (
         <ButtonGroup className='w-fit'>
           <Button
+            disabled={leftDisabled}
             onClick={() => {
               onSelect(subDays(new Date(selected), 1));
             }}
@@ -97,6 +109,7 @@ const SingleDatePicker: React.FC<IProps> = ({
             </Button>
           </PopoverTrigger>
           <Button
+            disabled={rightDisabled}
             className='bg-muted text-muted-foreground'
             onClick={() => {
               onSelect(addDays(new Date(selected), 1));

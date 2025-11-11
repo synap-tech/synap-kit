@@ -20,6 +20,8 @@ const DatePickers = () => {
           className='justify-center'
           selected={selectedDate}
           onSelect={setSelectedDate}
+          minDate={new Date('2025-11-07')}
+          maxDate={new Date('2025-11-12')}
         />
       </div>
       <div className='space-y-1.5'>
