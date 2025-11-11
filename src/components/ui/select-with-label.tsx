@@ -28,12 +28,12 @@ const SelectWithLabel: React.FC<SelectWithLabelProps> = ({
     <div className='group relative w-full'>
       <label
         htmlFor={id}
-        className='bg-background text-foreground absolute top-0 left-2 z-10 block -translate-y-1/2 px-1 text-xs font-medium group-has-disabled:opacity-50'
+        className='bg-ring rounded-md  text-foreground absolute -top-px left-2 z-10 block -translate-y-1/2 px-1.25 py-0.5 text-xs font-medium group-has-disabled:opacity-50 shadow-xs'
       >
         {label}
       </label>
       <Select {...props}>
-        <SelectTrigger id={id} className='dark:!bg-background w-full'>
+        <SelectTrigger id={id} className=' w-full'>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
