@@ -1,7 +1,12 @@
+import {
+  type Control,
+  type FieldValues,
+  FormProvider,
+  type SubmitHandler,
+} from 'react-hook-form';
 import { useHotkeys } from 'react-hotkeys-hook';
 
-import CoreForm from '@/components/core/form/v1';
-import { Form } from '@/components/ui/form';
+import CoreForm from '@/components/core/form/v2';
 
 import { DevTool } from '@/lib/react-hook-devtool';
 import { cn } from '@/lib/utils';
@@ -9,7 +14,11 @@ import { cn } from '@/lib/utils';
 import ModalWrapper from './modal-wrapper';
 import type { IAddModalProps } from './types';
 
-const AddModal: React.FC<IAddModalProps> = ({
+function AddModal<
+  TFieldValues extends FieldValues,
+  TContext = any,
+  TTransformedValues = TFieldValues,
+>({
   form,
   onSubmit,
   open,
@@ -21,7 +30,7 @@ const AddModal: React.FC<IAddModalProps> = ({
   isSmall = false,
   isLarge = false,
   containerClassName,
-}) => {
+}: IAddModalProps<TFieldValues, TContext, TTransformedValues>) {
   useHotkeys(
     'esc',
     () => {
@@ -40,21 +49,29 @@ const AddModal: React.FC<IAddModalProps> = ({
       isSmall={isSmall}
       isLarge={isLarge}
     >
-      <Form {...form}>
+      <FormProvider {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(
+            onSubmit as unknown as SubmitHandler<TTransformedValues>
+          )}
           className='relative space-y-6   flex-1 flex flex-col justify-between'
         >
           <div className={cn('space-y-3', containerClassName)}>{children}</div>
-          <CoreForm.Submit
-            className='w-full max-w-sm mx-auto flex rounded'
-            title='Save'
+          <CoreForm.Submit title='Save' />
+          <DevTool
+            control={
+              form.control as unknown as Control<
+                TFieldValues,
+                any,
+                TFieldValues
+              >
+            }
+            placement='top-left'
           />
-          <DevTool control={form.control} placement='top-left' />
         </form>
-      </Form>
+      </FormProvider>
     </ModalWrapper>
   );
-};
+}
 
 export default AddModal;

@@ -1,7 +1,7 @@
 import type { IToast } from '@/types';
 import { type UseMutationResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { type UseFormReturn } from 'react-hook-form';
+import { type FieldValues, type UseFormReturn } from 'react-hook-form';
 
 export interface IDeleteAllModalProps {
   deleteItems:
@@ -64,9 +64,13 @@ export interface IDeleteModalProps {
   onClose?: () => void;
 }
 
-export interface IAddModalProps {
-  form: UseFormReturn<any, any, undefined>;
-  onSubmit(values: any): void;
+export interface IAddModalProps<
+  TFieldValues extends FieldValues,
+  TContext = any,
+  TTransformedValues = TFieldValues,
+> {
+  form: UseFormReturn<TFieldValues, TContext, TTransformedValues>;
+  onSubmit(values: TFieldValues): void;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;

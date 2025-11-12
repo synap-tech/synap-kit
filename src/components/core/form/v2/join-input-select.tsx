@@ -43,8 +43,8 @@ const FormJoinInputSelect: FormJoinInputSelect = (props) => {
                 className
               )}
               value={
-                field.value === null || field.value === ''
-                  ? ''
+                field.value === null || field.value === '' || field.value === 0
+                  ? undefined
                   : Number(field.value)
               }
               onChange={(e) => {

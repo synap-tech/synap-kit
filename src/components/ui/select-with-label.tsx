@@ -28,7 +28,7 @@ const SelectWithLabel: React.FC<SelectWithLabelProps> = ({
     <div className='group relative w-full'>
       <label
         htmlFor={id}
-        className='bg-ring rounded-md  text-primary-foreground  absolute -top-px left-2 z-10 block -translate-y-1/2 px-1.25 py-0.5 text-xs font-medium group-has-disabled:opacity-50 shadow-xs'
+        className='bg-ring rounded-full  text-primary-foreground  absolute -top-px left-2 z-10 block -translate-y-1/2 px-1.25  text-xs font-normal group-has-disabled:opacity-50 shadow-xs'
       >
         {label}
       </label>

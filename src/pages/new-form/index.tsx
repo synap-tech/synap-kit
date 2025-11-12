@@ -37,7 +37,7 @@ const NewFormPage = () => {
               name='name'
               label='Name (Input)'
               fieldProps={{
-                type: 'number',
+                type: 'password',
               }}
               required
             />

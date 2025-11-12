@@ -10,6 +10,8 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 
+import { cn } from '@/lib/utils';
+
 import { FormBase } from './_helper/form-base';
 import type { FormInput } from './types';
 
@@ -30,10 +32,10 @@ const FormInput: FormInput = ({
               {...field}
               {...fieldProps}
               disabled={disabled}
-              className={className}
+              className={cn('rounded-l', className)}
               type={showPassword ? 'text' : 'password'}
             />
-            <InputGroupAddon align={'inline-end'}>
+            <InputGroupAddon align={'inline-end'} className='border-l'>
               <InputGroupButton
                 aria-label='Toggle password visibility'
                 title='Toggle password visibility'
@@ -43,9 +45,9 @@ const FormInput: FormInput = ({
                 }}
               >
                 {showPassword ? (
-                  <Eye className='size-5' />
+                  <Eye className='size-4' />
                 ) : (
-                  <EyeOff className='size-5' />
+                  <EyeOff className='size-4' />
                 )}
               </InputGroupButton>
             </InputGroupAddon>
@@ -57,8 +59,8 @@ const FormInput: FormInput = ({
             disabled={disabled}
             className={className}
             value={
-              field.value === null || field.value === ''
-                ? ''
+              field.value === null || field.value === '' || field.value === 0
+                ? undefined
                 : Number(field.value)
             }
             onChange={(e) => {

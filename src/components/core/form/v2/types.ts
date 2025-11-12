@@ -1,6 +1,5 @@
 import type React from 'react';
 
-import type { IFormSelectOption, IToast } from '@/types';
 import type { UseMutationResult } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 import type { OTPInputProps } from 'input-otp';
@@ -15,13 +14,13 @@ import type ReactQuill from 'react-quill-new';
 import { type Props as ReactSelectProps } from 'react-select';
 import type { Mask, Options } from 'use-mask-input';
 
-import type { CheckboxProps } from '@/components/ui/checkbox';
-import type { InputProps } from '@/components/ui/input';
-import type { RadioGroupProps } from '@/components/ui/radio-group';
-import type { SelectProps } from '@/components/ui/select';
-import type { SwitchProps } from '@/components/ui/switch';
-import type { TextareaProps } from '@/components/ui/textarea';
-
+import type { IFormSelectOption, IToast } from '../../../../types';
+import type { CheckboxProps } from '../../../ui/checkbox';
+import type { InputProps } from '../../../ui/input';
+import type { RadioGroupProps } from '../../../ui/radio-group';
+import type { SelectProps } from '../../../ui/select';
+import type { SwitchProps } from '../../../ui/switch';
+import type { TextareaProps } from '../../../ui/textarea';
 import type { FormControlFunc } from './_helper/form-base';
 
 export type FormInput = FormControlFunc<{
