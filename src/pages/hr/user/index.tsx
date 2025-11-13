@@ -195,6 +195,7 @@ const User = () => {
         handleRefetch={refetch}
         otherToolBarComponents={[
           <ReactSelect
+            key={'toolbar_customer_type'}
             toolbar
             options={typeOptions || []}
             value={typeOptions?.find((option) => option.value === type)}
@@ -211,6 +212,7 @@ const User = () => {
             }}
           />,
           <SingleDatePicker
+            key={'toolbar_date'}
             toolbar
             selected={new Date()}
             onSelect={(date: Date) => {

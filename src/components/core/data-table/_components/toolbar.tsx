@@ -166,7 +166,7 @@ export function TableToolbar() {
           )}
 
           <Popover>
-            <PopoverTrigger>
+            <PopoverTrigger asChild>
               <Button
                 aria-label='More options'
                 variant='outline'

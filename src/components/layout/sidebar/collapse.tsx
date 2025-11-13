@@ -5,7 +5,7 @@ import TooltipWrapper from '@/components/ui/tooltip-wrapper';
 
 const SidebarCollapse = ({ isCollapsed }: { isCollapsed: boolean }) => {
   return (
-    <motion.button aria-label='Collapse Sidebar' whileTap={{ scale: 0.9 }}>
+    <motion.div aria-label='Collapse Sidebar' whileTap={{ scale: 0.9 }}>
       <TooltipWrapper message='Toggle Sidebar (Ctrl+Q)'>
         {isCollapsed ? (
           <PanelLeftOpenIcon className='size-6' />
@@ -13,7 +13,7 @@ const SidebarCollapse = ({ isCollapsed }: { isCollapsed: boolean }) => {
           <PanelRightOpenIcon className='size-6' />
         )}
       </TooltipWrapper>
-    </motion.button>
+    </motion.div>
   );
 };
 
