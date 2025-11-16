@@ -1,5 +1,6 @@
 import { TableProvider } from '@/providers';
-import type { ITableProviderProps } from '@/providers/table-provider';
+
+import type { ITableProviderProps } from '../../../providers/table-provider';
 
 const DataTableEntry = <TData, TValue>(
   props: Pick<
@@ -13,6 +14,7 @@ const DataTableEntry = <TData, TValue>(
     | 'handleRefetch'
     | 'enableDefaultColumns'
     | 'isLoading'
+    | 'childrenInsideTable'
   > & { children?: React.ReactNode; childrenInsideTable?: boolean }
 ) => {
   const { children, ...rest } = props;

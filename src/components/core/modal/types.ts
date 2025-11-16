@@ -70,7 +70,7 @@ export interface IAddModalProps<
   TTransformedValues = TFieldValues,
 > {
   form: UseFormReturn<TFieldValues, TContext, TTransformedValues>;
-  onSubmit(values: TFieldValues): Promise<void> | void;
+  onSubmit(values: any): Promise<void> | void;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
