@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import BadgeWithDate from '@/components/ui/badge-with-date';
 import { HolidayCalendar } from '@/components/ui/holiday-calendar';
 import MonthPickerPopover from '@/components/ui/month-picker-popup';
 import ReactSelect from '@/components/ui/react-select';
@@ -62,6 +63,7 @@ const DatePickers = () => {
       <div className='space-y-8'>
         <ReactSelect label='Status' className='' />
         <SelectWithLabel label='Status' options={[]} />
+        <BadgeWithDate status={false} date={new Date()} />
       </div>
     </div>
   );
