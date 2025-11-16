@@ -15,7 +15,7 @@ const DataTableEntry = <TData, TValue>(
     | 'enableDefaultColumns'
     | 'isLoading'
     | 'childrenInsideTable'
-  > & { children?: React.ReactNode; childrenInsideTable?: boolean }
+  > & { children?: React.ReactNode }
 ) => {
   const { children, ...rest } = props;
   return (

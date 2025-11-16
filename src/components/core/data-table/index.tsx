@@ -138,11 +138,10 @@ function DataTable({ children }: { children?: React.ReactNode }) {
           </TableBody>
         </TableComponent>
 
-        {children && childrenInsideTable === false ? (
-          <div className='mt-4'>{children}</div>
-        ) : (
-          children
-        )}
+        {children &&
+          (childrenInsideTable === false || !childrenInsideTable) && (
+            <div className='mt-4'>{children}</div>
+          )}
 
         <TablePagination />
       </div>

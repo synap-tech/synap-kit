@@ -71,8 +71,18 @@ const TestPage = () => {
         <div>Hello</div>
       </SectionContainer>
 
-      <DataTableEntry title='Data Table Entry Mode' columns={[]} data={[]}>
-        Data Table Entry
+      <DataTableEntry
+        title='Data Table Entry Mode'
+        columns={[]}
+        data={[]}
+        childrenInsideTable
+      >
+        <td className='border-t text-right font-semibold' colSpan={4}>
+          Grand Total Bill:
+        </td>
+
+        <td className='border-t px-3 py-2'>2000</td>
+        <td className='border-t px-3 py-2'></td>
       </DataTableEntry>
       <Badge variant={'outline-success'}>Success</Badge>
       <Badge variant={'outline-warning'}>Warning</Badge>
