@@ -14,7 +14,9 @@ const BrandLogo: React.FC<IBrandLogoProps> = ({
   title,
   ...props
 }) => {
-  const { sidebarRoutes } = useApp();
+  const {
+    config: { sidebarRoutes },
+  } = useApp();
   const route = sidebarRoutes[0];
 
   return (

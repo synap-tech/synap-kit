@@ -1,6 +1,6 @@
 import { createContext, useEffect, useMemo } from 'react';
 
-import type { INavAction, IRoute } from '@/types';
+import type { IAppConfig, INavAction, IRoute } from '@/types';
 import { Toaster } from 'sonner';
 
 import { useLocalStorage } from '@/hooks/useStorage';
@@ -9,40 +9,39 @@ import useTheme from '@/hooks/useTheme';
 import { Toast } from '@/components/ui/toast';
 
 export interface IAppContext {
-  companyTitle: string;
-  apiBaseUrl: string;
-  imageApiBaseUrl: string;
-  sidebarRoutes: IRoute[];
+  config: IAppConfig;
+  title: string;
   navbarActions?: INavAction[];
 }
 
 export const AppContext = createContext<IAppContext | undefined>(undefined);
 
-const AppProvider: React.FC<{
-  children: React.ReactNode;
-  apiBaseUrl: string;
-  imageApiBaseUrl: string;
-  sidebarRoutes: IRoute[];
-  companyTitle: string;
+interface AppProviderProps {
+  config: IAppConfig;
+  title: string;
   navbarActions?: INavAction[];
-}> = ({
+  children: React.ReactNode;
+}
+
+const AppProvider: React.FC<AppProviderProps> = ({
   children,
-  apiBaseUrl,
-  imageApiBaseUrl,
-  sidebarRoutes,
-  companyTitle,
+  config = {
+    apiBaseUrl: '',
+    imageApiBaseUrl: '',
+    loginUrl: '/hr/user/login',
+    sidebarRoutes: [],
+  },
+  title,
   navbarActions,
 }) => {
   const { theme } = useTheme();
   const value = useMemo(
     (): IAppContext => ({
-      apiBaseUrl,
-      imageApiBaseUrl,
-      sidebarRoutes,
-      companyTitle,
+      config,
+      title,
       navbarActions,
     }),
-    [apiBaseUrl, imageApiBaseUrl, sidebarRoutes, companyTitle, navbarActions]
+    [config, title, navbarActions]
   );
 
   const [fontSize] = useLocalStorage('fontSize', '13');

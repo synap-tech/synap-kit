@@ -6,7 +6,7 @@ import { ShowToast } from '@/components/ui/toast';
 import useApp from './useApp';
 
 export const useApi = ({ contentType }: { contentType: AxiosHeaderValue }) => {
-  const { apiBaseUrl } = useApp();
+  const { apiBaseUrl } = useApp().config;
 
   const api = axios.create({
     baseURL: apiBaseUrl,

@@ -10,6 +10,7 @@ import type { IAuthResponse, IUser } from '@/types';
 import { toast } from 'sonner';
 
 import { useApi } from '@/hooks/useApi';
+import useApp from '@/hooks/useApp';
 import useCookie from '@/hooks/useCookie';
 import { useLocalStorage } from '@/hooks/useStorage';
 
@@ -35,6 +36,7 @@ interface AuthProviderProps {
 }
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const { loginUrl } = useApp().config;
   const { post } = useApi({ contentType: 'application/json' });
 
   // State variables for redirectUrl, user, access, and loading state
@@ -86,7 +88,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = useCallback(
     async (data: ILoginData) => {
       try {
-        const response = await post<IAuthResponse>('/hr/user/login', data);
+        const response = await post<IAuthResponse>(loginUrl || '', data);
         const { token, user, can_access } = response.data;
 
         updateAuthCookie(`Bearer ${token || ''}`);
@@ -111,7 +113,14 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         toast.error(error?.response?.data?.message);
       }
     },
-    [updateAuthCookie, updateUserCanAccess, updateUserCookie, redirectUrl, post]
+    [
+      updateAuthCookie,
+      updateUserCanAccess,
+      updateUserCookie,
+      redirectUrl,
+      post,
+      loginUrl,
+    ]
   );
 
   // Logout function that clears cookies and state

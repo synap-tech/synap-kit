@@ -69,8 +69,9 @@ export type IPaginationQuery = {
   q: string;
   start_date: string | undefined;
   end_date: string | undefined;
+  status: boolean | undefined;
   is_pagination?: string;
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | boolean | undefined;
 };
 
 export type IPagination = {
@@ -156,12 +157,6 @@ export type IRoute = RouteObject & {
     name: string;
   };
   Icon?: LucideIcon;
-};
-
-export type IParams = {
-  start_date?: Date | string | undefined;
-  end_date?: Date | string | undefined;
-  status?: boolean | undefined;
 };
 
 export type IStatus = 'pending' | 'approved' | 'rejected';
@@ -381,3 +376,10 @@ export type INavAction = {
   order: number;
   addSeparator?: boolean;
 };
+
+export interface IAppConfig {
+  apiBaseUrl: string;
+  imageApiBaseUrl: string;
+  loginUrl?: string;
+  sidebarRoutes: IRoute[];
+}

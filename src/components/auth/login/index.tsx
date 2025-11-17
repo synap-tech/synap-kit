@@ -8,7 +8,7 @@ import useAuth from '@/hooks/useAuth';
 import LoginForm from './form';
 
 const Login = () => {
-  const { companyTitle } = useApp();
+  const { title } = useApp();
   const { user, signed } = useAuth();
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const Login = () => {
         <div className='relative bg-content border px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20'>
           <div className='mx-auto'>
             <span className='font-heading flex items-center justify-center text-2xl font-bold'>
-              <span className='text-4xl text-primary'>{companyTitle}</span>
+              <span className='text-4xl text-primary'>{title}</span>
             </span>
             <LoginForm />
           </div>

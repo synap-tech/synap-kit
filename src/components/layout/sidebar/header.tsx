@@ -12,7 +12,7 @@ import TooltipWrapper from '@/components/ui/tooltip-wrapper';
 import Search from './search';
 
 const SidebarHeader = () => {
-  const { companyTitle } = useApp();
+  const { title } = useApp();
   const { setSidebarOpen } = useLayout();
   const { setIsCloseAll } = useSidebar();
 
@@ -20,7 +20,7 @@ const SidebarHeader = () => {
     <div>
       <div className='relative border-b border-border/10 px-2 '>
         <div className='min-h-14 flex items-center justify-center px-4 border-b pt-3 pb-1'>
-          <BrandLogo title={companyTitle} />
+          <BrandLogo title={title} />
         </div>
 
         <button

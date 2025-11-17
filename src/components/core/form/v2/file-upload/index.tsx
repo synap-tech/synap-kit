@@ -28,7 +28,9 @@ const FormFileUpload: FormFileUpload = ({
   render,
   ...props
 }) => {
-  const { imageApiBaseUrl: baseUrl } = useApp();
+  const {
+    config: { imageApiBaseUrl: baseUrl },
+  } = useApp();
   const [preview, setPreview] = useState<string | ArrayBuffer | null>('');
 
   const acceptedFile = acceptImageFile(fileType);

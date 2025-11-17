@@ -24,7 +24,7 @@ interface ISidebarProviderProps {
 
 const SidebarProvider: React.FC<ISidebarProviderProps> = ({ children }) => {
   const path = useLocation();
-  const { sidebarRoutes } = useApp();
+  const { sidebarRoutes } = useApp().config;
   const [isCloseAll, setIsCloseAll] = useState(false);
   const [openRoutes, setOpenRoutes] = useState<IRoute[]>([]);
   const [routes, setRoutes] = useState<IRoute[]>(sidebarRoutes);
