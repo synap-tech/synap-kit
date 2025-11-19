@@ -92,7 +92,7 @@ export type FormCheckbox = FormControlFunc<{
   fieldProps?: CheckboxProps;
 }>;
 export type FormSwitch = FormControlFunc<{
-  fieldProps?: SwitchProps;
+  fieldProps?: Partial<SwitchProps>;
 }>;
 
 export type FormRadio = FormControlFunc<{
