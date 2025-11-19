@@ -18,7 +18,10 @@ const FormSwitch: FormSwitch = ({
           disabled={disabled}
           className={className}
           checked={value}
-          onCheckedChange={onChange}
+          onCheckedChange={(value) => {
+            onChange(!value);
+            fieldProps?.onCheckedChange?.(value);
+          }}
         />
       )}
     </FormBase>
