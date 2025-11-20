@@ -14,7 +14,11 @@ import type ReactQuill from 'react-quill-new';
 import { type Props as ReactSelectProps } from 'react-select';
 import type { Mask, Options } from 'use-mask-input';
 
-import type { IFormSelectOption, IToast } from '../../../../types';
+import type {
+  IFormSelectOption,
+  IFormSelectOptionGroup,
+  IToast,
+} from '../../../../types';
 import type { CheckboxProps } from '../../../ui/checkbox';
 import type { InputProps } from '../../../ui/input';
 import type { RadioGroupProps } from '../../../ui/radio-group';
@@ -125,6 +129,20 @@ export type FormReactSelect = FormControlFunc<{
   isModal?: boolean;
   onChange?: (
     option?: IFormSelectOption,
+    field?: ControllerRenderProps<any, any>
+  ) => void;
+  unique?: boolean;
+  excludeOptions?: string[];
+}>;
+
+export type FormReactSelectGrouped = FormControlFunc<{
+  fieldProps?: ReactSelectProps;
+  options: IFormSelectOptionGroup[];
+  valueType?: 'string' | 'number';
+  isLoading?: boolean;
+  isModal?: boolean;
+  onChange?: (
+    option?: IFormSelectOptionGroup,
     field?: ControllerRenderProps<any, any>
   ) => void;
   unique?: boolean;

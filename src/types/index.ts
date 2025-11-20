@@ -30,6 +30,11 @@ export interface IFormSelectOption {
   unit?: string;
 }
 
+export interface IFormSelectOptionGroup {
+  label: string;
+  options: IFormSelectOption[];
+}
+
 export type ITableAdvanceFilter = {
   state: boolean | undefined;
   options?: IFormSelectOption[];

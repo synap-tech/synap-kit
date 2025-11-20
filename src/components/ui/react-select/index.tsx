@@ -91,6 +91,16 @@ const ReactSelect = forwardRef<
                 />
               </components.DropdownIndicator>
             ),
+
+            GroupHeading: (props) => (
+              <components.GroupHeading {...props}>
+                <div className=' pl-1 py-1 rounded-sm flex items-center justify-between'>
+                  <span className='text-muted-foreground text-sm font-normal'>
+                    {props.children}
+                  </span>
+                </div>
+              </components.GroupHeading>
+            ),
           }}
           isMulti={isMulti}
           isDisabled={isDisabled}

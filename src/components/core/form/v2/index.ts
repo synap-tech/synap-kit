@@ -16,6 +16,7 @@ import * as Phone from './phone';
 import * as Radio from './radio';
 import * as ReactSelect from './react-select';
 import * as ReactSelectCreate from './react-select-create';
+import * as ReactSelectGroup from './react-select-group';
 import * as RichTextEditor from './rich-text-editor';
 import * as Section from './section';
 import * as Select from './select';
@@ -38,6 +39,7 @@ const NewForm = {
   Otp: Otp.default,
   MultiSelect: MultiSelect.default,
   ReactSelect: ReactSelect.default,
+  ReactSelectGroup: ReactSelectGroup.default,
   ReactSelectCreate: ReactSelectCreate.default,
   JoinInputUnit: JoinInputUnit.default,
   JoinInputSelect: JoinInputSelect.default,

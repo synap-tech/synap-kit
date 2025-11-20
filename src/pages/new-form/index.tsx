@@ -127,6 +127,25 @@ const NewFormPage = () => {
                 { label: 'Python', value: 'python' },
               ]}
             />
+
+            <NewForm.ReactSelectGroup
+              control={form.control}
+              name='favorite_language'
+              label='Favorite Language (React Select Group)'
+              options={[
+                {
+                  label: 'Frontend',
+                  options: [
+                    { label: 'JavaScript', value: 'javascript' },
+                    { label: 'TypeScript', value: 'typescript' },
+                  ],
+                },
+                {
+                  label: 'Backend',
+                  options: [{ label: 'Python', value: 'python' }],
+                },
+              ]}
+            />
             <NewForm.MultiSelect
               control={form.control}
               name='achievements'

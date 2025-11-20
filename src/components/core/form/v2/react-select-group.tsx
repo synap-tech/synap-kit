@@ -1,13 +1,13 @@
-import type { IFormSelectOption } from '@/types';
+import type { IFormSelectOption, IFormSelectOptionGroup } from '@/types';
 import { isArray } from 'lodash';
 
 import ReactSelect from '@/components/ui/react-select';
 import { Skeleton } from '@/components/ui/skeleton';
 
 import { FormBase } from './_helper/form-base';
-import type { FormReactSelect } from './types';
+import type { FormReactSelectGrouped } from './types';
 
-const FormReactSelect: FormReactSelect = ({
+const FormReactSelectGroup: FormReactSelectGrouped = ({
   fieldProps,
   options,
   valueType,
@@ -18,6 +18,10 @@ const FormReactSelect: FormReactSelect = ({
   ...props
 }) => {
   const isMulti = fieldProps?.isMulti;
+
+  const flatOptions = options
+    .map((option: IFormSelectOptionGroup) => option.options)
+    .flat();
 
   return (
     <FormBase {...props}>
@@ -43,18 +47,21 @@ const FormReactSelect: FormReactSelect = ({
               isMulti
                 ? isArray(field.value)
                   ? field.value.map((item: any) => {
-                      return options.find(
-                        (option: IFormSelectOption) => option.value === item
+                      return options.find((option: IFormSelectOptionGroup) =>
+                        option.options.find(
+                          (optionItem: IFormSelectOption) =>
+                            optionItem.value === item
+                        )
                       );
                     })
                   : []
-                : options?.filter(
+                : flatOptions.find(
                     (item: IFormSelectOption) => item.value === field.value
                   )
             }
             onChange={(option: any) => {
               if (onChange) {
-                onChange(option as IFormSelectOption, field);
+                onChange(option as IFormSelectOptionGroup, field);
                 return;
               }
 
@@ -68,7 +75,11 @@ const FormReactSelect: FormReactSelect = ({
               }
               if (isMulti) {
                 field.onChange(
-                  options.map((item: IFormSelectOption) => item.value)
+                  options.map((item: IFormSelectOptionGroup) =>
+                    item.options.map(
+                      (optionItem: IFormSelectOption) => optionItem.value
+                    )
+                  )
                 );
 
                 return;
@@ -87,4 +98,4 @@ const FormReactSelect: FormReactSelect = ({
   );
 };
 
-export default FormReactSelect;
+export default FormReactSelectGroup;
