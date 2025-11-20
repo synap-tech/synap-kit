@@ -45,67 +45,6 @@ const TableDynamicFields: React.FC<
     [fields, fieldDefs]
   );
 
-  // const columns: ColumnDef<any>[] = [
-  //   {
-  //     accessorKey: 'column_1',
-  //     header: 'Column 1',
-  //   },
-  //   {
-  //     accessorKey: 'column_2',
-  //     header: 'Column 2',
-  //   },
-  //   {
-  //     accessorKey: 'column_3',
-  //     header: 'Column 3',
-  //   },
-  //   {
-  //     accessorKey: 'column_4',
-  //     header: 'Column 4',
-  //   },
-  //   {
-  //     accessorKey: 'column_5',
-  //     header: 'Column 5',
-  //   },
-  // ];
-
-  // const data = [
-  //   {
-  //     column_1: 'Row 1 Col 1',
-  //     column_2: 'Row 1 Col 2',
-  //     column_3: 'Row 1 Col 3',
-  //     column_4: 'Row 1 Col 4',
-  //     column_5: 'Row 1 Col 5',
-  //   },
-  //   {
-  //     column_1: 'Row 2 Col 1',
-  //     column_2: 'Row 2 Col 2',
-  //     column_3: 'Row 2 Col 3',
-  //     column_4: 'Row 2 Col 4',
-  //     column_5: 'Row 2 Col 5',
-  //   },
-  //   {
-  //     column_1: 'Row 3 Col 1',
-  //     column_2: 'Row 3 Col 2',
-  //     column_3: 'Row 3 Col 3',
-  //     column_4: 'Row 3 Col 4',
-  //     column_5: 'Row 3 Col 5',
-  //   },
-  //   {
-  //     column_1: 'Row 4 Col 1',
-  //     column_2: 'Row 4 Col 2',
-  //     column_3: 'Row 4 Col 3',
-  //     column_4: 'Row 4 Col 4',
-  //     column_5: 'Row 4 Col 5',
-  //   },
-  //   {
-  //     column_1: 'Row 5 Col 1',
-  //     column_2: 'Row 5 Col 2',
-  //     column_3: 'Row 5 Col 3',
-  //     column_4: 'Row 5 Col 4',
-  //     column_5: 'Row 5 Col 5',
-  //   },
-  // ];
-
   return (
     <TableProvider
       isDynamicTable

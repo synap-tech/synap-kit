@@ -94,12 +94,18 @@ const ReactSelect = forwardRef<
 
             GroupHeading: (props) => (
               <components.GroupHeading {...props}>
-                <div className=' pl-1 py-1 rounded-sm flex items-center justify-between'>
+                <div className=' pl-2 py-1 rounded-sm flex items-center justify-between bg-primary/10'>
                   <span className='text-muted-foreground text-sm font-normal'>
                     {props.children}
                   </span>
                 </div>
               </components.GroupHeading>
+            ),
+
+            Group: (props) => (
+              <components.Group {...props}>
+                <div className='pl-2 mb-2'>{props.children}</div>
+              </components.Group>
             ),
           }}
           isMulti={isMulti}

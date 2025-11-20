@@ -134,15 +134,104 @@ const NewFormPage = () => {
               label='Favorite Language (React Select Group)'
               options={[
                 {
-                  label: 'Frontend',
+                  label: 'Personal & Academic Documents',
                   options: [
-                    { label: 'JavaScript', value: 'javascript' },
-                    { label: 'TypeScript', value: 'typescript' },
+                    {
+                      label: 'Curriculum Vitae (CV) / Resume',
+                      value: 'cv_resume',
+                    },
+                    {
+                      label:
+                        'Academic Certificates (All Educational Certificates)',
+                      value:
+                        'academic-certificates-all-educational-certificates',
+                    },
+
+                    { label: 'SSC', value: 'ssc' },
+                    { label: 'HSC', value: 'hsc' },
+                    { label: 'Bachelor', value: 'bachelor' },
+                    { label: 'Master', value: 'master' },
+                    {
+                      label: 'Passport',
+                      value: 'passport',
+                    },
+                    {
+                      label: 'NID',
+                      value: 'national_id',
+                    },
+                    {
+                      label: 'Driving License',
+                      value: 'driving_license',
+                    },
                   ],
                 },
                 {
-                  label: 'Backend',
-                  options: [{ label: 'Python', value: 'python' }],
+                  label: 'Employment Records',
+                  options: [
+                    {
+                      label: 'Previous Experience Certificates',
+                      value: 'previous-experience-certificates',
+                    },
+                    {
+                      label:
+                        'Panel Documents (Interview/Recruitment Panel Papers)',
+                      value:
+                        'panel-documents-interview-recruitment-panel-papers',
+                    },
+                    {
+                      label:
+                        'Note for Application (Applicant’s Note/Justification)',
+                      value:
+                        'note-for-application-applicants-note-justification',
+                    },
+                  ],
+                },
+                {
+                  label: 'Appointment & Joining Documents',
+                  options: [
+                    {
+                      label: 'Appointment Letter',
+                      value: 'appointment-letter',
+                    },
+                    { label: 'Joining Letter', value: 'joining-letter' },
+                  ],
+                },
+                {
+                  label: 'Employment Progress Documents',
+                  options: [
+                    {
+                      label: 'Promotion Letter / Increment Letter',
+                      value: 'promotion-letter-increment-letter',
+                    },
+                    {
+                      label: 'Appreciation / Achievement / Thanks Letter',
+                      value: 'appreciation-achievement-thanks-letter',
+                    },
+                    { label: 'Transfer Letter', value: 'transfer-letter' },
+                    {
+                      label: 'Socks Letter (Show Cause / Explanation Letter)',
+                      value: 'socks-letter-show-cause-explanation-letter',
+                    }, // kept label verbatim from source
+                    {
+                      label:
+                        'Leave Documents (All Leave Applications & Approvals)',
+                      value: 'leave-documents-all-leave-applications-approvals',
+                    },
+                  ],
+                },
+                {
+                  label: 'Exit & Release Documents',
+                  options: [
+                    {
+                      label: 'Resignation Letter / Termination Letter',
+                      value: 'resignation-letter-termination-letter',
+                    },
+                    { label: 'Release Order', value: 'release-order' },
+                    {
+                      label: 'Final Experience Letter',
+                      value: 'final-experience-letter',
+                    },
+                  ],
                 },
               ]}
             />

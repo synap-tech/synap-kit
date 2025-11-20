@@ -1,7 +1,6 @@
 import React from 'react';
 
-import CoreForm from '@/components/core/form/v1';
-import { FormField } from '@/components/ui/form';
+import CoreForm from '@/components/core/form/v2';
 import { Skeleton } from '@/components/ui/skeleton';
 
 import { cn } from '@/lib/utils';
@@ -21,157 +20,130 @@ const KanbanDynamicFields: React.FC<
       {fields.length === 0 && (
         <p className='text-destructive'>No fields added yet</p>
       )}
+
       {fields.length > 0 &&
         fields.map((field, fieldIndex) => (
-          <div className='relative flex flex-col items-start space-y-4 overflow-hidden rounded border bg-card px-2.5 pb-3 pt-10 shadow-sm lg:px-4 lg:pt-12'>
+          <div
+            key={`${fieldName}-${fieldIndex}`}
+            className='relative flex flex-col items-start space-y-4 overflow-hidden rounded border bg-card px-2.5 pb-3 pt-10 shadow-sm lg:px-4 lg:pt-12'
+          >
             {fieldDefs
               .filter((fieldDef) => !fieldDef.hidden)
               .map((fieldDef) => {
                 if (fieldDef.isLoading) {
-                  return <Skeleton className='h-8 w-full bg-secondary/10' />;
-                } else {
                   return (
-                    <div
-                      className={cn('w-full', fieldDef.className)}
-                      key={fieldDef.accessorKey}
-                    >
-                      {fieldDef.type === 'readOnly' &&
-                        field[fieldDef.accessorKey as keyof typeof field]}
-
-                      {fieldDef.type === 'custom' &&
-                        fieldDef.accessorKey !== 'actions' &&
-                        fieldDef.component(fieldIndex)}
-
-                      {fieldDef.type === 'custom' &&
-                        fieldDef.accessorKey === 'actions' && (
-                          <div className='bg-muted rounded-y absolute left-0 right-0 top-0 flex items-center justify-between border-b px-4 py-1.5'>
-                            {fieldDef.component(fieldIndex)}
-                          </div>
-                        )}
-
-                      {fieldDef.type === 'join-input-unit' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <CoreForm.JoinInputUnit
-                              unit={fieldDef.unit(fieldIndex)}
-                              label={fieldDef.header}
-                              type={fieldDef.inputType}
-                              {...props}
-                            />
-                          )}
-                        />
-                      )}
-
-                      {fieldDef.type === 'text' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <CoreForm.Input
-                              type={'text'}
-                              placeholder={fieldDef.placeholder}
-                              label={fieldDef.header}
-                              {...props}
-                            />
-                          )}
-                        />
-                      )}
-
-                      {fieldDef.type === 'number' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <CoreForm.Input
-                              type='number'
-                              placeholder={fieldDef.placeholder}
-                              label={fieldDef.header}
-                              {...props}
-                            />
-                          )}
-                        />
-                      )}
-                      {fieldDef.type === 'textarea' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <CoreForm.Textarea
-                              label={fieldDef.header}
-                              placeholder={fieldDef.placeholder}
-                              name={fieldDef.accessorKey}
-                              {...props}
-                              id={'message'}
-                            />
-                          )}
-                        />
-                      )}
-
-                      {fieldDef.type === 'select' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <CoreForm.ReactSelect
-                              menuPortalTarget={document.body}
-                              options={fieldDef.options}
-                              placeholder={fieldDef.placeholder}
-                              label={fieldDef.header}
-                              {...props}
-                            />
-                          )}
-                        />
-                      )}
-
-                      {fieldDef.type === 'select-create' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <CoreForm.ReactSelectCreate
-                              menuPortalTarget={document.body}
-                              options={fieldDef.options}
-                              placeholder={fieldDef.placeholder}
-                              label={fieldDef.header}
-                              {...props}
-                            />
-                          )}
-                        />
-                      )}
-                      {fieldDef.type === 'multiSelect' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <CoreForm.ReactSelect
-                              isMulti
-                              options={fieldDef.options}
-                              placeholder={fieldDef.placeholder}
-                              label={fieldDef.header}
-                              {...props}
-                            />
-                          )}
-                        />
-                      )}
-                      {fieldDef.type === 'checkBox' && (
-                        <FormField
-                          control={form.control}
-                          name={`${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`}
-                          render={(props) => (
-                            <div className='flex w-full items-center'>
-                              <CoreForm.Checkbox
-                                label={fieldDef.header}
-                                {...props}
-                              />
-                            </div>
-                          )}
-                        />
-                      )}
-                    </div>
+                    <Skeleton
+                      key={`${fieldDef.accessorKey}-skeleton-${fieldIndex}`}
+                      className='h-8 w-full bg-secondary/10'
+                    />
                   );
                 }
+
+                const name = `${fieldName}.${fieldIndex}.${fieldDef.accessorKey}`;
+
+                return (
+                  <div
+                    className={cn('w-full', fieldDef.className)}
+                    key={fieldDef.accessorKey}
+                  >
+                    {fieldDef.type === 'readOnly' &&
+                      field[fieldDef.accessorKey as keyof typeof field]}
+
+                    {fieldDef.type === 'custom' &&
+                      fieldDef.accessorKey !== 'actions' &&
+                      fieldDef.component(fieldIndex)}
+
+                    {fieldDef.type === 'custom' &&
+                      fieldDef.accessorKey === 'actions' && (
+                        <div className='bg-muted rounded-y absolute left-0 right-0 top-0 flex items-center justify-between border-b px-4 py-1.5'>
+                          {fieldDef.component(fieldIndex)}
+                        </div>
+                      )}
+
+                    {fieldDef.type === 'join-input-unit' && (
+                      <CoreForm.JoinInputUnit
+                        control={form.control}
+                        name={name}
+                        unit={fieldDef.unit(fieldIndex)}
+                        label={fieldDef.header}
+                        fieldProps={{
+                          type: fieldDef.inputType,
+                        }}
+                      />
+                    )}
+
+                    {fieldDef.type === 'text' && (
+                      <CoreForm.Input
+                        control={form.control}
+                        name={name}
+                        label={fieldDef.header}
+                        placeholder={fieldDef.placeholder}
+                      />
+                    )}
+
+                    {fieldDef.type === 'number' && (
+                      <CoreForm.Input
+                        control={form.control}
+                        name={name}
+                        label={fieldDef.header}
+                        placeholder={fieldDef.placeholder}
+                        fieldProps={{ type: 'number' }}
+                      />
+                    )}
+
+                    {fieldDef.type === 'textarea' && (
+                      <CoreForm.Textarea
+                        control={form.control}
+                        name={name}
+                        label={fieldDef.header}
+                        placeholder={fieldDef.placeholder}
+                      />
+                    )}
+
+                    {fieldDef.type === 'select' && (
+                      <CoreForm.ReactSelect
+                        control={form.control}
+                        name={name}
+                        label={fieldDef.header}
+                        placeholder={fieldDef.placeholder}
+                        options={fieldDef.options}
+                      />
+                    )}
+
+                    {fieldDef.type === 'select-create' && (
+                      <CoreForm.ReactSelectCreate
+                        control={form.control}
+                        name={name}
+                        label={fieldDef.header}
+                        placeholder={fieldDef.placeholder}
+                        options={fieldDef.options}
+                      />
+                    )}
+
+                    {fieldDef.type === 'multiSelect' && (
+                      <CoreForm.ReactSelect
+                        control={form.control}
+                        name={name}
+                        label={fieldDef.header}
+                        placeholder={fieldDef.placeholder}
+                        options={fieldDef.options}
+                        fieldProps={{
+                          isMulti: true,
+                        }}
+                      />
+                    )}
+
+                    {fieldDef.type === 'checkBox' && (
+                      <div className='flex w-full items-center'>
+                        <CoreForm.Checkbox
+                          control={form.control}
+                          name={name}
+                          label={fieldDef.header}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
               })}
           </div>
         ))}
