@@ -1,6 +1,8 @@
 import { Link2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import useApp from '@/hooks/useApp';
+
 import { cn } from '@/lib/utils';
 
 import CopyClipboard from './copy-clipboard';
@@ -8,6 +10,8 @@ import CopyClipboard from './copy-clipboard';
 interface ILinkOnlyProps {
   uri: string;
   title: string;
+  baseUrlNeeded?: boolean;
+  showCopyButton?: boolean;
 }
 
 export const LinkOnly = ({ uri, title }: ILinkOnlyProps) => {
@@ -59,4 +63,43 @@ export const CustomLink = ({
       )}
     </div>
   );
+};
+
+export const LinkWithRedirect = ({
+  title,
+  uri,
+  baseUrlNeeded = true,
+  showCopyButton = false,
+}: ILinkOnlyProps) => {
+  const {
+    config: { apiBaseUrl },
+  } = useApp();
+
+  if (baseUrlNeeded) {
+    return (
+      <div className={cn('flex items-center gap-2')}>
+        {showCopyButton && <CopyClipboard text={uri} />}
+        <Link
+          target='_blank'
+          className='font-medium text-foreground underline hover:text-accent'
+          to={apiBaseUrl + uri}
+        >
+          {title}
+        </Link>
+      </div>
+    );
+  } else {
+    return (
+      <div className={cn('flex items-center gap-2')}>
+        {showCopyButton && <CopyClipboard text={uri} />}
+        <Link
+          target='_blank'
+          className='font-medium text-foreground underline hover:text-accent'
+          to={uri}
+        >
+          {title}
+        </Link>
+      </div>
+    );
+  }
 };
