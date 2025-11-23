@@ -47,6 +47,15 @@ const NewFormPage = () => {
               label='Description (Textarea)'
             />
 
+            <NewForm.Input
+              control={form.control}
+              name='phone_number'
+              label='Phone Number (Input)'
+              fieldProps={{
+                type: 'number',
+              }}
+              disabled
+            />
             <NewForm.InputMask
               control={form.control}
               name='phone_number'

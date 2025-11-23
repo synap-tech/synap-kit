@@ -11,6 +11,7 @@ import NewForm from '@/components/core/form/v2';
 import { FieldGroup } from '@/components/ui/field';
 
 import { DevTool } from '@/lib/react-hook-devtool';
+import { cn } from '@/lib/utils';
 
 import type { AddEditWrapper } from './types';
 
@@ -24,6 +25,7 @@ function FormAddEditWrapper<
   onSubmit,
   title,
   isSubmitDisable = false,
+  className,
 }: AddEditWrapper<TFieldValues, TContext, TTransformedValues>) {
   useEffect(() => {
     if (title) {
@@ -38,7 +40,7 @@ function FormAddEditWrapper<
           onSubmit as unknown as SubmitHandler<TTransformedValues>
         )}
       >
-        <FieldGroup>
+        <FieldGroup className={cn(className)}>
           {children}
           <NewForm.Submit title='Save' isSubmitDisable={isSubmitDisable} />
         </FieldGroup>

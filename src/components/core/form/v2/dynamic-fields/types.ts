@@ -1,6 +1,8 @@
 import type { IFormSelectOption } from '@/types';
 import type { FieldArrayWithId, UseFormReturn } from 'react-hook-form';
 
+import type { FormFileUpload } from '../types';
+
 type FieldReadonly = {
   type: 'readOnly';
 };
@@ -50,12 +52,12 @@ type FieldJoinInputUnit = {
   inputType?: string;
 };
 
-type FieldImage = {
+interface FieldImage {
   type: 'image';
   placeholder?: string;
   isUpdate?: boolean;
-  baseUrl: string;
-};
+}
+
 type FieldFile = {
   type: 'file';
   placeholder?: string;

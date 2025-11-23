@@ -60,6 +60,15 @@ const KanbanDynamicFields: React.FC<
                         </div>
                       )}
 
+                    {fieldDef.type === 'image' && (
+                      <CoreForm.FileUpload
+                        control={form.control}
+                        name={name}
+                        isUpdate={fieldDef.isUpdate}
+                        disabled={fieldDef.disabled as boolean}
+                      />
+                    )}
+
                     {fieldDef.type === 'join-input-unit' && (
                       <CoreForm.JoinInputUnit
                         control={form.control}
@@ -121,15 +130,12 @@ const KanbanDynamicFields: React.FC<
                     )}
 
                     {fieldDef.type === 'multiSelect' && (
-                      <CoreForm.ReactSelect
+                      <CoreForm.MultiSelect
                         control={form.control}
                         name={name}
                         label={fieldDef.header}
                         placeholder={fieldDef.placeholder}
                         options={fieldDef.options}
-                        fieldProps={{
-                          isMulti: true,
-                        }}
                       />
                     )}
 

@@ -207,4 +207,5 @@ export type AddEditWrapper<
   onSubmit(values: TFieldValues): void;
   title?: string;
   isSubmitDisable?: boolean;
+  className?: string;
 };
