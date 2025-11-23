@@ -28,7 +28,7 @@ const AppProvider: React.FC<AppProviderProps> = ({
   config = {
     apiBaseUrl: '',
     imageApiBaseUrl: '',
-    loginUrl: '/hr/user/login',
+    loginUrl: '',
     sidebarRoutes: [],
   },
   title,
@@ -37,7 +37,10 @@ const AppProvider: React.FC<AppProviderProps> = ({
   const { theme } = useTheme();
   const value = useMemo(
     (): IAppContext => ({
-      config,
+      config: {
+        ...config,
+        loginUrl: config.loginUrl ?? '/hr/user/login',
+      },
       title,
       navbarActions,
     }),

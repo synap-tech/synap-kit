@@ -408,7 +408,7 @@ export function TableToolbar() {
             <TableTitle title={title} subtitle={subtitle} info={info} />
           </AccordionTrigger>
           <AccordionContent>
-            <div className='flex items-center justify-between gap-4 px-0 pt-4 pb-0'>
+            <div className='flex items-center justify-between gap-4 px-0 pt-4 pb-1 pr-1 '>
               {toolbarOptions === 'none' ? null : (
                 <div className={cn('flex items-center gap-2')}>
                   {renderLeftSection()}
@@ -448,7 +448,7 @@ export function TableToolbar() {
       {toolbarOptions === 'none' ? null : (
         <div
           className={cn(
-            'flex flex-col-reverse gap-4 lg:flex-row lg:items-center justify-between'
+            'flex flex-col-reverse gap-4 lg:flex-row lg:items-center justify-between overflow-visible pb-1 pr-1'
           )}
         >
           <div className='flex items-center gap-2'>
