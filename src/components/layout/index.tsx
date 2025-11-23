@@ -16,7 +16,7 @@ const Layout = () => {
   return (
     <LayoutProvider>
       {({ defaultSize, sidePanel, isTablet, isLaptop, isDesktop }) => (
-        <div className='relative flex h-screen w-screen overflow-hidden bg-background '>
+        <div className='relative flex h-screen w-screen overflow-hidden bg-primary/5'>
           <ResizablePanelGroup direction='horizontal' className='size-full'>
             <ResizablePanel
               ref={sidePanel}

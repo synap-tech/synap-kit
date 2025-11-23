@@ -6,7 +6,7 @@ import useLayout from '@/hooks/useLayout';
 import useSidebar from '@/hooks/useSidebar';
 
 import BrandLogo from '@/components/ui/brand-logo';
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import TooltipWrapper from '@/components/ui/tooltip-wrapper';
 
 import Search from './search';
@@ -23,12 +23,14 @@ const SidebarHeader = () => {
           <BrandLogo title={title} />
         </div>
 
-        <button
-          className='btn btn-square btn-ghost btn-sm absolute right-4 top-4 text-destructive md:hidden'
+        <Button
+          size={'icon'}
+          variant={'ghost-destructive'}
+          className='absolute right-2 top-2  lg:hidden'
           onClick={() => setSidebarOpen(false)}
         >
-          <X />
-        </button>
+          <X className='size-5' />
+        </Button>
       </div>
 
       <div className='flex justify-between px-4 py-4 gap-4'>

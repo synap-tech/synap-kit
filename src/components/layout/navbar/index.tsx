@@ -30,7 +30,12 @@ const Navbar = () => {
           )}
         >
           <div className={cn('flex items-center gap-4 ')}>
-            <Button onClick={toggleSidebar} variant={'ghost'} size={'icon'}>
+            <Button
+              className='hidden lg:flex'
+              onClick={toggleSidebar}
+              variant={'ghost'}
+              size={'icon'}
+            >
               <SidebarCollapse isCollapsed={isCollapsed} />
             </Button>
             {!homePage && <GlobalBreadcrumbs />}
