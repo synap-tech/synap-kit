@@ -15,6 +15,8 @@ const FormReactSelect: FormReactSelect = ({
   placeholder = 'Select an option',
   isLoading,
   onChange,
+  unique = false,
+  excludeOptions,
   ...props
 }) => {
   const isMulti = fieldProps?.isMulti;
@@ -28,7 +30,14 @@ const FormReactSelect: FormReactSelect = ({
           <ReactSelect
             {...fieldProps}
             className='min-w-48 !h-9'
-            options={options}
+            options={
+              unique
+                ? options?.filter(
+                    (item: IFormSelectOption) =>
+                      !excludeOptions?.includes(item.value as string)
+                  )
+                : options
+            }
             isDisabled={disabled}
             placeholder={placeholder}
             menuPortalTarget={document.body}

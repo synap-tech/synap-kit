@@ -20,6 +20,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'join-input-unit' && (
         <CoreForm.JoinInputUnit
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           unit={fieldDef.unit(fieldIndex + startIndex)}
@@ -36,6 +37,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'text' && (
         <CoreForm.Input
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           placeholder={fieldDef.placeholder}
@@ -50,6 +52,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'checkbox' && (
         <CoreForm.Checkbox
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           disabled={
@@ -62,6 +65,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'date' && (
         <CoreForm.DatePicker
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           disabled={
@@ -74,6 +78,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'number' && (
         <CoreForm.Input
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           placeholder={fieldDef.placeholder}
@@ -88,6 +93,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'textarea' && (
         <CoreForm.Textarea
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           placeholder={fieldDef.placeholder}
@@ -101,6 +107,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'select' && (
         <CoreForm.ReactSelect
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           options={fieldDef.options}
@@ -119,6 +126,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'radio' && (
         <CoreForm.Radio
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           options={fieldDef.options}
@@ -131,7 +139,9 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'image' && (
         <CoreForm.FileUpload
+          disableLabel
           control={form.control}
+          fileType='image'
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           isUpdate={fieldDef.isUpdate}
         />
@@ -139,6 +149,7 @@ const RenderCell: React.FC<
 
       {fieldDef.type === 'file' && (
         <CoreForm.FileUpload
+          disableLabel
           control={form.control}
           name={`${fieldName}.${fieldIndex + startIndex}.${fieldDef.accessorKey}`}
           fileType='document'
