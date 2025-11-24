@@ -18,7 +18,10 @@ const FormCheckbox: FormCheckbox = ({
           disabled={disabled}
           className={className}
           checked={value}
-          onCheckedChange={onChange}
+          onCheckedChange={(e) => {
+            onChange(e);
+            fieldProps?.onCheckedChange?.(e);
+          }}
         />
       )}
     </FormBase>
