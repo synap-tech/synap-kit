@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { useFieldArray } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -30,11 +28,6 @@ const DynamicForm = () => {
     append({ label: '', value: '' });
   };
 
-  //   const handleRemove = (index: number) => {
-  //     console.log({ index });
-  //     remove(index);
-  //   };
-
   const handleCopy = (index: number) => {
     append({
       label: form.watch(`fields.${index}.label`),
@@ -44,24 +37,11 @@ const DynamicForm = () => {
 
   const handleRemove = (index: number) => {
     remove(index);
-    // form.trigger('fields');
-    // form.subscribe({
-    //   name: 'fields',
-    //   formState:{
-    //     values
-    //   }
-    // });
-    // form.setValue('fields', []);
   };
-
-  // useEffect(() => {
-  //   form.setValue('fields', fields);
-  //   console.log('Delete');
-  // }, [remove]);
 
   return (
     <CoreForm.AddEditWrapper
-      form={form}
+      form={form as any}
       onSubmit={onSubmit}
       title='Dynamic Form'
     >
@@ -74,7 +54,6 @@ const DynamicForm = () => {
           remove: handleRemove,
           add: handleAdd,
           entry: 'fields',
-          watch: form.watch,
           copy: handleCopy,
         })}
         handleAdd={handleAdd}

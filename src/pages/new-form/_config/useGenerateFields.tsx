@@ -1,5 +1,4 @@
 import type { FieldDef } from '@/types';
-import type { UseFormWatch } from 'react-hook-form';
 
 import FieldActionButton from '@/components/buttons/field-action';
 
@@ -8,7 +7,6 @@ interface IGenerateFieldDefsProps {
   remove: (index: any) => void;
   add?: (index: any) => void;
   copy?: (index: any) => void;
-  watch?: UseFormWatch<any>;
 }
 
 const useGenerateFields = ({
@@ -16,7 +14,6 @@ const useGenerateFields = ({
   remove,
   add,
   copy,
-  watch,
 }: IGenerateFieldDefsProps): FieldDef[] => {
   return [
     { accessorKey: 'label', header: 'Label', type: 'text' },

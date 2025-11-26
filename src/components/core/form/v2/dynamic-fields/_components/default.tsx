@@ -26,15 +26,12 @@ const DefaultDynamicFields: React.FC<
   children,
   searchKeys = [],
 }) => {
-  const [rows, setRows] = useState(fields);
+  // const [rows, setRows] = useState(fields);
   // const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    setRows(fields);
-    // if (!query || query.trim() === '') {
-    //   setRows(fields);
-    // }
-  }, [fields]);
+  // useEffect(() => {
+  //   setRows(fields);
+  // }, [fields]);
 
   // const handleSearch = (query: string) => {
   //   setQuery(query);
@@ -84,15 +81,15 @@ const DefaultDynamicFields: React.FC<
           </TableRow>
         </TableHeader>
         <TableBody>
-          {rows.length === 0 && (
+          {fields.length === 0 && (
             <TableRow className='h-12'>
               <TableCell className='text-center' colSpan={fieldDefs.length}>
                 <p className='text-destructive'>No fields found</p>
               </TableCell>
             </TableRow>
           )}
-          {rows.length > 0 &&
-            rows.map((row, fieldIndex) => (
+          {fields.length > 0 &&
+            fields.map((row, fieldIndex) => (
               <TableRow key={row.id} className='divide-x-[1px]'>
                 {fieldDefs
                   .filter((fieldDef) => !fieldDef.hidden)
