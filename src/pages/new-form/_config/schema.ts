@@ -29,3 +29,14 @@ export const NEW_FORM_SCHEMA = z.object({
 });
 
 export type INewForm = z.infer<typeof NEW_FORM_SCHEMA>;
+
+export const DYNAMIC_FORM_SCHEMA = z.object({
+  fields: z.array(
+    z.object({
+      label: STRING_REQUIRED,
+      value: STRING_REQUIRED,
+    })
+  ),
+});
+
+export type IDynamicForm = z.infer<typeof DYNAMIC_FORM_SCHEMA>;

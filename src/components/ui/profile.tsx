@@ -21,7 +21,7 @@ const Profile: React.FC<{
       <div className='flex items-center gap-3'>
         <Avatar className='size-12 border'>
           <AvatarImage
-          className='object-cover'
+            className='object-cover'
             src={data?.image ? data.image : '/placeholder-user.jpg'}
             alt='Employee'
           />

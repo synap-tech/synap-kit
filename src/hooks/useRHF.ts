@@ -10,6 +10,7 @@ function useRHF<T extends z.ZodRawShape>(
   const form = useForm<IFormType>({
     resolver: zodResolver(schema),
     defaultValues,
+    mode: 'onBlur',
   });
 
   return form;

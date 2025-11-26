@@ -12,6 +12,7 @@ import { FormField } from '@/components/ui/form';
 import { DevTool } from '@/lib/react-hook-devtool';
 
 import useGenerateFieldDefs from './useGenerateFieldDefs';
+import useGenerateFieldDefs2 from './useGenerateFieldDefs2';
 
 const schema = z.object({
   input: z.string(),
@@ -86,7 +87,11 @@ const TestForm = () => {
     ],
   });
 
-  const { fields: newFields } = useFieldArray({
+  const {
+    fields: newFields,
+    append: appendField,
+    remove: removeField,
+  } = useFieldArray({
     control: form.control,
     name: 'dynamic_fields',
   });
@@ -96,8 +101,21 @@ const TestForm = () => {
     name: 'challan_entries',
   });
 
-  const handleRemove = (index: number) => {};
-  const handleAdd = (index: number) => {};
+  const handleRemove = (index: number) => {
+    removeField(index);
+  };
+  const handleAdd = (index: number) => {
+    appendField({
+      is_checked: false,
+      uuid: '',
+      employee_uuid: '',
+      employee_name: '',
+      permission_type: 'permanent',
+      temporary_from_date: null,
+      temporary_to_date: null,
+    });
+  };
+
   return (
     <Form {...form}>
       <div className='space-y-4'>
@@ -394,21 +412,29 @@ const TestForm = () => {
             viewAs='kanban'
             title='Dynamic Fields'
             form={form as any}
-            fieldName='new_challan_entries'
-            fieldDefs={useGenerateFieldDefs({
-              entry: 'new_challan_entries',
+            fieldName='dynamic_fields'
+            fieldDefs={useGenerateFieldDefs2({
+              entry: 'dynamic_fields',
               remove: handleRemove,
               add: handleAdd,
               watch: form.watch,
             })}
             fields={newFields}
             handleAdd={() => {
-              alert('Add new entry');
+              appendField({
+                is_checked: false,
+                uuid: '',
+                employee_uuid: '',
+                employee_name: '',
+                permission_type: 'permanent',
+                temporary_from_date: null,
+                temporary_to_date: null,
+              });
             }}
           />
         </div>
 
-        <CoreForm.DynamicFields
+        {/* <CoreForm.DynamicFields
           title='Challan Entry'
           form={form as any}
           fieldName='challan_entries'
@@ -451,7 +477,7 @@ const TestForm = () => {
             watch: form.watch,
           })}
           fields={challanFields}
-        />
+        /> */}
       </div>
 
       <DevTool control={form.control} placement='top-left' />
