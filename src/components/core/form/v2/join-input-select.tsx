@@ -17,15 +17,8 @@ import { FormBase } from './_helper/form-base';
 import type { FormJoinInputSelect } from './types';
 
 const FormJoinInputSelect: FormJoinInputSelect = (props) => {
-  const {
-    fieldProps,
-    selectField,
-    valueType = 'string',
-    className,
-    disabled,
-    control,
-    ...rest
-  } = props;
+  const { fieldProps, selectField, className, disabled, control, ...rest } =
+    props;
 
   const selectPlaceholder = selectField.placeholder ?? 'Select option';
 
@@ -74,11 +67,11 @@ const FormJoinInputSelect: FormJoinInputSelect = (props) => {
               return (
                 <Select
                   onValueChange={(value) => {
-                    const transformedValue =
-                      valueType === 'number' ? Number(value) : value;
-                    selectController.onChange(transformedValue);
+                    // const transformedValue =
+                    //   valueType === 'number' ? Number(value) : value;
+                    selectController.onChange(value);
                   }}
-                  disabled={selectField.isDisabled}
+                  disabled={selectField.isDisabled || disabled}
                   {...selectController}
                   value={selectController?.value?.toString()}
                 >
@@ -88,6 +81,7 @@ const FormJoinInputSelect: FormJoinInputSelect = (props) => {
                     </SelectTrigger>
                     {selectController.value ? (
                       <DeleteButton
+                        disabled={disabled}
                         onClick={() => selectController.onChange('Hello')}
                       />
                     ) : null}

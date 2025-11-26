@@ -72,7 +72,6 @@ export type FormJoinInputSelect = FormControlFunc<{
     isDisabled?: boolean;
     placeholder?: string;
   };
-  valueType?: 'string' | 'number';
 }>;
 
 export type FormInputMask = FormControlFunc<{

@@ -82,7 +82,12 @@ const FormDateTimePicker: FormDatePicker = ({
                 <CalendarIcon className='size-4 opacity-50' />
               </Button>
             </PopoverTrigger>
-            {field.value && <DeleteButton onClick={() => field.onChange('')} />}
+            {field.value && (
+              <DeleteButton
+                disabled={disabled}
+                onClick={() => field.onChange('')}
+              />
+            )}
           </ButtonGroup>
 
           <PopoverContent className='w-auto p-0' align='start'>

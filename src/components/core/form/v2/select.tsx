@@ -48,7 +48,10 @@ const FormSelect: FormSelect = ({
               </SelectTrigger>
 
               {field.value && (
-                <DeleteButton onClick={() => field.onChange('')} />
+                <DeleteButton
+                  disabled={disabled}
+                  onClick={() => field.onChange('')}
+                />
               )}
             </ButtonGroup>
             <SelectContent>
