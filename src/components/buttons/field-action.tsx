@@ -17,7 +17,6 @@ const FieldActionButton = ({
   handleRemove,
   index,
 }: FieldActionButtonProps) => {
-  console.log({ index });
   return (
     <div className='flex items-center'>
       {handleAdd && (
