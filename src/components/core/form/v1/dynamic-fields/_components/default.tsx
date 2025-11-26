@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Skeleton } from '@/components/ui/skeleton';
 import {
@@ -26,31 +26,6 @@ const DefaultDynamicFields: React.FC<
   children,
   searchKeys = [],
 }) => {
-  const [rows, setRows] = useState(fields);
-  // const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    setRows(fields);
-    // if (!query || query.trim() === '') {
-    //   setRows(fields);
-    // }
-  }, [fields]);
-
-  // const handleSearch = (query: string) => {
-  //   setQuery(query);
-  //   const filteredRows = fields.filter((field) =>
-  //     searchKeys.some((key) => {
-  //       return field[key as keyof typeof field]
-  //         ?.toString()
-  //         .toLowerCase()
-  //         .includes(query.toLowerCase())
-  //         ? true
-  //         : false;
-  //     })
-  //   );
-  //   setRows(filteredRows);
-  // };
-
   return (
     <div className='overflow-x-auto rounded-none'>
       {/* {searchKeys.length > 0 && (
@@ -84,15 +59,15 @@ const DefaultDynamicFields: React.FC<
           </TableRow>
         </TableHeader>
         <TableBody>
-          {rows.length === 0 && (
+          {fields.length === 0 && (
             <TableRow className='h-12'>
               <TableCell className='text-center' colSpan={fieldDefs.length}>
                 <p className='text-destructive'>No fields found</p>
               </TableCell>
             </TableRow>
           )}
-          {rows.length > 0 &&
-            rows.map((row, fieldIndex) => (
+          {fields.length > 0 &&
+            fields.map((row, fieldIndex) => (
               <TableRow key={row.id} className='divide-x-[1px]'>
                 {fieldDefs
                   .filter((fieldDef) => !fieldDef.hidden)
