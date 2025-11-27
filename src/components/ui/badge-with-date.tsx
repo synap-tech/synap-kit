@@ -1,4 +1,4 @@
-import { format, formatDate } from 'date-fns';
+import { format } from 'date-fns';
 import { Check, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
