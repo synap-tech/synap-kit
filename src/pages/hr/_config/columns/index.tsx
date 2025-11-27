@@ -90,7 +90,6 @@ export function userColumns({
       accessorKey: 'status',
       header: 'Status',
       enableColumnFilter: false,
-
       cell: (info) => {
         return (
           <Switch
@@ -99,7 +98,7 @@ export function userColumns({
           />
         );
       },
-      size: 40,
+
       meta: {
         hidden: !statusAccess,
       },
@@ -139,8 +138,6 @@ export function userColumns({
           isDisabled={!ratingChangeAccess}
         />
       ),
-
-      size: 200,
     },
     {
       accessorKey: 'price',
@@ -199,6 +196,7 @@ export function userColumns({
     {
       accessorKey: 'where_they_find_us',
       header: 'How They Find Us',
+      size: 40,
       enableColumnFilter: false,
       cell: (info) => info.getValue(),
     },

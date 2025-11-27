@@ -2,6 +2,9 @@ import { useState } from 'react';
 
 import { TableProvider } from '@/providers';
 import type { ColumnDef, Row } from '@tanstack/react-table';
+import { ChevronRight } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
 
 import { makeData, type Person } from './_data';
 
@@ -16,14 +19,18 @@ const GroupedColumnExpandableRowTable = () => {
           header: () => null,
           cell: ({ row }) => {
             return row.getCanExpand() ? (
-              <button
-                {...{
-                  onClick: row.getToggleExpandedHandler(),
-                  style: { cursor: 'pointer' },
-                }}
+              <Button
+                type='button'
+                variant={'ghost'}
+                size='icon'
+                onClick={row.getToggleExpandedHandler()}
               >
-                {row.getIsExpanded() ? '👇' : '👉'}
-              </button>
+                {row.getIsExpanded() ? (
+                  <ChevronRight className='size-4 rotate-90' />
+                ) : (
+                  <ChevronRight className='size-4' />
+                )}
+              </Button>
             ) : (
               '🔵'
             );
@@ -86,10 +93,17 @@ const GroupedColumnExpandableRowTable = () => {
   const [data] = useState(() => makeData(10));
 
   const renderSubComponent = ({ row }: { row: Row<Person> }) => {
+    const data = row.original;
+
     return (
-      <pre style={{ fontSize: '10px' }}>
-        <code>{JSON.stringify(row.original, null, 2)}</code>
-      </pre>
+      <div className='w-full grid grid-cols-4'>
+        <div>{data.firstName}</div>
+        <div>{data.lastName}</div>
+        <div>{data.age}</div>
+        <div>{data.visits}</div>
+        <div>{data.status}</div>
+        <div>{data.progress}</div>
+      </div>
     );
   };
 

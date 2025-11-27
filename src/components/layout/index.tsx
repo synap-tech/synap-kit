@@ -15,37 +15,38 @@ import Sidebar from './sidebar';
 const Layout = () => {
   return (
     <LayoutProvider>
-      {({ defaultSize, sidePanel, isTablet, isLaptop, isDesktop }) => (
-        <div className='relative flex h-screen w-screen overflow-hidden bg-primary/5'>
-          <ResizablePanelGroup direction='horizontal' className='size-full'>
-            <ResizablePanel
-              ref={sidePanel}
-              defaultSize={defaultSize}
-              minSize={0}
-              maxSize={isTablet ? 0 : 20}
-            >
-              <Sidebar />
-            </ResizablePanel>
-            <ResizableHandle className='opacity-0 lg:opacity-100' />
-            <ResizablePanel
-              defaultSize={
-                isDesktop ? 88 : isLaptop ? 85 : isLaptop ? 100 : 100
-              }
-            >
-              <main className='flex size-full flex-1 flex-col overflow-hidden'>
-                <Navbar />
-                <div className='relative flex size-full flex-1 flex-col overflow-hidden'>
-                  <div className='size-full flex-1 overflow-auto lg:px-4'>
-                    <Suspense fallback='loading...'>
-                      <Outlet />
-                    </Suspense>
+      {({ defaultSize, sidePanel, isTablet, isLaptop, isDesktop }) => {
+        let default_size = 100;
+        if (isDesktop) default_size = 88;
+        if (isLaptop) default_size = 85;
+        return (
+          <div className='relative flex h-screen w-screen overflow-hidden'>
+            <ResizablePanelGroup direction='horizontal' className='size-full'>
+              <ResizablePanel
+                ref={sidePanel}
+                defaultSize={defaultSize}
+                minSize={0}
+                maxSize={isTablet ? 0 : 20}
+              >
+                <Sidebar />
+              </ResizablePanel>
+              <ResizableHandle className='opacity-0 lg:opacity-100' />
+              <ResizablePanel defaultSize={default_size}>
+                <main className='flex size-full flex-1 flex-col overflow-hidden'>
+                  <Navbar />
+                  <div className='relative flex size-full flex-1 flex-col overflow-hidden'>
+                    <div className='size-full flex-1 overflow-auto lg:px-4'>
+                      <Suspense fallback='loading...'>
+                        <Outlet />
+                      </Suspense>
+                    </div>
                   </div>
-                </div>
-              </main>
-            </ResizablePanel>
-          </ResizablePanelGroup>
-        </div>
-      )}
+                </main>
+              </ResizablePanel>
+            </ResizablePanelGroup>
+          </div>
+        );
+      }}
     </LayoutProvider>
   );
 };
