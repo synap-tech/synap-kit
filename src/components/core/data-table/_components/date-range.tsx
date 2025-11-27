@@ -49,6 +49,7 @@ const TableDateRange = ({
       isModal={isModal}
       isMobile={isMobile}
       className={className}
+      displayFormat='dd MMM, yy'
     />
   );
 };

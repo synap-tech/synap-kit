@@ -1,4 +1,4 @@
-import { SlidersHorizontal, X } from 'lucide-react';
+import { Settings2, X } from 'lucide-react';
 
 import useTable from '@/hooks/useTable';
 
@@ -37,14 +37,13 @@ const TableAllFilter = () => {
           variant={'outline-toolbar'}
           size='toolbar'
         >
-          <SlidersHorizontal className='size-4' />
-          Filters
+          <Settings2 className='size-4' />
         </Button>
       </SheetTrigger>
       <SheetContent className='flex flex-col gap-0 p-0 h-screen overflow-hidden '>
         <SheetHeader className='border-b px-3 py-2 lg:px-4 lg:py-3'>
           <SheetTitle className='flex items-center gap-2'>
-            <SlidersHorizontal className='size-4' /> All Filters
+            <Settings2 className='size-4' /> All Filters
           </SheetTitle>
           <SheetDescription className='sr-only'>
             This action cannot be undone. This will permanently delete your

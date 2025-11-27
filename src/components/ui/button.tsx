@@ -48,7 +48,7 @@ const buttonVariants = cva(
         'icon-sm': 'size-8',
         'icon-lg': 'size-10',
         xs: 'h-7 px-2.5 text-xs',
-        toolbar: 'h-8  px-3',
+        toolbar: 'h-8 px-3',
       },
     },
     defaultVariants: {
@@ -82,4 +82,5 @@ function Button({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Button, buttonVariants };

@@ -50,7 +50,7 @@ const TableRefresh: React.FC<TableRefreshProps> = ({ handleRefetch }) => {
       >
         <RefreshCw className={cn('size-4', isFetching && 'animate-spin')} />
 
-        <span className='hidden lg:inline'>Refresh</span>
+        {/* <span className='hidden lg:inline'>Refresh</span> */}
       </Button>
     </TooltipWrapper>
   );

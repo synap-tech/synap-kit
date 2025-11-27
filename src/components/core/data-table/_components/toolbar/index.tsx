@@ -32,16 +32,17 @@ import { Separator } from '@/components/ui/separator';
 
 import { cn } from '@/lib/utils';
 
-import TableDateRange from './date-range';
-import TableExportCSV from './export-csv';
-import TableAllFilter from './filter';
-import TableAdvanceFilters from './filter/advance';
-import { TableFacetedFilter } from './filter/faceted';
-import PinnedColumns from './filter/pinned-columns';
-import TableRefresh from './refresh';
-import { TableRowDelete } from './row/delete';
-import TableTitle from './title';
-import { TableViewOptions } from './view-options';
+import TableDateRange from './../date-range';
+import TableExportCSV from './../export-csv';
+import TableAllFilter from './../filter';
+import TableAdvanceFilters from './../filter/advance';
+import { TableFacetedFilter } from './../filter/faceted';
+import PinnedColumns from './../filter/pinned-columns';
+import TableRefresh from './../refresh';
+import { TableRowDelete } from './../row/delete';
+import TableTitle from './../title';
+import { TableViewOptions } from './../view-options';
+import { CreateButton, ResetButton } from './button';
 
 // Interface for ToolbarComponent props
 interface ToolbarComponentProps {
@@ -120,6 +121,10 @@ export function TableToolbar() {
   // Check if the date range is valid
   const validDateRange = isValid(startDate) && isValid(endDate);
 
+  // check can filter
+  const canFilter =
+    table.getAllColumns().filter((column) => column.getCanFilter()).length > 0;
+
   /**
    * Renders the left section of the toolbar
    */
@@ -131,39 +136,17 @@ export function TableToolbar() {
             <ToolbarComponent
               option='new-entry'
               render={() =>
-                createAccess && (
-                  <Button
-                    aria-label='Create new entry'
-                    onClick={handleCreate}
-                    variant='default'
-                    size='toolbar'
-                  >
-                    <CirclePlus className='size-4' />
-                    New
-                  </Button>
-                )
+                createAccess && <CreateButton onClick={handleCreate} />
               }
             />
           )}
 
           <ToolbarComponent
             option='all-filter'
-            render={() =>
-              table.getAllColumns().filter((column) => column.getCanFilter())
-                .length > 0 && <TableAllFilter />
-            }
+            render={() => canFilter && <TableAllFilter />}
           />
 
-          {isFiltered && (
-            <Button
-              aria-label='Reset filters'
-              variant='outline-destructive'
-              onClick={resetColumnFilters}
-              size={'icon'}
-            >
-              <X className='size-4' />
-            </Button>
-          )}
+          {isFiltered && <ResetButton onClick={resetColumnFilters} />}
 
           <Popover>
             <PopoverTrigger asChild>
@@ -193,6 +176,7 @@ export function TableToolbar() {
                   )
                 }
               />
+
               <ToolbarComponent
                 option='view'
                 render={() => (
@@ -205,6 +189,7 @@ export function TableToolbar() {
                   {otherToolBarComponents.map((component) => component)}
                 </div>
               )}
+
               <ToolbarComponent
                 option='faceted-filter'
                 render={() =>
@@ -221,6 +206,7 @@ export function TableToolbar() {
                   })
                 }
               />
+
               <ToolbarComponent
                 option='advance-filter'
                 render={() =>
@@ -238,27 +224,15 @@ export function TableToolbar() {
             <ToolbarComponent
               option='new-entry'
               render={() =>
-                createAccess && (
-                  <Button
-                    aria-label='Create new entry'
-                    onClick={handleCreate}
-                    variant='default'
-                    size='toolbar'
-                  >
-                    <CirclePlus className='size-4' />
-                    New
-                  </Button>
-                )
+                createAccess && <CreateButton onClick={handleCreate} />
               }
             />
           )}
+
           <ButtonGroup>
             <ToolbarComponent
               option='all-filter'
-              render={() =>
-                table.getAllColumns().filter((column) => column.getCanFilter())
-                  .length > 0 && <TableAllFilter />
-              }
+              render={() => canFilter && <TableAllFilter />}
             />
 
             <ToolbarComponent
@@ -281,18 +255,7 @@ export function TableToolbar() {
               render={() => <TableViewOptions table={table} />}
             />
 
-            {isFiltered && (
-              <Button
-                aria-label='Reset filters'
-                variant='outline-toolbar'
-                onClick={resetColumnFilters}
-                size={'toolbar'}
-                className='text-destructive'
-              >
-                Reset Filters
-                <X className='size-4' />
-              </Button>
-            )}
+            {isFiltered && <ResetButton onClick={resetColumnFilters} />}
           </ButtonGroup>
 
           <ToolbarComponent
@@ -342,6 +305,7 @@ export function TableToolbar() {
       validDateRange,
       createAccess,
       handleCreate,
+      canFilter,
     ]
   );
 
@@ -399,23 +363,10 @@ export function TableToolbar() {
   if (isEntry || collapsible === true) {
     return (
       <Accordion type='single' collapsible className='w-full'>
-        <AccordionItem value='item-1' className='rounded-t-md'>
-          <AccordionTrigger
-            Icon={Funnel}
-            iconClassName='size-5'
-            className='p-0 [&[data-state=open]>svg]:rotate-0'
-          >
+        <AccordionItem value='item-1'>
+          <div className='flex justify-between items-center'>
             <TableTitle title={title} subtitle={subtitle} info={info} />
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className='flex items-center justify-between gap-4 px-0 pt-4 pb-1 pr-1 '>
-              {toolbarOptions === 'none' ? null : (
-                <div className={cn('flex items-center gap-2')}>
-                  {renderLeftSection()}
-                  {renderRightSection()}
-                </div>
-              )}
-
+            <div className='flex gap-4 items-center'>
               <DebouncedInput
                 icon={
                   <SearchIcon className={cn('size-5 text-foreground/50')} />
@@ -426,6 +377,22 @@ export function TableToolbar() {
                 placeholder='Search here...'
                 autoFocus={false}
               />
+              <AccordionTrigger
+                Icon={Funnel}
+                iconClassName='size-5'
+                className='p-0 [&[data-state=open]>svg]:rotate-0'
+              ></AccordionTrigger>
+            </div>
+          </div>
+
+          <AccordionContent className='pb-0 mt-3'>
+            <div className='flex items-center justify-between gap-4'>
+              {toolbarOptions === 'none' ? null : (
+                <div className={cn('flex items-center gap-2')}>
+                  {renderLeftSection()}
+                  {renderRightSection()}
+                </div>
+              )}
             </div>
             <PinnedColumns />
           </AccordionContent>
@@ -439,10 +406,18 @@ export function TableToolbar() {
       {isDynamicTable === true ? null : (
         <div
           className={cn(
-            'mb-4 flex w-full flex-col justify-between gap-2  lg:flex-row lg:items-end'
+            'mb-4 flex w-full flex-col justify-between gap-2 lg:flex-row lg:items-end'
           )}
         >
           <TableTitle title={title} subtitle={subtitle} info={info} />
+          <DebouncedInput
+            icon={<SearchIcon className={cn('size-5 text-foreground/50')} />}
+            value={globalFilterValue ?? ''}
+            onChange={setGlobalFilter}
+            className={cn('h-9 w-full lg:max-w-[300px] rounded')}
+            placeholder='Search here...'
+            autoFocus={false}
+          />
         </div>
       )}
       {toolbarOptions === 'none' ? null : (
@@ -455,15 +430,6 @@ export function TableToolbar() {
             {renderLeftSection()}
             {renderRightSection()}
           </div>
-
-          <DebouncedInput
-            icon={<SearchIcon className={cn('size-5 text-foreground/50')} />}
-            value={globalFilterValue ?? ''}
-            onChange={setGlobalFilter}
-            className={cn('h-9 w-full lg:max-w-[300px] rounded')}
-            placeholder='Search here...'
-            autoFocus={false}
-          />
         </div>
       )}
 

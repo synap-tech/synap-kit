@@ -1,6 +1,6 @@
 import getFlatHeader from '@/utils/getFlatHeader';
 import { format } from 'date-fns';
-import { FileSpreadsheet } from 'lucide-react';
+import { FileDown } from 'lucide-react';
 import { CSVLink } from 'react-csv';
 
 import { Button } from '@/components/ui/button';
@@ -65,8 +65,8 @@ const TableExportCSV = ({
         data={csvData}
         filename={filename}
       >
-        <FileSpreadsheet className='size-4' />
-        <span className='hidden lg:inline'>Excel</span>
+        <FileDown className='size-4' />
+        {/* <span className='hidden lg:inline'>Excel</span> */}
       </CSVLink>
     </Button>
   );
