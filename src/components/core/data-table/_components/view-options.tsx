@@ -13,6 +13,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
+import TooltipWrapper from '@/components/ui/tooltip-wrapper';
 
 import { cn } from '@/lib/utils';
 
@@ -38,44 +39,46 @@ export function TableViewOptions<TData>({
   };
 
   return (
-    <DropdownMenu open={isOpen}>
-      <DropdownMenuTrigger asChild>
-        <Button
-          onClick={handleOpenModal}
-          aria-label='Column Options'
-          variant='outline-toolbar'
-          size='toolbar'
-          className={cn(className)}
+    <TooltipWrapper message='View Columns'>
+      <DropdownMenu open={isOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button
+            onClick={handleOpenModal}
+            aria-label='Column Options'
+            variant='outline-toolbar'
+            size='toolbar'
+            className={cn(className)}
+          >
+            <Columns2 className='size-4' />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          ref={ref as any}
+          align='end'
+          className='z-[999] max-h-[400px] w-fit overflow-auto scrollbar'
         >
-          <Columns2 className='size-4' />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        ref={ref as any}
-        align='end'
-        className='z-999 max-h-[400px] w-fit overflow-auto scrollbar'
-      >
-        <DropdownMenuLabel>Toggle Columns</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {table
-          .getAllColumns()
-          .filter(
-            (column) =>
-              typeof column.accessorFn !== 'undefined' && column.getCanHide()
-          )
-          .map((column) => {
-            return (
-              <DropdownMenuCheckboxItem
-                key={column.id}
-                className='capitalize'
-                checked={column.getIsVisible()}
-                onCheckedChange={(value) => column.toggleVisibility(!!value)}
-              >
-                {column.id.split('_').join(' ')}
-              </DropdownMenuCheckboxItem>
-            );
-          })}
-      </DropdownMenuContent>
-    </DropdownMenu>
+          <DropdownMenuLabel>Toggle Columns</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {table
+            .getAllColumns()
+            .filter(
+              (column) =>
+                typeof column.accessorFn !== 'undefined' && column.getCanHide()
+            )
+            .map((column) => {
+              return (
+                <DropdownMenuCheckboxItem
+                  key={column.id}
+                  className='capitalize'
+                  checked={column.getIsVisible()}
+                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                >
+                  {column.id.split('_').join(' ')}
+                </DropdownMenuCheckboxItem>
+              );
+            })}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </TooltipWrapper>
   );
 }

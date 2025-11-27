@@ -1,17 +1,8 @@
 import React, { useCallback } from 'react';
 
 import type { IToolbarOptions } from '@/types';
-import { isValid } from 'date-fns';
-import {
-  ChevronDown,
-  CirclePlus,
-  Filter as Funnel,
-  SearchIcon,
-  X,
-} from 'lucide-react';
+import { Filter as Funnel, SearchIcon } from 'lucide-react';
 
-import usePage from '@/hooks/usePage';
-import useScreen from '@/hooks/useScreen';
 import useTable from '@/hooks/useTable';
 
 import {
@@ -20,29 +11,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Button } from '@/components/ui/button';
-import { ButtonGroup } from '@/components/ui/button-group';
 import DebouncedInput from '@/components/ui/debounce-input';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-import { Separator } from '@/components/ui/separator';
 
 import { cn } from '@/lib/utils';
 
-import TableDateRange from './../date-range';
-import TableExportCSV from './../export-csv';
-import TableAllFilter from './../filter';
-import TableAdvanceFilters from './../filter/advance';
-import { TableFacetedFilter } from './../filter/faceted';
 import PinnedColumns from './../filter/pinned-columns';
-import TableRefresh from './../refresh';
-import { TableRowDelete } from './../row/delete';
 import TableTitle from './../title';
-import { TableViewOptions } from './../view-options';
-import { CreateButton, ResetButton } from './button';
+import TableToolbarLeftSection from './left-section';
+import TableToolbarRightSection from './right-section';
 
 // Interface for ToolbarComponent props
 interface ToolbarComponentProps {
@@ -72,292 +48,22 @@ ToolbarComponent.displayName = 'ToolbarComponent';
  * TableToolbar - Main component for rendering the table toolbar
  */
 export function TableToolbar() {
-  const { createAccess } = usePage();
-  const { isTablet } = useScreen();
-
   const {
     title,
     subtitle,
     info,
     table,
     toolbarOptions,
-    handleCreate,
-    handleRefetch,
     globalFilterValue,
-    facetedFilters,
-    advanceFilters,
     isEntry,
     isDynamicTable,
-    start_date,
-    end_date,
-    onUpdate,
-    onClear,
-    isClear,
-    initialDateRange,
-    otherToolBarComponents,
     collapsible,
   } = useTable();
-
-  const column = table.getColumn('created_at');
-  const columnFilterValue = column?.getFilterValue() as [Date, Date];
-
-  const startDate = start_date || columnFilterValue?.[0] || initialDateRange[0];
-  const endDate = end_date || columnFilterValue?.[1] || initialDateRange[1];
-
-  const isFiltered = table.getState().columnFilters.length > 0;
-
-  // Memoize the callback for resetting column filters
-  const resetColumnFilters = useCallback(
-    () => table.resetColumnFilters(),
-    [table]
-  );
 
   // Memoize the callback for setting global filter
   const setGlobalFilter = useCallback(
     (value: string | number) => table.setGlobalFilter(value),
     [table]
-  );
-
-  // Check if the date range is valid
-  const validDateRange = isValid(startDate) && isValid(endDate);
-
-  // check can filter
-  const canFilter =
-    table.getAllColumns().filter((column) => column.getCanFilter()).length > 0;
-
-  /**
-   * Renders the left section of the toolbar
-   */
-  const renderLeftSection = useCallback(
-    () =>
-      isTablet ? (
-        <div className='flex flex-1 items-center gap-2'>
-          {handleCreate && (
-            <ToolbarComponent
-              option='new-entry'
-              render={() =>
-                createAccess && <CreateButton onClick={handleCreate} />
-              }
-            />
-          )}
-
-          <ToolbarComponent
-            option='all-filter'
-            render={() => canFilter && <TableAllFilter />}
-          />
-
-          {isFiltered && <ResetButton onClick={resetColumnFilters} />}
-
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                aria-label='More options'
-                variant='outline'
-                size='icon'
-                className='rounded'
-              >
-                <ChevronDown className='size-4' />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className='flex flex-col gap-2'>
-              <ToolbarComponent
-                option='date-range'
-                render={() =>
-                  validDateRange && (
-                    <TableDateRange
-                      table={table}
-                      start_date={startDate}
-                      end_date={endDate}
-                      onUpdate={onUpdate}
-                      onClear={onClear}
-                      isClear={isClear}
-                      className='border'
-                    />
-                  )
-                }
-              />
-
-              <ToolbarComponent
-                option='view'
-                render={() => (
-                  <TableViewOptions className='w-full border' table={table} />
-                )}
-              />
-
-              {otherToolBarComponents && otherToolBarComponents.length > 0 && (
-                <div className='flex flex-col gap-2'>
-                  {otherToolBarComponents.map((component) => component)}
-                </div>
-              )}
-
-              <ToolbarComponent
-                option='faceted-filter'
-                render={() =>
-                  facetedFilters?.map((filter) => {
-                    const column = table.getColumn(filter.id);
-                    return column ? (
-                      <TableFacetedFilter
-                        key={filter.id}
-                        column={column}
-                        title={filter.title}
-                        options={filter.options}
-                      />
-                    ) : null;
-                  })
-                }
-              />
-
-              <ToolbarComponent
-                option='advance-filter'
-                render={() =>
-                  advanceFilters && advanceFilters?.length > 0 ? (
-                    <TableAdvanceFilters filters={advanceFilters} />
-                  ) : null
-                }
-              />
-            </PopoverContent>
-          </Popover>
-        </div>
-      ) : (
-        <div className='flex flex-1 items-center gap-2'>
-          {handleCreate && (
-            <ToolbarComponent
-              option='new-entry'
-              render={() =>
-                createAccess && <CreateButton onClick={handleCreate} />
-              }
-            />
-          )}
-
-          <ButtonGroup>
-            <ToolbarComponent
-              option='all-filter'
-              render={() => canFilter && <TableAllFilter />}
-            />
-
-            <ToolbarComponent
-              option='date-range'
-              render={() =>
-                validDateRange && (
-                  <TableDateRange
-                    table={table}
-                    start_date={startDate}
-                    end_date={endDate}
-                    onUpdate={onUpdate}
-                    onClear={onClear}
-                    isClear={isClear}
-                  />
-                )
-              }
-            />
-            <ToolbarComponent
-              option='view'
-              render={() => <TableViewOptions table={table} />}
-            />
-
-            {isFiltered && <ResetButton onClick={resetColumnFilters} />}
-          </ButtonGroup>
-
-          <ToolbarComponent
-            option='faceted-filter'
-            render={() =>
-              facetedFilters?.map((filter) => {
-                const column = table.getColumn(filter.id);
-                return column ? (
-                  <TableFacetedFilter
-                    key={filter.id}
-                    column={column}
-                    title={filter.title}
-                    options={filter.options}
-                  />
-                ) : null;
-              })
-            }
-          />
-          <ToolbarComponent
-            option='advance-filter'
-            render={() =>
-              advanceFilters && advanceFilters?.length > 0 ? (
-                <TableAdvanceFilters filters={advanceFilters} />
-              ) : null
-            }
-          />
-
-          {validDateRange && (
-            <Separator orientation='vertical' className='h-6' />
-          )}
-        </div>
-      ),
-
-    [
-      table,
-      facetedFilters,
-      advanceFilters,
-      isFiltered,
-      resetColumnFilters,
-      onUpdate,
-      startDate,
-      endDate,
-      onClear,
-      isClear,
-      otherToolBarComponents,
-      isTablet,
-      validDateRange,
-      createAccess,
-      handleCreate,
-      canFilter,
-    ]
-  );
-
-  /**
-   * Renders the right section of the toolbar
-   */
-  const renderRightSection = useCallback(
-    () => (
-      <div className='flex items-center gap-2 lg:gap-4'>
-        <TableRowDelete />
-        <ButtonGroup>
-          <ToolbarComponent
-            option='export-csv'
-            render={() =>
-              validDateRange && (
-                <TableExportCSV
-                  table={table}
-                  title={title}
-                  isEntry={isEntry}
-                  start_date={startDate}
-                  end_date={endDate}
-                />
-              )
-            }
-          />
-          <ToolbarComponent
-            option='refresh'
-            render={() =>
-              handleRefetch && <TableRefresh handleRefetch={handleRefetch} />
-            }
-          />
-        </ButtonGroup>
-
-        {otherToolBarComponents && (
-          <span className='block h-5 bg-border w-[1px]' />
-        )}
-
-        <div className='hidden lg:flex  gap-4'>
-          {otherToolBarComponents?.map((component) => component)}
-        </div>
-      </div>
-    ),
-    [
-      handleRefetch,
-      otherToolBarComponents,
-      table,
-      title,
-      isEntry,
-      startDate,
-      endDate,
-      validDateRange,
-    ]
   );
 
   if (isEntry || collapsible === true) {
@@ -381,7 +87,7 @@ export function TableToolbar() {
                 Icon={Funnel}
                 iconClassName='size-5'
                 className='p-0 [&[data-state=open]>svg]:rotate-0'
-              ></AccordionTrigger>
+              />
             </div>
           </div>
 
@@ -389,8 +95,8 @@ export function TableToolbar() {
             <div className='flex items-center justify-between gap-4'>
               {toolbarOptions === 'none' ? null : (
                 <div className={cn('flex items-center gap-2')}>
-                  {renderLeftSection()}
-                  {renderRightSection()}
+                  <TableToolbarLeftSection />
+                  <TableToolbarRightSection />
                 </div>
               )}
             </div>
@@ -427,8 +133,8 @@ export function TableToolbar() {
           )}
         >
           <div className='flex items-center gap-2'>
-            {renderLeftSection()}
-            {renderRightSection()}
+            <TableToolbarLeftSection />
+            <TableToolbarRightSection />
           </div>
         </div>
       )}

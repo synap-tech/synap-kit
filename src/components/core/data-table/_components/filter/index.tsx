@@ -13,6 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import TooltipWrapper from '@/components/ui/tooltip-wrapper';
 
 import TableColumnFilter from './column';
 
@@ -37,7 +38,9 @@ const TableAllFilter = () => {
           variant={'outline-toolbar'}
           size='toolbar'
         >
-          <Settings2 className='size-4' />
+          <TooltipWrapper message='Filters'>
+            <Settings2 className='size-4' />
+          </TooltipWrapper>
         </Button>
       </SheetTrigger>
       <SheetContent className='flex flex-col gap-0 p-0 h-screen overflow-hidden '>

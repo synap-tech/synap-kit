@@ -4,6 +4,7 @@ import { FileDown } from 'lucide-react';
 import { CSVLink } from 'react-csv';
 
 import { Button } from '@/components/ui/button';
+import TooltipWrapper from '@/components/ui/tooltip-wrapper';
 
 import { cn } from '@/lib/utils';
 
@@ -54,21 +55,23 @@ const TableExportCSV = ({
       : 'Table.csv';
 
   return (
-    <Button
-      variant={'outline-toolbar'}
-      size={'toolbar'}
-      className={cn(className)}
-    >
-      <CSVLink
-        className='size-full flex items-center gap-2'
-        aria-label='Export to CSV'
-        data={csvData}
-        filename={filename}
+    <TooltipWrapper message='Excel'>
+      <Button
+        variant={'outline-toolbar'}
+        size={'toolbar'}
+        className={cn(className)}
       >
-        <FileDown className='size-4' />
-        {/* <span className='hidden lg:inline'>Excel</span> */}
-      </CSVLink>
-    </Button>
+        <CSVLink
+          className='size-full flex items-center gap-2'
+          aria-label='Export to CSV'
+          data={csvData}
+          filename={filename}
+        >
+          <FileDown className='size-4' />
+          {/* <span className='hidden lg:inline'>Excel</span> */}
+        </CSVLink>
+      </Button>
+    </TooltipWrapper>
   );
 };
 
